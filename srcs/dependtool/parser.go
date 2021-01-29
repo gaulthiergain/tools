@@ -36,8 +36,12 @@ func parseReadELF(output string, data *u.StaticData) {
 
 		if len(words) > 8 && types[words[3]] {
 			symbol := strings.Split(words[7], "@")
-			data.Symbols[symbol[0]] = symbol[1]
-		}
+			if len(symbol) > 2{
+                            data.Symbols[symbol[0]] = symbol[1]
+		        }else{
+                            data.Symbols[words[7]] = ""
+                        }
+                }
 	}
 }
 
