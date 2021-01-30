@@ -28,7 +28,11 @@ The Unikraft tools are a set of tools to automatically build images of operating
 4. **Verification tool** to ensure that the functionality of the resulting, specialized OS+application matches that of the application running on a standard OS. The tool will also take care of ensuring software quality.
 5. **Performance optimization tool** to analyse the running specialized OS+application and to use this information as input to the automatic build tools so that they can generate even more optimized images.
 
-For now only the **Dependency analysis tool** and the **Automatic build tool** are available.
+In addition, the toolchain contains helper tools such as:
+- **Crawler tool** to create graph of dependencies of existing micro-libs.
+- **Binary analyser tool** to extract various information of unikraft unikernel ELF files.
+
+Note that the toolchain will be integrated to the [kraft](https://github.com/unikraft/kraft) repository in February/March (after some refactoring).
 
 ## Installation and documentation
 
