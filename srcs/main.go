@@ -8,6 +8,7 @@ package main
 
 import (
 	"os/user"
+	"tools/srcs/binarytool"
 	"tools/srcs/buildtool"
 	u "tools/srcs/common"
 	"tools/srcs/crawlertool"
@@ -47,6 +48,12 @@ func main() {
 	if *args.BoolArg[u.CRAWLER] {
 		u.PrintHeader1("(*) RUN CRAWLER UNIKRAFT ANALYSER")
 		crawlertool.RunCrawler()
+		return
+	}
+
+	if *args.BoolArg[u.BINARY] {
+		u.PrintHeader1("(*) RUN BINARY UNIKRAFT ANALYSER")
+		binarytool.RunBinaryAnalyser(usr.HomeDir)
 		return
 	}
 

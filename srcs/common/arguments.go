@@ -27,6 +27,7 @@ const (
 	BUILD   = "build"
 	VERIF   = "verif"
 	PERF    = "perf"
+	BINARY  = "binary"
 )
 
 const (
@@ -82,6 +83,9 @@ func (*Arguments) ParseMainArguments(p *argparse.Parser, args *Arguments) error 
 	args.InitArgParse(p, args, BOOL, "", CRAWLER,
 		&argparse.Options{Required: false, Default: false,
 			Help: "Execute the crawler unikraft tool"})
+	args.InitArgParse(p, args, BOOL, "", BINARY,
+		&argparse.Options{Required: false, Default: false,
+			Help: "Execute the binary analyser tool"})
 	args.InitArgParse(p, args, BOOL, "", DEP,
 		&argparse.Options{Required: false, Default: false,
 			Help: "Execute only the dependency analysis tool"})
@@ -98,7 +102,7 @@ func (*Arguments) ParseMainArguments(p *argparse.Parser, args *Arguments) error 
 	// Parse only the two first arguments <program name, [tools]>
 	if len(os.Args) > 2 {
 		return ParserWrapper(p, os.Args[:2])
-	}else{
+	} else {
 		p.Parse(os.Args)
 	}
 
