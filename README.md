@@ -30,7 +30,7 @@ The Unikraft tools are a set of tools to automatically build images of operating
 
 In addition, the toolchain contains helper tools such as:
 - **Crawler tool** to create graph of dependencies of existing micro-libs.
-- **Binary analyser tool** to extract various information of unikraft unikernel ELF files.
+- **Binary analyser tool** to extract various information of unikernel ELF files (Unikraft oriented).
 
 Note that the toolchain will be integrated to the [kraft](https://github.com/unikraft/kraft) repository in February/March (after some refactoring).
 
