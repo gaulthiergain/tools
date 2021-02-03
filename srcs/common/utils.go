@@ -7,6 +7,7 @@
 package common
 
 import (
+	"bytes"
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
@@ -167,7 +168,11 @@ func RecordDataJson(filename string, data *Data) error {
 		return err
 	}
 
-	if err = ioutil.WriteFile(filename+".json", b, os.ModePerm); err != nil {
+	var prettyJSON bytes.Buffer
+	if err = json.Indent(&prettyJSON, b, "", "\t"); err != nil {
+		return err
+	}
+	if err = ioutil.WriteFile(filename+".json", prettyJSON.Bytes(), os.ModePerm); err != nil {
 		return err
 	}
 

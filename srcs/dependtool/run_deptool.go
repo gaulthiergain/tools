@@ -62,7 +62,7 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 		runDynamicAnalyser(args, programName, programPath, outFolder, data)
 	} else {
 		// dtruss/dtrace on mac needs to disable system integrity protection
-		u.PrintWarning("Dynamic analysis is not supported on mac")
+		u.PrintWarning("Dynamic analysis is not currently supported on macOS")
 	}
 
 	// Save Data to JSON
