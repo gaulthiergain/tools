@@ -179,7 +179,7 @@ func executeDependAptCache(programName string, data *u.StaticData,
 //
 func staticAnalyser(args u.Arguments, data *u.Data, programPath string) {
 
-	programName := *args.StringArg[programArg]
+	//programName := *args.StringArg[programArg]
 	fullDeps := *args.BoolArg[fullDepsArg]
 
 	staticData := &data.StaticData
@@ -222,11 +222,11 @@ func staticAnalyser(args u.Arguments, data *u.Data, programPath string) {
 		}
 	}
 
-	if strings.ToLower(runtime.GOOS) == "linux" {
+	/*if strings.ToLower(runtime.GOOS) == "linux" {
 		// Gather Data from apt-cache
 		u.PrintHeader2("(*) Gathering dependencies from apt-cache depends")
 		if err := gatherDependencies(programName, staticData, fullDeps); err != nil {
 			u.PrintWarning(err)
 		}
-	}
+	}*/
 }
