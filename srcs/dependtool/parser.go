@@ -36,12 +36,12 @@ func parseReadELF(output string, data *u.StaticData) {
 
 		if len(words) > 8 && types[words[3]] {
 			symbol := strings.Split(words[7], "@")
-			if len(symbol) > 2{
-                            data.Symbols[symbol[0]] = symbol[1]
-		        }else{
-                            data.Symbols[words[7]] = ""
-                        }
-                }
+			if len(symbol) > 2 {
+				data.Symbols[symbol[0]] = symbol[1]
+			} else {
+				data.Symbols[words[7]] = ""
+			}
+		}
 	}
 }
 
@@ -222,9 +222,9 @@ func parseLDD(output string, data map[string][]string, lddMap map[string][]strin
 				parseRecursive(rd)
 			} else {
 				// Associate the path if it exists
-				if strings.Contains(path, ".so"){
+				if strings.Contains(path, ".so") {
 					data[lib] = []string{path}
-				}else{
+				} else {
 					data[lib] = nil
 				}
 			}
@@ -274,6 +274,7 @@ func detectPermissionDenied(str string) bool {
 	}
 	return false
 }
+
 // parseTrace parses the output of the 'ftrace' command.
 //
 // It returns true if command must be run with sudo, otherwise false.
@@ -312,7 +313,7 @@ func parseStrace(output string, data map[string]int) bool {
 			// Add symbol to map
 			if _, isSyscall := systemCalls[match[1]]; isSyscall {
 				data[match[1]] = systemCalls[match[1]]
-			}else{
+			} else {
 				data[match[1]] = -1
 			}
 		}
