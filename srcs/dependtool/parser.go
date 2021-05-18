@@ -62,7 +62,7 @@ func parseNMMac(output string, data *u.StaticData) {
 
 		// Add to system calls map if symbol is a system call
 		if _, isSyscall := systemCalls[match[2]]; isSyscall {
-			data.SystemCalls[match[2]] = ""
+			data.SystemCalls[match[2]] = systemCalls[match[2]]
 		} else {
 			data.Symbols[match[2]] = ""
 		}
@@ -76,11 +76,11 @@ func parseNMLinux(output string, data *u.StaticData) {
 	systemCalls := initSystemCalls()
 
 	// Check the output of 'nm' command
-	var re = regexp.MustCompile(`(?m)([U|T|B|D]\s)(.*)\s*`)
+	var re = regexp.MustCompile(`(?m)([U|u|T|t|w|W]\s)(.*)\s*`)
 	for _, match := range re.FindAllStringSubmatch(output, -1) {
 		// Add to system calls map if symbol is a system call
 		if _, isSyscall := systemCalls[match[2]]; isSyscall {
-			data.SystemCalls[match[2]] = ""
+			data.SystemCalls[match[2]] = systemCalls[match[2]]
 		} else {
 			data.Symbols[match[2]] = ""
 		}
@@ -208,7 +208,7 @@ func parseLDD(output string, data map[string][]string, lddMap map[string][]strin
 			lib, path := words[0], words[1]
 
 			// Execute ldd only if fullDeps mode is set
-			if fullDeps {
+			if fullDeps && strings.HasPrefix(path, "/") {
 				rd := recursiveData{
 					data:     data,
 					glMap:    lddMap,
@@ -221,7 +221,12 @@ func parseLDD(output string, data map[string][]string, lddMap map[string][]strin
 				listLdd = append(listLdd, lib)
 				parseRecursive(rd)
 			} else {
-				data[lib] = nil
+				// Associate the path if it exists
+				if strings.Contains(path, ".so"){
+					data[lib] = []string{path}
+				}else{
+					data[lib] = nil
+				}
 			}
 		}
 	}
@@ -269,12 +274,10 @@ func detectPermissionDenied(str string) bool {
 	}
 	return false
 }
-
-// parseTrace parses the output of the '(s)|(f)trace' command.
+// parseTrace parses the output of the 'ftrace' command.
 //
 // It returns true if command must be run with sudo, otherwise false.
-func parseTrace(output string, data map[string]string) bool {
-
+func parseFtrace(output string, data map[string]string) bool {
 	var re = regexp.MustCompile(`([a-zA-Z_0-9@/-]+?)\((.*)`)
 	for _, match := range re.FindAllStringSubmatch(output, -1) {
 		if len(match) > 1 {
@@ -286,6 +289,32 @@ func parseTrace(output string, data map[string]string) bool {
 			}
 			// Add symbol to map
 			data[match[1]] = ""
+		}
+	}
+	return false
+}
+
+// parseTrace parses the output of the '(s)|(f)trace' command.
+//
+// It returns true if command must be run with sudo, otherwise false.
+func parseStrace(output string, data map[string]int) bool {
+
+	systemCalls := initSystemCalls()
+	var re = regexp.MustCompile(`([a-zA-Z_0-9@/-]+?)\((.*)`)
+	for _, match := range re.FindAllStringSubmatch(output, -1) {
+		if len(match) > 1 {
+			// Detect if Permission denied is thrown
+			detected := detectPermissionDenied(match[2])
+			if detected {
+				// Command must be run with sudo
+				return true
+			}
+			// Add symbol to map
+			if _, isSyscall := systemCalls[match[1]]; isSyscall {
+				data[match[1]] = systemCalls[match[1]]
+			}else{
+				data[match[1]] = -1
+			}
 		}
 	}
 	return false

@@ -56,7 +56,6 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 	runStaticAnalyser(args, programName, programPath, outFolder, data)
 
 	// Run dynamic analyser
-
 	if strings.ToLower(runtime.GOOS) == "linux" {
 		u.PrintHeader1("(1.2) RUN DYNAMIC ANALYSIS")
 		runDynamicAnalyser(args, programName, programPath, outFolder, data)

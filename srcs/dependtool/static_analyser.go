@@ -190,7 +190,7 @@ func staticAnalyser(args u.Arguments, data *u.Data, programPath string) {
 
 		// Init symbols members
 		staticData.Symbols = make(map[string]string)
-		staticData.SystemCalls = make(map[string]string)
+		staticData.SystemCalls = make(map[string]int)
 		staticData.SharedLibs = make(map[string][]string)
 
 		if strings.ToLower(runtime.GOOS) == "linux" {

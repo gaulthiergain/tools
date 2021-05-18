@@ -83,9 +83,9 @@ func gatherDataAux(command, programPath, programName, option string,
 
 	ret := false
 	if command == systrace {
-		ret = parseTrace(errStr, data.SystemCalls)
+		ret = parseStrace(errStr, data.SystemCalls)
 	} else {
-		ret = parseTrace(errStr, data.Symbols)
+		ret = parseFtrace(errStr, data.Symbols)
 	}
 	return ret
 }
@@ -206,7 +206,7 @@ func dynamicAnalyser(args *u.Arguments, data *u.Data, programPath string) {
 	// Init dynamic data
 	dynamicData := &data.DynamicData
 	dynamicData.SharedLibs = make(map[string][]string)
-	dynamicData.SystemCalls = make(map[string]string)
+	dynamicData.SystemCalls = make(map[string]int)
 	dynamicData.Symbols = make(map[string]string)
 
 	// Run strace
