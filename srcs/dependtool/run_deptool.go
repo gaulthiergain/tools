@@ -1,6 +1,7 @@
 package dependtool
 
 import (
+	"errors"
 	"fmt"
 	"github.com/fatih/color"
 	"runtime"
@@ -24,6 +25,12 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 	}
 	if err := parseLocalArguments(p, args); err != nil {
 		u.PrintErr(err)
+	}
+
+	// Get the kind of analysis (0: both; 1: static; 2: dynamic)
+	typeAnalysis := *args.IntArg[typeAnalysis]
+	if typeAnalysis < 0 || typeAnalysis > 2 {
+		u.PrintErr(errors.New("analysis argument must be between [0,2]"))
 	}
 
 	// Get program path
@@ -51,17 +58,21 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 		checkMachOS(&programPath)
 	}
 
-	// Run static analyser
-	u.PrintHeader1("(1.1) RUN STATIC ANALYSIS")
-	runStaticAnalyser(args, programName, programPath, outFolder, data)
+	if typeAnalysis == 0 || typeAnalysis == 1 {
+		// Run static analyser
+		u.PrintHeader1("(1.1) RUN STATIC ANALYSIS")
+		runStaticAnalyser(args, programName, programPath, outFolder, data)
+	}
 
 	// Run dynamic analyser
-	if strings.ToLower(runtime.GOOS) == "linux" {
-		u.PrintHeader1("(1.2) RUN DYNAMIC ANALYSIS")
-		runDynamicAnalyser(args, programName, programPath, outFolder, data)
-	} else {
-		// dtruss/dtrace on mac needs to disable system integrity protection
-		u.PrintWarning("Dynamic analysis is not currently supported on macOS")
+	if typeAnalysis == 0 || typeAnalysis == 2 {
+		if strings.ToLower(runtime.GOOS) == "linux" {
+			u.PrintHeader1("(1.2) RUN DYNAMIC ANALYSIS")
+			runDynamicAnalyser(args, programName, programPath, outFolder, data)
+		} else {
+			// dtruss/dtrace on mac needs to disable system integrity protection
+			u.PrintWarning("Dynamic analysis is not currently supported on macOS")
+		}
 	}
 
 	// Save Data to JSON

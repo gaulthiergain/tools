@@ -13,13 +13,15 @@ import (
 )
 
 const (
-	programArg    = "program"
-	testFileArg   = "testFile"
-	configFileArg = "configFile"
-	optionsArg    = "options"
-	waitTimeArg   = "waitTime"
-	saveOutputArg = "saveOutput"
-	fullDepsArg   = "fullDeps"
+	programArg         = "program"
+	testFileArg        = "testFile"
+	configFileArg      = "configFile"
+	optionsArg         = "options"
+	waitTimeArg        = "waitTime"
+	saveOutputArg      = "saveOutput"
+	fullDepsArg        = "fullDeps"
+	fullStaticAnalysis = "fullStaticAnalysis"
+	typeAnalysis       = "typeAnalysis"
 )
 
 // parseLocalArguments parses arguments of the application.
@@ -45,6 +47,12 @@ func parseLocalArguments(p *argparse.Parser, args *u.Arguments) error {
 	args.InitArgParse(p, args, u.BOOL, "", fullDepsArg,
 		&argparse.Options{Required: false, Default: false,
 			Help: "Show dependencies of dependencies"})
+	args.InitArgParse(p, args, u.BOOL, "", fullStaticAnalysis,
+		&argparse.Options{Required: false, Default: false,
+			Help: "Full static analysis (analyse shared libraries too)"})
+	args.InitArgParse(p, args, u.INT, "", typeAnalysis,
+		&argparse.Options{Required: false, Default: 0,
+			Help: "Kind of analysis (0: both; 1: static; 2: dynamic)"})
 
 	return u.ParserWrapper(p, os.Args)
 }

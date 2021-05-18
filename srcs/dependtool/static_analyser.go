@@ -181,6 +181,7 @@ func staticAnalyser(args u.Arguments, data *u.Data, programPath string) {
 
 	programName := *args.StringArg[programArg]
 	fullDeps := *args.BoolArg[fullDepsArg]
+	fullStaticAnalysis := *args.BoolArg[fullStaticAnalysis]
 
 	staticData := &data.StaticData
 
@@ -218,6 +219,25 @@ func staticAnalyser(args u.Arguments, data *u.Data, programPath string) {
 			if err := gatherStaticSharedLibsMac(programPath, staticData,
 				fullDeps); err != nil {
 				u.PrintWarning(err)
+			}
+		}
+	}
+
+	// Detect symbols from shared libraries
+	if fullStaticAnalysis {
+		u.PrintHeader2("(*) Gathering symbols and system calls of shared libraries from binary file")
+		for key, path := range staticData.SharedLibs {
+			if len(path) > 0 {
+				fmt.Printf("\t-> Analysing %s - %s\n", key, path[0])
+				if err := gatherStaticSymbols(path[0], staticData); err != nil {
+					u.PrintWarning(err)
+				}
+				if err := gatherStaticSystemCalls(path[0], "-D", staticData); err != nil {
+					// Check without the dynamic argument
+					if err := gatherStaticSystemCalls(path[0], "", staticData); err != nil {
+						u.PrintWarning(err)
+					}
+				}
 			}
 		}
 	}
