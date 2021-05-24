@@ -11,8 +11,6 @@ import (
 	"debug/elf"
 	"fmt"
 	"os"
-	"runtime"
-	"strings"
 	u "tools/srcs/common"
 )
 
@@ -192,7 +190,7 @@ func executeDependAptCache(programName string, data *u.StaticData,
 // staticAnalyser runs the static analysis to get shared libraries,
 // system calls and library calls of a given application.
 //
-func staticAnalyser(elfFile *elf.File, dynamicCompiled bool, args u.Arguments, data *u.Data, programPath string) {
+func staticAnalyser(elfFile *elf.File, isDynamic, isLinux bool, args u.Arguments, data *u.Data, programPath string) {
 
 	programName := *args.StringArg[programArg]
 	fullDeps := *args.BoolArg[fullDepsArg]
@@ -202,25 +200,30 @@ func staticAnalyser(elfFile *elf.File, dynamicCompiled bool, args u.Arguments, d
 
 	// If the program is a binary, runs static analysis tools
 	if len(programPath) > 0 {
-		// Gather Data from binary file
 
 		// Init symbols members
 		staticData.Symbols = make(map[string]string)
 		staticData.SystemCalls = make(map[string]int)
 		staticData.SharedLibs = make(map[string][]string)
 
-		if strings.ToLower(runtime.GOOS) == "linux" {
+		if isLinux {
+			// Gather Data from binary file
 			u.PrintHeader2("(*) Gathering symbols from binary file")
-			if err := gatherStaticSymbols(elfFile, dynamicCompiled, staticData); err != nil {
+			if err := gatherStaticSymbols(elfFile, isDynamic, staticData); err != nil {
 				u.PrintWarning(err)
 			}
 		}
 
 		u.PrintHeader2("(*) Gathering shared libraries from binary file")
-		if strings.ToLower(runtime.GOOS) == "linux" {
-			// Cannot use "elfFile.ImportedLibraries()" since we need the .so path
+		if isLinux {
+			// Cannot use "elfFile.ImportedLibraries()" since we need the ".so" path
+			// So in that case, we need to rely on ldd
 			if err := gatherStaticSharedLibsLinux(programPath, staticData,
 				fullDeps); err != nil {
+				u.PrintWarning(err)
+			}
+
+			if err := elfFile.Close(); err != nil {
 				u.PrintWarning(err)
 			}
 		} else {
@@ -229,14 +232,10 @@ func staticAnalyser(elfFile *elf.File, dynamicCompiled bool, args u.Arguments, d
 				u.PrintWarning(err)
 			}
 		}
-
-		if err := elfFile.Close(); err != nil {
-			u.PrintWarning(err)
-		}
 	}
 
 	// Detect symbols from shared libraries
-	if fullStaticAnalysis {
+	if fullStaticAnalysis && isLinux {
 		u.PrintHeader2("(*) Gathering symbols and system calls of shared libraries from binary file")
 		for key, path := range staticData.SharedLibs {
 			if len(path) > 0 {
@@ -255,7 +254,7 @@ func staticAnalyser(elfFile *elf.File, dynamicCompiled bool, args u.Arguments, d
 		}
 	}
 
-	if strings.ToLower(runtime.GOOS) == "linux" {
+	if isLinux {
 		// Gather Data from apt-cache
 		u.PrintHeader2("(*) Gathering dependencies from apt-cache depends")
 		if err := gatherDependencies(programName, staticData, fullDeps); err != nil {

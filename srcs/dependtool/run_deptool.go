@@ -52,25 +52,27 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 	// Display Minor Details
 	displayProgramDetails(programName, programPath, args)
 
-	// Check if the program is a binary
-
 	var elfFile *elf.File
-	dynamicCompiled := false
-	if strings.ToLower(runtime.GOOS) == "linux" {
-		elfFile, dynamicCompiled = checkElf(&programPath)
+	isDynamic := false
+	isLinux := strings.ToLower(runtime.GOOS) == "linux"
+
+	// Check if the program is a binary
+	if isLinux {
+		elfFile, isDynamic = checkElf(&programPath)
 	} else if strings.ToLower(runtime.GOOS) == "darwin" {
+		u.PrintWarning("Static analysis is limited on macOS")
 		checkMachOS(&programPath)
 	}
 
+	// Run static analyser
 	if typeAnalysis == 0 || typeAnalysis == 1 {
-		// Run static analyser
 		u.PrintHeader1("(1.1) RUN STATIC ANALYSIS")
-		runStaticAnalyser(elfFile, dynamicCompiled, args, programName, programPath, outFolder, data)
+		runStaticAnalyser(elfFile, isDynamic, isLinux, args, programName, programPath, outFolder, data)
 	}
 
 	// Run dynamic analyser
 	if typeAnalysis == 0 || typeAnalysis == 2 {
-		if strings.ToLower(runtime.GOOS) == "linux" {
+		if isLinux {
 			u.PrintHeader1("(1.2) RUN DYNAMIC ANALYSIS")
 			runDynamicAnalyser(args, programName, programPath, outFolder, data)
 		} else {
@@ -153,10 +155,10 @@ func checkElf(programPath *string) (*elf.File, bool) {
 }
 
 // runStaticAnalyser runs the static analyser
-func runStaticAnalyser(elfFile *elf.File, dynamicCompiled bool, args *u.Arguments, programName, programPath,
+func runStaticAnalyser(elfFile *elf.File, isDynamic, isLinux bool, args *u.Arguments, programName, programPath,
 	outFolder string, data *u.Data) {
 
-	staticAnalyser(elfFile, dynamicCompiled, *args, data, programPath)
+	staticAnalyser(elfFile, isDynamic, isLinux, *args, data, programPath)
 
 	// Save static Data into text file if display mode is set
 	if *args.BoolArg[saveOutputArg] {
