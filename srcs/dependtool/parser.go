@@ -25,68 +25,6 @@ type recursiveData struct {
 
 // --------------------------------Static Output--------------------------------
 
-// parseReadELF parses the output of the 'readelf' command.
-//
-func parseReadELF(output string, data *u.StaticData) {
-	types := map[string]bool{"FUNC": true, "FILE": true, "OBJECT": true}
-
-	// Check the output of 'readelf' command
-	for _, line := range strings.Split(output, "\n") {
-		words := strings.Fields(line)
-
-		if len(words) > 8 && types[words[3]] {
-			symbol := strings.Split(words[7], "@")
-			if len(symbol) > 2 {
-				data.Symbols[symbol[0]] = symbol[1]
-			} else {
-				data.Symbols[words[7]] = ""
-			}
-		}
-	}
-}
-
-// parseNMMacos parses the output of the 'nm' command (Mac os).
-//
-func parseNMMac(output string, data *u.StaticData) {
-	// Get the list of system calls
-	systemCalls := initSystemCalls()
-
-	// Check the output of 'nm' command
-	var re = regexp.MustCompile(`(?m)([U|T|B|D]\s)(.*)\s*`)
-	for _, match := range re.FindAllStringSubmatch(output, -1) {
-		if len(match) > 2 {
-			if match[2][0] == '_' {
-				match[2] = match[2][1:]
-			}
-		}
-
-		// Add to system calls map if symbol is a system call
-		if _, isSyscall := systemCalls[match[2]]; isSyscall {
-			data.SystemCalls[match[2]] = systemCalls[match[2]]
-		} else {
-			data.Symbols[match[2]] = ""
-		}
-	}
-}
-
-// parseNMLinux parses the output of the 'nm' command (Linux).
-//
-func parseNMLinux(output string, data *u.StaticData) {
-	// Get the list of system calls
-	systemCalls := initSystemCalls()
-
-	// Check the output of 'nm' command
-	var re = regexp.MustCompile(`(?m)([U|u|T|t|w|W]\s)(.*)\s*`)
-	for _, match := range re.FindAllStringSubmatch(output, -1) {
-		// Add to system calls map if symbol is a system call
-		if _, isSyscall := systemCalls[match[2]]; isSyscall {
-			data.SystemCalls[match[2]] = systemCalls[match[2]]
-		} else {
-			data.Symbols[match[2]] = ""
-		}
-	}
-}
-
 // parsePackagesName parses the output of the 'apt-cache pkgnames' command.
 //
 // It returns a string which represents the name of application used by the

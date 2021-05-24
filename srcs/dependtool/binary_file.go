@@ -48,7 +48,6 @@ func getElf(filename string) (*elf.File, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer f.Close()
 
 	_elf, err := elf.NewFile(f)
 	if err != nil {

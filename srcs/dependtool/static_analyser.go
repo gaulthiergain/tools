@@ -8,6 +8,7 @@ package dependtool
 
 import (
 	"bufio"
+	"debug/elf"
 	"fmt"
 	"os"
 	"runtime"
@@ -17,41 +18,55 @@ import (
 
 // ---------------------------------Gather Data---------------------------------
 
+func addSymbols(symbols []elf.Symbol, data *u.StaticData, systemCalls map[string]int) {
+	for _, s := range symbols {
+		if _, isSyscall := systemCalls[s.Name]; isSyscall {
+			data.SystemCalls[s.Name] = systemCalls[s.Name]
+		} else {
+			data.Symbols[s.Name] = s.Library
+		}
+	}
+}
+
 // gatherStaticSymbols gathers symbols of a given application.
 //
 // It returns an error if any, otherwise it returns nil.
-func gatherStaticSymbols(programPath string, data *u.StaticData) error {
+func gatherStaticSymbols(elfFile *elf.File, dynamicCompiled bool, data *u.StaticData) error {
 
-	// Use 'readelf' to get symbols
-	if output, err := u.ExecuteCommand("readelf", []string{"-s",
-		programPath}); err != nil {
-		return err
+	// Get the list of system calls
+	systemCalls := initSystemCalls()
+
+	symbols, err := elfFile.Symbols()
+	if err != nil {
+		if !dynamicCompiled {
+			// Skip message for dynamically compiled binary
+			u.PrintWarning(err)
+		}
 	} else {
-		parseReadELF(output, data)
-	}
-	return nil
-}
-
-// gatherStaticSymbols gathers system calls of a given application.
-//
-// It returns an error if any, otherwise it returns nil.
-func gatherStaticSystemCalls(programPath, argument string, data *u.StaticData) error {
-
-	var args []string
-	if len(argument) > 0 {
-		args = []string{argument, programPath}
-	} else {
-		args = []string{programPath}
+		addSymbols(symbols, data, systemCalls)
 	}
 
-	// Use 'nm' to get symbols and system calls
-	if output, err := u.ExecuteCommand("nm", args); err != nil {
-		return err
-	} else {
-		if strings.ToLower(runtime.GOOS) == "linux" {
-			parseNMLinux(output, data)
+	// Additional symbols when dynamically compiled
+	if dynamicCompiled {
+
+		symbols, err = elfFile.DynamicSymbols()
+		if err != nil {
+			u.PrintWarning(err)
 		} else {
-			parseNMMac(output, data)
+			addSymbols(symbols, data, systemCalls)
+		}
+
+		importedSymbols, err := elfFile.ImportedSymbols()
+		if err != nil {
+			u.PrintWarning(err)
+		} else {
+			for _, s := range importedSymbols {
+				if _, isSyscall := systemCalls[s.Name]; isSyscall {
+					data.SystemCalls[s.Name] = systemCalls[s.Name]
+				} else {
+					data.Symbols[s.Name] = s.Library
+				}
+			}
 		}
 	}
 	return nil
@@ -177,7 +192,7 @@ func executeDependAptCache(programName string, data *u.StaticData,
 // staticAnalyser runs the static analysis to get shared libraries,
 // system calls and library calls of a given application.
 //
-func staticAnalyser(args u.Arguments, data *u.Data, programPath string) {
+func staticAnalyser(elfFile *elf.File, dynamicCompiled bool, args u.Arguments, data *u.Data, programPath string) {
 
 	programName := *args.StringArg[programArg]
 	fullDeps := *args.BoolArg[fullDepsArg]
@@ -196,21 +211,14 @@ func staticAnalyser(args u.Arguments, data *u.Data, programPath string) {
 
 		if strings.ToLower(runtime.GOOS) == "linux" {
 			u.PrintHeader2("(*) Gathering symbols from binary file")
-			if err := gatherStaticSymbols(programPath, staticData); err != nil {
-				u.PrintWarning(err)
-			}
-		}
-
-		u.PrintHeader2("(*) Gathering symbols & system calls from binary file")
-		if err := gatherStaticSystemCalls(programPath, "-D", staticData); err != nil {
-			// Check without the dynamic argument
-			if err := gatherStaticSystemCalls(programPath, "", staticData); err != nil {
+			if err := gatherStaticSymbols(elfFile, dynamicCompiled, staticData); err != nil {
 				u.PrintWarning(err)
 			}
 		}
 
 		u.PrintHeader2("(*) Gathering shared libraries from binary file")
 		if strings.ToLower(runtime.GOOS) == "linux" {
+			// Cannot use "elfFile.ImportedLibraries()" since we need the .so path
 			if err := gatherStaticSharedLibsLinux(programPath, staticData,
 				fullDeps); err != nil {
 				u.PrintWarning(err)
@@ -221,6 +229,10 @@ func staticAnalyser(args u.Arguments, data *u.Data, programPath string) {
 				u.PrintWarning(err)
 			}
 		}
+
+		if err := elfFile.Close(); err != nil {
+			u.PrintWarning(err)
+		}
 	}
 
 	// Detect symbols from shared libraries
@@ -229,14 +241,15 @@ func staticAnalyser(args u.Arguments, data *u.Data, programPath string) {
 		for key, path := range staticData.SharedLibs {
 			if len(path) > 0 {
 				fmt.Printf("\t-> Analysing %s - %s\n", key, path[0])
-				if err := gatherStaticSymbols(path[0], staticData); err != nil {
+				libElf, err := getElf(path[0])
+				if err != nil {
 					u.PrintWarning(err)
 				}
-				if err := gatherStaticSystemCalls(path[0], "-D", staticData); err != nil {
-					// Check without the dynamic argument
-					if err := gatherStaticSystemCalls(path[0], "", staticData); err != nil {
-						u.PrintWarning(err)
-					}
+				if err := gatherStaticSymbols(libElf, true, staticData); err != nil {
+					u.PrintWarning(err)
+				}
+				if err := libElf.Close(); err != nil {
+					u.PrintWarning(err)
 				}
 			}
 		}

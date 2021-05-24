@@ -1,6 +1,7 @@
 package dependtool
 
 import (
+	"debug/elf"
 	"errors"
 	"fmt"
 	"github.com/fatih/color"
@@ -52,8 +53,11 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 	displayProgramDetails(programName, programPath, args)
 
 	// Check if the program is a binary
+
+	var elfFile *elf.File
+	dynamicCompiled := false
 	if strings.ToLower(runtime.GOOS) == "linux" {
-		checkElf(&programPath)
+		elfFile, dynamicCompiled = checkElf(&programPath)
 	} else if strings.ToLower(runtime.GOOS) == "darwin" {
 		checkMachOS(&programPath)
 	}
@@ -61,7 +65,7 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 	if typeAnalysis == 0 || typeAnalysis == 1 {
 		// Run static analyser
 		u.PrintHeader1("(1.1) RUN STATIC ANALYSIS")
-		runStaticAnalyser(args, programName, programPath, outFolder, data)
+		runStaticAnalyser(elfFile, dynamicCompiled, args, programName, programPath, outFolder, data)
 	}
 
 	// Run dynamic analyser
@@ -117,7 +121,8 @@ func checkMachOS(programPath *string) {
 }
 
 // checkElf checks if the program (from its path) is an ELF file
-func checkElf(programPath *string) {
+func checkElf(programPath *string) (*elf.File, bool) {
+	dynamicCompiled := false
 	elfFile, err := getElf(*programPath)
 	if err != nil {
 		u.PrintErr(err)
@@ -126,20 +131,32 @@ func checkElf(programPath *string) {
 		u.PrintWarning("Only ELF binaries are supported! Some analysis" +
 			" procedures will be skipped")
 	} else {
+
 		// Get ELF architecture
 		architecture, machine := GetElfArchitecture(elfFile)
 		fmt.Println("ELF Class: ", architecture)
 		fmt.Println("Machine: ", machine)
 		fmt.Println("Entry Point: ", elfFile.Entry)
+		for _, s := range elfFile.Sections {
+			if strings.Contains(s.Name, ".dynamic") {
+				fmt.Println("Type: Dynamically compiled")
+				dynamicCompiled = true
+				break
+			}
+		}
+		if !dynamicCompiled {
+			fmt.Println("Type: Statically compiled")
+		}
 		fmt.Println("----------------------------------------------")
 	}
+	return elfFile, dynamicCompiled
 }
 
 // runStaticAnalyser runs the static analyser
-func runStaticAnalyser(args *u.Arguments, programName, programPath,
+func runStaticAnalyser(elfFile *elf.File, dynamicCompiled bool, args *u.Arguments, programName, programPath,
 	outFolder string, data *u.Data) {
 
-	staticAnalyser(*args, data, programPath)
+	staticAnalyser(elfFile, dynamicCompiled, *args, data, programPath)
 
 	// Save static Data into text file if display mode is set
 	if *args.BoolArg[saveOutputArg] {
