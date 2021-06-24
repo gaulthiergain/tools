@@ -344,7 +344,7 @@ func initSystemCalls() map[string]int {
 		"pkey_alloc":             330,
 		"pkey_free":              331,
 		"statx":                  332,
-		"syscall333":             333,
-		"syscall334":             334,
+		"io_pgetevents":          333,
+		"rseq":                   334,
 	}
 }
