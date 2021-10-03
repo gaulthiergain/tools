@@ -36,7 +36,7 @@ deps:
 	$(GOGET) github.com/akamensky/argparse
 	$(GOGET) github.com/awalterschulze/gographviz
 	$(GOGET) github.com/sergi/go-diff/...
-	$(GOGET) github.com/AlecAivazis/survey
+	$(GOGET) github.com/AlecAivazis/survey/v2
 # Cross compilation
 build-linux:
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GOBUILD) -o $(BINARY_UNIX) -v

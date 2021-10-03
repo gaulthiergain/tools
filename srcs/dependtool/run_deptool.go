@@ -5,7 +5,9 @@ import (
 	"errors"
 	"fmt"
 	"github.com/fatih/color"
+	"os"
 	"runtime"
+	"strconv"
 	"strings"
 	u "tools/srcs/common"
 )
@@ -82,17 +84,39 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 	}
 
 	// Save Data to JSON
-	if err = u.RecordDataJson(outFolder+programName, data); err != nil {
+	if err = u.RecordDataJson(programName, data); err != nil {
 		u.PrintErr(err)
 	} else {
-		u.PrintOk("JSON Data saved into " + outFolder + programName +
+		u.PrintOk("All JSON Data saved into: " + programName +
 			".json")
+	}
+
+	// Save syscall as txt
+	if err = saveSystemCalls("syscalls_"+programName+".txt", data); err != nil {
+		u.PrintErr(err)
+	} else {
+		u.PrintOk("Syscalls saved into: syscalls_" + programName + ".txt")
 	}
 
 	// Save graph if full dependencies option is set
 	if *args.BoolArg[fullDepsArg] {
 		saveGraph(programName, outFolder, data)
 	}
+}
+
+func saveSystemCalls(filename string, data *u.Data) error {
+	file, err := os.Create(filename)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+	for key, element := range data.StaticData.SystemCalls {
+		if _, err := file.WriteString(strconv.Itoa(element) + ":" + key + "\n"); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 // displayProgramDetails display various information such path, background, ...
