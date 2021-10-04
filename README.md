@@ -38,6 +38,8 @@ Note that the toolchain will be integrated to the [kraft](https://github.com/uni
 
 For installation and documentation, a wiki is available on this [address](https://github.com/gaulthiergain/tools/wiki).
 
+Note that you need capstone: https://github.com/aquynh/capstone
+
 ## Contribute
 
 Unikraft tools is an open source project (under MIT license) and is currently hosted at https://github.com/gaulthiergain/tools. You are encouraged to download the code, examine it, modify it, and submit bug reports, bug fixes, feature requests, new features and other issues and pull requests.

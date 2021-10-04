@@ -22,6 +22,7 @@ const (
 	fullDepsArg        = "fullDeps"
 	fullStaticAnalysis = "fullStaticAnalysis"
 	typeAnalysis       = "typeAnalysis"
+	trapper            = "trapper"
 )
 
 // parseLocalArguments parses arguments of the application.
@@ -50,6 +51,9 @@ func parseLocalArguments(p *argparse.Parser, args *u.Arguments) error {
 	args.InitArgParse(p, args, u.BOOL, "", fullStaticAnalysis,
 		&argparse.Options{Required: false, Default: false,
 			Help: "Full static analysis (analyse shared libraries too)"})
+	args.InitArgParse(p, args, u.BOOL, "", trapper,
+		&argparse.Options{Required: false, Default: false,
+			Help: "Use trapper to track RAX/EAX for syscalls"})
 	args.InitArgParse(p, args, u.INT, "", typeAnalysis,
 		&argparse.Options{Required: false, Default: 0,
 			Help: "Kind of analysis (0: both; 1: static; 2: dynamic)"})

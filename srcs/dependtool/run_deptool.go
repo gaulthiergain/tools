@@ -83,6 +83,14 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 		}
 	}
 
+	// Use the trapper
+	if *args.BoolArg[trapper] {
+		u.PrintHeader2("Run syscalls trapper tool")
+		if err := runTrapper(programName, data); err != nil {
+			u.PrintWarning("Error during tracking RAX (results may be incomplete)" + err.Error())
+		}
+	}
+
 	// Save Data to JSON
 	if err = u.RecordDataJson(programName, data); err != nil {
 		u.PrintErr(err)
