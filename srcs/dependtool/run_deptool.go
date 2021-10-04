@@ -86,6 +86,11 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 	// Use the trapper
 	if *args.BoolArg[trapper] {
 		u.PrintHeader2("Run syscalls trapper tool")
+
+		if isDynamic {
+			u.PrintWarning("Dynamically linked program, RAX results may be incomplete")
+		}
+
 		if err := runTrapper(programName, data); err != nil {
 			u.PrintWarning("Error during tracking RAX (results may be incomplete)" + err.Error())
 		}
