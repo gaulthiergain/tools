@@ -7,7 +7,7 @@
 package buildtool
 
 import (
-	"github.com/AlecAivazis/survey"
+	"github.com/AlecAivazis/survey/v2"
 	"io/ioutil"
 	"os"
 	"path/filepath"
