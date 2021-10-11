@@ -11,11 +11,14 @@ const (
 	BssSection    = ".bss"
 	DataSection   = ".data"
 	RodataSection = ".rodata"
+	IntrstackSection = ".intrstack"
 
 	BootTextSection  = ".text.boot"
 	BootDataSection  = ".data.boot"
 	UkCtorTabSection = ".uk_ctortab"
 	UkInitTabSection = ".uk_inittab"
+	UnlikelySection  = ".unlikely"
+	StartupSection   = ".startup"
 )
 
 var rx86_64Strings = map[uint32]string{
