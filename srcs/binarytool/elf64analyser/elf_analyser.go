@@ -39,9 +39,9 @@ func (analyser *ElfAnalyser) DisplayMapping() {
 	}
 
 	w := new(tabwriter.Writer)
-	w.Init(os.Stdout, 0, 8, 0, '\t', 0)
+	w.Init(os.Stdout, 0, 8, 1, '\t', 0)
 	fmt.Println("-----------------------------------------------------------------------")
-	_, _ = fmt.Fprintln(w, "Name \tStart \tEnd \tSize \tNbSymbols\tnbDiv")
+	_, _ = fmt.Fprintln(w, "Name \tStart \tEnd \tSize \tNbSymbols\tSizeDiv\tnbDiv")
 	for _, lib := range analyser.ElfLibs {
 
 		var name = lib.Name
@@ -50,9 +50,10 @@ func (analyser *ElfAnalyser) DisplayMapping() {
 			name = split[len(split)-1]
 		}
 
-		_, _ = fmt.Fprintf(w, "%s \t0x%x \t0x%x \t0x%x\t%d\t%f\n",
+		_, _ = fmt.Fprintf(w, "%s \t0x%x \t0x%x \t0x%x\t%d\t%f\t%f\n",
 			name, lib.StartAddr, lib.EndAddr, lib.Size,
-			lib.NbSymbols, float32(lib.StartAddr)/float32(pageSize))
+			lib.NbSymbols, float32(lib.Size)/float32(pageSize),
+			float32(lib.StartAddr)/float32(pageSize))
 	}
 	_ = w.Flush()
 }
