@@ -89,10 +89,13 @@ func compareFunctions(elf *elf64core.ELF64File, obj *elf64core.ELF64File) (uint6
 	objFuncs := make([]elf64core.ELF64Function, 0)
 	for i := len(obj.FunctionsTables) - 1; i >= 0; i-- {
 		if strings.Compare(obj.FunctionsTables[i].Name, elf64core.BootTextSection) != 0 {
-			// Ignore the '.text.boot' section since it can be split through
+			// Ignore the '.text.boot' and '.unlikely' sections since it can be split through
 			// different places
-			objFuncs = append(objFuncs, obj.FunctionsTables[i].Functions...)
+			if !strings.Contains(obj.FunctionsTables[i].Name, elf64core.UnlikelySection) {
+				objFuncs = append(objFuncs, obj.FunctionsTables[i].Functions...)
+			}
 		}
+
 	}
 	// Elf: Merge all functions table(s) in one slice for simplicity
 	elfFuncs := make([]elf64core.ELF64Function, 0)
