@@ -7,10 +7,11 @@
 package elf64core
 
 const (
-	TextSection   = ".text"
-	BssSection    = ".bss"
-	DataSection   = ".data"
-	RodataSection = ".rodata"
+	TextSection      = ".text"
+	BssSection       = ".bss"
+	TbssSection      = ".tbss"
+	DataSection      = ".data"
+	RodataSection    = ".rodata"
 	IntrstackSection = ".intrstack"
 
 	BootTextSection  = ".text.boot"

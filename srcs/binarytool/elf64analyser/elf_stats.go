@@ -9,7 +9,9 @@ package elf64analyser
 import (
 	"errors"
 	"fmt"
+	"math"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 	"text/tabwriter"
@@ -207,21 +209,52 @@ func (analyser *ElfAnalyser) DisplayStatSize(elfFile *elf64core.ELF64File) {
 
 	var totalSizeText uint64
 	var totalSizeElf uint64
-	_, _ = fmt.Fprintf(w, "Name\tFile size (Bytes/Hex)\n")
-	for _, s := range elfFile.SectionsTable.DataSect {
-		if len(s.Name) > 0 {
-			_, _ = fmt.Fprintf(w, "%s\t%d (0x%x)\n", s.Name, s.Elf64section.Size, s.Elf64section.Size)
+	_, _ = fmt.Fprintf(w, "-----------------------------------------------------------------------\n")
+	_, _ = fmt.Fprintf(w, "Name\tVirtual Size (Bytes/Hex) \t#pages\tInfos:\n")
+
+	// Sort by addresses
+	dataSec := elfFile.SectionsTable.DataSect
+	sort.Slice(dataSec, func(i, j int) bool {
+		return dataSec[i].Elf64section.VirtualAddress < dataSec[j].Elf64section.VirtualAddress
+	})
+
+	for i, s := range elfFile.SectionsTable.DataSect { //&uint64(elf.SHF_WRITE)
+		if s.Elf64section.VirtualAddress > 0 {
+
+			var size uint64
+			var currNext = ""
+			if strings.Contains(s.Name, elf64core.IntrstackSection) || strings.Contains(s.Name, elf64core.TbssSection) {
+				size = s.Elf64section.Size
+				totalSizeElf += size
+
+			} else {
+				size = dataSec[i+1].Elf64section.VirtualAddress -
+					dataSec[i].Elf64section.VirtualAddress
+				totalSizeElf += size
+				currNext = fmt.Sprintf("0x%x -> 0x%x : (%s)-> (%s)", dataSec[i].Elf64section.VirtualAddress,
+					dataSec[i+1].Elf64section.VirtualAddress, dataSec[i].Name, dataSec[i+1].Name)
+			}
+
+			if strings.Contains(s.Name, elf64core.TextSection) && strings.Contains(dataSec[i+1].Name, elf64core.TextSection) {
+				totalSizeText += size
+			} else if strings.Contains(s.Name, elf64core.TextSection) {
+				// Main application code
+				size = s.Elf64section.Size
+				totalSizeText += size
+			}
+			_, _ = fmt.Fprintf(w, "%s\t%d (0x%x)\t%.2f\t%s\n", s.Name, size, size, float32(size)/float32(pageSize), currNext)
+
 		}
-		if strings.Contains(s.Name, elf64core.TextSection) {
-			totalSizeText += s.Elf64section.Size
-		}
-		totalSizeElf += s.Elf64section.Size
 	}
-	_, _ = fmt.Fprintf(w, "----------------------\t----------------------\n")
+	_, _ = fmt.Fprintf(w, "----------------------\t----------------------\t------\t----------------------------\n")
 	_, _ = fmt.Fprintf(w, "Total Size:\n")
 	_, _ = fmt.Fprintf(w, "Section .text:\t%d (0x%x)\n", totalSizeText, totalSizeText)
 	_, _ = fmt.Fprintf(w, "All sections:\t%d (0x%x)\n", totalSizeElf, totalSizeElf)
-	_, _ = fmt.Fprintf(w, "#Pages (.text):\t%d\n", totalSizeText/pageSize)
-	_, _ = fmt.Fprintf(w, "#Pages (all sections):\t%d\n", totalSizeElf/pageSize)
+	_, _ = fmt.Fprintf(w, "#Pages (.text):\t%d\n", roundPage(float64(totalSizeText)/float64(pageSize)))
+	_, _ = fmt.Fprintf(w, "#Pages (all sections):\t%d\n", roundPage(float64(totalSizeElf)/float64(pageSize)))
 	_ = w.Flush()
+}
+
+func roundPage(x float64) uint64 {
+	return uint64(math.Round(x + 0.5))
 }
