@@ -242,7 +242,7 @@ func (analyser *ElfAnalyser) DisplayStatSize(elfFile *elf64core.ELF64File) {
 				size = s.Elf64section.Size
 				totalSizeText += size
 			}
-			_, _ = fmt.Fprintf(w, "%s\t%d (0x%x)\t%.2f\t%s\n", s.Name, size, size, float32(size)/float32(pageSize), currNext)
+			_, _ = fmt.Fprintf(w, "%s\t%d (0x%x)\t%.2f\t%s\n", s.Name, size, size, float32(size)/float32(PageSize), currNext)
 
 		}
 	}
@@ -250,8 +250,8 @@ func (analyser *ElfAnalyser) DisplayStatSize(elfFile *elf64core.ELF64File) {
 	_, _ = fmt.Fprintf(w, "Total Size:\n")
 	_, _ = fmt.Fprintf(w, "Section .text:\t%d (0x%x)\n", totalSizeText, totalSizeText)
 	_, _ = fmt.Fprintf(w, "All sections:\t%d (0x%x)\n", totalSizeElf, totalSizeElf)
-	_, _ = fmt.Fprintf(w, "#Pages (.text):\t%d\n", roundPage(float64(totalSizeText)/float64(pageSize)))
-	_, _ = fmt.Fprintf(w, "#Pages (all sections):\t%d\n", roundPage(float64(totalSizeElf)/float64(pageSize)))
+	_, _ = fmt.Fprintf(w, "#Pages (.text):\t%d\n", roundPage(float64(totalSizeText)/float64(PageSize)))
+	_, _ = fmt.Fprintf(w, "#Pages (all sections):\t%d\n", roundPage(float64(totalSizeElf)/float64(PageSize)))
 	_ = w.Flush()
 }
 

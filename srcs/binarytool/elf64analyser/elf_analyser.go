@@ -52,8 +52,8 @@ func (analyser *ElfAnalyser) DisplayMapping() {
 
 		_, _ = fmt.Fprintf(w, "%s \t0x%x \t0x%x \t0x%x\t%d\t%f\t%f\n",
 			name, lib.StartAddr, lib.EndAddr, lib.Size,
-			lib.NbSymbols, float32(lib.Size)/float32(pageSize),
-			float32(lib.StartAddr)/float32(pageSize))
+			lib.NbSymbols, float32(lib.Size)/float32(PageSize),
+			float32(lib.StartAddr)/float32(PageSize))
 	}
 	_ = w.Flush()
 }
@@ -222,7 +222,7 @@ func (analyser *ElfAnalyser) SplitIntoPagesBySection(elfFile *elf64core.ELF64Fil
 }
 
 func CreateNewPage(startAddress uint64, k int, raw []byte) *ElfPage {
-	byteArray := make([]byte, pageSize)
+	byteArray := make([]byte, PageSize)
 	b := raw
 	if cpd := copy(byteArray, b); cpd == 0 {
 		u.PrintWarning("0 bytes were copied")
@@ -241,9 +241,9 @@ func CreateNewPage(startAddress uint64, k int, raw []byte) *ElfPage {
 func (analyser *ElfAnalyser) computePage(elfFile *elf64core.ELF64File, section string, indexSection int) {
 	offsetTextSection := elfFile.SectionsTable.DataSect[indexSection].Elf64section.FileOffset
 	k := 0
-	for i := offsetTextSection; i < offsetTextSection+elfFile.SectionsTable.DataSect[indexSection].Elf64section.Size; i += pageSize {
+	for i := offsetTextSection; i < offsetTextSection+elfFile.SectionsTable.DataSect[indexSection].Elf64section.Size; i += PageSize {
 
-		end := i + pageSize
+		end := i + PageSize
 		if end >= uint64(len(elfFile.Raw)) {
 			end = uint64(len(elfFile.Raw) - 1)
 		}

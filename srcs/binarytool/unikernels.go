@@ -73,11 +73,11 @@ func (uk *Unikernel) GetFiles() error {
 	for _, f := range files {
 
 		if f.IsDir() || strings.Contains(f.Name(), makefile) ||
-			strings.Contains(f.Name(), config) ||
-			strings.Contains(f.Name(), ldExt) {
+			strings.Contains(f.Name(), config) {
 			continue
 		}
-		if filepath.Ext(strings.TrimSpace(f.Name())) == objExt &&
+
+		if strings.Contains(f.Name(), ldExt) &&
 			!stringInSlice(f.Name(), uk.IgnoredPlats) {
 			objFile, err := parseFile(uk.BuildPath, f.Name())
 			if err != nil {

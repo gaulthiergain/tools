@@ -13,7 +13,7 @@ import (
 	"strings"
 )
 
-const pageSize = 0x1000
+const PageSize = 0x1000
 
 type ElfFileSegment struct {
 	Filename string

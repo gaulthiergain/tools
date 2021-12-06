@@ -113,7 +113,7 @@ func RunBinaryAnalyser(homeDir string) {
 				}
 			}
 
-			if foundSection {
+			if foundSection && len(uk.SectionSplit) > 0 {
 
 				path := homeDir + u.SEP + pagesPath
 				if _, err := os.Stat(path); os.IsNotExist(err) {
