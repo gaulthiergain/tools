@@ -7,6 +7,7 @@
 package ukManager
 
 import (
+	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"strings"
@@ -49,6 +50,15 @@ type Unikernel struct {
 	ElfFile  *elf64core.ELF64File
 	ListObjs []*elf64core.ELF64File
 	Analyser *elf64analyser.ElfAnalyser
+
+	alignedLibs *AlignedLibs
+}
+
+type AlignedLibs struct {
+	startValueUk       uint64
+	AllCommonMicroLibs []*MicroLib
+	OnlyFewMicroLibs   []*MicroLib
+	SingleMicroLibs    []*MicroLib
 }
 
 func parseFile(path, name string) (*elf64core.ELF64File, error) {
@@ -154,6 +164,42 @@ func (uk *Unikernel) DisplayElfInfo() {
 			} else {
 				u.PrintWarning("No display configuration found for argument: " + d)
 			}
+		}
+	}
+}
+
+func (uk *Unikernel) InitAlignment() {
+	uk.alignedLibs = &AlignedLibs{
+		startValueUk:       0,
+		AllCommonMicroLibs: make([]*MicroLib, 0), //todo update with fixed entry
+		OnlyFewMicroLibs:   make([]*MicroLib, 0),
+		SingleMicroLibs:    make([]*MicroLib, 0),
+	}
+}
+
+func (uk *Unikernel) AddAlignedMicroLibs(startValue uint64, lib *MicroLib) {
+
+	for _, ukLibs := range uk.Analyser.ElfLibs {
+		if ukLibs.Name == lib.name {
+			fmt.Printf("%s -> 0x%x - 0x%x\n", lib.name, startValue, startValue+lib.size)
+			uk.alignedLibs.OnlyFewMicroLibs = append(uk.alignedLibs.SingleMicroLibs, lib)
+			break
+		}
+	}
+}
+
+func (uk *Unikernel) AddSingleMicroLibs(startValue uint64, lib *MicroLib) {
+
+	for _, ukLibs := range uk.Analyser.ElfLibs {
+		if ukLibs.Name == lib.name {
+
+			uk.alignedLibs.SingleMicroLibs = append(uk.alignedLibs.SingleMicroLibs, lib)
+			if uk.alignedLibs.startValueUk == 0 {
+				uk.alignedLibs.startValueUk = startValue
+			}
+			fmt.Printf("%s -> 0x%x - 0x%x\n", lib.name, uk.alignedLibs.startValueUk, uk.alignedLibs.startValueUk+lib.size)
+			uk.alignedLibs.startValueUk += lib.size
+			break
 		}
 	}
 }

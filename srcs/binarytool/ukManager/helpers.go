@@ -13,7 +13,7 @@ import (
 	"strings"
 )
 
-func ReadJsonFile(path string) (*Unikernels, error) {
+func ReadJsonFile(path string) ([]Unikernel, error) {
 	jsonFile, err := os.Open(path)
 	if err != nil {
 		return nil, err
@@ -25,7 +25,7 @@ func ReadJsonFile(path string) (*Unikernels, error) {
 		return nil, err
 	}
 
-	return unikernels, nil
+	return unikernels.Unikernel, nil
 }
 
 func stringInSlice(name string, plats []string) bool {

@@ -35,16 +35,16 @@ func RunBinaryAnalyser(homeDir string) {
 
 	// Check if a json file is used or if it is via command line
 	manager := new(ukManager.Manager)
+	manager.MicroLibs = make(map[string]*ukManager.MicroLib)
 	if len(*args.StringArg[listArg]) > 0 {
-		manager.Unikernels = new(ukManager.Unikernels)
-		manager.Unikernels.Unikernel = make([]ukManager.Unikernel, len(*args.StringArg[listArg]))
+		manager.Unikernels = make([]ukManager.Unikernel, len(*args.StringArg[listArg]))
 		mapping := false
 		if *args.BoolArg[mappingArg] {
 			mapping = true
 		}
 		list := strings.Split(*args.StringArg[listArg], ",")
 		for i, arg := range list {
-			manager.Unikernels.Unikernel[i] = ukManager.Unikernel{
+			manager.Unikernels[i] = ukManager.Unikernel{
 				BuildPath:      arg,
 				DisplayMapping: mapping,
 			}
@@ -62,9 +62,10 @@ func RunBinaryAnalyser(homeDir string) {
 	var comparison elf64analyser.ComparisonElf
 	comparison.GroupFileSegment = make([]*elf64analyser.ElfFileSegment, 0)
 
-	for i, uk := range manager.Unikernels.Unikernel {
+	for i, _ := range manager.Unikernels {
 
-		uk.Analyser = new(elf64analyser.ElfAnalyser)
+		manager.Unikernels[i].Analyser = new(elf64analyser.ElfAnalyser)
+		uk := manager.Unikernels[i]
 		if len(uk.BuildPath) > 0 {
 			if uk.BuildPath[len(uk.BuildPath)-1] != os.PathSeparator {
 				uk.BuildPath += u.SEP
@@ -91,15 +92,6 @@ func RunBinaryAnalyser(homeDir string) {
 			fmt.Println("=====================================================")
 		}
 
-		if uk.ComputeLibsMapping && len(uk.LibsMapping) > 0 {
-
-			if err != nil {
-				u.PrintErr(err)
-			} else {
-				uk.Analyser.ComputeAlignedMapping(uk.ElfFile, uk.LibsMapping)
-			}
-		}
-
 		if uk.DisplayStatSize {
 			uk.Analyser.DisplayStatSize(uk.ElfFile)
 		}
@@ -112,7 +104,9 @@ func RunBinaryAnalyser(homeDir string) {
 			uk.Analyser.FindSectionByAddress(uk.ElfFile, uk.FindSectionByAddress)
 		}
 
-		if uk.CompareGroup > 0 {
+		manager.ComputeAlignment(uk)
+
+		/*if uk.CompareGroup > 0 {
 
 			foundSection := false
 			section := uk.SectionSplit
@@ -153,12 +147,24 @@ func RunBinaryAnalyser(homeDir string) {
 				comparison.GroupFileSegment = append(comparison.GroupFileSegment,
 					&elf64analyser.ElfFileSegment{Filename: uk.ElfFile.Name,
 						NbPages: len(uk.Analyser.ElfPage), Pages: uk.Analyser.ElfPage})
-			} else {
+			} else if len(uk.SectionSplit) > 0 {
 				u.PrintWarning("Section '" + section + "' is not found in the ELF file")
 			}
-
-		}
+		}*/
 	}
+
+	manager.PerformAlignement()
+
+	/*
+		if uk.ComputeLibsMapping && len(uk.LibsMapping) > 0 {
+
+					if err != nil {
+						u.PrintErr(err)
+					} else {
+						uk.Analyser.ComputeAlignedMapping(uk.ElfFile, uk.LibsMapping)
+					}
+				}
+	*/
 
 	if len(comparison.GroupFileSegment) > 1 {
 
