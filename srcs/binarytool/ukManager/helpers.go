@@ -4,7 +4,7 @@
 //
 // Author: Gaulthier Gain <gaulthier.gain@uliege.be>
 
-package binarytool
+package ukManager
 
 import (
 	"encoding/json"

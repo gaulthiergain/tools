@@ -4,7 +4,7 @@
 //
 // Author: Gaulthier Gain <gaulthier.gain@uliege.be>
 
-package binarytool
+package ukManager
 
 import (
 	"io/ioutil"
@@ -28,16 +28,23 @@ type Unikernels struct {
 }
 
 type Unikernel struct {
-	BuildPath            string   `json:"buildPath"`
-	Kernel               string   `json:"kernel"`
-	SectionSplit         string   `json:"splitSection"`
-	DisplayMapping       bool     `json:"displayMapping"`
-	DisplayStatSize      bool     `json:"displayStatSize"`
-	IgnoredPlats         []string `json:"ignoredPlats"`
-	DisplayElfFile       []string `json:"displayElfFile"`
-	DisplaySectionInfo   []string `json:"displaySectionInfo"`
+	BuildPath          string `json:"buildPath"`
+	Kernel             string `json:"kernel"`
+	SectionSplit       string `json:"splitSection"`
+	DisplayMapping     bool   `json:"displayMapping"`
+	DisplayStatSize    bool   `json:"displayStatSize"`
+	ComputeLibsMapping bool   `json:"computeLibsMapping"`
+
+	IgnoredPlats       []string `json:"ignoredPlats"`
+	DisplayElfFile     []string `json:"displayElfFile"`
+	DisplaySectionInfo []string `json:"displaySectionInfo"`
+
 	FindSectionByAddress []string `json:"findSectionByAddress"`
 	CompareGroup         int      `json:"compareGroup"`
+
+	// Used to generate new link.lds file
+	ComputeTextAddr string   `json:"computeTextAddr"`
+	LibsMapping     []string `json:"LibsMapping"`
 
 	ElfFile  *elf64core.ELF64File
 	ListObjs []*elf64core.ELF64File

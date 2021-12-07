@@ -12,6 +12,7 @@ import (
 	"os"
 	"strings"
 	"tools/srcs/binarytool/elf64analyser"
+	"tools/srcs/binarytool/ukManager"
 	u "tools/srcs/common"
 )
 
@@ -33,24 +34,24 @@ func RunBinaryAnalyser(homeDir string) {
 	}
 
 	// Check if a json file is used or if it is via command line
-	var unikernels *Unikernels
+	manager := new(ukManager.Manager)
 	if len(*args.StringArg[listArg]) > 0 {
-		unikernels = new(Unikernels)
-		unikernels.Unikernel = make([]Unikernel, len(*args.StringArg[listArg]))
+		manager.Unikernels = new(ukManager.Unikernels)
+		manager.Unikernels.Unikernel = make([]ukManager.Unikernel, len(*args.StringArg[listArg]))
 		mapping := false
 		if *args.BoolArg[mappingArg] {
 			mapping = true
 		}
 		list := strings.Split(*args.StringArg[listArg], ",")
 		for i, arg := range list {
-			unikernels.Unikernel[i] = Unikernel{
+			manager.Unikernels.Unikernel[i] = ukManager.Unikernel{
 				BuildPath:      arg,
 				DisplayMapping: mapping,
 			}
 		}
 	} else if len(*args.StringArg[filesArg]) > 0 {
 		var err error
-		unikernels, err = ReadJsonFile(*args.StringArg[filesArg])
+		manager.Unikernels, err = ukManager.ReadJsonFile(*args.StringArg[filesArg])
 		if err != nil {
 			u.PrintErr(err)
 		}
@@ -61,7 +62,7 @@ func RunBinaryAnalyser(homeDir string) {
 	var comparison elf64analyser.ComparisonElf
 	comparison.GroupFileSegment = make([]*elf64analyser.ElfFileSegment, 0)
 
-	for i, uk := range unikernels.Unikernel {
+	for i, uk := range manager.Unikernels.Unikernel {
 
 		uk.Analyser = new(elf64analyser.ElfAnalyser)
 		if len(uk.BuildPath) > 0 {
@@ -88,6 +89,15 @@ func RunBinaryAnalyser(homeDir string) {
 			fmt.Printf("==========[(%d): %s]==========\n", i, uk.BuildPath)
 			uk.Analyser.DisplayMapping()
 			fmt.Println("=====================================================")
+		}
+
+		if uk.ComputeLibsMapping && len(uk.LibsMapping) > 0 {
+
+			if err != nil {
+				u.PrintErr(err)
+			} else {
+				uk.Analyser.ComputeAlignedMapping(uk.ElfFile, uk.LibsMapping)
+			}
 		}
 
 		if uk.DisplayStatSize {
