@@ -7,8 +7,6 @@
 package elf64analyser
 
 import (
-	"crypto/sha256"
-	"encoding/hex"
 	"fmt"
 	"os"
 	"sort"
@@ -19,8 +17,9 @@ import (
 )
 
 type ElfAnalyser struct {
-	ElfLibs []ElfLibs
-	ElfPage []*ElfPage
+	ElfLibs    []ElfLibs
+	ElfPage    []*ElfPage
+	MapElfLibs map[string]*ElfLibs
 }
 
 type ElfLibs struct {
@@ -29,6 +28,10 @@ type ElfLibs struct {
 	EndAddr   uint64
 	Size      uint64
 	NbSymbols int
+
+	RodataSize uint64
+	DataSize   uint64
+	BssSize    uint64
 }
 
 func (analyser *ElfAnalyser) DisplayMapping() {
@@ -151,30 +154,11 @@ func compareFunctions(elf *elf64core.ELF64File, obj *elf64core.ELF64File) (uint6
 		elfFuncsAll[len(elfFuncsAll)-1].Addr, len(elfFuncsAll)
 }
 
-func (analyser *ElfAnalyser) InspectMapping(elf *elf64core.ELF64File, objs ...interface{}) {
-
-	if len(objs) == 0 {
-		return
+func getSectionSize(name string, obj *elf64core.ELF64File) uint64 {
+	if index, ok := obj.IndexSections[name]; ok {
+		return obj.SectionsTable.DataSect[index].Elf64section.Size
 	}
-
-	analyser.ElfLibs = make([]ElfLibs, 0)
-	for _, iobj := range objs {
-		obj := iobj.(*elf64core.ELF64File)
-		start, end, nbSymbols := compareFunctions(elf, obj)
-		analyser.ElfLibs = append(analyser.ElfLibs, ElfLibs{
-			Name:      obj.Name,
-			StartAddr: start,
-			EndAddr:   end,
-			Size:      end - start,
-			NbSymbols: nbSymbols,
-		})
-		return
-	}
-
-	// sort functions
-	sort.Slice(analyser.ElfLibs, func(i, j int) bool {
-		return analyser.ElfLibs[i].StartAddr < analyser.ElfLibs[j].StartAddr
-	})
+	return 0
 }
 
 func (analyser *ElfAnalyser) InspectMappingList(elf *elf64core.ELF64File,
@@ -184,16 +168,25 @@ func (analyser *ElfAnalyser) InspectMappingList(elf *elf64core.ELF64File,
 		return
 	}
 
-	analyser.ElfLibs = make([]ElfLibs, 0)
-	for _, obj := range objs {
+	analyser.ElfLibs = make([]ElfLibs, len(objs))
+	analyser.MapElfLibs = make(map[string]*ElfLibs, len(analyser.ElfLibs))
+	for i, obj := range objs {
+
 		start, end, nbSymbols := compareFunctions(elf, obj)
-		analyser.ElfLibs = append(analyser.ElfLibs, ElfLibs{
+		lib := ElfLibs{
 			Name:      obj.Name,
 			StartAddr: start,
 			EndAddr:   end,
 			Size:      end - start,
 			NbSymbols: nbSymbols,
-		})
+			// Get size of data, rodata and bss from object file
+			RodataSize: getSectionSize(".rodata", obj),
+			DataSize:   getSectionSize(".data", obj),
+			BssSize:    getSectionSize(".bss", obj),
+		}
+		analyser.ElfLibs[i] = lib
+		// Map for direct access
+		analyser.MapElfLibs[lib.Name] = &lib
 	}
 
 	// sort functions by start address.
@@ -202,6 +195,7 @@ func (analyser *ElfAnalyser) InspectMappingList(elf *elf64core.ELF64File,
 	})
 }
 
+/*
 func (analyser *ElfAnalyser) SplitIntoPagesBySection(elfFile *elf64core.ELF64File, sectionName string) {
 
 	if len(analyser.ElfPage) == 0 {
@@ -211,8 +205,7 @@ func (analyser *ElfAnalyser) SplitIntoPagesBySection(elfFile *elf64core.ELF64Fil
 	if strings.Contains(sectionName, elf64core.TextSection) {
 		// An ELF might have several text sections
 		for _, indexSection := range elfFile.TextSectionIndex {
-			sectionName := elfFile.SectionsTable.DataSect[indexSection].Name
-			analyser.computePage(elfFile, sectionName, indexSection)
+			analyser.computePage(elfFile, elfFile.SectionsTable.DataSect[indexSection].Name, indexSection)
 		}
 	} else if indexSection, ok := elfFile.IndexSections[sectionName]; ok {
 		analyser.computePage(elfFile, sectionName, indexSection)
@@ -220,6 +213,7 @@ func (analyser *ElfAnalyser) SplitIntoPagesBySection(elfFile *elf64core.ELF64Fil
 		u.PrintWarning(fmt.Sprintf("Cannot split section %s into pages", sectionName))
 	}
 }
+
 
 func CreateNewPage(startAddress uint64, k int, raw []byte) *ElfPage {
 	byteArray := make([]byte, PageSize)
@@ -253,3 +247,4 @@ func (analyser *ElfAnalyser) computePage(elfFile *elf64core.ELF64File, section s
 		k++
 	}
 }
+*/

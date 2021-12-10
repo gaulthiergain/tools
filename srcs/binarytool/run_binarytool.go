@@ -37,14 +37,14 @@ func RunBinaryAnalyser(homeDir string) {
 	manager := new(ukManager.Manager)
 	manager.MicroLibs = make(map[string]*ukManager.MicroLib)
 	if len(*args.StringArg[listArg]) > 0 {
-		manager.Unikernels = make([]ukManager.Unikernel, len(*args.StringArg[listArg]))
+		manager.Unikernels = make([]*ukManager.Unikernel, len(*args.StringArg[listArg]))
 		mapping := false
 		if *args.BoolArg[mappingArg] {
 			mapping = true
 		}
 		list := strings.Split(*args.StringArg[listArg], ",")
 		for i, arg := range list {
-			manager.Unikernels[i] = ukManager.Unikernel{
+			manager.Unikernels[i] = &ukManager.Unikernel{
 				BuildPath:      arg,
 				DisplayMapping: mapping,
 			}
@@ -62,10 +62,9 @@ func RunBinaryAnalyser(homeDir string) {
 	var comparison elf64analyser.ComparisonElf
 	comparison.GroupFileSegment = make([]*elf64analyser.ElfFileSegment, 0)
 
-	for i, _ := range manager.Unikernels {
+	for i, uk := range manager.Unikernels {
 
-		manager.Unikernels[i].Analyser = new(elf64analyser.ElfAnalyser)
-		uk := manager.Unikernels[i]
+		uk.Analyser = new(elf64analyser.ElfAnalyser)
 		if len(uk.BuildPath) > 0 {
 			if uk.BuildPath[len(uk.BuildPath)-1] != os.PathSeparator {
 				uk.BuildPath += u.SEP
@@ -104,7 +103,7 @@ func RunBinaryAnalyser(homeDir string) {
 			uk.Analyser.FindSectionByAddress(uk.ElfFile, uk.FindSectionByAddress)
 		}
 
-		manager.ComputeAlignment(uk)
+		manager.ComputeAlignment(*uk)
 
 		/*if uk.CompareGroup > 0 {
 

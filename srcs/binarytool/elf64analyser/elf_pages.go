@@ -53,13 +53,7 @@ func (p *ElfPage) pageContentToString() string {
 }
 
 func (p *ElfPage) displayPageContent(mw io.Writer) {
-
-	/*
-		hexStartAddr, err := strconv.ParseInt(p.startAddress, 16, 64);
-		if err != nil {
-			panic(err)
-		}
-	*/
+	
 	for i, entry := range p.contentByteArray {
 
 		if i > 0 && i%4 == 0 {

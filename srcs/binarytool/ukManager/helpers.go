@@ -7,26 +7,8 @@
 package ukManager
 
 import (
-	"encoding/json"
-	"io/ioutil"
-	"os"
 	"strings"
 )
-
-func ReadJsonFile(path string) ([]Unikernel, error) {
-	jsonFile, err := os.Open(path)
-	if err != nil {
-		return nil, err
-	}
-	defer jsonFile.Close()
-	byteValue, _ := ioutil.ReadAll(jsonFile)
-	unikernels := new(Unikernels)
-	if err := json.Unmarshal(byteValue, unikernels); err != nil {
-		return nil, err
-	}
-
-	return unikernels.Unikernel, nil
-}
 
 func stringInSlice(name string, plats []string) bool {
 	for _, plat := range plats {
