@@ -251,15 +251,15 @@ func (uk *Unikernel) sectionsObjs(linkerInfo LinkerInfo) string {
 			// Ignore ukbootMain
 			continue
 		}
-		strBuilder[0].WriteString(fmt.Sprintf("%s (.rodata);\n", obj.name))
-		strBuilder[1].WriteString(fmt.Sprintf("%s (.data);\n", obj.name))
-		strBuilder[2].WriteString(fmt.Sprintf("%s (.bss);\n", obj.name))
+		strBuilder[0].WriteString(fmt.Sprintf(". = ABSOLUTE(0x%x);%s (.rodata);\n", obj.sectionSize.rodataAddr, obj.name))
+		strBuilder[1].WriteString(fmt.Sprintf(". = ABSOLUTE(0x%x);%s (.data);\n", obj.sectionSize.dataAddr, obj.name))
+		strBuilder[2].WriteString(fmt.Sprintf(". = ABSOLUTE(0x%x);%s (.bss);\n", obj.sectionSize.bssAddr, obj.name))
 	}
 
 	for _, obj := range uk.alignedLibs.OnlyFewMicroLibs {
-		strBuilder[0].WriteString(fmt.Sprintf(". = ABSOLUTE(0x%x);\n%s (.rodata);\n", obj.sectionSize.rodataAddr, obj.name))
-		strBuilder[1].WriteString(fmt.Sprintf(". = ABSOLUTE(0x%x);\n%s (.data);\n", obj.sectionSize.dataAddr, obj.name))
-		strBuilder[2].WriteString(fmt.Sprintf(". = ABSOLUTE(0x%x);\n%s (.bss);\n", obj.sectionSize.bssAddr, obj.name))
+		strBuilder[0].WriteString(fmt.Sprintf(". = ABSOLUTE(0x%x);%s (.rodata);\n", obj.sectionSize.rodataAddr, obj.name))
+		strBuilder[1].WriteString(fmt.Sprintf(". = ABSOLUTE(0x%x);%s (.data);\n", obj.sectionSize.dataAddr, obj.name))
+		strBuilder[2].WriteString(fmt.Sprintf(". = ABSOLUTE(0x%x);%s (.bss);\n", obj.sectionSize.bssAddr, obj.name))
 	}
 
 	// Add ukbootMain before single microlibs

@@ -120,6 +120,7 @@ func compareFunctions(elf *elf64core.ELF64File, obj *elf64core.ELF64File) (uint6
 	elfFuncsAll := make([]elf64core.ELF64Function, 0)
 	mapArrayFuncs := make(map[string]uint64, 0)
 	for _, elfFunc := range elfFuncs {
+
 		if _, ok := mapObjFuncs[elfFunc.Name]; ok {
 			// Check if the function is already in mapArrayFuncs
 			val, ok := mapArrayFuncs[elfFunc.Name]

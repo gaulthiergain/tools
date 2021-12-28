@@ -15,7 +15,7 @@ import (
 const (
 	filesArg   = "file"
 	mappingArg = "mapping"
-	listArg    = "list"
+	rootArg    = "root"
 )
 
 // ParseArguments parses arguments of the application.
@@ -26,10 +26,8 @@ func parseLocalArguments(p *argparse.Parser, args *u.Arguments) error {
 	args.InitArgParse(p, args, u.BOOL, "m", mappingArg,
 		&argparse.Options{Required: false, Default: false,
 			Help: "Display libraries mapping (required -l argument)"})
-
-	args.InitArgParse(p, args, u.STRING, "l", listArg,
-		&argparse.Options{Required: false, Help: "A list of build directories " +
-			"to analyse (sep: ,)"})
+	args.InitArgParse(p, args, u.STRING, "r", rootArg,
+		&argparse.Options{Required: false, Help: "The root folder which contains build directories "})
 	args.InitArgParse(p, args, u.STRING, "f", filesArg,
 		&argparse.Options{Required: false, Help: "Json file that contains " +
 			"the information for the binary analyser"})

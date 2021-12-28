@@ -10,7 +10,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
-	"strings"
+	"path/filepath"
 	"tools/srcs/binarytool/elf64analyser"
 	"tools/srcs/binarytool/ukManager"
 	u "tools/srcs/common"
@@ -36,17 +36,23 @@ func RunBinaryAnalyser(homeDir string) {
 	// Check if a json file is used or if it is via command line
 	manager := new(ukManager.Manager)
 	manager.MicroLibs = make(map[string]*ukManager.MicroLib)
-	if len(*args.StringArg[listArg]) > 0 {
-		manager.Unikernels = make([]*ukManager.Unikernel, len(*args.StringArg[listArg]))
+	if len(*args.StringArg[rootArg]) > 0 {
+		manager.Unikernels = make([]*ukManager.Unikernel, 0)
 		mapping := false
 		if *args.BoolArg[mappingArg] {
 			mapping = true
 		}
-		list := strings.Split(*args.StringArg[listArg], ",")
-		for i, arg := range list {
-			manager.Unikernels[i] = &ukManager.Unikernel{
-				BuildPath:      arg,
-				DisplayMapping: mapping,
+		files, err := os.ReadDir(*args.StringArg[rootArg])
+		if err != nil {
+			u.PrintErr(err)
+		}
+		for _, file := range files {
+			if file.IsDir() {
+				println(file.Name())
+				manager.Unikernels = append(manager.Unikernels, &ukManager.Unikernel{
+					BuildPath:      filepath.Join(*args.StringArg[rootArg], file.Name()),
+					DisplayMapping: mapping,
+				})
 			}
 		}
 	} else if len(*args.StringArg[filesArg]) > 0 {
