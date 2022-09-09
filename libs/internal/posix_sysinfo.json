@@ -1,0 +1,180 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "info"
+            ],
+            "args_type": [
+                "struct sysinfo *"
+            ],
+            "fully_qualified": "sysinfo(struct sysinfo *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-sysinfo/sysinfo.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-sysinfo/include/sys/sysinfo.h"
+            ],
+            "name": "sysinfo",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fd",
+                "name"
+            ],
+            "args_type": [
+                "int",
+                "int"
+            ],
+            "fully_qualified": "fpathconf(int, int)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-sysinfo/sysinfo.c"
+            ],
+            "name": "fpathconf",
+            "nb_args": 1,
+            "return_value": "long",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "path",
+                "name"
+            ],
+            "args_type": [
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "pathconf(const char *, int)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-sysinfo/sysinfo.c"
+            ],
+            "name": "pathconf",
+            "nb_args": 1,
+            "return_value": "long",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "name"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "sysconf(int)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-sysinfo/sysinfo.c"
+            ],
+            "name": "sysconf",
+            "nb_args": 1,
+            "return_value": "long",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "name",
+                "buf",
+                "len"
+            ],
+            "args_type": [
+                "int",
+                "char*",
+                "size_t"
+            ],
+            "fully_qualified": "confstr(int)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-sysinfo/sysinfo.c"
+            ],
+            "name": "confstr",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "getpagesize()",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-sysinfo/sysinfo.c"
+            ],
+            "name": "getpagesize",
+            "nb_args": 0,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "name",
+                "len"
+            ],
+            "args_type": [
+                "char *",
+                "int"
+            ],
+            "fully_qualified": "gethostname(char *, int)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-sysinfo/sysinfo.c"
+            ],
+            "name": "gethostname",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "buf"
+            ],
+            "args_type": [
+                "struct utsname *"
+            ],
+            "fully_qualified": "uname(struct utsname *)",
+            "headers": [
+                "<sys/utsname.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-sysinfo/include/sys/utsname.h"
+            ],
+            "name": "uname",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "name",
+                "len"
+            ],
+            "args_type": [
+                "const char*",
+                "size_t"
+            ],
+            "fully_qualified": "sethostname(const char*,size_t)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "sethostname",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        }
+    ]
+}

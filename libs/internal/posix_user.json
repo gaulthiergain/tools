@@ -1,0 +1,706 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "euid"
+            ],
+            "args_type": [
+                "uid_t"
+            ],
+            "fully_qualified": "seteuid(uid_t)",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c"
+            ],
+            "name": "seteuid",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "getlogin()",
+            "headers": [
+                "<unistd.h>",
+                "<stdio.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c"
+            ],
+            "name": "getlogin",
+            "nb_args": 0,
+            "return_value": "char *",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "setpwent()",
+            "headers": [
+                "<sys/types.h>",
+                "<pwd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c"
+            ],
+            "name": "setpwent",
+            "nb_args": 0,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "endpwent()",
+            "headers": [
+                "<sys/types.h>",
+                "<pwd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c"
+            ],
+            "name": "endpwent",
+            "nb_args": 0,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "name"
+            ],
+            "args_type": [
+                "const char *"
+            ],
+            "fully_qualified": "getpwnam(const char *)",
+            "headers": [
+                "<sys/types.h>",
+                "<pwd.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<unistd.h>",
+                "<errno.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c"
+            ],
+            "name": "getpwnam",
+            "nb_args": 1,
+            "return_value": "struct passwd *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "uid"
+            ],
+            "args_type": [
+                "uid_t"
+            ],
+            "fully_qualified": "getpwuid(uid_t)",
+            "headers": [
+                "<sys/types.h>",
+                "<pwd.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<unistd.h>",
+                "<errno.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c"
+            ],
+            "name": "getpwuid",
+            "nb_args": 1,
+            "return_value": "struct passwd *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "name",
+                "pwd",
+                "buf",
+                "buflen",
+                "result"
+            ],
+            "args_type": [
+                "const char *",
+                "struct passwd *",
+                "char *",
+                "size_t",
+                "struct passwd **"
+            ],
+            "fully_qualified": "getpwnam_r(const char *)",
+            "headers": [
+                "<sys/types.h>",
+                "<pwd.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<unistd.h>",
+                "<errno.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c"
+            ],
+            "name": "getpwnam_r",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "uid",
+                "pwd",
+                "buf",
+                "buflen",
+                "result"
+            ],
+            "args_type": [
+                "uid_t",
+                "struct passwd *",
+                "char *",
+                "size_t",
+                "struct passwd **"
+            ],
+            "fully_qualified": "getpwuid_r(uid_t, struct passwd *, char *, size_t, struct passwd **)",
+            "headers": [
+                "<sys/types.h>",
+                "<pwd.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<unistd.h>",
+                "<errno.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c"
+            ],
+            "name": "getpwuid_r",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "getpwent()",
+            "headers": [
+                "<sys/types.h>",
+                "<pwd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c"
+            ],
+            "name": "getpwent",
+            "nb_args": 0,
+            "return_value": "struct passwd *",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "issetugid()",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c"
+            ],
+            "name": "issetugid",
+            "nb_args": 0,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "egid"
+            ],
+            "args_type": [
+                "gid_t"
+            ],
+            "fully_qualified": "setegid(gid_t)",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c"
+            ],
+            "name": "setegid",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "user",
+                "group"
+            ],
+            "args_type": [
+                "const char *",
+                "gid_t"
+            ],
+            "fully_qualified": "initgroups(const char *, gid_t)",
+            "headers": [
+                "<sys/types.h>",
+                "<grp.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c"
+            ],
+            "name": "initgroups",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "name"
+            ],
+            "args_type": [
+                "const char *"
+            ],
+            "fully_qualified": "getgrnam(const char *)",
+            "headers": [
+                "<sys/types.h>",
+                "<grp.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/musl-imported/include/grp.h"
+            ],
+            "name": "getgrnam",
+            "nb_args": 1,
+            "return_value": "struct group *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "name",
+                "grp",
+                "buf",
+                "buflen",
+                "result"
+            ],
+            "args_type": [
+                "const char *",
+                "struct group *",
+                "char *",
+                "int",
+                "struct group **"
+            ],
+            "fully_qualified": "getgrnam_r(const char *, struct group *, char *, int, struct group **)",
+            "headers": [
+                "<sys/types.h>",
+                "<grp.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/musl-imported/include/grp.h"
+            ],
+            "name": "getgrnam_r",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "gid"
+            ],
+            "args_type": [
+                "gid_t"
+            ],
+            "fully_qualified": "getgrgid(gid_t)",
+            "headers": [
+                "<sys/types.h>",
+                "<grp.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/musl-imported/include/grp.h"
+            ],
+            "name": "getgrgid",
+            "nb_args": 1,
+            "return_value": "struct group *",
+            "usage": 2
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "setgrent()",
+            "headers": [
+                "<sys/types.h>",
+                "<grp.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c"
+            ],
+            "name": "setgrent",
+            "nb_args": 0,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "endgrent()",
+            "headers": [
+                "<sys/types.h>",
+                "<grp.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c"
+            ],
+            "name": "endgrent",
+            "nb_args": 0,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "getgrent()",
+            "headers": [
+                "<sys/types.h>",
+                "<grp.h>",
+                "<uk/user.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/user.c"
+            ],
+            "name": "getgrent",
+            "nb_args": 0,
+            "return_value": "struct group *",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "getuid()",
+            "headers": [
+                "<unistd.h>",
+                "<sys/types.h>"
+            ],
+            "location_file": [],
+            "name": "getuid",
+            "nb_args": 0,
+            "return_value": "uid_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "uid"
+            ],
+            "args_type": [
+                "uid_t"
+            ],
+            "fully_qualified": "setuid(uid_t)",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "setuid",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "geteuid()",
+            "headers": [
+                "<unistd.h>",
+                "<sys/types.h>"
+            ],
+            "location_file": [],
+            "name": "geteuid",
+            "nb_args": 0,
+            "return_value": "uid_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "ruid",
+                "euid",
+                "suid"
+            ],
+            "args_type": [
+                "uid_t*",
+                "uid_t*",
+                "uid_t*"
+            ],
+            "fully_qualified": "getresuid(uid_t*,uid_t*,uid_t*)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/include/uk/user.h"
+            ],
+            "name": "getresuid",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "ruid",
+                "euid",
+                "suid"
+            ],
+            "args_type": [
+                "uid_t",
+                "uid_t",
+                "uid_t"
+            ],
+            "fully_qualified": "setresuid(uid_t,uid_t,uid_t)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/include/uk/user.h"
+            ],
+            "name": "setresuid",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "ruid",
+                "euid"
+            ],
+            "args_type": [
+                "uid_t",
+                "uid_t"
+            ],
+            "fully_qualified": "setreuid(uid_t,uid_t)",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "setreuid",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fsgid"
+            ],
+            "args_type": [
+                "uid_t"
+            ],
+            "fully_qualified": "setfsgid(uid_t)",
+            "headers": [],
+            "location_file": [],
+            "name": "setfsgid",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fsuid"
+            ],
+            "args_type": [
+                "uid_t"
+            ],
+            "fully_qualified": "setfsuid(uid_t)",
+            "headers": [],
+            "location_file": [],
+            "name": "setfsuid",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "hdrp",
+                "datap"
+            ],
+            "args_type": [
+                "void*",
+                "void*"
+            ],
+            "fully_qualified": "capset(void*,void*)",
+            "headers": [
+            ],
+            "location_file": [],
+            "name": "capset",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "hdrp",
+                "datap"
+            ],
+            "args_type": [
+                "void*",
+                "void*"
+            ],
+            "fully_qualified": "capget(void*,void*)",
+            "headers": [],
+            "location_file": [],
+            "name": "capget",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "getgid()",
+            "headers": [
+                "<unistd.h>",
+                "<sys/types.h>"
+            ],
+            "location_file": [],
+            "name": "getgid",
+            "nb_args": 0,
+            "return_value": "gid_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "gid"
+            ],
+            "args_type": [
+                "gid_t"
+            ],
+            "fully_qualified": "setgid(gid_t)",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "setgid",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "getegid()",
+            "headers": [
+                "<unistd.h>",
+                "<sys/types.h>"
+            ],
+            "location_file": [],
+            "name": "getegid",
+            "nb_args": 0,
+            "return_value": "gid_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "rgid",
+                "egid",
+                "sgid"
+            ],
+            "args_type": [
+                "gid_t*",
+                "gid_t*",
+                "gid_t*"
+            ],
+            "fully_qualified": "getresgid(gid_t*,gid_t*,gid_t*)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/include/uk/user.h"
+            ],
+            "name": "getresgid",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "rgid",
+                "egid",
+                "sgid"
+            ],
+            "args_type": [
+                "gid_t",
+                "gid_t",
+                "gid_t"
+            ],
+            "fully_qualified": "setresgid(gid_t,gid_t,gid_t)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-user/include/uk/user.h"
+            ],
+            "name": "setresgid",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "rgid",
+                "egid"
+            ],
+            "args_type": [
+                "gid_t",
+                "gid_t"
+            ],
+            "fully_qualified": "setregid(gid_t,gid_t)",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "setregid",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "size",
+                "list"
+            ],
+            "args_type": [
+                "int",
+                "gid_t*"
+            ],
+            "fully_qualified": "getgroups(int,gid_t*)",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>",
+                "<grp.h>"
+            ],
+            "location_file": [],
+            "name": "getgroups",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "size",
+                "list"
+            ],
+            "args_type": [
+                "size_t",
+                "const gid_t*"
+            ],
+            "fully_qualified": "setgroups(size_t,const gid_t*)",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>",
+                "<grp.h>"
+            ],
+            "location_file": [],
+            "name": "setgroups",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        }
+    ]
+}

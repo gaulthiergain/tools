@@ -1,0 +1,1351 @@
+{
+    "functions": [
+        {
+            "name": "sys_sem_new",
+
+            "args_name": [
+                "sem",
+                "count"
+            ],
+            "args_type": [
+                "sys_sem_t *",
+                "int"
+            ],
+            "fully_qualified": "sys_sem_new(sys_sem_t *, int)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//semaphore.c"
+            ],
+            "nb_args": 2,
+            "usage": 1
+        },
+        {
+            "name": "sys_sem_valid",
+
+            "args_name": [
+                "sem"
+            ],
+            "args_type": [
+                "sys_sem_t *"
+            ],
+            "fully_qualified": "sys_sem_valid(sys_sem_t *)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//semaphore.c"
+            ],
+            "nb_args": 1,
+            "usage": 1
+        },
+        {
+            "name": "sys_sem_set_invalid",
+
+            "args_name": [
+                "sem"
+            ],
+            "args_type": [
+                "sys_sem_t *"
+            ],
+            "fully_qualified": "sys_sem_set_invalid(sys_sem_t *)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//semaphore.c"
+            ],
+            "nb_args": 1,
+            "usage": 1
+        },
+        {
+            "name": "sys_sem_free",
+
+            "args_name": [
+                "sem"
+            ],
+            "args_type": [
+                "sys_sem_t *"
+            ],
+            "fully_qualified": "sys_sem_free(sys_sem_t *)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//semaphore.c"
+            ],
+            "nb_args": 1,
+            "usage": 1
+        },
+        {
+            "name": "sys_sem_signal",
+
+            "args_name": [
+                "sem"
+            ],
+            "args_type": [
+                "sys_sem_t *"
+            ],
+            "fully_qualified": "sys_sem_signal(sys_sem_t *)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//semaphore.c"
+            ],
+            "nb_args": 1,
+            "usage": 1
+        },
+        {
+            "name": "sys_arch_sem_wait",
+
+            "args_name": [
+                "sem",
+                "timeout"
+            ],
+            "args_type": [
+                "sys_sem_t *",
+                "int"
+            ],
+            "fully_qualified": "sys_arch_sem_wait(sys_sem_t *, int)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//semaphore.c"
+            ],
+            "nb_args": 2,
+            "usage": 1
+        },
+        {
+            "name": "inet_ntop",
+            "args_name": [
+                "af",
+                "src",
+                "dst",
+                "size"
+            ],
+            "args_type": [
+                "int",
+                "const void *",
+                "char *",
+                "socklen_t"
+            ],
+            "fully_qualified": "inet_ntop(int, const void *, char *, socklen_t)",
+            "headers": [
+                "<arpa/inet.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//inet.c",
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip/include/arpa/inet.h"
+            ],
+            "nb_args": 4,
+            "return_value": "const char *",
+            "usage": 2
+        },
+        {
+            "name": "inet_pton",
+
+            "args_name": [
+                "af",
+                "src",
+                "dst"
+            ],
+            "args_type": [
+                "int",
+                "const char *",
+                "void *"
+            ],
+            "fully_qualified": "inet_pton(int, const char *, void *)",
+            "headers": [
+                "<arpa/inet.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//inet.c",
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip/include/arpa/inet.h"
+            ],
+            "nb_args": 3,
+            "usage": 2
+        },
+        {
+            "name": "gai_strerror",
+
+            "args_name": [
+                "errcode"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "gai_strerror(int)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/socket.h>",
+                "<netdb.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<unistd.h>",
+                "<string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//inet.c",
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip/include/netdb.h"
+            ],
+            "nb_args": 1,
+            "usage": 2
+        },
+        {
+            "name": "sys_mbox_new",
+
+            "args_name": [
+                "mbox",
+                "size"
+            ],
+            "args_type": [
+                "sys_mbox_t *",
+                "int"
+            ],
+            "fully_qualified": "sys_mbox_new(sys_mbox_t *, int)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//mailbox.c"
+            ],
+            "nb_args": 2,
+            "usage": 1
+        },
+        {
+            "name": "sys_mbox_valid",
+
+            "args_name": [
+                "mbox"
+            ],
+            "args_type": [
+                "sys_mbox_t *"
+            ],
+            "fully_qualified": "sys_mbox_valid(sys_mbox_t *)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//mailbox.c"
+            ],
+            "nb_args": 1,
+            "usage": 1
+        },
+        {
+            "name": "sys_mbox_set_invalid",
+
+            "args_name": [
+                "mbox"
+            ],
+            "args_type": [
+                "sys_mbox_t *"
+            ],
+            "fully_qualified": "sys_mbox_set_invalid(sys_mbox_t *)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//mailbox.c"
+            ],
+            "nb_args": 1,
+            "usage": 1
+        },
+        {
+            "name": "sys_mbox_free",
+
+            "args_name": [
+                "mbox"
+            ],
+            "args_type": [
+                "sys_mbox_t *"
+            ],
+            "fully_qualified": "sys_mbox_free(sys_mbox_t *)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//mailbox.c"
+            ],
+            "nb_args": 1,
+            "usage": 1
+        },
+        {
+            "name": "sys_mbox_post",
+
+            "args_name": [
+                "mbox",
+                "msg"
+            ],
+            "args_type": [
+                "sys_mbox_t *",
+                "void *"
+            ],
+            "fully_qualified": "sys_mbox_post(sys_mbox_t *, void *)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//mailbox.c"
+            ],
+            "nb_args": 2,
+            "usage": 1
+        },
+        {
+            "name": "sys_mbox_trypost",
+
+            "args_name": [
+                "mbox",
+                "msg"
+            ],
+            "args_type": [
+                "sys_mbox_t *",
+                "void *"
+            ],
+            "fully_qualified": "sys_mbox_trypost(sys_mbox_t *, void *)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//mailbox.c"
+            ],
+            "nb_args": 2,
+            "usage": 1
+        },
+        {
+            "name": "sys_mbox_trypost_fromisr",
+
+            "args_name": [
+                "mbox",
+                "msg"
+            ],
+            "args_type": [
+                "sys_mbox_t *",
+                "void *"
+            ],
+            "fully_qualified": "sys_mbox_trypost_fromisr(sys_mbox_t *, void *)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//mailbox.c"
+            ],
+            "nb_args": 2,
+            "usage": 1
+        },
+        {
+            "name": "sys_arch_mbox_fetch",
+
+            "args_name": [
+                "mbox",
+                "msg",
+                "timeout"
+            ],
+            "args_type": [
+                "sys_mbox_t *",
+                "void **",
+                "u32_t"
+            ],
+            "fully_qualified": "sys_arch_mbox_fetch(sys_mbox_t *, void **, u32_t)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//mailbox.c"
+            ],
+            "nb_args": 3,
+            "usage": 1
+        },
+        {
+            "name": "sys_arch_mbox_tryfetch",
+
+            "args_name": [
+                "mbox",
+                "msg"
+            ],
+            "args_type": [
+                "sys_mbox_t *",
+                "void **"
+            ],
+            "fully_qualified": "sys_arch_mbox_tryfetch(sys_mbox_t *, void **)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//mailbox.c"
+            ],
+            "nb_args": 2,
+            "usage": 1
+        },
+        {
+            "name": "uknetdev_poll",
+
+            "args_name": [
+                "nf"
+            ],
+            "args_type": [
+                "struct netif *"
+            ],
+            "fully_qualified": "uknetdev_poll(struct netif *)",
+            "headers": [
+               "<netif/uknetdev.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//uknetdev.c"
+            ],
+            "nb_args": 1,
+            "usage": 1
+        },
+        {
+            "name": "uknetdev_init",
+
+            "args_name": [
+                "nf"
+            ],
+            "args_type": [
+                "struct netif *"
+            ],
+            "fully_qualified": "uknetdev_init(struct netif *)",
+            "headers": [
+                "<netif/uknetdev.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//uknetdev.c"
+            ],
+            "nb_args": 1,
+            "usage": 1
+        },
+        {
+            "name": "sys_mutex_new",
+
+            "args_name": [
+                "mtx"
+            ],
+            "args_type": [
+                "sys_mutex_t *"
+            ],
+            "fully_qualified": "sys_mutex_new(sys_mutex_t *)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//mutex.c"
+            ],
+            "nb_args": 1,
+            "usage": 1
+        },
+        {
+            "name": "sys_mutex_valid",
+
+            "args_name": [
+                "mtx"
+            ],
+            "args_type": [
+                "sys_mutex_t *"
+            ],
+            "fully_qualified": "sys_mutex_valid(sys_mutex_t *)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//mutex.c"
+            ],
+            "nb_args": 1,
+            "usage": 1
+        },
+        {
+            "name": "sys_mutex_set_invalid",
+
+            "args_name": [
+                "mtx"
+            ],
+            "args_type": [
+                "sys_mutex_t *"
+            ],
+            "fully_qualified": "sys_mutex_set_invalid(sys_mutex_t *)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//mutex.c"
+            ],
+            "nb_args": 1,
+            "usage": 1
+        },
+        {
+            "name": "sys_mutex_free",
+
+            "args_name": [
+                "mtx"
+            ],
+            "args_type": [
+                "sys_mutex_t *"
+            ],
+            "fully_qualified": "sys_mutex_free(sys_mutex_t *)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//mutex.c"
+            ],
+            "nb_args": 1,
+            "usage": 1
+        },
+        {
+            "name": "sys_mutex_lock",
+
+            "args_name": [
+                "mtx"
+            ],
+            "args_type": [
+                "sys_mutex_t *"
+            ],
+            "fully_qualified": "sys_mutex_lock(sys_mutex_t *)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//mutex.c"
+            ],
+            "nb_args": 1,
+            "usage": 1
+        },
+        {
+            "name": "sys_mutex_unlock",
+
+            "args_name": [
+                "mtx"
+            ],
+            "args_type": [
+                "sys_mutex_t *"
+            ],
+            "fully_qualified": "sys_mutex_unlock(sys_mutex_t *)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//mutex.c"
+            ],
+            "nb_args": 1,
+            "usage": 1
+        },
+        {
+            "name": "sys_malloc",
+
+            "args_name": [
+                "size"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "sys_malloc(int)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//alloc.c"
+            ],
+            "nb_args": 1,
+            "usage": 1
+        },
+        {
+            "name": "sys_calloc",
+
+            "args_name": [
+                "num",
+                "size"
+            ],
+            "args_type": [
+                "int",
+                "int"
+            ],
+            "fully_qualified": "sys_calloc(int, int)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//alloc.c"
+            ],
+            "nb_args": 2,
+            "usage": 1
+        },
+        {
+            "name": "sys_free",
+            "args_name": [
+                "ptr"
+            ],
+            "args_type": [
+                "void *"
+            ],
+            "fully_qualified": "sys_free(void *)",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//alloc.c"
+            ],
+            "nb_args": 1,
+            "usage": 1
+        },
+        {
+            "name": "endprotoent",
+
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "endprotoent()",
+            "headers": [
+                "<netdb.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//proto.c",
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip/include/netdb.h"
+            ],
+            "nb_args": 0,
+            "usage": 2
+        },
+        {
+            "name": "setprotoent",
+
+            "args_name": [
+                "stayopen"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "setprotoent(int)",
+            "headers": [
+                "<netdb.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//proto.c",
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip/include/netdb.h"
+            ],
+            "nb_args": 1,
+            "usage": 2
+        },
+        {
+            "name": "getprotoent",
+
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "getprotoent()",
+            "headers": [
+                "<netdb.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//proto.c",
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip/include/netdb.h"
+            ],
+            "nb_args": 0,
+            "usage": 2
+        },
+        {
+            "name": "getprotobyname",
+
+            "args_name": [
+                "name"
+            ],
+            "args_type": [
+                "const char *"
+            ],
+            "fully_qualified": "getprotobyname(const char *)",
+            "headers": [
+                "<netdb.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//proto.c",
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip/include/netdb.h"
+            ],
+            "nb_args": 1,
+            "usage": 2
+        },
+        {
+            "name": "getprotobynumber",
+
+            "args_name": [
+                "num"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "getprotobynumber(int)",
+            "headers": [
+                "<netdb.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//proto.c",
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip/include/netdb.h"
+            ],
+            "nb_args": 1,
+            "usage": 2
+        },
+        {
+            "name": "getservbyname",
+
+            "args_name": [
+                "name",
+                "proto"
+            ],
+            "args_type": [
+                "const char *",
+                "const char *"
+            ],
+            "fully_qualified": "getservbyname(const char *, const char *)",
+            "headers": [
+                "<netdb.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//serv.c",
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip/include/netdb.h"
+            ],
+            "nb_args": 1,
+            "usage": 2
+        },
+        {
+            "name": "getservbyport",
+
+            "args_name": [
+                "port",
+                "proto"
+            ],
+            "args_type": [
+                "int",
+                "const char *"
+            ],
+            "fully_qualified": "getservbyport(int)",
+            "headers": [
+                "<netdb.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//serv.c",
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip/include/netdb.h"
+            ],
+            "nb_args": 1,
+            "usage": 2
+        },
+        {
+            "name": "getservbyport_r",
+
+            "args_name": [
+                "port",
+                "proto",
+                "result_buf",
+                "buf",
+                "buflen",
+                "result"
+            ],
+            "args_type": [
+                "int",
+                "const char *",
+                "struct servent *",
+                "char *",
+                "size_t",
+                "struct servent **"
+            ],
+            "fully_qualified": "getservbyport_r(int)",
+            "headers": [
+                "<netdb.h>",
+                "<ctype.h>",
+                "<stdlib.h>",
+                "<stdio.h>",
+                "<errno.h>",
+                "<string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//serv.c",
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip/include/netdb.h"
+            ],
+            "nb_args": 1,
+            "usage": 2
+        },
+        {
+            "name": "sendfile",
+
+            "args_name": [
+                "out_fd",
+                "in_fd",
+                "_offset",
+                "count"
+            ],
+            "args_type": [
+                "int",
+                "int",
+                "off_t *",
+                "int"
+            ],
+            "fully_qualified": "sendfile(int, int, off_t *, int)",
+            "headers": [
+                "<sys/sendfile.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sendfile.c",
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip/musl-imported/include/sys/sendfile.h"
+            ],
+            "nb_args": 4,
+            "usage": 2
+        },
+        {
+            "name": "sys_init",
+
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "sys_init()",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//init.c"
+            ],
+            "nb_args": 0,
+            "usage": 1
+        },
+        {
+            "name": "getnameinfo",
+
+            "args_name": [
+                "sa",
+                "sl",
+                "node",
+                "nodelen",
+                "serv",
+                "servlen",
+                "flags"
+            ],
+            "args_type": [
+                "const struct sockaddr *restrict",
+                "socklen_t",
+                "char *restrict",
+                "socklen_t",
+                "char *restrict",
+                "socklen_t",
+                "int"
+            ],
+            "fully_qualified": "getnameinfo(const struct sockaddr *restrict, socklen_t, char *restrict, socklen_t, char *restrict, socklen_t, int)",
+            "headers": [
+                "<sys/socket.h>",
+                "<netdb.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//getnameinfo.c"
+            ],
+            "nb_args": 7,
+            "usage": 1
+        },
+        {
+            "name": "sys_now",
+
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "sys_now()",
+            "headers": [
+                "<lwip/sys.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//time.c"
+            ],
+            "nb_args": 0,
+            "usage": 1
+        },
+        {
+            "name": "socket",
+
+            "args_name": [
+                "domain",
+                "type",
+                "protocol"
+            ],
+            "args_type": [
+                "int",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "socket(int, int, int)",
+            "headers": [
+                "<sys/socket.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 3,
+            "usage": 1
+        },
+        {
+            "name": "accept",
+
+            "args_name": [
+                "s",
+                "addr",
+                "addrlen"
+            ],
+            "args_type": [
+                "int",
+                "struct sockaddr *",
+                "socklen_t *"
+            ],
+            "fully_qualified": "accept(int, struct sockaddr *, socklen_t *)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/socket.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 3,
+            "usage": 1
+        },
+        {
+            "name": "bind",
+
+            "args_name": [
+                "s",
+                "name",
+                "namelen"
+            ],
+            "args_type": [
+                "int",
+                "const struct sockaddr *",
+                "int"
+            ],
+            "fully_qualified": "bind(int, const struct sockaddr *, int)",
+            "headers": [
+                "<sys/socket.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 3,
+            "usage": 1
+        },
+        {
+            "name": "poll",
+
+            "args_name": [
+                "fds",
+                "nfds",
+                "timeout"
+            ],
+            "args_type": [
+                "struct pollfd*",
+                "nfds_t",
+                "int"
+            ],
+            "fully_qualified": "poll(struct pollfd, int, int)",
+            "headers": [
+                "<poll.h>",
+                "<signal.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 3,
+            "usage": 1
+        },
+        {
+            "name": "select",
+
+            "args_name": [
+                "nfds",
+                "readfds",
+                "writefds",
+                "exceptfds",
+                "timeout"
+            ],
+            "args_type": [
+                "int",
+                "fd_set *",
+                "fd_set *",
+                "fd_set *",
+                "struct timeval *"
+            ],
+            "fully_qualified": "select(int, fd_set *, fd_set *, fd_set *, struct timeval *)",
+            "headers": [
+                "<sys/select.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 5,
+            "usage": 1
+        },
+        {
+            "name": "shutdown",
+
+            "args_name": [
+                "s",
+                "how"
+            ],
+            "args_type": [
+                "int",
+                "int"
+            ],
+            "fully_qualified": "shutdown(int, int)",
+            "headers": [
+                "<sys/socket.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 2,
+            "usage": 1
+        },
+        {
+            "name": "getpeername",
+
+            "args_name": [
+                "s",
+                "name",
+                "namelen"
+            ],
+            "args_type": [
+                "int",
+                "struct sockaddr *",
+                "socklen_t *"
+            ],
+            "fully_qualified": "getpeername(int, struct sockaddr *, socklen_t *)",
+            "headers": [
+                "<sys/socket.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 3,
+            "usage": 1
+        },
+        {
+            "name": "getsockname",
+
+            "args_name": [
+                "s",
+                "name",
+                "namelen"
+            ],
+            "args_type": [
+                "int",
+                "struct sockaddr *",
+                "socklen_t *"
+            ],
+            "fully_qualified": "getsockname(int, struct sockaddr *, socklen_t *)",
+            "headers": [
+                "<sys/socket.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 3,
+            "usage": 1
+        },
+        {
+            "name": "getsockopt",
+
+            "args_name": [
+                "s",
+                "level",
+                "optname",
+                "optval",
+                "optlen"
+            ],
+            "args_type": [
+                "int",
+                "int",
+                "int",
+                "void *",
+                "socklen_t *"
+            ],
+            "fully_qualified": "getsockopt(int, int, int, void *, socklen_t *)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/socket.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 5,
+            "usage": 1
+        },
+        {
+            "name": "setsockopt",
+
+            "args_name": [
+                "s",
+                "level",
+                "optname",
+                "optval",
+                "optlen"
+            ],
+            "args_type": [
+                "int",
+                "int",
+                "int",
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "setsockopt(int, int, int, const void *, int)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/socket.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 5,
+            "usage": 1
+        },
+        {
+            "name": "connect",
+
+            "args_name": [
+                "s",
+                "name",
+                "namelen"
+            ],
+            "args_type": [
+                "int",
+                "const struct sockaddr *",
+                "int"
+            ],
+            "fully_qualified": "connect(int, const struct sockaddr *, int)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/socket.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 3,
+            "usage": 1
+        },
+        {
+            "name": "listen",
+
+            "args_name": [
+                "s",
+                "backlog"
+            ],
+            "args_type": [
+                "int",
+                "int"
+            ],
+            "fully_qualified": "listen(int, int)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/socket.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 2,
+            "usage": 1
+        },
+        {
+            "name": "recv",
+
+            "args_name": [
+                "s",
+                "mem",
+                "len",
+                "flags"
+            ],
+            "args_type": [
+                "int",
+                "void *",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "recv(int, void *, int, int)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/socket.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 4,
+            "usage": 1
+        },
+        {
+            "name": "recvfrom",
+
+            "args_name": [
+                "s",
+                "mem",
+                "len",
+                "flags",
+                "from",
+                "fromlen"
+            ],
+            "args_type": [
+                "int",
+                "void *",
+                "int",
+                "int",
+                "struct sockaddr *",
+                "socklen_t *"
+            ],
+            "fully_qualified": "recvfrom(int, void *, int, int, struct sockaddr *, socklen_t *)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/socket.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 6,
+            "usage": 1
+        },
+        {
+            "name": "recvmsg",
+
+            "args_name": [
+                "s",
+                "msg",
+                "flags"
+            ],
+            "args_type": [
+                "int",
+                "struct msghdr *",
+                "int"
+            ],
+            "fully_qualified": "recvmsg(int, struct msghdr *, int)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/socket.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 3,
+            "usage": 1
+        },
+        {
+            "name": "send",
+
+            "args_name": [
+                "s",
+                "dataptr",
+                "size",
+                "flags"
+            ],
+            "args_type": [
+                "int",
+                "const void *",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "send(int, const void *, int, int)",
+            "headers": [
+                "<sys/socket.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 4,
+            "usage": 1
+        },
+        {
+            "name": "sendmsg",
+
+            "args_name": [
+                "s",
+                "message",
+                "flags"
+            ],
+            "args_type": [
+                "int",
+                "const struct msghdr *",
+                "int"
+            ],
+            "fully_qualified": "sendmsg(int, const struct msghdr *, int)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/socket.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 3,
+            "usage": 1
+        },
+        {
+            "name": "sendto",
+
+            "args_name": [
+                "s",
+                "dataptr",
+                "size",
+                "flags",
+                "to",
+                "tolen"
+            ],
+            "args_type": [
+                "int",
+                "const void *",
+                "int",
+                "int",
+                "const struct sockaddr *",
+                "int"
+            ],
+            "fully_qualified": "sendto(int, const void *, int, int, const struct sockaddr *, int)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/socket.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 6,
+            "usage": 1
+        },
+        {
+            "name": "socketpair",
+
+            "args_name": [
+                "domain",
+                "type",
+                "protocol",
+                "sv"
+            ],
+            "args_type": [
+                "int",
+                "int",
+                "int",
+                "int []"
+            ],
+            "fully_qualified": "socketpair(int, int, int, int *)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/socket.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip//sockets.c"
+            ],
+            "nb_args": 4,
+            "usage": 1
+        },
+        {
+            "name": "if_indextoname",
+
+            "args_name": [
+                "arg_unsignedint",
+                "arg_char"
+            ],
+            "args_type": [
+                "unsigned int",
+                "char *"
+            ],
+            "fully_qualified": "if_indextoname(unsigned int, char *)",
+            "headers": [
+                "<net/if.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/libs/lib-lwip/include/net/if.h"
+            ],
+            "nb_args": 2,
+            "usage": 1
+        }
+    ]
+}

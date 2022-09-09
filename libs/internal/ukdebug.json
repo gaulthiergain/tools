@@ -1,0 +1,177 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "str",
+                "size",
+                "data",
+                "len",
+                "addr0",
+                "flags",
+                "grps_per_line",
+                "line_prefix"
+            ],
+            "args_type": [
+                "char *",
+                "int",
+                "const void *",
+                "int",
+                "int",
+                "int",
+                "unsigned int",
+                "const char *"
+            ],
+            "fully_qualified": "uk_hexdumpsn(char *, int, const void *, int, int, int, unsigned int, const char *)",
+            "headers": [
+                "<uk/asmdump.h>",
+                "<uk/assert.h>",
+                "<uk/hexdump.h>",
+                "<uk/print.h>",
+                "<uk/trace.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukdebug/hexdump.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukdebug/include/uk/hexdump.h"
+            ],
+            "name": "uk_hexdumpsn",
+            "nb_args": 8,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fp",
+                "data",
+                "len",
+                "addr0",
+                "flags",
+                "grps_per_line",
+                "line_prefix"
+            ],
+            "args_type": [
+                "FILE *",
+                "const void *",
+                "int",
+                "int",
+                "int",
+                "unsigned int",
+                "const char *"
+            ],
+            "fully_qualified": "uk_hexdumpf(FILE *, const void *, int, int, int, unsigned int, const char *)",
+            "headers": [
+                "<uk/asmdump.h>",
+                "<uk/assert.h>",
+                "<uk/hexdump.h>",
+                "<uk/print.h>",
+                "<uk/trace.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukdebug/hexdump.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukdebug/include/uk/hexdump.h"
+            ],
+            "name": "uk_hexdumpf",
+            "nb_args": 7,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "libname",
+                "srcname",
+                "srcline",
+                "data",
+                "len",
+                "addr0",
+                "flags",
+                "grps_per_line",
+                "line_prefix"
+            ],
+            "args_type": [
+                "const char *",
+                "const char *",
+                "unsigned int",
+                "const void *",
+                "int",
+                "int",
+                "int",
+                "unsigned int",
+                "const char *"
+            ],
+            "fully_qualified": "_uk_hexdumpd(const char *, const char *, unsigned int, const void *, int, int, int, unsigned int, const char *)",
+            "headers": [
+                "<uk/asmdump.h>",
+                "<uk/assert.h>",
+                "<uk/hexdump.h>",
+                "<uk/print.h>",
+                "<uk/trace.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukdebug/hexdump.c"
+            ],
+            "name": "_uk_hexdumpd",
+            "nb_args": 9,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "libname",
+                "srcname",
+                "srcline",
+                "fmt",
+                "ap"
+            ],
+            "args_type": [
+                "const char *",
+                "const char *",
+                "unsigned int",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "_uk_vprintd(const char *, const char *, unsigned int, const char *, int)",
+            "headers": [
+                "<uk/asmdump.h>",
+                "<uk/assert.h>",
+                "<uk/hexdump.h>",
+                "<uk/print.h>",
+                "<uk/trace.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukdebug/print.c"
+            ],
+            "name": "_uk_vprintd",
+            "nb_args": 5,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "libname",
+                "srcname",
+                "srcline",
+                "fmt"
+            ],
+            "args_type": [
+                "const char *",
+                "const char *",
+                "unsigned int",
+                "const char *"
+            ],
+            "fully_qualified": "_uk_printd(const char *, const char *, unsigned int, const char *, ...)",
+            "headers": [
+                "<uk/asmdump.h>",
+                "<uk/assert.h>",
+                "<uk/hexdump.h>",
+                "<uk/print.h>",
+                "<uk/trace.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukdebug/print.c"
+            ],
+            "name": "_uk_printd",
+            "nb_args": 4,
+            "return_value": "void",
+            "usage": 1
+        }
+    ]
+}

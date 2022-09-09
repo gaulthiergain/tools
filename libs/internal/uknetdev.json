@@ -1,0 +1,567 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "m",
+                "buf",
+                "buflen",
+                "headroom",
+                "priv",
+                "dtor"
+            ],
+            "args_type": [
+                "struct uk_netbuf *",
+                "void *",
+                "int",
+                "int",
+                "void *",
+                "uk_netbuf_dtor_t"
+            ],
+            "fully_qualified": "uk_netbuf_init_indir(struct uk_netbuf *, void *, int, int, void *, uk_netbuf_dtor_t)",
+            "headers": [
+                "<uk/netbuf.h>",
+                "<uk/netdev_core.h>",
+                "<uk/netdev_driver.h>",
+                "<uk/netdev.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netbuf.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netbuf.h"
+            ],
+            "name": "uk_netbuf_init_indir",
+            "nb_args": 6,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "a",
+                "buf",
+                "buflen",
+                "headroom",
+                "privlen",
+                "dtor"
+            ],
+            "args_type": [
+                "struct uk_alloc *",
+                "void *",
+                "int",
+                "int",
+                "int",
+                "uk_netbuf_dtor_t"
+            ],
+            "fully_qualified": "uk_netbuf_alloc_indir(struct uk_alloc *, void *, int, int, int, uk_netbuf_dtor_t)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netbuf.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netbuf.h"
+            ],
+            "name": "uk_netbuf_alloc_indir",
+            "nb_args": 6,
+            "return_value": "struct uk_netbuf *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "a",
+                "buflen",
+                "bufalign",
+                "headroom",
+                "privlen",
+                "dtor"
+            ],
+            "args_type": [
+                "struct uk_alloc *",
+                "int",
+                "int",
+                "int",
+                "int",
+                "uk_netbuf_dtor_t"
+            ],
+            "fully_qualified": "uk_netbuf_alloc_buf(struct uk_alloc *, int, int, int, int, uk_netbuf_dtor_t)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netbuf.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netbuf.h"
+            ],
+            "name": "uk_netbuf_alloc_buf",
+            "nb_args": 6,
+            "return_value": "struct uk_netbuf *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "mem",
+                "size",
+                "headroom",
+                "privlen",
+                "dtor"
+            ],
+            "args_type": [
+                "void *",
+                "int",
+                "int",
+                "int",
+                "uk_netbuf_dtor_t"
+            ],
+            "fully_qualified": "uk_netbuf_prepare_buf(void *, int, int, int, uk_netbuf_dtor_t)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netbuf.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netbuf.h"
+            ],
+            "name": "uk_netbuf_prepare_buf",
+            "nb_args": 5,
+            "return_value": "struct uk_netbuf *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "m"
+            ],
+            "args_type": [
+                "struct uk_netbuf *"
+            ],
+            "fully_qualified": "uk_netbuf_disconnect(struct uk_netbuf *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netbuf.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netbuf.h"
+            ],
+            "name": "uk_netbuf_disconnect",
+            "nb_args": 1,
+            "return_value": "struct uk_netbuf *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "headtail",
+                "tail"
+            ],
+            "args_type": [
+                "struct uk_netbuf *",
+                "struct uk_netbuf *"
+            ],
+            "fully_qualified": "uk_netbuf_connect(struct uk_netbuf *, struct uk_netbuf *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netbuf.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netbuf.h"
+            ],
+            "name": "uk_netbuf_connect",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "head",
+                "tail"
+            ],
+            "args_type": [
+                "struct uk_netbuf *",
+                "struct uk_netbuf *"
+            ],
+            "fully_qualified": "uk_netbuf_append(struct uk_netbuf *, struct uk_netbuf *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netbuf.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netbuf.h"
+            ],
+            "name": "uk_netbuf_append",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "m"
+            ],
+            "args_type": [
+                "struct uk_netbuf *"
+            ],
+            "fully_qualified": "uk_netbuf_free_single(struct uk_netbuf *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netbuf.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netbuf.h"
+            ],
+            "name": "uk_netbuf_free_single",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "m"
+            ],
+            "args_type": [
+                "struct uk_netbuf *"
+            ],
+            "fully_qualified": "uk_netbuf_free(struct uk_netbuf *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netbuf.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netbuf.h"
+            ],
+            "name": "uk_netbuf_free",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "a",
+                "drv_name"
+            ],
+            "args_type": [
+                "struct uk_netdev *",
+                "struct uk_alloc *",
+                "const char *"
+            ],
+            "fully_qualified": "uk_netdev_drv_register(struct uk_netdev *, struct uk_alloc *, const char *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev_driver.h"
+            ],
+            "name": "uk_netdev_drv_register",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "uk_netdev_count()",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev.h"
+            ],
+            "name": "uk_netdev_count",
+            "nb_args": 0,
+            "return_value": "unsigned int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "id"
+            ],
+            "args_type": [
+                "unsigned int"
+            ],
+            "fully_qualified": "uk_netdev_get(unsigned int)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev.h"
+            ],
+            "name": "uk_netdev_get",
+            "nb_args": 1,
+            "return_value": "struct uk_netdev *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev"
+            ],
+            "args_type": [
+                "struct uk_netdev *"
+            ],
+            "fully_qualified": "uk_netdev_id_get(struct uk_netdev *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev.h"
+            ],
+            "name": "uk_netdev_id_get",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev"
+            ],
+            "args_type": [
+                "struct uk_netdev *"
+            ],
+            "fully_qualified": "uk_netdev_drv_name_get(struct uk_netdev *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev.h"
+            ],
+            "name": "uk_netdev_drv_name_get",
+            "nb_args": 1,
+            "return_value": "const char *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "dev_info"
+            ],
+            "args_type": [
+                "struct uk_netdev *",
+                "struct uk_netdev_info *"
+            ],
+            "fully_qualified": "uk_netdev_info_get(struct uk_netdev *, struct uk_netdev_info *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev.h"
+            ],
+            "name": "uk_netdev_info_get",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "queue_id",
+                "queue_info"
+            ],
+            "args_type": [
+                "struct uk_netdev *",
+                "int",
+                "struct uk_netdev_queue_info *"
+            ],
+            "fully_qualified": "uk_netdev_rxq_info_get(struct uk_netdev *, int, struct uk_netdev_queue_info *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev.h"
+            ],
+            "name": "uk_netdev_rxq_info_get",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "queue_id",
+                "queue_info"
+            ],
+            "args_type": [
+                "struct uk_netdev *",
+                "int",
+                "struct uk_netdev_queue_info *"
+            ],
+            "fully_qualified": "uk_netdev_txq_info_get(struct uk_netdev *, int, struct uk_netdev_queue_info *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev.h"
+            ],
+            "name": "uk_netdev_txq_info_get",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "dev_conf"
+            ],
+            "args_type": [
+                "struct uk_netdev *",
+                "const struct uk_netdev_conf *"
+            ],
+            "fully_qualified": "uk_netdev_configure(struct uk_netdev *, const struct uk_netdev_conf *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev.h"
+            ],
+            "name": "uk_netdev_configure",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "queue_id",
+                "nb_desc",
+                "rx_conf"
+            ],
+            "args_type": [
+                "struct uk_netdev *",
+                "int",
+                "int",
+                "struct uk_netdev_rxqueue_conf *"
+            ],
+            "fully_qualified": "uk_netdev_rxq_configure(struct uk_netdev *, int, int, struct uk_netdev_rxqueue_conf *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev.h"
+            ],
+            "name": "uk_netdev_rxq_configure",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "queue_id",
+                "nb_desc",
+                "tx_conf"
+            ],
+            "args_type": [
+                "struct uk_netdev *",
+                "int",
+                "int",
+                "struct uk_netdev_txqueue_conf *"
+            ],
+            "fully_qualified": "uk_netdev_txq_configure(struct uk_netdev *, int, int, struct uk_netdev_txqueue_conf *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev.h"
+            ],
+            "name": "uk_netdev_txq_configure",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev"
+            ],
+            "args_type": [
+                "struct uk_netdev *"
+            ],
+            "fully_qualified": "uk_netdev_start(struct uk_netdev *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev.h"
+            ],
+            "name": "uk_netdev_start",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "hwaddr"
+            ],
+            "args_type": [
+                "struct uk_netdev *",
+                "const struct uk_hwaddr *"
+            ],
+            "fully_qualified": "uk_netdev_hwaddr_set(struct uk_netdev *, const struct uk_hwaddr *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev.h"
+            ],
+            "name": "uk_netdev_hwaddr_set",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev"
+            ],
+            "args_type": [
+                "struct uk_netdev *"
+            ],
+            "fully_qualified": "uk_netdev_hwaddr_get(struct uk_netdev *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev.h"
+            ],
+            "name": "uk_netdev_hwaddr_get",
+            "nb_args": 1,
+            "return_value": "const struct uk_hwaddr *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev"
+            ],
+            "args_type": [
+                "struct uk_netdev *"
+            ],
+            "fully_qualified": "uk_netdev_promiscuous_get(struct uk_netdev *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev.h"
+            ],
+            "name": "uk_netdev_promiscuous_get",
+            "nb_args": 1,
+            "return_value": "unsigned int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "mode"
+            ],
+            "args_type": [
+                "struct uk_netdev *",
+                "unsigned int"
+            ],
+            "fully_qualified": "uk_netdev_promiscuous_set(struct uk_netdev *, unsigned int)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev.h"
+            ],
+            "name": "uk_netdev_promiscuous_set",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev"
+            ],
+            "args_type": [
+                "struct uk_netdev *"
+            ],
+            "fully_qualified": "uk_netdev_mtu_get(struct uk_netdev *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev.h"
+            ],
+            "name": "uk_netdev_mtu_get",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "mtu"
+            ],
+            "args_type": [
+                "struct uk_netdev *",
+                "int"
+            ],
+            "fully_qualified": "uk_netdev_mtu_set(struct uk_netdev *, int)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/netdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uknetdev/include/uk/netdev.h"
+            ],
+            "name": "uk_netdev_mtu_set",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        }
+    ]
+}

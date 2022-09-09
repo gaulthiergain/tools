@@ -1,0 +1,464 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "dst",
+                "src",
+                "len"
+            ],
+            "args_type": [
+                "void *",
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "memcpy_isr(void *, const void *, int)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "memcpy_isr",
+            "nb_args": 3,
+            "return_value": "void *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "ptr",
+                "val",
+                "len"
+            ],
+            "args_type": [
+                "void *",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "memset_isr(void *, int, int)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "memset_isr",
+            "nb_args": 3,
+            "return_value": "void *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "ptr",
+                "val",
+                "len"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "memchr_isr(const void *, int, int)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "memchr_isr",
+            "nb_args": 3,
+            "return_value": "void *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "m",
+                "c",
+                "n"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "memrchr_isr(const void *, int, int)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "memrchr_isr",
+            "nb_args": 3,
+            "return_value": "void *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dst",
+                "src",
+                "len"
+            ],
+            "args_type": [
+                "void *",
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "memmove_isr(void *, const void *, int)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "memmove_isr",
+            "nb_args": 3,
+            "return_value": "void *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "ptr1",
+                "ptr2",
+                "len"
+            ],
+            "args_type": [
+                "const void *",
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "memcmp_isr(const void *, const void *, int)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "memcmp_isr",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "str"
+            ],
+            "args_type": [
+                "const char *"
+            ],
+            "fully_qualified": "strlen_isr(const char *)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "strlen_isr",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "str",
+                "len"
+            ],
+            "args_type": [
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "strnlen_isr(const char *, int)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "strnlen_isr",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dst",
+                "src",
+                "len"
+            ],
+            "args_type": [
+                "char *",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "strncpy_isr(char *, const char *, int)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "strncpy_isr",
+            "nb_args": 3,
+            "return_value": "char *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dst",
+                "src"
+            ],
+            "args_type": [
+                "char *",
+                "const char *"
+            ],
+            "fully_qualified": "strcpy_isr(char *, const char *)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "strcpy_isr",
+            "nb_args": 2,
+            "return_value": "char *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "str1",
+                "str2",
+                "len"
+            ],
+            "args_type": [
+                "const char *",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "strncmp_isr(const char *, const char *, int)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "strncmp_isr",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "str1",
+                "str2"
+            ],
+            "args_type": [
+                "const char *",
+                "const char *"
+            ],
+            "fully_qualified": "strcmp_isr(const char *, const char *)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "strcmp_isr",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "s",
+                "c"
+            ],
+            "args_type": [
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "strchrnul_isr(const char *, int)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "strchrnul_isr",
+            "nb_args": 2,
+            "return_value": "char *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "str",
+                "c"
+            ],
+            "args_type": [
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "strchr_isr(const char *, int)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "strchr_isr",
+            "nb_args": 2,
+            "return_value": "char *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "s",
+                "c"
+            ],
+            "args_type": [
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "strrchr_isr(const char *, int)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "strrchr_isr",
+            "nb_args": 2,
+            "return_value": "char *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "s",
+                "c"
+            ],
+            "args_type": [
+                "const char *",
+                "const char *"
+            ],
+            "fully_qualified": "strcspn_isr(const char *, const char *)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "strcspn_isr",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "s",
+                "c"
+            ],
+            "args_type": [
+                "const char *",
+                "const char *"
+            ],
+            "fully_qualified": "strspn_isr(const char *, const char *)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "strspn_isr",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "s",
+                "sep",
+                "p"
+            ],
+            "args_type": [
+                "char *restrict",
+                "const char *restrict",
+                "char **restrict"
+            ],
+            "fully_qualified": "strtok_isr(char *restrict, const char *restrict, char **restrict)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "strtok_isr",
+            "nb_args": 3,
+            "return_value": "char *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "d",
+                "s",
+                "n"
+            ],
+            "args_type": [
+                "char *",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "strlcpy_isr(char *, const char *, int)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "strlcpy_isr",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "d",
+                "s",
+                "n"
+            ],
+            "args_type": [
+                "char *",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "strlcat_isr(char *, const char *, int)",
+            "headers": [
+                "<uk/isr/string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/string.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/isrlib/include/uk/isr/string.h"
+            ],
+            "name": "strlcat_isr",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        }
+    ]
+}

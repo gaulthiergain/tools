@@ -1,0 +1,250 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "p"
+            ],
+            "args_type": [
+                "struct uk_allocpool *"
+            ],
+            "fully_qualified": "uk_allocpool2ukalloc(struct uk_allocpool *)",
+            "headers": [
+                "<uk/allocpool.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/pool.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/include/uk/allocpool.h"
+            ],
+            "name": "uk_allocpool2ukalloc",
+            "nb_args": 1,
+            "return_value": "struct uk_alloc *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "p"
+            ],
+            "args_type": [
+                "struct uk_allocpool *"
+            ],
+            "fully_qualified": "uk_allocpool_take(struct uk_allocpool *)",
+            "headers": [
+                "<uk/allocpool.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/pool.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/include/uk/allocpool.h"
+            ],
+            "name": "uk_allocpool_take",
+            "nb_args": 1,
+            "return_value": "void *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "p",
+                "obj",
+                "count"
+            ],
+            "args_type": [
+                "struct uk_allocpool *",
+                "void *[]",
+                "unsigned int"
+            ],
+            "fully_qualified": "uk_allocpool_take_batch(struct uk_allocpool *, void **, unsigned int)",
+            "headers": [
+                "<uk/allocpool.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/pool.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/include/uk/allocpool.h"
+            ],
+            "name": "uk_allocpool_take_batch",
+            "nb_args": 3,
+            "return_value": "unsigned int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "p",
+                "obj"
+            ],
+            "args_type": [
+                "struct uk_allocpool *",
+                "void *"
+            ],
+            "fully_qualified": "uk_allocpool_return(struct uk_allocpool *, void *)",
+            "headers": [
+                "<uk/allocpool.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/pool.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/include/uk/allocpool.h"
+            ],
+            "name": "uk_allocpool_return",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "p",
+                "obj",
+                "count"
+            ],
+            "args_type": [
+                "struct uk_allocpool *",
+                "void *[]",
+                "unsigned int"
+            ],
+            "fully_qualified": "uk_allocpool_return_batch(struct uk_allocpool *, void **, unsigned int)",
+            "headers": [
+                "<uk/allocpool.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/pool.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/include/uk/allocpool.h"
+            ],
+            "name": "uk_allocpool_return_batch",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "obj_count",
+                "obj_len",
+                "obj_align"
+            ],
+            "args_type": [
+                "unsigned int",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "uk_allocpool_reqmem(unsigned int, int, int)",
+            "headers": [
+                "<uk/allocpool.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/pool.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/include/uk/allocpool.h"
+            ],
+            "name": "uk_allocpool_reqmem",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "p"
+            ],
+            "args_type": [
+                "struct uk_allocpool *"
+            ],
+            "fully_qualified": "uk_allocpool_availcount(struct uk_allocpool *)",
+            "headers": [
+                "<uk/allocpool.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/pool.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/include/uk/allocpool.h"
+            ],
+            "name": "uk_allocpool_availcount",
+            "nb_args": 1,
+            "return_value": "unsigned int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "p"
+            ],
+            "args_type": [
+                "struct uk_allocpool *"
+            ],
+            "fully_qualified": "uk_allocpool_objlen(struct uk_allocpool *)",
+            "headers": [
+                "<uk/allocpool.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/pool.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/include/uk/allocpool.h"
+            ],
+            "name": "uk_allocpool_objlen",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "base",
+                "len",
+                "obj_len",
+                "obj_align"
+            ],
+            "args_type": [
+                "void *",
+                "int",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "uk_allocpool_init(void *, int, int, int)",
+            "headers": [
+                "<uk/allocpool.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/pool.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/include/uk/allocpool.h"
+            ],
+            "name": "uk_allocpool_init",
+            "nb_args": 4,
+            "return_value": "struct uk_allocpool *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "parent",
+                "obj_count",
+                "obj_len",
+                "obj_align"
+            ],
+            "args_type": [
+                "struct uk_alloc *",
+                "unsigned int",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "uk_allocpool_alloc(struct uk_alloc *, unsigned int, int, int)",
+            "headers": [
+                "<uk/allocpool.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/pool.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/include/uk/allocpool.h"
+            ],
+            "name": "uk_allocpool_alloc",
+            "nb_args": 4,
+            "return_value": "struct uk_allocpool *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "p"
+            ],
+            "args_type": [
+                "struct uk_allocpool *"
+            ],
+            "fully_qualified": "uk_allocpool_free(struct uk_allocpool *)",
+            "headers": [
+                "<uk/allocpool.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/pool.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocpool/include/uk/allocpool.h"
+            ],
+            "name": "uk_allocpool_free",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        }
+    ]
+}

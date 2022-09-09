@@ -1,0 +1,79 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "addr",
+                "len",
+                "prot",
+                "flags",
+                "fildes",
+                "off"
+            ],
+            "args_type": [
+                "void *",
+                "size_t",
+                "int",
+                "int",
+                "int",
+                "off_t"
+            ],
+            "fully_qualified": "mmap(void *, size_t, int, int, int, off_t)",
+            "headers": [
+                "<sys/mman.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukmmap/mmap.c"
+            ],
+            "name": "mmap",
+            "nb_args": 14,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "addr",
+                "length",
+                "advice"
+            ],
+            "args_type": [
+                "void*",
+                "size_t",
+                "int"
+            ],
+            "fully_qualified": "madvise(void*,size_t,int)",
+            "headers": [
+                "<sys/mman.h>"
+            ],
+            "location_file": [],
+            "name": "madvise",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "old_address",
+                "old_size",
+                "new_size",
+                "flags",
+                "arg"
+            ],
+            "args_type": [
+                "void*",
+                "size_t",
+                "size_t",
+                "int",
+                "unsigned long"
+            ],
+            "fully_qualified": "mremap(void*,size_t,size_t,int,unsigned long)",
+            "headers": [
+                "<sys/mman.h>"
+            ],
+            "location_file": [],
+            "name": "mremap",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 1
+        }
+    ]
+}

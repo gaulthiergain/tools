@@ -1,0 +1,160 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "filename",
+                "flags"
+            ],
+            "args_type": [
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "dlopen(const char *, int)",
+            "headers": [
+                "<dlfcn.h>",
+                "<stdio.h>",
+                "<stdlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-libdl/stubs.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-libdl/include/dlfcn.h"
+            ],
+            "name": "dlopen",
+            "nb_args": 2,
+            "return_value": "void *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "handle"
+            ],
+            "args_type": [
+                "void *"
+            ],
+            "fully_qualified": "dlclose(void *)",
+            "headers": [
+                "<dlfcn.h>",
+                "<stdio.h>",
+                "<stdlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-libdl/stubs.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-libdl/include/dlfcn.h"
+            ],
+            "name": "dlclose",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "handle",
+                "symbol"
+            ],
+            "args_type": [
+                "void *",
+                "const char *"
+            ],
+            "fully_qualified": "dlsym(void *, const char *)",
+            "headers": [
+                "<dlfcn.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-libdl/stubs.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-libdl/include/dlfcn.h"
+            ],
+            "name": "dlsym",
+            "nb_args": 1,
+            "return_value": "void *",
+            "usage": 2
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "dlerror()",
+            "headers": [
+                "<dlfcn.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-libdl/stubs.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-libdl/include/dlfcn.h"
+            ],
+            "name": "dlerror",
+            "nb_args": 0,
+            "return_value": "char *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "addr",
+                "info"
+            ],
+            "args_type": [
+                "const void *",
+                "Dl_info *"
+            ],
+            "fully_qualified": "dladdr(const void *, Dl_info *)",
+            "headers": [
+                "<dlfcn.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-libdl/stubs.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-libdl/include/dlfcn.h"
+            ],
+            "name": "dladdr",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "handle",
+                "request",
+                "info"
+            ],
+            "args_type": [
+                "void *",
+                "int",
+                "void *"
+            ],
+            "fully_qualified": "dlinfo(void *,int, void*)",
+            "headers": [
+                "<dlfcn.h>",
+                "<stdio.h>",
+                "<stdlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-libdl/stubs.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-libdl/include/dlfcn.h"
+            ],
+            "name": "dlinfo",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "handle",
+                "symbol",
+                "version"
+            ],
+            "args_type": [
+                "void *",
+                "const char *",
+                "const char *"
+            ],
+            "fully_qualified": "dlvsym(void *, const char *, const char *)",
+            "headers": [
+                "<dlfcn.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-libdl/stubs.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-libdl/include/dlfcn.h"
+            ],
+            "name": "dlvsym",
+            "nb_args": 1,
+            "return_value": "void *",
+            "usage": 2
+        }
+    ]
+}

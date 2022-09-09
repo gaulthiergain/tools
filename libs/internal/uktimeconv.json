@@ -1,0 +1,66 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "month",
+                "is_leap_year"
+            ],
+            "args_type": [
+                "int",
+                "int"
+            ],
+            "fully_qualified": "uktimeconv_days_in_month(int, int)",
+            "headers": [
+                "<uk/timeconv.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktimeconv/timeconv.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktimeconv/include/uk/timeconv.h"
+            ],
+            "name": "uktimeconv_days_in_month",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "year"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "uktimeconv_is_leap_year(int)",
+            "headers": [
+                "<uk/timeconv.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktimeconv/timeconv.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktimeconv/include/uk/timeconv.h"
+            ],
+            "name": "uktimeconv_is_leap_year",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dt"
+            ],
+            "args_type": [
+                "struct uktimeconv_bmkclock *"
+            ],
+            "fully_qualified": "uktimeconv_bmkclock_to_nsec(struct uktimeconv_bmkclock *)",
+            "headers": [
+                "<uk/timeconv.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktimeconv/timeconv.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktimeconv/include/uk/timeconv.h"
+            ],
+            "name": "uktimeconv_bmkclock_to_nsec",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        }
+    ]
+}

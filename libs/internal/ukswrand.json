@@ -1,0 +1,113 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "r",
+                "seedc",
+                "seedv"
+            ],
+            "args_type": [
+                "struct uk_swrand *",
+                "unsigned int",
+                "unsigned int *"
+            ],
+            "fully_qualified": "uk_swrand_init_r(struct uk_swrand *, unsigned int, const unsigned int *)",
+            "headers": [
+                "<uk/swrand.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukswrand/mwc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukswrand/chacha.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukswrand/include/uk/swrand.h"
+            ],
+            "name": "uk_swrand_init_r",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 3
+        },
+        {
+            "args_name": [
+                "r"
+            ],
+            "args_type": [
+                "struct uk_swrand *"
+            ],
+            "fully_qualified": "uk_swrand_randr_r(struct uk_swrand *)",
+            "headers": [
+                "<uk/swrand.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukswrand/mwc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukswrand/chacha.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukswrand/include/uk/swrand.h"
+            ],
+            "name": "uk_swrand_randr_r",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 3
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "uk_swrandr_gen_seed32()",
+            "headers": [
+                "<uk/swrand.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukswrand/swrand.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukswrand/include/uk/swrand.h"
+            ],
+            "name": "uk_swrandr_gen_seed32",
+            "nb_args": 0,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "buf",
+                "buflen"
+            ],
+            "args_type": [
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "uk_swrand_fill_buffer(void *, int)",
+            "headers": [
+                "<uk/swrand.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukswrand/swrand.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukswrand/include/uk/swrand.h"
+            ],
+            "name": "uk_swrand_fill_buffer",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "buf",
+                "buflen",
+                "flags"
+            ],
+            "args_type": [
+                "void *",
+                "int",
+                "unsigned int"
+            ],
+            "fully_qualified": "getrandom(void *, int, unsigned int)",
+            "headers": [
+                "<sys/random.h>",
+                "<uk/swrand.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukswrand/getrandom.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukswrand/include/sys/random.h"
+            ],
+            "name": "getrandom",
+            "nb_args": 3,
+            "return_value": "ssize_t",
+            "usage": 2
+        }
+    ]
+}

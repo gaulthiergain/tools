@@ -1,0 +1,24 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "a"
+            ],
+            "args_type": [
+                "struct uk_alloc *"
+            ],
+            "fully_qualified": "uk_schedcoop_init(struct uk_alloc *)",
+            "headers": [
+                "<uk/schedcoop.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukschedcoop/schedcoop.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukschedcoop/include/uk/schedcoop.h"
+            ],
+            "name": "uk_schedcoop_init",
+            "nb_args": 1,
+            "return_value": "struct uk_sched *",
+            "usage": 2
+        }
+    ]
+}

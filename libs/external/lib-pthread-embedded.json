@@ -1,0 +1,1289 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "attr"
+            ],
+            "args_type": [
+                "pthread_attr_t*"
+            ],
+            "fully_qualified": "pthread_attr_destroy(pthread_attr_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_destroy",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "state"
+            ],
+            "args_type": [
+                "const pthread_attr_t*",
+                "int*"
+            ],
+            "fully_qualified": "pthread_attr_getdetachstate(const pthread_attr_t*,int*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_getdetachstate",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "size"
+            ],
+            "args_type": [
+                "const pthread_attr_t*",
+                "size_t*"
+            ],
+            "fully_qualified": "pthread_attr_getguardsize(const pthread_attr_t*,size_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_getguardsize",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "state"
+            ],
+            "args_type": [
+                "pthread_attr_t*",
+                "int*"
+            ],
+            "fully_qualified": "pthread_attr_getinheritsched(const pthread_attr_t*,int*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_getinheritsched",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "param"
+            ],
+            "args_type": [
+                "const pthread_attr_t*",
+                "struct sched_param*"
+            ],
+            "fully_qualified": "pthread_attr_getschedparam(const pthread_attr_t*,struct sched_param*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_getschedparam",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "state"
+            ],
+            "args_type": [
+                "pthread_attr_t*",
+                "int*"
+            ],
+            "fully_qualified": "pthread_attr_getschedpolicy(const pthread_attr_t*,int*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_getschedpolicy",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "state"
+            ],
+            "args_type": [
+                "const pthread_attr_t*",
+                "int*"
+            ],
+            "fully_qualified": "pthread_attr_getscope(const pthread_attr_t*,int*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_getscope",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "t"
+            ],
+            "args_type": [
+                "const pthread_attr_t*",
+                "void**"
+            ],
+            "fully_qualified": "pthread_attr_getstackaddr(const pthread_attr_t*,void**)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_getstackaddr",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "size"
+            ],
+            "args_type": [
+                "const pthread_attr_t*",
+                "size_t*"
+            ],
+            "fully_qualified": "pthread_attr_getstacksize(const pthread_attr_t*,size_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_getstacksize",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr"
+            ],
+            "args_type": [
+                "pthread_attr_t*"
+            ],
+            "fully_qualified": "pthread_attr_init(pthread_attr_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_init",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "state"
+            ],
+            "args_type": [
+                "pthread_attr_t*",
+                "int"
+            ],
+            "fully_qualified": "pthread_attr_setdetachstate(pthread_attr_t*,int)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_setdetachstate",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "size"
+            ],
+            "args_type": [
+                "pthread_attr_t*",
+                "size_t"
+            ],
+            "fully_qualified": "pthread_attr_setguardsize(pthread_attr_t*,size_t)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_setguardsize",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "state"
+            ],
+            "args_type": [
+                "pthread_attr_t*",
+                "int"
+            ],
+            "fully_qualified": "pthread_attr_setinheritsched(pthread_attr_t*,int)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_setinheritsched",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "param"
+            ],
+            "args_type": [
+                "pthread_attr_t*",
+                "const struct sched_param*"
+            ],
+            "fully_qualified": "pthread_attr_setschedparam(pthread_attr_t*,const struct sched_param*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_setschedparam",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "state"
+            ],
+            "args_type": [
+                "pthread_attr_t*",
+                "int"
+            ],
+            "fully_qualified": "pthread_attr_setschedpolicy(pthread_attr_t*,int)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_setschedpolicy",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "state"
+            ],
+            "args_type": [
+                "pthread_attr_t*",
+                "int"
+            ],
+            "fully_qualified": "pthread_attr_setscope(pthread_attr_t*,int)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_setscope",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "t"
+            ],
+            "args_type": [
+                "pthread_attr_t*",
+                "void*"
+            ],
+            "fully_qualified": "pthread_attr_setstackaddr(pthread_attr_t*,void*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_setstackaddr",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "size"
+            ],
+            "args_type": [
+                "pthread_attr_t*",
+                "size_t"
+            ],
+            "fully_qualified": "pthread_attr_setstacksize(pthread_attr_t*,size_t)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_attr_setstacksize",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "thread"
+            ],
+            "args_type": [
+                "pthread_t"
+            ],
+            "fully_qualified": "pthread_cancel(pthread_t)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_cancel",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "t1",
+                "t2"
+            ],
+            "args_type": [
+                "void*",
+                "void*"
+            ],
+            "fully_qualified": "pthread_cleanup_push(void*,void*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_cleanup_push",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "state"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "pthread_cleanup_pop(int)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_cleanup_pop",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "cond"
+            ],
+            "args_type": [
+                "pthread_cond_t*"
+            ],
+            "fully_qualified": "pthread_cond_broadcast(pthread_cond_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_cond_broadcast",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "cond"
+            ],
+            "args_type": [
+                "pthread_cond_t*"
+            ],
+            "fully_qualified": "pthread_cond_destroy(pthread_cond_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_cond_destroy",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "cond",
+                "attr"
+            ],
+            "args_type": [
+                "pthread_cond_t*",
+                "const pthread_condattr_t*"
+            ],
+            "fully_qualified": "pthread_cond_init(pthread_cond_t*,const pthread_condattr_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_cond_init",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "cond"
+            ],
+            "args_type": [
+                "pthread_cond_t*"
+            ],
+            "fully_qualified": "pthread_cond_signal(pthread_cond_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_cond_signal",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "cond",
+                "pmutex",
+                "timespe"
+            ],
+            "args_type": [
+                "pthread_cond_t*",
+                "pthread_mutex_t*",
+                "const struct timespec*"
+            ],
+            "fully_qualified": "pthread_cond_timedwait(pthread_cond_t*,pthread_mutex_t*,const struct timespec*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_cond_timedwait",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "cond",
+                "pmutex"
+            ],
+            "args_type": [
+                "pthread_cond_t*",
+                "pthread_mutex_t*"
+            ],
+            "fully_qualified": "pthread_cond_wait(pthread_cond_t*,pthread_mutex_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_cond_wait",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr"
+            ],
+            "args_type": [
+                "pthread_condattr_t*"
+            ],
+            "fully_qualified": "pthread_condattr_destroy(pthread_condattr_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_condattr_destroy",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "state"
+            ],
+            "args_type": [
+                "const pthread_condattr_t*",
+                "int*"
+            ],
+            "fully_qualified": "pthread_condattr_getpshared(const pthread_condattr_t*,int*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_condattr_getpshared",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr"
+            ],
+            "args_type": [
+                "pthread_condattr_t*"
+            ],
+            "fully_qualified": "pthread_condattr_init(pthread_condattr_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_condattr_init",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "state"
+            ],
+            "args_type": [
+                "pthread_condattr_t*",
+                "int"
+            ],
+            "fully_qualified": "pthread_condattr_setpshared(pthread_condattr_t*,int)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_condattr_setpshared",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "thread",
+                "attr",
+                "start_routine",
+                "arg"
+            ],
+            "args_type": [
+                "pthread_t*",
+                "const pthread_attr_t*",
+                "void * (*)(void *)",
+                "void*"
+            ],
+            "fully_qualified": "pthread_create(pthread_t*,const pthread_attr_t*,void * (*)(void *),void*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_create",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "thread"
+            ],
+            "args_type": [
+                "pthread_t"
+            ],
+            "fully_qualified": "pthread_detach(pthread_t)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_detach",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "thread",
+                "thread"
+            ],
+            "args_type": [
+                "pthread_t",
+                "pthread_t"
+            ],
+            "fully_qualified": "pthread_equal(pthread_t,pthread_t)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_equal",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "t"
+            ],
+            "args_type": [
+                "void*"
+            ],
+            "fully_qualified": "pthread_exit(void*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_exit",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "pthread_getconcurrency()",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_getconcurrency",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "thread",
+                "state",
+                "param"
+            ],
+            "args_type": [
+                "pthread_t",
+                "int*",
+                "struct sched_param*"
+            ],
+            "fully_qualified": "pthread_getschedparam(pthread_t,int*,struct sched_param*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_getschedparam",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "key"
+            ],
+            "args_type": [
+                "pthread_key_t"
+            ],
+            "fully_qualified": "pthread_getspecific(pthread_key_t)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_getspecific",
+            "nb_args": 1,
+            "return_value": "void*",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "thread",
+                "retval"
+            ],
+            "args_type": [
+                "pthread_t",
+                "void**"
+            ],
+            "fully_qualified": "pthread_join(pthread_t,void**)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_join",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "key",
+                "destructor"
+            ],
+            "args_type": [
+                "pthread_key_t*",
+                "void * (*)(void *)"
+            ],
+            "fully_qualified": "pthread_key_create(pthread_key_t*,void * (*)(void *))",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_key_create",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "key"
+            ],
+            "args_type": [
+                "pthread_key_t"
+            ],
+            "fully_qualified": "pthread_key_delete(pthread_key_t)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_key_delete",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pmutex"
+            ],
+            "args_type": [
+                "pthread_mutex_t*"
+            ],
+            "fully_qualified": "pthread_mutex_destroy(pthread_mutex_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_mutex_destroy",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pmutex",
+                "attr"
+            ],
+            "args_type": [
+                "pthread_mutex_t*",
+                "const pthread_mutexattr_t*"
+            ],
+            "fully_qualified": "pthread_mutex_init(pthread_mutex_t*,const pthread_mutexattr_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_mutex_init",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pmutex"
+            ],
+            "args_type": [
+                "pthread_mutex_t*"
+            ],
+            "fully_qualified": "pthread_mutex_lock(pthread_mutex_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_mutex_lock",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pmutex"
+            ],
+            "args_type": [
+                "pthread_mutex_t*"
+            ],
+            "fully_qualified": "pthread_mutex_trylock(pthread_mutex_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_mutex_trylock",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pmutex"
+            ],
+            "args_type": [
+                "pthread_mutex_t*"
+            ],
+            "fully_qualified": "pthread_mutex_unlock(pthread_mutex_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_mutex_unlock",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr"
+            ],
+            "args_type": [
+                "pthread_mutexattr_t*"
+            ],
+            "fully_qualified": "pthread_mutexattr_destroy(pthread_mutexattr_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_mutexattr_destroy",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "state"
+            ],
+            "args_type": [
+                "const pthread_mutexattr_t*",
+                "int*"
+            ],
+            "fully_qualified": "pthread_mutexattr_getpshared(const pthread_mutexattr_t*,int*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_mutexattr_getpshared",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "state"
+            ],
+            "args_type": [
+                "pthread_mutexattr_t*",
+                "int*"
+            ],
+            "fully_qualified": "pthread_mutexattr_gettype(pthread_mutexattr_t*,int*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_mutexattr_gettype",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr"
+            ],
+            "args_type": [
+                "pthread_mutexattr_t*"
+            ],
+            "fully_qualified": "pthread_mutexattr_init(pthread_mutexattr_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_mutexattr_init",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "state"
+            ],
+            "args_type": [
+                "pthread_mutexattr_t*",
+                "int"
+            ],
+            "fully_qualified": "pthread_mutexattr_setpshared(pthread_mutexattr_t*,int)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_mutexattr_setpshared",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "state"
+            ],
+            "args_type": [
+                "pthread_mutexattr_t*",
+                "int"
+            ],
+            "fully_qualified": "pthread_mutexattr_settype(pthread_mutexattr_t*,int)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_mutexattr_settype",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "once_control",
+                "init"
+            ],
+            "args_type": [
+                "pthread_once_t*",
+                "void * (*)(void *)"
+            ],
+            "fully_qualified": "pthread_once(pthread_once_t*,void * (*)(void *))",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_once",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "lock"
+            ],
+            "args_type": [
+                "pthread_rwlock_t*"
+            ],
+            "fully_qualified": "pthread_rwlock_destroy(pthread_rwlock_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_rwlock_destroy",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "lock",
+                "attr"
+            ],
+            "args_type": [
+                "pthread_rwlock_t*",
+                "const pthread_rwlockattr_t*"
+            ],
+            "fully_qualified": "pthread_rwlock_init(pthread_rwlock_t*,const pthread_rwlockattr_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_rwlock_init",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "lock"
+            ],
+            "args_type": [
+                "pthread_rwlock_t*"
+            ],
+            "fully_qualified": "pthread_rwlock_rdlock(pthread_rwlock_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_rwlock_rdlock",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "lock"
+            ],
+            "args_type": [
+                "pthread_rwlock_t*"
+            ],
+            "fully_qualified": "pthread_rwlock_tryrdlock(pthread_rwlock_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_rwlock_tryrdlock",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "lock"
+            ],
+            "args_type": [
+                "pthread_rwlock_t*"
+            ],
+            "fully_qualified": "pthread_rwlock_trywrlock(pthread_rwlock_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_rwlock_trywrlock",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "lock"
+            ],
+            "args_type": [
+                "pthread_rwlock_t*"
+            ],
+            "fully_qualified": "pthread_rwlock_unlock(pthread_rwlock_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_rwlock_unlock",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "lock"
+            ],
+            "args_type": [
+                "pthread_rwlock_t*"
+            ],
+            "fully_qualified": "pthread_rwlock_wrlock(pthread_rwlock_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_rwlock_wrlock",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr"
+            ],
+            "args_type": [
+                "pthread_rwlockattr_t*"
+            ],
+            "fully_qualified": "pthread_rwlockattr_destroy(pthread_rwlockattr_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_rwlockattr_destroy",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "state"
+            ],
+            "args_type": [
+                "const pthread_rwlockattr_t*",
+                "int*"
+            ],
+            "fully_qualified": "pthread_rwlockattr_getpshared(const pthread_rwlockattr_t*,int*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_rwlockattr_getpshared",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr"
+            ],
+            "args_type": [
+                "pthread_rwlockattr_t*"
+            ],
+            "fully_qualified": "pthread_rwlockattr_init(pthread_rwlockattr_t*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_rwlockattr_init",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "attr",
+                "state"
+            ],
+            "args_type": [
+                "pthread_rwlockattr_t*",
+                "int"
+            ],
+            "fully_qualified": "pthread_rwlockattr_setpshared(pthread_rwlockattr_t*,int)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_rwlockattr_setpshared",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "pthread_self()",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_self",
+            "nb_args": 1,
+            "return_value": "pthread_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "arg_int",
+                "state"
+            ],
+            "args_type": [
+                "int",
+                "int*"
+            ],
+            "fully_qualified": "pthread_setcancelstate(int,int*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_setcancelstate",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "arg_int",
+                "state"
+            ],
+            "args_type": [
+                "int",
+                "int*"
+            ],
+            "fully_qualified": "pthread_setcanceltype(int,int*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_setcanceltype",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "state"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "pthread_setconcurrency(int)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_setconcurrency",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "thread",
+                "arg_int",
+                "param"
+            ],
+            "args_type": [
+                "pthread_t",
+                "int",
+                "const struct sched_param*"
+            ],
+            "fully_qualified": "pthread_setschedparam(pthread_t,int,const struct sched_param*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_setschedparam",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "key",
+                "value"
+            ],
+            "args_type": [
+                "pthread_key_t",
+                "const void*"
+            ],
+            "fully_qualified": "pthread_setspecific(pthread_key_t,const void*)",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_setspecific",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "pthread_testcancel()",
+            "headers": [
+                "<pthread.h>"
+            ],
+            "location_file": [],
+            "name": "pthread_testcancel",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        }
+    ]
+}

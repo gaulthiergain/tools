@@ -1,0 +1,172 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "a",
+                "size"
+            ],
+            "args_type": [
+                "struct uk_alloc *",
+                "int"
+            ],
+            "fully_qualified": "uk_mbox_create(struct uk_alloc *, int)",
+            "headers": [
+                "<uk/mbox.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukmpi/mbox.c"
+            ],
+            "name": "uk_mbox_create",
+            "nb_args": 2,
+            "return_value": "struct uk_mbox *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "a",
+                "m"
+            ],
+            "args_type": [
+                "struct uk_alloc *",
+                "struct uk_mbox *"
+            ],
+            "fully_qualified": "uk_mbox_free(struct uk_alloc *, struct uk_mbox *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukmpi/mbox.c"
+            ],
+            "name": "uk_mbox_free",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "m",
+                "msg"
+            ],
+            "args_type": [
+                "struct uk_mbox *",
+                "void *"
+            ],
+            "fully_qualified": "uk_mbox_post(struct uk_mbox *, void *)",
+            "headers": [
+                "<uk/mbox.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukmpi/mbox.c"
+            ],
+            "name": "uk_mbox_post",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "m",
+                "msg"
+            ],
+            "args_type": [
+                "struct uk_mbox *",
+                "void *"
+            ],
+            "fully_qualified": "uk_mbox_post_try(struct uk_mbox *, void *)",
+            "headers": [
+                "<uk/mbox.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukmpi/mbox.c"
+            ],
+            "name": "uk_mbox_post_try",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "m",
+                "msg",
+                "timeout"
+            ],
+            "args_type": [
+                "struct uk_mbox *",
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "uk_mbox_post_to(struct uk_mbox *, void *, int)",
+            "headers": [
+                "<uk/mbox.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukmpi/mbox.c"
+            ],
+            "name": "uk_mbox_post_to",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "m",
+                "msg"
+            ],
+            "args_type": [
+                "struct uk_mbox *",
+                "void **"
+            ],
+            "fully_qualified": "uk_mbox_recv(struct uk_mbox *, void **)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukmpi/mbox.c"
+            ],
+            "name": "uk_mbox_recv",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "m",
+                "msg"
+            ],
+            "args_type": [
+                "struct uk_mbox *",
+                "void **"
+            ],
+            "fully_qualified": "uk_mbox_recv_try(struct uk_mbox *, void **)",
+            "headers": [
+                "<uk/mbox.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukmpi/mbox.c"
+            ],
+            "name": "uk_mbox_recv_try",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "m",
+                "msg",
+                "timeout"
+            ],
+            "args_type": [
+                "struct uk_mbox *",
+                "void **",
+                "int"
+            ],
+            "fully_qualified": "uk_mbox_recv_to(struct uk_mbox *, void **, int)",
+            "headers": [
+                "<uk/mbox.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukmpi/mbox.c"
+            ],
+            "name": "uk_mbox_recv_to",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        }
+    ]
+}

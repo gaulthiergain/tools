@@ -2,3 +2,6 @@
 tools
 *.patch
 *.diff
+/transfer.sh
+/transfer_link.sh
+/lds/

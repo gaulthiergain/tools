@@ -1,0 +1,2392 @@
+{
+    "functions": [
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "sync()",
+            "headers": [
+                "<fcntl.h>",
+                "<unistd.h>",
+                "<sys/vfs.h>",
+                "<vfscore/dentry.h>",
+                "<vfscore/file.h>",
+                "<vfscore/fs.h>",
+                "<vfscore/mount.h>",
+                "<vfscore/prex.h>",
+                "<vfscore/uio.h>",
+                "<vfscore/vnode.h>"
+            ],
+            "location_file": [],
+            "name": "sync",
+            "nb_args": 0,
+            "return_value": "",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "dentry_init()",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vfs.h",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/dentry.c"
+            ],
+            "name": "dentry_init",
+            "nb_args": 0,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fd",
+                "out_fp"
+            ],
+            "args_type": [
+                "int",
+                "struct vfscore_file **"
+            ],
+            "fully_qualified": "fget(int, struct vfscore_file **)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vfs.h",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/fd.c"
+            ],
+            "name": "fget",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "parent_dp",
+                "vp",
+                "path"
+            ],
+            "args_type": [
+                "struct dentry *",
+                "struct vnode *",
+                "const char *"
+            ],
+            "fully_qualified": "dentry_alloc(struct dentry *, struct vnode *, const char *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/dentry.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/dentry.h"
+            ],
+            "name": "dentry_alloc",
+            "nb_args": 3,
+            "return_value": "struct dentry *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "mp",
+                "path"
+            ],
+            "args_type": [
+                "struct mount *",
+                "char *"
+            ],
+            "fully_qualified": "dentry_lookup(struct mount *, char *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/dentry.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/dentry.h"
+            ],
+            "name": "dentry_lookup",
+            "nb_args": 2,
+            "return_value": "struct dentry *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dp",
+                "parent_dp",
+                "path"
+            ],
+            "args_type": [
+                "struct dentry *",
+                "struct dentry *",
+                "char *"
+            ],
+            "fully_qualified": "dentry_move(struct dentry *, struct dentry *, char *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/dentry.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/dentry.h"
+            ],
+            "name": "dentry_move",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dp"
+            ],
+            "args_type": [
+                "struct dentry *"
+            ],
+            "fully_qualified": "dentry_remove(struct dentry *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/dentry.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/dentry.h"
+            ],
+            "name": "dentry_remove",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dp"
+            ],
+            "args_type": [
+                "struct dentry *"
+            ],
+            "fully_qualified": "dref(struct dentry *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/dentry.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/dentry.h"
+            ],
+            "name": "dref",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dp"
+            ],
+            "args_type": [
+                "struct dentry *"
+            ],
+            "fully_qualified": "drele(struct dentry *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/dentry.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/dentry.h"
+            ],
+            "name": "drele",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "pathname",
+                "flags"
+            ],
+            "args_type": [
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "open(const char *, int, ...)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "open",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dirfd",
+                "pathname",
+                "flags"
+            ],
+            "args_type": [
+                "int",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "openat(int, const char *, int, ...)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/stat.h>",
+                "<fcntl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "openat",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pathname",
+                "mode"
+            ],
+            "args_type": [
+                "const char *",
+                "mode_t"
+            ],
+            "fully_qualified": "creat(const char *, mode_t)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/stat.h>",
+                "<fcntl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "creat",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "ver",
+                "pathname",
+                "mode",
+                "dev"
+            ],
+            "args_type": [
+                "int",
+                "const char *",
+                "mode_t",
+                "dev_t *"
+            ],
+            "fully_qualified": "__xmknod(int, const char *, mode_t, dev_t *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "__xmknod",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "buf",
+                "count",
+                "offset"
+            ],
+            "args_type": [
+                "int",
+                "void *",
+                "int",
+                "off_t"
+            ],
+            "fully_qualified": "pread(int, void *, int, off_t)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "pread",
+            "nb_args": 4,
+            "return_value": "ssize_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "buf",
+                "count",
+                "offset"
+            ],
+            "args_type": [
+                "int",
+                "const void *",
+                "int",
+                "off_t"
+            ],
+            "fully_qualified": "pwrite(int, const void *, int, off_t)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "pwrite",
+            "nb_args": 4,
+            "return_value": "ssize_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dirfd",
+                "path",
+                "st",
+                "flags"
+            ],
+            "args_type": [
+                "int",
+                "const char *",
+                "struct stat *",
+                "int"
+            ],
+            "fully_qualified": "fstatat(int, const char *, struct stat *, int)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/stat.h>",
+                "<unistd.h>",
+                "<fcntl.h>",
+                "<time.h>",
+                "<stdio.h>",
+                "<stdlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "fstatat",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "path"
+            ],
+            "args_type": [
+                "const char *"
+            ],
+            "fully_qualified": "opendir(const char *)",
+            "headers": [
+                "<sys/types.h>",
+                "<dirent.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "opendir",
+            "nb_args": 1,
+            "return_value": "int *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "fdopendir(int)",
+            "headers": [
+                "<sys/types.h>",
+                "<dirent.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "fdopendir",
+            "nb_args": 1,
+            "return_value": "int *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dirp"
+            ],
+            "args_type": [
+                "DIR *"
+            ],
+            "fully_qualified": "dirfd(DIR *)",
+            "headers": [
+                "<sys/types.h>",
+                "<dirent.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "dirfd",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dir"
+            ],
+            "args_type": [
+                "DIR *"
+            ],
+            "fully_qualified": "closedir(DIR *)",
+            "headers": [
+                "<sys/types.h>",
+                "<dirent.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "closedir",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dir"
+            ],
+            "args_type": [
+                "DIR *"
+            ],
+            "fully_qualified": "readdir(DIR *)",
+            "headers": [
+                "<dirent.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "readdir",
+            "nb_args": 1,
+            "return_value": "struct dirent *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dir",
+                "entry",
+                "result"
+            ],
+            "args_type": [
+                "DIR *",
+                "struct dirent *",
+                "struct dirent **"
+            ],
+            "fully_qualified": "readdir_r(DIR *, struct dirent *, struct dirent **)",
+            "headers": [
+                "<dirent.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "readdir_r",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dir",
+                "entry",
+                "result"
+            ],
+            "args_type": [
+                "int *",
+                "struct dirent64 *",
+                "struct dirent64 **"
+            ],
+            "fully_qualified": "readdir64_r(int *, struct dirent64 *, struct dirent64 **)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "readdir64_r",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dir"
+            ],
+            "args_type": [
+                "int *"
+            ],
+            "fully_qualified": "readdir64(int *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "readdir64",
+            "nb_args": 1,
+            "return_value": "struct dirent *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dirp"
+            ],
+            "args_type": [
+                "DIR *"
+            ],
+            "fully_qualified": "rewinddir(DIR *)",
+            "headers": [
+                "<sys/types.h>",
+                "<dirent.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "rewinddir",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dirp"
+            ],
+            "args_type": [
+                "DIR *"
+            ],
+            "fully_qualified": "telldir(DIR *)",
+            "headers": [
+                "<dirent.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "telldir",
+            "nb_args": 1,
+            "return_value": "long",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dirp",
+                "loc"
+            ],
+            "args_type": [
+                "DIR *",
+                "long"
+            ],
+            "fully_qualified": "seekdir(DIR *, long)",
+            "headers": [
+                "<dirent.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "seekdir",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "ver"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "__xstat(int)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "__xstat",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "ver"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "__lxstat(int)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "__lxstat",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pathname",
+                "buf"
+            ],
+            "args_type": [
+                "const char *",
+                "struct statvfs *"
+            ],
+            "fully_qualified": "statvfs(const char *, struct statvfs *)",
+            "headers": [
+                "<sys/statvfs.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "statvfs",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "buf"
+            ],
+            "args_type": [
+                "int",
+                "struct statvfs *"
+            ],
+            "fully_qualified": "fstatvfs(int, struct statvfs *)",
+            "headers": [
+                "<sys/statvfs.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "fstatvfs",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "oldfd"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "dup(int)",
+            "headers": [
+                "<unistd.h>",
+                "<fcntl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "dup",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "cmd"
+            ],
+            "args_type": [
+                "int",
+                "int"
+            ],
+            "fully_qualified": "fcntl(int, int, ...)",
+            "headers": [
+                "<unistd.h>",
+                "<fcntl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "fcntl",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pathname",
+                "mode"
+            ],
+            "args_type": [
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "euidaccess(const char *, int)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "euidaccess",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "times"
+            ],
+            "args_type": [
+                "int",
+                "const struct timeval*"
+            ],
+            "fully_qualified": "futimes(int, const struct timeval *)",
+            "headers": [
+                "<sys/time.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "futimes",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "times"
+            ],
+            "args_type": [
+                "int",
+                "const struct timespec *"
+            ],
+            "fully_qualified": "futimens(int, const struct timespec *)",
+            "headers": [
+                "<fcntl.h>",
+                "<sys/stat.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "futimens",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pathname",
+                "times"
+            ],
+            "args_type": [
+                "const char *",
+                "const struct timeval*"
+            ],
+            "fully_qualified": "lutimes(const char *, const struct timeval *)",
+            "headers": [
+                "<sys/time.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "lutimes",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "offset",
+                "len",
+                "advice"
+            ],
+            "args_type": [
+                "int",
+                "off_t",
+                "off_t",
+                "int"
+            ],
+            "fully_qualified": "posix_fadvise(int)",
+            "headers": [
+                "<fcntl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/main.c"
+            ],
+            "name": "posix_fadvise",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "close(int)",
+            "headers": [],
+            "location_file": [],
+            "name": "close",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pathname",
+                "mode",
+                "dev"
+            ],
+            "args_type": [
+                "const char*",
+                "mode_t",
+                "dev_t"
+            ],
+            "fully_qualified": "mknod(const char*,mode_t,dev_t)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/stat.h>",
+                "<fcntl.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "mknod",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "offset",
+                "whence"
+            ],
+            "args_type": [
+                "int",
+                "off_t",
+                "int"
+            ],
+            "fully_qualified": "lseek(int,off_t,int)",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "lseek",
+            "nb_args": 3,
+            "return_value": "off_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "buf",
+                "count"
+            ],
+            "args_type": [
+                "int",
+                "void *",
+                "size_t"
+            ],
+            "fully_qualified": "read(int,void *,size_t)",
+            "headers": [],
+            "location_file": [],
+            "name": "read",
+            "nb_args": 3,
+            "return_value": "ssize_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "iov",
+                "iovcnt",
+                "offset"
+            ],
+            "args_type": [
+                "int",
+                "const struct iovec*",
+                "int",
+                "off_t"
+            ],
+            "fully_qualified": "preadv(int,const struct iovec*,int,off_t)",
+            "headers": [
+                "<sys/uio.h>"
+            ],
+            "location_file": [],
+            "name": "preadv",
+            "nb_args": 4,
+            "return_value": "ssize_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "iov",
+                "iovcnt"
+            ],
+            "args_type": [
+                "int",
+                "const struct iovec *",
+                "int"
+            ],
+            "fully_qualified": "readv(int,const struct iovec *,int)",
+            "headers": [
+                "<sys/uio.h>"
+            ],
+            "location_file": [],
+            "name": "readv",
+            "nb_args": 3,
+            "return_value": "ssize_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "buf",
+                "count"
+            ],
+            "args_type": [
+                "int",
+                "const void *",
+                "size_t"
+            ],
+            "fully_qualified": "write(int,const void *,size_t)",
+            "headers": [],
+            "location_file": [],
+            "name": "write",
+            "nb_args": 3,
+            "return_value": "ssize_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "iov",
+                "iovcnt",
+                "offset"
+            ],
+            "args_type": [
+                "int",
+                "const struct iovec*",
+                "int",
+                "off_t"
+            ],
+            "fully_qualified": "pwritev(int,const struct iovec*,int,off_t)",
+            "headers": [
+                "<sys/uio.h>"
+            ],
+            "location_file": [],
+            "name": "pwritev",
+            "nb_args": 4,
+            "return_value": "ssize_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "vec",
+                "vlen"
+            ],
+            "args_type": [
+                "int",
+                "const struct iovec *",
+                "int"
+            ],
+            "fully_qualified": "writev(int,const struct iovec *,int)",
+            "headers": [
+                "<sys/uio.h>"
+            ],
+            "location_file": [],
+            "name": "writev",
+            "nb_args": 3,
+            "return_value": "ssize_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "fsync(int)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "fsync",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "fdatasync(int)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "fdatasync",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dirfd",
+                "path",
+                "st",
+                "flags"
+            ],
+            "args_type": [
+                "int",
+                "const char*",
+                "struct stat*",
+                "int"
+            ],
+            "fully_qualified": "newfstatat(int,const char*,struct stat*,int)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/stat.h>",
+                "<unistd.h>",
+                "<fcntl.h>",
+                "<time.h>",
+                "<stdio.h>",
+                "<stdlib.h>"
+            ],
+            "location_file": [],
+            "name": "newfstatat",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "operation"
+            ],
+            "args_type": [
+                "int",
+                "int"
+            ],
+            "fully_qualified": "flock(int,int)",
+            "headers": [
+                "<sys/file.h>"
+            ],
+            "location_file": [],
+            "name": "flock",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "dirp",
+                "count"
+            ],
+            "args_type": [
+                "int",
+                "struct dirent*",
+                "size_t"
+            ],
+            "fully_qualified": "getdents(int,struct dirent*,size_t)",
+            "headers": [
+                "<dirent.h>",
+                "<fcntl.h>",
+                "<stdio.h>",
+                "<unistd.h>",
+                "<stdlib.h>",
+                "<sys/stat.h>"
+            ],
+            "location_file": [],
+            "name": "getdents",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pathname",
+                "mode"
+            ],
+            "args_type": [
+                "const char*",
+                "mode_t"
+            ],
+            "fully_qualified": "mkdir(const char*,mode_t)",
+            "headers": [
+                "<sys/stat.h>",
+                "<sys/types.h>",
+                "<fcntl.h>"
+            ],
+            "location_file": [],
+            "name": "mkdir",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pathname"
+            ],
+            "args_type": [
+                "const char*"
+            ],
+            "fully_qualified": "rmdir(const char*)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "rmdir",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "oldpath",
+                "newpath"
+            ],
+            "args_type": [
+                "const char*",
+                "const char*"
+            ],
+            "fully_qualified": "rename(const char*,const char*)",
+            "headers": [],
+            "location_file": [],
+            "name": "rename",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pathname"
+            ],
+            "args_type": [
+                "const char*"
+            ],
+            "fully_qualified": "chdir(const char*)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "chdir",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "fchdir(int)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "fchdir",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "oldpath",
+                "newpath"
+            ],
+            "args_type": [
+                "const char*",
+                "const char*"
+            ],
+            "fully_qualified": "link(const char*,const char*)",
+            "headers": [
+                "<unistd.h>",
+                "<fcntl.h>",
+                "<sys/types.h>",
+                "<sys/stat.h>",
+                "<limits.h>",
+                "<stdio.h>",
+                "<stdlib.h>"
+            ],
+            "location_file": [],
+            "name": "link",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "oldpath",
+                "newpath"
+            ],
+            "args_type": [
+                "const char*",
+                "const char*"
+            ],
+            "fully_qualified": "symlink(const char*,const char*)",
+            "headers": [
+                "<unistd.h>",
+                "<fcntl.h>"
+            ],
+            "location_file": [],
+            "name": "symlink",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pathname"
+            ],
+            "args_type": [
+                "const char*"
+            ],
+            "fully_qualified": "unlink(const char*)",
+            "headers": [
+                "<sys/mman.h>",
+                "<sys/stat.h>",
+                "<fcntl.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "unlink",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pathname",
+                "st"
+            ],
+            "args_type": [
+                "const char*",
+                "struct stat*"
+            ],
+            "fully_qualified": "stat(const char*,struct stat*)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/stat.h>",
+                "<unistd.h>",
+                "<fcntl.h>",
+                "<time.h>",
+                "<stdio.h>",
+                "<stdlib.h>"
+            ],
+            "location_file": [],
+            "name": "stat",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pathname",
+                "st"
+            ],
+            "args_type": [
+                "const char*",
+                "struct stat*"
+            ],
+            "fully_qualified": "lstat(const char*,struct stat*)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/stat.h>",
+                "<unistd.h>",
+                "<fcntl.h>",
+                "<time.h>",
+                "<stdio.h>",
+                "<stdlib.h>"
+            ],
+            "location_file": [],
+            "name": "lstat",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pathname",
+                "buf"
+            ],
+            "args_type": [
+                "const char*",
+                "struct statfs*"
+            ],
+            "fully_qualified": "statfs(const char*,struct statfs*)",
+            "headers": [
+                "<sys/vfs.h>"
+            ],
+            "location_file": [],
+            "name": "statfs",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "buf"
+            ],
+            "args_type": [
+                "int",
+                "struct statfs*"
+            ],
+            "fully_qualified": "fstatfs(int,struct statfs*)",
+            "headers": [
+                "<sys/vfs.h>"
+            ],
+            "location_file": [],
+            "name": "fstatfs",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "path",
+                "size"
+            ],
+            "args_type": [
+                "char*",
+                "size_t"
+            ],
+            "fully_qualified": "getcwd(char*,size_t)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "getcwd",
+            "nb_args": 2,
+            "return_value": "char*",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "oldfd",
+                "newfd",
+                "flags"
+            ],
+            "args_type": [
+                "int",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "dup3(int,int,int)",
+            "headers": [
+                "<unistd.h>",
+                "<fcntl.h>"
+            ],
+            "location_file": [],
+            "name": "dup3",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "oldfd",
+                "newfd"
+            ],
+            "args_type": [
+                "int",
+                "int"
+            ],
+            "fully_qualified": "dup2(int,int)",
+            "headers": [
+                "<unistd.h>",
+                "<fcntl.h>"
+            ],
+            "location_file": [],
+            "name": "dup2",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pathname",
+                "mode"
+            ],
+            "args_type": [
+                "const char*",
+                "int"
+            ],
+            "fully_qualified": "access(const char*,int)",
+            "headers": [],
+            "location_file": [],
+            "name": "access",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dirfd",
+                "pathname",
+                "mode",
+                "flags"
+            ],
+            "args_type": [
+                "int",
+                "const char*",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "faccessat(int,const char*,int,int)",
+            "headers": [
+                "<unistd.h>",
+                "<fcntl.h>"
+            ],
+            "location_file": [],
+            "name": "faccessat",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pathname",
+                "length"
+            ],
+            "args_type": [
+                "const char*",
+                "off_t"
+            ],
+            "fully_qualified": "truncate(const char*,off_t)",
+            "headers": [
+                "<unistd.h>",
+                "<sys/types.h>"
+            ],
+            "location_file": [],
+            "name": "truncate",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "length"
+            ],
+            "args_type": [
+                "int",
+                "off_t"
+            ],
+            "fully_qualified": "ftruncate(int,off_t)",
+            "headers": [
+                "<unistd.h>",
+                "<sys/types.h>"
+            ],
+            "location_file": [],
+            "name": "ftruncate",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dirfd",
+                "pathname",
+                "times",
+                "flags"
+            ],
+            "args_type": [
+                "int",
+                "const char*",
+                "const struct timespec*",
+                "int"
+            ],
+            "fully_qualified": "utimensat(int,const char*,const struct timespec*,int)",
+            "headers": [
+                "<fcntl.h>",
+                "<sys/stat.h>"
+            ],
+            "location_file": [],
+            "name": "utimensat",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pathname",
+                "times"
+            ],
+            "args_type": [
+                "const char*",
+                "const struct timeval*"
+            ],
+            "fully_qualified": "utimes(const char*,const struct timeval*)",
+            "headers": [
+                "<sys/types.h>",
+                "<utime.h>",
+                "<sys/time.h>"
+            ],
+            "location_file": [],
+            "name": "utimes",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pathname",
+                "mode"
+            ],
+            "args_type": [
+                "const char*",
+                "mode_t"
+            ],
+            "fully_qualified": "chmod(const char*,mode_t)",
+            "headers": [
+                "<sys/stat.h>",
+                "<fcntl.h>"
+            ],
+            "location_file": [],
+            "name": "chmod",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "mode"
+            ],
+            "args_type": [
+                "int",
+                "mode_t"
+            ],
+            "fully_qualified": "fchmod(int,mode_t)",
+            "headers": [
+                "<sys/stat.h>",
+                "<fcntl.h>"
+            ],
+            "location_file": [],
+            "name": "fchmod",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "owner",
+                "group"
+            ],
+            "args_type": [
+                "int",
+                "uid_t",
+                "gid_t"
+            ],
+            "fully_qualified": "fchown(int,uid_t,gid_t)",
+            "headers": [
+                "<unistd.h>",
+                "<fcntl.h>",
+                "<pwd.h>",
+                "<stdio.h>",
+                "<stdlib.h>"
+            ],
+            "location_file": [],
+            "name": "fchown",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "path",
+                "owner",
+                "group"
+            ],
+            "args_type": [
+                "const char*",
+                "uid_t",
+                "gid_t"
+            ],
+            "fully_qualified": "chown(const char*,uid_t,gid_t)",
+            "headers": [
+                "<unistd.h>",
+                "<fcntl.h>",
+                "<pwd.h>",
+                "<stdio.h>",
+                "<stdlib.h>"
+            ],
+            "location_file": [],
+            "name": "chown",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "path",
+                "owner",
+                "group"
+            ],
+            "args_type": [
+                "const char*",
+                "uid_t",
+                "gid_t"
+            ],
+            "fully_qualified": "lchown(const char*,uid_t,gid_t)",
+            "headers": [
+                "<unistd.h>",
+                "<fcntl.h>",
+                "<pwd.h>",
+                "<stdio.h>",
+                "<stdlib.h>"
+            ],
+            "location_file": [],
+            "name": "lchown",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "newmask"
+            ],
+            "args_type": [
+                "mode_t"
+            ],
+            "fully_qualified": "umask(mode_t)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/stat.h>"
+            ],
+            "location_file": [],
+            "name": "umask",
+            "nb_args": 1,
+            "return_value": "mode_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "path"
+            ],
+            "args_type": [
+                "const char*"
+            ],
+            "fully_qualified": "chroot(const char*)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "chroot",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "request",
+                "arg"
+            ],
+            "args_type": [
+                "int",
+                "unsigned long int",
+                "void*"
+            ],
+            "fully_qualified": "ioctl(int,unsigned long int,void*)",
+            "headers": [
+                "<sys/ioctl.h>",
+                "<stdlib.h>",
+                "<unistd.h>",
+                "<stdio.h>",
+                "<fcntl.h>",
+                "<string.h>",
+                "<sys/stat.h>",
+                "<errno.h>"
+            ],
+            "location_file": [],
+            "name": "ioctl",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pipefd"
+            ],
+            "args_type": [
+                "int *"
+            ],
+            "fully_qualified": "pipe(int *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/pipe.c"
+            ],
+            "name": "pipe",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "path",
+                "mode"
+            ],
+            "args_type": [
+                "const char *",
+                "mode_t"
+            ],
+            "fully_qualified": "mkfifo(const char *)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/stat.h>",
+                "<fcntl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/pipe.c"
+            ],
+            "name": "mkfifo",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pipefd",
+                "flags"
+            ],
+            "args_type": [
+                "int*",
+                "int"
+            ],
+            "fully_qualified": "pipe2(int*,int)",
+            "headers": [
+                "<unistd.h>",
+                "<fcntl.h>",
+                "<sys/types.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<string.h>"
+            ],
+            "location_file": [],
+            "name": "pipe2",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "vfscore_alloc_fd()",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/fd.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/file.h"
+            ],
+            "name": "vfscore_alloc_fd",
+            "nb_args": 0,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fd"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "vfscore_put_fd(int)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/fd.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/file.h"
+            ],
+            "name": "vfscore_put_fd",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fd",
+                "file"
+            ],
+            "args_type": [
+                "int",
+                "struct vfscore_file *"
+            ],
+            "fully_qualified": "vfscore_install_fd(int, struct vfscore_file *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/fd.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/file.h"
+            ],
+            "name": "vfscore_install_fd",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fd"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "vfscore_get_file(int)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/fd.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/file.h"
+            ],
+            "name": "vfscore_get_file",
+            "nb_args": 1,
+            "return_value": "struct vfscore_file *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file"
+            ],
+            "args_type": [
+                "struct vfscore_file *"
+            ],
+            "fully_qualified": "vfscore_put_file(struct vfscore_file *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/fd.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/file.h"
+            ],
+            "name": "vfscore_put_file",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "cp",
+                "n",
+                "uio"
+            ],
+            "args_type": [
+                "void *",
+                "int",
+                "struct uio *"
+            ],
+            "fully_qualified": "vfscore_uiomove(void *, int, struct uio *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/subr_uio.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/uio.h"
+            ],
+            "name": "vfscore_uiomove",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "mp",
+                "ino"
+            ],
+            "args_type": [
+                "struct mount *",
+                "uint64_t"
+            ],
+            "fully_qualified": "vn_lookup(struct mount *, uint64_t)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vn_lookup",
+            "nb_args": 2,
+            "return_value": "struct vnode *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "vp"
+            ],
+            "args_type": [
+                "struct vnode *"
+            ],
+            "fully_qualified": "vn_lock(struct vnode *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vn_lock",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "vp"
+            ],
+            "args_type": [
+                "struct vnode *"
+            ],
+            "fully_qualified": "vn_unlock(struct vnode *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vn_unlock",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "mp",
+                "ino",
+                "vpp"
+            ],
+            "args_type": [
+                "struct mount *",
+                "uint64_t",
+                "struct vnode **"
+            ],
+            "fully_qualified": "vfscore_vget(struct mount *, uint64_t, struct vnode **)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vfscore_vget",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "vp"
+            ],
+            "args_type": [
+                "struct vnode *"
+            ],
+            "fully_qualified": "vput(struct vnode *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vput",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "vp"
+            ],
+            "args_type": [
+                "struct vnode *"
+            ],
+            "fully_qualified": "vref(struct vnode *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vref",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "vp"
+            ],
+            "args_type": [
+                "struct vnode *"
+            ],
+            "fully_qualified": "vrele(struct vnode *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vrele",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "mp"
+            ],
+            "args_type": [
+                "struct mount *"
+            ],
+            "fully_qualified": "vflush(struct mount *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vflush",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "vp",
+                "st"
+            ],
+            "args_type": [
+                "struct vnode *",
+                "struct stat *"
+            ],
+            "fully_qualified": "vn_stat(struct vnode *, struct stat *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vn_stat",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "vp",
+                "times"
+            ],
+            "args_type": [
+                "struct vnode *",
+                "struct timespec *"
+            ],
+            "fully_qualified": "vn_settimes(struct vnode *, struct timespec *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vn_settimes",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "vp",
+                "new_mode"
+            ],
+            "args_type": [
+                "struct vnode *",
+                "mode_t"
+            ],
+            "fully_qualified": "vn_setmode(struct vnode *, mode_t)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vn_setmode",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "vp",
+                "flags"
+            ],
+            "args_type": [
+                "struct vnode *",
+                "int"
+            ],
+            "fully_qualified": "vn_access(struct vnode *, int)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vn_access",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "vfscore_vop_nullop()",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vfscore_vop_nullop",
+            "nb_args": 0,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "vfscore_vop_einval()",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vfscore_vop_einval",
+            "nb_args": 0,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "vfscore_vop_eperm()",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vfscore_vop_eperm",
+            "nb_args": 0,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "vfscore_vop_erofs()",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vfscore_vop_erofs",
+            "nb_args": 0,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "vp",
+                "dp"
+            ],
+            "args_type": [
+                "struct vnode *",
+                "struct dentry *"
+            ],
+            "fully_qualified": "vn_add_name(struct vnode *, struct dentry *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vn_add_name",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "vp",
+                "dp"
+            ],
+            "args_type": [
+                "struct vnode *",
+                "struct dentry *"
+            ],
+            "fully_qualified": "vn_del_name(struct vnode *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/vnode.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/vnode.h"
+            ],
+            "name": "vn_del_name",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "mp"
+            ],
+            "args_type": [
+                "struct mount *"
+            ],
+            "fully_qualified": "vfscore_release_mp_dentries(struct mount *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/mount.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/mount.h"
+            ],
+            "name": "vfscore_release_mp_dentries",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "path"
+            ],
+            "args_type": [
+                "const char *"
+            ],
+            "fully_qualified": "umount(const char *)",
+            "headers": [
+                "<sys/mount.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/mount.c"
+            ],
+            "name": "umount",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "mp"
+            ],
+            "args_type": [
+                "struct mount *"
+            ],
+            "fully_qualified": "vfs_busy(struct mount *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/mount.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/mount.h"
+            ],
+            "name": "vfs_busy",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "vfscore_nullop()",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/mount.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/mount.h"
+            ],
+            "name": "vfscore_nullop",
+            "nb_args": 0,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "dir",
+                "fsname",
+                "flags",
+                "data"
+            ],
+            "args_type": [
+                "const char*",
+                "const char*",
+                "const char*",
+                "unsigned long",
+                "const void*"
+            ],
+            "fully_qualified": "mount(const char*,const char*,const char*,unsigned long,const void*)",
+            "headers": [],
+            "location_file": [],
+            "name": "mount",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "path",
+                "flags"
+            ],
+            "args_type": [
+                "const char*",
+                "int"
+            ],
+            "fully_qualified": "umount2(const char*,int)",
+            "headers": [
+                "<sys/mount.h>"
+            ],
+            "location_file": [],
+            "name": "umount2",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fp"
+            ],
+            "args_type": [
+                "struct vfscore_file *"
+            ],
+            "fully_qualified": "fdrop(struct vfscore_file *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/file.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/file.h"
+            ],
+            "name": "fdrop",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fp"
+            ],
+            "args_type": [
+                "struct vfscore_file *"
+            ],
+            "fully_qualified": "fhold(struct vfscore_file *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/file.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/file.h"
+            ],
+            "name": "fhold",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dst",
+                "src",
+                "siz"
+            ],
+            "args_type": [
+                "char *",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "strlcat(char *, const char *, int)",
+            "headers": [
+                "<string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/prex.h"
+            ],
+            "name": "strlcat",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dst",
+                "src",
+                "siz"
+            ],
+            "args_type": [
+                "char *",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "strlcpy(char *, const char *, int)",
+            "headers": [
+                "<string.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/vfscore/include/vfscore/prex.h"
+            ],
+            "name": "strlcpy",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        }
+    ]
+}

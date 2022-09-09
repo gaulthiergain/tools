@@ -1,0 +1,464 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "set"
+            ],
+            "args_type": [
+                "sigset_t *"
+            ],
+            "fully_qualified": "sigemptyset(sigset_t *)",
+            "headers": [
+                "<signal.h>",
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/sigset.c"
+            ],
+            "name": "sigemptyset",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "set"
+            ],
+            "args_type": [
+                "sigset_t *"
+            ],
+            "fully_qualified": "sigfillset(sigset_t *)",
+            "headers": [
+                "<signal.h>",
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/sigset.c"
+            ],
+            "name": "sigfillset",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "set",
+                "signo"
+            ],
+            "args_type": [
+                "sigset_t *",
+                "int"
+            ],
+            "fully_qualified": "sigaddset(sigset_t *, int)",
+            "headers": [
+                "<signal.h>",
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/sigset.c"
+            ],
+            "name": "sigaddset",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "set",
+                "signo"
+            ],
+            "args_type": [
+                "sigset_t *",
+                "int"
+            ],
+            "fully_qualified": "sigdelset(sigset_t *, int)",
+            "headers": [
+                "<signal.h>",
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/sigset.c"
+            ],
+            "name": "sigdelset",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "set",
+                "signo"
+            ],
+            "args_type": [
+                "const sigset_t *",
+                "int"
+            ],
+            "fully_qualified": "sigismember(const sigset_t *, int)",
+            "headers": [
+                "<signal.h>",
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/sigset.c"
+            ],
+            "name": "sigismember",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "sig"
+            ],
+            "args_type": [
+                "struct uk_proc_sig *"
+            ],
+            "fully_qualified": "uk_proc_sig_init(struct uk_proc_sig *)",
+            "headers": [
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/uk_signal.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/include/uk/uk_signal.h"
+            ],
+            "name": "uk_proc_sig_init",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "uk_sig_handle_signals()",
+            "headers": [
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/uk_signal.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/include/uk/uk_signal.h"
+            ],
+            "name": "uk_sig_handle_signals",
+            "nb_args": 0,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "tid",
+                "sig"
+            ],
+            "args_type": [
+                "struct uk_thread *",
+                "int"
+            ],
+            "fully_qualified": "uk_sig_thread_kill(struct uk_thread *, int)",
+            "headers": [
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/uk_signal.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/include/uk/uk_signal.h"
+            ],
+            "name": "uk_sig_thread_kill",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "how",
+                "set",
+                "oldset"
+            ],
+            "args_type": [
+                "int",
+                "const sigset_t *",
+                "sigset_t *"
+            ],
+            "fully_qualified": "uk_thread_sigmask(int, const sigset_t *, sigset_t *)",
+            "headers": [
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/uk_signal.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/include/uk/uk_signal.h"
+            ],
+            "name": "uk_thread_sigmask",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "signum",
+                "act",
+                "oldact"
+            ],
+            "args_type": [
+                "int",
+                "const struct sigaction *",
+                "struct sigaction *"
+            ],
+            "fully_qualified": "sigaction(int, const struct sigaction *, struct sigaction *)",
+            "headers": [
+                "<signal.h>",
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/signal.c"
+            ],
+            "name": "sigaction",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "signum",
+                "handler"
+            ],
+            "args_type": [
+                "int",
+                "sighandler_t"
+            ],
+            "fully_qualified": "signal(int, sighandler_t)",
+            "headers": [
+                "<signal.h>",
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/signal.c"
+            ],
+            "name": "signal",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "set"
+            ],
+            "args_type": [
+                "sigset_t *"
+            ],
+            "fully_qualified": "sigpending(sigset_t *)",
+            "headers": [
+                "<signal.h>",
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/signal.c"
+            ],
+            "name": "sigpending",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "how",
+                "set",
+                "oldset"
+            ],
+            "args_type": [
+                "int",
+                "const sigset_t *",
+                "sigset_t *"
+            ],
+            "fully_qualified": "sigprocmask(int, const sigset_t *, sigset_t *)",
+            "headers": [
+                "<signal.h>",
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/signal.c"
+            ],
+            "name": "sigprocmask",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "mask"
+            ],
+            "args_type": [
+                "const sigset_t *"
+            ],
+            "fully_qualified": "sigsuspend(const sigset_t *)",
+            "headers": [
+                "<signal.h>",
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/signal.c"
+            ],
+            "name": "sigsuspend",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "set",
+                "sig"
+            ],
+            "args_type": [
+                "const sigset_t *",
+                "int *"
+            ],
+            "fully_qualified": "sigwait(const sigset_t *, int *)",
+            "headers": [
+                "<signal.h>",
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/signal.c"
+            ],
+            "name": "sigwait",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pid",
+                "sig"
+            ],
+            "args_type": [
+                "pid_t",
+                "int"
+            ],
+            "fully_qualified": "kill(pid_t, int)",
+            "headers": [
+                "<sys/types.h>",
+                "<signal.h>",
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/signal.c"
+            ],
+            "name": "kill",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pgrp",
+                "sig"
+            ],
+            "args_type": [
+                "int",
+                "int"
+            ],
+            "fully_qualified": "killpg(int, int)",
+            "headers": [
+                "<signal.h>",
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/signal.c"
+            ],
+            "name": "killpg",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "sig"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "raise(int)",
+            "headers": [
+                "<signal.h>",
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/signal.c"
+            ],
+            "name": "raise",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "sig",
+                "flag"
+            ],
+            "args_type": [
+                "int",
+                "int"
+            ],
+            "fully_qualified": "siginterrupt(int,int)",
+            "headers": [
+                "<signal.h>",
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksignal/signal.c"
+            ],
+            "name": "siginterrupt",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "seconds"
+            ],
+            "args_type": [
+                "unsigned int"
+            ],
+            "fully_qualified": "alarm(unsigned int)",
+            "headers": [
+                "<unistd.h>",
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [],
+            "name": "alarm",
+            "nb_args": 1,
+            "return_value": "unsigned int",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "pause()",
+            "headers": [
+                "<unistd.h>",
+                "<uk/uk_signal.h>",
+                "<uk/bits/sigset.h>"
+            ],
+            "location_file": [],
+            "name": "pause",
+            "nb_args": 0,
+            "return_value": "int",
+            "usage": 1
+        }
+    ]
+}

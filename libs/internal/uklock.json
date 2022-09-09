@@ -1,0 +1,46 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "s",
+                "count"
+            ],
+            "args_type": [
+                "struct uk_semaphore *",
+                "long"
+            ],
+            "fully_qualified": "uk_semaphore_init(struct uk_semaphore *, long)",
+            "headers": [
+                "<uk/mutex.h>",
+                "<uk/semaphore.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uklock/semaphore.c"
+            ],
+            "name": "uk_semaphore_init",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "m"
+            ],
+            "args_type": [
+                "struct uk_mutex *"
+            ],
+            "fully_qualified": "uk_mutex_init(struct uk_mutex *)",
+            "headers": [
+                "<uk/mutex.h>",
+                "<uk/semaphore.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uklock/mutex.c"
+            ],
+            "name": "uk_mutex_init",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        }
+    ]
+}

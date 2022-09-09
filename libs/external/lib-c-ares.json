@@ -1,0 +1,1811 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "channel",
+                "socks",
+                "numsocks"
+            ],
+            "args_type": [
+                "struct ares_channeldata *",
+                "int *",
+                "int"
+            ],
+            "fully_qualified": "ares_getsock(struct ares_channeldata *, int *, int)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_getsock.c"
+            ],
+            "name": "ares_getsock",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "host"
+            ],
+            "args_type": [
+                "struct hostent *"
+            ],
+            "fully_qualified": "ares_free_hostent(struct hostent *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_free_hostent.c"
+            ],
+            "name": "ares_free_hostent",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "options"
+            ],
+            "args_type": [
+                "struct ares_options *"
+            ],
+            "fully_qualified": "ares_destroy_options(struct ares_options *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_destroy.c"
+            ],
+            "name": "ares_destroy_options",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel"
+            ],
+            "args_type": [
+                "struct ares_channeldata *"
+            ],
+            "fully_qualified": "ares_destroy(struct ares_channeldata *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_destroy.c"
+            ],
+            "name": "ares_destroy",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "name",
+                "dnsclass",
+                "type",
+                "callback",
+                "arg"
+            ],
+            "args_type": [
+                "struct ares_channeldata *",
+                "const char *",
+                "int",
+                "int",
+                "ares_callback",
+                "void *"
+            ],
+            "fully_qualified": "ares_search(struct ares_channeldata *, const char *, int, int, ares_callback, void *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_search.c"
+            ],
+            "name": "ares_search",
+            "nb_args": 6,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "abuf",
+                "alen",
+                "host",
+                "addrttls",
+                "naddrttls"
+            ],
+            "args_type": [
+                "const unsigned char *",
+                "int",
+                "struct hostent **",
+                "struct ares_addrttl *",
+                "int *"
+            ],
+            "fully_qualified": "ares_parse_a_reply(const unsigned char *, int, struct hostent **, struct ares_addrttl *, int *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_parse_a_reply.c"
+            ],
+            "name": "ares_parse_a_reply",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel"
+            ],
+            "args_type": [
+                "struct ares_channeldata *"
+            ],
+            "fully_qualified": "ares_cancel(struct ares_channeldata *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_cancel.c"
+            ],
+            "name": "ares_cancel",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "af",
+                "src",
+                "dst",
+                "size"
+            ],
+            "args_type": [
+                "int",
+                "const void *",
+                "char *",
+                "int"
+            ],
+            "fully_qualified": "ares_inet_ntop(int, const void *, char *, int)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/inet_ntop.c"
+            ],
+            "name": "ares_inet_ntop",
+            "nb_args": 4,
+            "return_value": "const char *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "name",
+                "dnsclass",
+                "type",
+                "id",
+                "rd",
+                "bufp",
+                "buflenp",
+                "max_udp_size"
+            ],
+            "args_type": [
+                "const char *",
+                "int",
+                "int",
+                "unsigned short",
+                "int",
+                "unsigned char **",
+                "int *",
+                "int"
+            ],
+            "fully_qualified": "ares_create_query(const char *, int, int, unsigned short, int, unsigned char **, int *, int)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_create_query.c"
+            ],
+            "name": "ares_create_query",
+            "nb_args": 8,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "abuf",
+                "alen",
+                "naptr_out"
+            ],
+            "args_type": [
+                "const unsigned char *",
+                "int",
+                "struct ares_naptr_reply **"
+            ],
+            "fully_qualified": "ares_parse_naptr_reply(const unsigned char *, int, struct ares_naptr_reply **)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_parse_naptr_reply.c"
+            ],
+            "name": "ares_parse_naptr_reply",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "name",
+                "dnsclass",
+                "type",
+                "id",
+                "rd",
+                "buf",
+                "buflen"
+            ],
+            "args_type": [
+                "const char *",
+                "int",
+                "int",
+                "unsigned short",
+                "int",
+                "unsigned char **",
+                "int *"
+            ],
+            "fully_qualified": "ares_mkquery(const char *, int, int, unsigned short, int, unsigned char **, int *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_mkquery.c"
+            ],
+            "name": "ares_mkquery",
+            "nb_args": 7,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "flags"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "ares_library_init(int)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_library_init.c"
+            ],
+            "name": "ares_library_init",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "ares_library_cleanup()",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_library_init.c"
+            ],
+            "name": "ares_library_cleanup",
+            "nb_args": 0,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "ares_library_initialized()",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_library_init.c"
+            ],
+            "name": "ares_library_initialized",
+            "nb_args": 0,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "af",
+                "src",
+                "dst"
+            ],
+            "args_type": [
+                "int",
+                "const char *",
+                "void *"
+            ],
+            "fully_qualified": "ares_inet_pton(int, const char *, void *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/inet_net_pton.c"
+            ],
+            "name": "ares_inet_pton",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "servers"
+            ],
+            "args_type": [
+                "struct ares_channeldata *",
+                "struct ares_addr_node **"
+            ],
+            "fully_qualified": "ares_get_servers(struct ares_channeldata *, struct ares_addr_node **)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_options.c"
+            ],
+            "name": "ares_get_servers",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "servers"
+            ],
+            "args_type": [
+                "struct ares_channeldata *",
+                "struct ares_addr_port_node **"
+            ],
+            "fully_qualified": "ares_get_servers_ports(struct ares_channeldata *, struct ares_addr_port_node **)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_options.c"
+            ],
+            "name": "ares_get_servers_ports",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "servers"
+            ],
+            "args_type": [
+                "struct ares_channeldata *",
+                "struct ares_addr_node *"
+            ],
+            "fully_qualified": "ares_set_servers(struct ares_channeldata *, struct ares_addr_node *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_options.c"
+            ],
+            "name": "ares_set_servers",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "servers"
+            ],
+            "args_type": [
+                "struct ares_channeldata *",
+                "struct ares_addr_port_node *"
+            ],
+            "fully_qualified": "ares_set_servers_ports(struct ares_channeldata *, struct ares_addr_port_node *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_options.c"
+            ],
+            "name": "ares_set_servers_ports",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "_csv"
+            ],
+            "args_type": [
+                "struct ares_channeldata *",
+                "const char *"
+            ],
+            "fully_qualified": "ares_set_servers_csv(struct ares_channeldata *, const char *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_options.c"
+            ],
+            "name": "ares_set_servers_csv",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "_csv"
+            ],
+            "args_type": [
+                "struct ares_channeldata *",
+                "const char *"
+            ],
+            "fully_qualified": "ares_set_servers_ports_csv(struct ares_channeldata *, const char *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_options.c"
+            ],
+            "name": "ares_set_servers_ports_csv",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "abuf",
+                "alen",
+                "txt_out"
+            ],
+            "args_type": [
+                "const unsigned char *",
+                "int",
+                "struct ares_txt_reply **"
+            ],
+            "fully_qualified": "ares_parse_txt_reply(const unsigned char *, int, struct ares_txt_reply **)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_parse_txt_reply.c"
+            ],
+            "name": "ares_parse_txt_reply",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "abuf",
+                "alen",
+                "txt_out"
+            ],
+            "args_type": [
+                "const unsigned char *",
+                "int",
+                "struct ares_txt_ext **"
+            ],
+            "fully_qualified": "ares_parse_txt_reply_ext(const unsigned char *, int, struct ares_txt_ext **)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_parse_txt_reply.c"
+            ],
+            "name": "ares_parse_txt_reply_ext",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "name",
+                "dnsclass",
+                "type",
+                "callback",
+                "arg"
+            ],
+            "args_type": [
+                "struct ares_channeldata *",
+                "const char *",
+                "int",
+                "int",
+                "ares_callback",
+                "void *"
+            ],
+            "fully_qualified": "ares_query(struct ares_channeldata *, const char *, int, int, ares_callback, void *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_query.c"
+            ],
+            "name": "ares_query",
+            "nb_args": 6,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "abuf",
+                "alen",
+                "addr",
+                "addrlen",
+                "family",
+                "host"
+            ],
+            "args_type": [
+                "const unsigned char *",
+                "int",
+                "const void *",
+                "int",
+                "int",
+                "struct hostent **"
+            ],
+            "fully_qualified": "ares_parse_ptr_reply(const unsigned char *, int, const void *, int, int, struct hostent **)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_parse_ptr_reply.c"
+            ],
+            "name": "ares_parse_ptr_reply",
+            "nb_args": 6,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "abuf",
+                "alen",
+                "soa_out"
+            ],
+            "args_type": [
+                "const unsigned char *",
+                "int",
+                "struct ares_soa_reply **"
+            ],
+            "fully_qualified": "ares_parse_soa_reply(const unsigned char *, int, struct ares_soa_reply **)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_parse_soa_reply.c"
+            ],
+            "name": "ares_parse_soa_reply",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "abuf",
+                "alen",
+                "srv_out"
+            ],
+            "args_type": [
+                "const unsigned char *",
+                "int",
+                "struct ares_srv_reply **"
+            ],
+            "fully_qualified": "ares_parse_srv_reply(const unsigned char *, int, struct ares_srv_reply **)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_parse_srv_reply.c"
+            ],
+            "name": "ares_parse_srv_reply",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "read_fds",
+                "write_fds"
+            ],
+            "args_type": [
+                "struct ares_channeldata *",
+                "fd_set *",
+                "fd_set *"
+            ],
+            "fully_qualified": "ares_process(struct ares_channeldata *, fd_set *, fd_set *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_process.c"
+            ],
+            "name": "ares_process",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "read_fd",
+                "write_fd"
+            ],
+            "args_type": [
+                "struct ares_channeldata *",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "ares_process_fd(struct ares_channeldata *, int, int)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_process.c"
+            ],
+            "name": "ares_process_fd",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "addr",
+                "addrlen",
+                "family",
+                "callback",
+                "arg"
+            ],
+            "args_type": [
+                "struct ares_channeldata *",
+                "const void *",
+                "int",
+                "int",
+                "ares_host_callback",
+                "void *"
+            ],
+            "fully_qualified": "ares_gethostbyaddr(struct ares_channeldata *, const void *, int, int, ares_host_callback, void *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_gethostbyaddr.c"
+            ],
+            "name": "ares_gethostbyaddr",
+            "nb_args": 6,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "maxtv",
+                "tvbuf"
+            ],
+            "args_type": [
+                "struct ares_channeldata *",
+                "struct timeval *",
+                "struct timeval *"
+            ],
+            "fully_qualified": "ares_timeout(struct ares_channeldata *, struct timeval *, struct timeval *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_timeout.c"
+            ],
+            "name": "ares_timeout",
+            "nb_args": 3,
+            "return_value": "struct timeval *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "encoded",
+                "abuf",
+                "alen",
+                "s",
+                "enclen"
+            ],
+            "args_type": [
+                "const unsigned char *",
+                "const unsigned char *",
+                "int",
+                "unsigned char **",
+                "long *"
+            ],
+            "fully_qualified": "ares_expand_string(const unsigned char *, const unsigned char *, int, unsigned char **, long *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_expand_string.c"
+            ],
+            "name": "ares_expand_string",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "abuf",
+                "alen",
+                "host"
+            ],
+            "args_type": [
+                "const unsigned char *",
+                "int",
+                "struct hostent **"
+            ],
+            "fully_qualified": "ares_parse_ns_reply(const unsigned char *, int, struct hostent **)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_parse_ns_reply.c"
+            ],
+            "name": "ares_parse_ns_reply",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "abuf",
+                "alen",
+                "mx_out"
+            ],
+            "args_type": [
+                "const unsigned char *",
+                "int",
+                "struct ares_mx_reply **"
+            ],
+            "fully_qualified": "ares_parse_mx_reply(const unsigned char *, int, struct ares_mx_reply **)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_parse_mx_reply.c"
+            ],
+            "name": "ares_parse_mx_reply",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "code"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "ares_strerror(int)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_strerror.c"
+            ],
+            "name": "ares_strerror",
+            "nb_args": 1,
+            "return_value": "const char *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dataptr"
+            ],
+            "args_type": [
+                "void *"
+            ],
+            "fully_qualified": "ares_free_data(void *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_data.c"
+            ],
+            "name": "ares_free_data",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "qbuf",
+                "qlen",
+                "callback",
+                "arg"
+            ],
+            "args_type": [
+                "struct ares_channeldata *",
+                "const unsigned char *",
+                "int",
+                "ares_callback",
+                "void *"
+            ],
+            "fully_qualified": "ares_send(struct ares_channeldata *, const unsigned char *, int, ares_callback, void *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_send.c"
+            ],
+            "name": "ares_send",
+            "nb_args": 5,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channelptr"
+            ],
+            "args_type": [
+                "ares_channel *"
+            ],
+            "fully_qualified": "ares_init(ares_channel *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_init.c"
+            ],
+            "name": "ares_init",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channelptr",
+                "options",
+                "optmask"
+            ],
+            "args_type": [
+                "ares_channel *",
+                "struct ares_options *",
+                "int"
+            ],
+            "fully_qualified": "ares_init_options(ares_channel *, struct ares_options *, int)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_init.c"
+            ],
+            "name": "ares_init_options",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dest",
+                "src"
+            ],
+            "args_type": [
+                "ares_channel *",
+                "ares_channel"
+            ],
+            "fully_qualified": "ares_dup(ares_channel *, ares_channel)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_init.c"
+            ],
+            "name": "ares_dup",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "options",
+                "optmask"
+            ],
+            "args_type": [
+                "struct ares_channeldata *",
+                "struct ares_options *",
+                "int *"
+            ],
+            "fully_qualified": "ares_save_options(struct ares_channeldata *, struct ares_options *, int *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_init.c"
+            ],
+            "name": "ares_save_options",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "local_ip"
+            ],
+            "args_type": [
+                "ares_channel",
+                "unsigned int"
+            ],
+            "fully_qualified": "ares_set_local_ip4(ares_channel, unsigned int)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_init.c"
+            ],
+            "name": "ares_set_local_ip4",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "local_ip6"
+            ],
+            "args_type": [
+                "ares_channel",
+                "const unsigned char *"
+            ],
+            "fully_qualified": "ares_set_local_ip6(ares_channel, const unsigned char *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_init.c"
+            ],
+            "name": "ares_set_local_ip6",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "local_dev_name"
+            ],
+            "args_type": [
+                "ares_channel",
+                "const char *"
+            ],
+            "fully_qualified": "ares_set_local_dev(ares_channel, const char *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_init.c"
+            ],
+            "name": "ares_set_local_dev",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "cb",
+                "data"
+            ],
+            "args_type": [
+                "ares_channel",
+                "ares_sock_create_callback",
+                "void *"
+            ],
+            "fully_qualified": "ares_set_socket_callback(ares_channel, ares_sock_create_callback, void *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_init.c"
+            ],
+            "name": "ares_set_socket_callback",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "cb",
+                "data"
+            ],
+            "args_type": [
+                "ares_channel",
+                "ares_sock_config_callback",
+                "void *"
+            ],
+            "fully_qualified": "ares_set_socket_configure_callback(ares_channel, ares_sock_config_callback, void *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_init.c"
+            ],
+            "name": "ares_set_socket_configure_callback",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "funcs",
+                "data"
+            ],
+            "args_type": [
+                "ares_channel",
+                "const struct ares_socket_functions *",
+                "void *"
+            ],
+            "fully_qualified": "ares_set_socket_functions(ares_channel, const struct ares_socket_functions *, void *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_init.c"
+            ],
+            "name": "ares_set_socket_functions",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "sortstr"
+            ],
+            "args_type": [
+                "ares_channel",
+                "const char *"
+            ],
+            "fully_qualified": "ares_set_sortlist(ares_channel, const char *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_init.c"
+            ],
+            "name": "ares_set_sortlist",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "read_fds",
+                "write_fds"
+            ],
+            "args_type": [
+                "ares_channel",
+                "fd_set *",
+                "fd_set *"
+            ],
+            "fully_qualified": "ares_fds(ares_channel, fd_set *, fd_set *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_fds.c"
+            ],
+            "name": "ares_fds",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "name",
+                "family",
+                "callback",
+                "arg"
+            ],
+            "args_type": [
+                "ares_channel",
+                "const char *",
+                "int",
+                "ares_host_callback",
+                "void *"
+            ],
+            "fully_qualified": "ares_gethostbyname(ares_channel, const char *, int, ares_host_callback, void *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_gethostbyname.c"
+            ],
+            "name": "ares_gethostbyname",
+            "nb_args": 5,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "channel",
+                "name",
+                "family",
+                "host"
+            ],
+            "args_type": [
+                "ares_channel",
+                "const char *",
+                "int",
+                "struct hostent **"
+            ],
+            "fully_qualified": "ares_gethostbyname_file(ares_channel, const char *, int, struct hostent **)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_gethostbyname.c"
+            ],
+            "name": "ares_gethostbyname_file",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "str"
+            ],
+            "args_type": [
+                "void *"
+            ],
+            "fully_qualified": "ares_free_string(void *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_free_string.c"
+            ],
+            "name": "ares_free_string",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "version"
+            ],
+            "args_type": [
+                "int *"
+            ],
+            "fully_qualified": "ares_version(int *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_version.c"
+            ],
+            "name": "ares_version",
+            "nb_args": 1,
+            "return_value": "const char *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "encoded",
+                "abuf",
+                "alen",
+                "s",
+                "enclen"
+            ],
+            "args_type": [
+                "const unsigned char *",
+                "const unsigned char *",
+                "int",
+                "char **",
+                "long *"
+            ],
+            "fully_qualified": "ares_expand_name(const unsigned char *, const unsigned char *, int, char **, long *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_expand_name.c"
+            ],
+            "name": "ares_expand_name",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "abuf",
+                "alen",
+                "host",
+                "addrttls",
+                "naddrttls"
+            ],
+            "args_type": [
+                "const unsigned char *",
+                "int",
+                "struct hostent **",
+                "struct ares_addr6ttl *",
+                "int *"
+            ],
+            "fully_qualified": "ares_parse_aaaa_reply(const unsigned char *, int, struct hostent **, struct ares_addr6ttl *, int *)",
+            "headers": [
+                "<ares.h>",
+                "<stdio.h>",
+                "<stdlib.h>",
+                "<sys/socket.h>",
+                "<arpa/inet.h>",
+                "<netinet/in.h>",
+                "<netdb.h>",
+                "<stdarg.h>",
+                "<string.h>",
+                "<ctype.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "cares/ares_parse_aaaa_reply.c"
+            ],
+            "name": "ares_parse_aaaa_reply",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 1
+        }
+    ]
+}

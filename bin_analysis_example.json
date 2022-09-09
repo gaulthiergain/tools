@@ -1,13 +1,13 @@
 {
   "unikernels": [
     {
-      "buildPath": "/Users/unicore/buildCompare/lib-sqlite",
+      "buildPath": "/home/gain/Documents/unikernels/apps/lib-nginx",
       "ignoredPlats": [
         "linuxu",
         "xen"
       ],
-      "kernel": "lib-sqlite3_kvm-x86_64.dbg",
-      "splitSection": ".text",
+      "kernel": "unikernel_kvm-x86_64.dbg",
+      "splitSections": [".text.*"],
       "displayMapping": true,
       "displayStatSize": false,
       "displayElfFile": [
@@ -15,24 +15,24 @@
       ],
       "displaySectionInfo": [],
       "findSectionByAddress": [
-        "0x43a74e"
+        "0x329000"
       ],
       "compareGroup": 1
     },
     {
-      "buildPath": "/Users/unicore/buildCompare/app-helloworld",
+      "buildPath": "/home/gain/Documents/unikernels/apps/lib-echoreply",
       "ignoredPlats": [
         "linuxu",
         "xen"
       ],
-      "kernel": "lib-redis_kvm-x86_64.dbg",
-      "splitSection": ".text",
+      "kernel": "unikernel_kvm-x86_64.dbg",
+      "splitSections": [".data"],
       "displayElfFile": [],
       "displayMapping": true,
       "displayStatSize": true,
       "displaySectionInfo": [],
       "findSectionByAddress": [
-        "0x427836"
+        "0x329000"
       ],
       "compareGroup": 1
     }

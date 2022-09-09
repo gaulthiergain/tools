@@ -1,0 +1,936 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "fid"
+            ],
+            "args_type": [
+                "struct uk_9pfid *"
+            ],
+            "fully_qualified": "uk_9pfid_get(struct uk_9pfid *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9pfid.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9pfid.h"
+            ],
+            "name": "uk_9pfid_get",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fid"
+            ],
+            "args_type": [
+                "struct uk_9pfid *"
+            ],
+            "fully_qualified": "uk_9pfid_put(struct uk_9pfid *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9pfid.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9pfid.h"
+            ],
+            "name": "uk_9pfid_put",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "trans"
+            ],
+            "args_type": [
+                "struct uk_9pdev_trans *"
+            ],
+            "fully_qualified": "uk_9pdev_trans_register(struct uk_9pdev_trans *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9pdev_trans.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9pdev_trans.h"
+            ],
+            "name": "uk_9pdev_trans_register",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "name"
+            ],
+            "args_type": [
+                "const char *"
+            ],
+            "fully_qualified": "uk_9pdev_trans_by_name(const char *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9pdev_trans.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9pdev_trans.h"
+            ],
+            "name": "uk_9pdev_trans_by_name",
+            "nb_args": 1,
+            "return_value": "struct uk_9pdev_trans *",
+            "usage": 2
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "uk_9pdev_trans_get_default()",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9pdev_trans.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9pdev_trans.h"
+            ],
+            "name": "uk_9pdev_trans_get_default",
+            "nb_args": 0,
+            "return_value": "struct uk_9pdev_trans *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "trans"
+            ],
+            "args_type": [
+                "struct uk_9pdev_trans *"
+            ],
+            "fully_qualified": "uk_9pdev_trans_set_default(struct uk_9pdev_trans *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9pdev_trans.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9pdev_trans.h"
+            ],
+            "name": "uk_9pdev_trans_set_default",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "req"
+            ],
+            "args_type": [
+                "struct uk_9preq *"
+            ],
+            "fully_qualified": "uk_9preq_get(struct uk_9preq *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9preq.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9preq.h"
+            ],
+            "name": "uk_9preq_get",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "req"
+            ],
+            "args_type": [
+                "struct uk_9preq *"
+            ],
+            "fully_qualified": "uk_9preq_put(struct uk_9preq *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9preq.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9preq.h"
+            ],
+            "name": "uk_9preq_put",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "req",
+                "recv_size"
+            ],
+            "args_type": [
+                "struct uk_9preq *",
+                "int"
+            ],
+            "fully_qualified": "uk_9preq_receive_cb(struct uk_9preq *, int)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9preq.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9preq.h"
+            ],
+            "name": "uk_9preq_receive_cb",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "req"
+            ],
+            "args_type": [
+                "struct uk_9preq *"
+            ],
+            "fully_qualified": "uk_9preq_waitreply(struct uk_9preq *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9preq.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9preq.h"
+            ],
+            "name": "uk_9preq_waitreply",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "req"
+            ],
+            "args_type": [
+                "struct uk_9preq *"
+            ],
+            "fully_qualified": "uk_9preq_error(struct uk_9preq *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9preq.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9preq.h"
+            ],
+            "name": "uk_9preq_error",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "requested",
+                "received"
+            ],
+            "args_type": [
+                "struct uk_9pdev *",
+                "const char *",
+                "struct uk_9p_str *"
+            ],
+            "fully_qualified": "uk_9p_version(struct uk_9pdev *, const char *, struct uk_9p_str *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9p.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9p.h"
+            ],
+            "name": "uk_9p_version",
+            "nb_args": 3,
+            "return_value": "struct uk_9preq *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "afid",
+                "uname",
+                "aname",
+                "n_uname"
+            ],
+            "args_type": [
+                "struct uk_9pdev *",
+                "int",
+                "const char *",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "uk_9p_attach(struct uk_9pdev *, int, const char *, const char *, int)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9p.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9p.h"
+            ],
+            "name": "uk_9p_attach",
+            "nb_args": 5,
+            "return_value": "struct uk_9pfid *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "oldtag"
+            ],
+            "args_type": [
+                "struct uk_9pdev *",
+                "int"
+            ],
+            "fully_qualified": "uk_9p_flush(struct uk_9pdev *, int)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9p.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9p.h"
+            ],
+            "name": "uk_9p_flush",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "fid",
+                "name"
+            ],
+            "args_type": [
+                "struct uk_9pdev *",
+                "struct uk_9pfid *",
+                "const char *"
+            ],
+            "fully_qualified": "uk_9p_walk(struct uk_9pdev *, struct uk_9pfid *, const char *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9p.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9p.h"
+            ],
+            "name": "uk_9p_walk",
+            "nb_args": 3,
+            "return_value": "struct uk_9pfid *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "fid",
+                "mode"
+            ],
+            "args_type": [
+                "struct uk_9pdev *",
+                "struct uk_9pfid *",
+                "int"
+            ],
+            "fully_qualified": "uk_9p_open(struct uk_9pdev *, struct uk_9pfid *, int)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9p.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9p.h"
+            ],
+            "name": "uk_9p_open",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "fid",
+                "name",
+                "perm",
+                "mode",
+                "extension"
+            ],
+            "args_type": [
+                "struct uk_9pdev *",
+                "struct uk_9pfid *",
+                "const char *",
+                "int",
+                "int",
+                "const char *"
+            ],
+            "fully_qualified": "uk_9p_create(struct uk_9pdev *, struct uk_9pfid *, const char *, int, int, const char *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9p.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9p.h"
+            ],
+            "name": "uk_9p_create",
+            "nb_args": 6,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "fid"
+            ],
+            "args_type": [
+                "struct uk_9pdev *",
+                "struct uk_9pfid *"
+            ],
+            "fully_qualified": "uk_9p_remove(struct uk_9pdev *, struct uk_9pfid *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9p.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9p.h"
+            ],
+            "name": "uk_9p_remove",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "fid"
+            ],
+            "args_type": [
+                "struct uk_9pdev *",
+                "struct uk_9pfid *"
+            ],
+            "fully_qualified": "uk_9p_clunk(struct uk_9pdev *, struct uk_9pfid *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9p.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9p.h"
+            ],
+            "name": "uk_9p_clunk",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "fid",
+                "offset",
+                "count",
+                "buf"
+            ],
+            "args_type": [
+                "struct uk_9pdev *",
+                "struct uk_9pfid *",
+                "int",
+                "int",
+                "char *"
+            ],
+            "fully_qualified": "uk_9p_read(struct uk_9pdev *, struct uk_9pfid *, int, int, char *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9p.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9p.h"
+            ],
+            "name": "uk_9p_read",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "fid",
+                "offset",
+                "count",
+                "buf"
+            ],
+            "args_type": [
+                "struct uk_9pdev *",
+                "struct uk_9pfid *",
+                "int",
+                "int",
+                "const char *"
+            ],
+            "fully_qualified": "uk_9p_write(struct uk_9pdev *, struct uk_9pfid *, int, int, const char *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9p.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9p.h"
+            ],
+            "name": "uk_9p_write",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "fid",
+                "stat"
+            ],
+            "args_type": [
+                "struct uk_9pdev *",
+                "struct uk_9pfid *",
+                "struct uk_9p_stat *"
+            ],
+            "fully_qualified": "uk_9p_stat(struct uk_9pdev *, struct uk_9pfid *, struct uk_9p_stat *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9p.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9p.h"
+            ],
+            "name": "uk_9p_stat",
+            "nb_args": 3,
+            "return_value": "struct uk_9preq *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "fid",
+                "stat"
+            ],
+            "args_type": [
+                "struct uk_9pdev *",
+                "struct uk_9pfid *",
+                "struct uk_9p_stat *"
+            ],
+            "fully_qualified": "uk_9p_wstat(struct uk_9pdev *, struct uk_9pfid *, struct uk_9p_stat *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9p.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9p.h"
+            ],
+            "name": "uk_9p_wstat",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "trans",
+                "device_identifier",
+                "mount_args",
+                "a"
+            ],
+            "args_type": [
+                "const struct uk_9pdev_trans *",
+                "const char *",
+                "const char *",
+                "struct uk_alloc *"
+            ],
+            "fully_qualified": "uk_9pdev_connect(const struct uk_9pdev_trans *, const char *, const char *, struct uk_alloc *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9pdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9pdev.h"
+            ],
+            "name": "uk_9pdev_connect",
+            "nb_args": 4,
+            "return_value": "struct uk_9pdev *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev"
+            ],
+            "args_type": [
+                "struct uk_9pdev *"
+            ],
+            "fully_qualified": "uk_9pdev_disconnect(struct uk_9pdev *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9pdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9pdev.h"
+            ],
+            "name": "uk_9pdev_disconnect",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "req"
+            ],
+            "args_type": [
+                "struct uk_9pdev *",
+                "struct uk_9preq *"
+            ],
+            "fully_qualified": "uk_9pdev_request(struct uk_9pdev *, struct uk_9preq *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9pdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9pdev.h"
+            ],
+            "name": "uk_9pdev_request",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev"
+            ],
+            "args_type": [
+                "struct uk_9pdev *"
+            ],
+            "fully_qualified": "uk_9pdev_xmit_notify(struct uk_9pdev *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9pdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9pdev.h"
+            ],
+            "name": "uk_9pdev_xmit_notify",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "type"
+            ],
+            "args_type": [
+                "struct uk_9pdev *",
+                "int"
+            ],
+            "fully_qualified": "uk_9pdev_req_create(struct uk_9pdev *, int)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9pdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9pdev.h"
+            ],
+            "name": "uk_9pdev_req_create",
+            "nb_args": 2,
+            "return_value": "struct uk_9preq *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "tag"
+            ],
+            "args_type": [
+                "struct uk_9pdev *",
+                "int"
+            ],
+            "fully_qualified": "uk_9pdev_req_lookup(struct uk_9pdev *, int)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9pdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9pdev.h"
+            ],
+            "name": "uk_9pdev_req_lookup",
+            "nb_args": 2,
+            "return_value": "struct uk_9preq *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "req"
+            ],
+            "args_type": [
+                "struct uk_9pdev *",
+                "struct uk_9preq *"
+            ],
+            "fully_qualified": "uk_9pdev_req_remove(struct uk_9pdev *, struct uk_9preq *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9pdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9pdev.h"
+            ],
+            "name": "uk_9pdev_req_remove",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev"
+            ],
+            "args_type": [
+                "struct uk_9pdev *"
+            ],
+            "fully_qualified": "uk_9pdev_fid_create(struct uk_9pdev *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9pdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9pdev.h"
+            ],
+            "name": "uk_9pdev_fid_create",
+            "nb_args": 1,
+            "return_value": "struct uk_9pfid *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "msize"
+            ],
+            "args_type": [
+                "struct uk_9pdev *",
+                "int"
+            ],
+            "fully_qualified": "uk_9pdev_set_msize(struct uk_9pdev *, int)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9pdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9pdev.h"
+            ],
+            "name": "uk_9pdev_set_msize",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev"
+            ],
+            "args_type": [
+                "struct uk_9pdev *"
+            ],
+            "fully_qualified": "uk_9pdev_get_msize(struct uk_9pdev *)",
+            "headers": [
+                "<uk/9p.h>",
+                "<uk/9p_core.h>",
+                "<uk/9pdev_core.h>",
+                "<uk/9pdev.h>",
+                "<uk/9pdev_trans.h>",
+                "<uk/9pfid.h>",
+                "<uk/9preq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/9pdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uk9p/include/uk/9pdev.h"
+            ],
+            "name": "uk_9pdev_get_msize",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        }
+    ]
+}
