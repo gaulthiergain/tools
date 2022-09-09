@@ -20,7 +20,8 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 
 	// Init and parse local arguments
 	args := new(u.Arguments)
-	p, err := args.InitArguments()
+	p, err := args.InitArguments("--dep",
+		"The Dependencies analyser allows to extract specific information of a program")
 	if err != nil {
 		u.PrintErr(err)
 	}

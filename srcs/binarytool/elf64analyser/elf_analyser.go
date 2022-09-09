@@ -7,6 +7,8 @@
 package elf64analyser
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
 	"fmt"
 	"os"
 	"sort"
@@ -136,7 +138,8 @@ func compareFunctions(elf *elf64core.ELF64File, obj *elf64core.ELF64File) (uint6
 	}
 
 	if len(elfFuncsAll) == 0 {
-		u.PrintWarning(fmt.Sprintf("Cannot extract mapping of lib %s: No function", obj.Name))
+		//todo
+		//u.PrintWarning(fmt.Sprintf("Cannot extract mapping of lib %s: No function", obj.Name))
 		return 0, 0, 0
 	}
 
@@ -144,7 +147,8 @@ func compareFunctions(elf *elf64core.ELF64File, obj *elf64core.ELF64File) (uint6
 		// We do not have the same set of functions, need to filter it.
 		filteredFuncs := filterFunctions(objFuncs, elfFuncsAll)
 		if filteredFuncs == nil {
-			u.PrintWarning(fmt.Sprintf("Cannot extract mapping of lib %s: Different size", obj.Name))
+			//todo
+			//u.PrintWarning(fmt.Sprintf("Cannot extract mapping of lib %s: Different size", obj.Name))
 			return 0, 0, 0
 		}
 		return filteredFuncs[0].Addr, filteredFuncs[len(filteredFuncs)-1].Size +
@@ -196,7 +200,6 @@ func (analyser *ElfAnalyser) InspectMappingList(elf *elf64core.ELF64File,
 	})
 }
 
-/*
 func (analyser *ElfAnalyser) SplitIntoPagesBySection(elfFile *elf64core.ELF64File, sectionName string) {
 
 	if len(analyser.ElfPage) == 0 {
@@ -214,7 +217,6 @@ func (analyser *ElfAnalyser) SplitIntoPagesBySection(elfFile *elf64core.ELF64Fil
 		u.PrintWarning(fmt.Sprintf("Cannot split section %s into pages", sectionName))
 	}
 }
-
 
 func CreateNewPage(startAddress uint64, k int, raw []byte) *ElfPage {
 	byteArray := make([]byte, PageSize)
@@ -248,4 +250,3 @@ func (analyser *ElfAnalyser) computePage(elfFile *elf64core.ELF64File, section s
 		k++
 	}
 }
-*/

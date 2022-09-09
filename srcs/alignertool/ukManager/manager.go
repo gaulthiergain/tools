@@ -3,6 +3,7 @@ package ukManager
 import (
 	"fmt"
 	"math"
+	"path/filepath"
 	"sort"
 	"strings"
 	"tools/srcs/binarytool/elf64analyser"
@@ -10,7 +11,11 @@ import (
 	u "tools/srcs/common"
 )
 
-const ukbootMain = "libukboot_main.ld.o"
+const (
+	ukbootMain = "libukboot_main.o"
+	ukkvmPlat  = "libkvmplat.o"
+	libnewlibc = "libnewlibc.o"
+)
 
 type Manager struct {
 	Unikernels      []*Unikernel
@@ -24,6 +29,7 @@ type MicroLib struct {
 	size        uint64
 	instance    int
 	sectionSize *SectionMicroLibs
+	usedBy      []string
 }
 
 type SectionMicroLibs struct {
@@ -56,9 +62,18 @@ func (manager *Manager) ComputeAlignment(unikernel Unikernel) {
 					manager.MicroLibs[libs.Name].sectionSize.dataSize = libs.DataSize
 					manager.MicroLibs[libs.Name].sectionSize.bssSize = libs.BssSize
 				}
+				//todo handle case where microlibs do not have same content -> use hash instead of name
 			}
 			manager.MicroLibs[libs.Name].instance += 1
 		} else {
+			// Add offset
+			if libs.Name == ukkvmPlat {
+				libs.RodataSize += 0x10
+			} else if libs.Name == libnewlibc {
+				libs.Size += 0x22
+				//libs.Size += 0x12 // for 9 apps
+			}
+
 			mlib := &MicroLib{
 				name:      libs.Name,
 				startAddr: libs.StartAddr,
@@ -111,9 +126,60 @@ func (manager *Manager) DisplayMicroLibs() {
 	}
 }
 
+func (manager *Manager) updateRodataInner(maxValSection map[string]uint64, linkerInfoGlobal *LinkerInfo) {
+	var totalSize uint64 = 0
+	var initRodata = linkerInfoGlobal.rodataAddr
+	for _, lib := range manager.SortedMicroLibs {
+
+		fmt.Printf("%s 0x%x \n", lib.name, lib.sectionSize.rodataSize)
+		if lib.instance > 1 {
+			// Update inner rodata location counter
+			lib.sectionSize.rodataAddr = linkerInfoGlobal.rodataAddr
+			linkerInfoGlobal.rodataAddr += roundAddr(lib.sectionSize.rodataSize, 32)
+		}
+		totalSize += lib.sectionSize.rodataSize
+	}
+	linkerInfoGlobal.dataAddr = roundAddr(initRodata+totalSize, elf64analyser.PageSize) + elf64analyser.PageSize
+	maxValSection[elf64core.RodataSection] = linkerInfoGlobal.dataAddr - initRodata
+}
+
+func (manager *Manager) updateDataInner(maxValSection map[string]uint64, linkerInfoGlobal *LinkerInfo) {
+	var totalSize uint64 = 0
+	var initData = linkerInfoGlobal.dataAddr
+	for _, lib := range manager.SortedMicroLibs {
+
+		if lib.instance > 1 {
+			// Update inner dataAddr location counter
+			lib.sectionSize.dataAddr = linkerInfoGlobal.dataAddr
+			linkerInfoGlobal.dataAddr += roundAddr(lib.sectionSize.dataSize, 32)
+		}
+		totalSize += lib.sectionSize.dataSize
+	}
+
+	linkerInfoGlobal.bssAddr = roundAddr(initData+totalSize, elf64analyser.PageSize) + elf64analyser.PageSize
+	maxValSection[elf64core.DataSection] = linkerInfoGlobal.bssAddr - initData
+}
+
+func (manager *Manager) updateBssInner(maxValSection map[string]uint64, linkerInfoGlobal *LinkerInfo) {
+	// Redo a pass on micro-libs to align inner rodata, data and bss
+
+	var totalSize uint64 = 0
+	var initBss = linkerInfoGlobal.bssAddr
+	for _, lib := range manager.SortedMicroLibs {
+
+		if lib.instance > 1 {
+			// Update inner bssAddr location counter
+			lib.sectionSize.bssAddr = linkerInfoGlobal.bssAddr
+			linkerInfoGlobal.bssAddr += roundAddr(lib.sectionSize.bssSize, 32)
+		}
+		totalSize += lib.sectionSize.bssSize
+	}
+	maxValSection[elf64core.BssSection] = roundAddr(initBss+totalSize, elf64analyser.PageSize) - initBss
+}
+
 func (manager *Manager) PerformAlignement() {
 
-	var startValue uint64 = 0x106000
+	var startValue uint64 = 0x107000
 	var locationCnt = startValue
 	commonMicroLibs := make([]*MicroLib, 0)
 
@@ -122,13 +188,16 @@ func (manager *Manager) PerformAlignement() {
 		manager.sortMicroLibs()
 	}
 
+	manager.DisplayMicroLibs()
+
 	// Update micro-libs mapping globally and per unikernels
 	for i, lib := range manager.SortedMicroLibs {
 		if lib.instance == len(manager.Unikernels) {
 			// micro-libs common to all instances
 			lib.startAddr = locationCnt
 			commonMicroLibs = append(commonMicroLibs, lib)
-			locationCnt += lib.size
+			//locationCnt += lib.size
+			locationCnt += roundAddr(locationCnt, elf64analyser.PageSize)
 		} else if lib.instance > 1 {
 			// micro-libs common to particular instances
 			if manager.SortedMicroLibs[i-1].instance == len(manager.Unikernels) {
@@ -155,6 +224,9 @@ func (manager *Manager) PerformAlignement() {
 		} else if lib.instance == 1 {
 			// micro-libs to only single instance
 			for _, uk := range manager.Unikernels {
+				if uk.alignedLibs == nil {
+					uk.InitAlignment()
+				}
 				uk.AddSingleMicroLibs(roundAddr(locationCnt, elf64analyser.PageSize), lib)
 			}
 		}
@@ -164,6 +236,7 @@ func (manager *Manager) PerformAlignement() {
 	sections := []string{elf64core.RodataSection, elf64core.DataSection, elf64core.TbssSection, elf64core.BssSection}
 
 	// Find max location counter value through unikernels
+	fmt.Printf("0x%x\n", locationCnt)
 	for _, uk := range manager.Unikernels {
 
 		// Update the locationCnt by finding the maximum one from unikernel (the biggest size)
@@ -178,44 +251,45 @@ func (manager *Manager) PerformAlignement() {
 		}
 	}
 
-	// Update the common lds file with new location counter
 	locationCnt = roundAddr(locationCnt, elf64analyser.PageSize)
-	linkerInfo := processLdsFile(locationCnt, maxValSection)
 
-	// Use temporary variable to keep linkerInfo unchanged
+	// Use temporary variable to keep locationCnt unchanged
 	linkerInfoGlobal := &LinkerInfo{
 		ldsString:  "",
-		rodataAddr: linkerInfo.rodataAddr,
-		dataAddr:   linkerInfo.dataAddr,
-		bssAddr:    linkerInfo.bssAddr,
-	}
-	// Redo a pass on micro-libs to align inner rodata, data and bss
-	for _, lib := range manager.SortedMicroLibs {
-
-		if lib.instance > 1 {
-			// Update inner rodata location counter
-			lib.sectionSize.rodataAddr = linkerInfoGlobal.rodataAddr
-			linkerInfoGlobal.rodataAddr += roundAddr(lib.sectionSize.rodataSize, 32)
-
-			// Update inner dataAddr location counter
-			lib.sectionSize.dataAddr = linkerInfoGlobal.dataAddr
-			linkerInfoGlobal.dataAddr += roundAddr(lib.sectionSize.dataSize, 32)
-
-			// Update inner bssAddr location counter
-			lib.sectionSize.bssAddr = linkerInfoGlobal.bssAddr
-			linkerInfoGlobal.bssAddr += roundAddr(lib.sectionSize.bssSize, 32)
-		}
+		rodataAddr: locationCnt + elf64analyser.PageSize, // We know the address of rodata
+		dataAddr:   0,
+		bssAddr:    0,
 	}
 
+	// Update inner section
+	manager.updateRodataInner(maxValSection, linkerInfoGlobal)
+	manager.updateDataInner(maxValSection, linkerInfoGlobal)
+	manager.updateBssInner(maxValSection, linkerInfoGlobal)
+
+	// Update the common lds file with new location counter
+	linkerInfo := processLdsFile(locationCnt, maxValSection)
+	fmt.Printf("rodata 0x%x\n", linkerInfoGlobal.rodataAddr)
+	fmt.Printf("data 0x%x\n", linkerInfoGlobal.dataAddr)
+	fmt.Printf("bss 0x%x\n", linkerInfoGlobal.bssAddr)
 	// Update per unikernel
 	for _, uk := range manager.Unikernels {
+
+		var filename string
+		if !strings.Contains("libkvmplat", uk.BuildPath) {
+			filename = filepath.Join(uk.BuildPath, "libkvmplat", "link64_out.lds")
+		} else {
+			filename = filepath.Join(uk.BuildPath, "link64_out.lds")
+		}
+
+		u.PrintInfo("Writing aligned linker script into: " + filename)
 		uk.writeTextAlignment(startValue)
 
 		// todo remove and replace per uk.buildpath
-		lib := strings.Replace(strings.Split(uk.BuildPath, "/")[5], "lib-", "", -1)
+		/*lib := strings.Replace(strings.Split(uk.BuildPath, "/")[5], "lib-", "", -1)
 		dst := "/Users/gaulthiergain/Desktop/memory_dedup/gcc/lds/common_optimized_app_dce_size/link64_" + lib + ".lds"
+		uk.writeLdsToFile(dst, linkerInfo)*/
 
-		uk.writeLdsToFile(dst, linkerInfo)
+		uk.writeLdsToFile(filename, linkerInfo)
 	}
 
 }
@@ -223,6 +297,7 @@ func (manager *Manager) PerformAlignement() {
 func findMaxValue(section string, uk *Unikernel, maxValSection map[string]uint64) {
 	index := uk.ElfFile.IndexSections[section]
 	size := uk.ElfFile.SectionsTable.DataSect[index].Elf64section.Size
+
 	if val, ok := maxValSection[section]; ok {
 		if val < size {
 			maxValSection[section] = size

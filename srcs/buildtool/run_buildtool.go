@@ -13,7 +13,6 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
-
 	u "tools/srcs/common"
 )
 
@@ -25,6 +24,7 @@ const (
 )
 
 const pageSize = 10
+
 // -----------------------------Generate Config---------------------------------
 
 // generateConfigUk generates a 'Config.uk' file for the Unikraft build system.
@@ -112,7 +112,8 @@ func RunBuildTool(homeDir string, data *u.Data) {
 
 	// Init and parse local arguments
 	args := new(u.Arguments)
-	p, err := args.InitArguments()
+	p, err := args.InitArguments("--build",
+		"The Build tool allows to help developers to port an app as unikernel")
 	if err != nil {
 		u.PrintErr(err)
 	}
@@ -128,15 +129,20 @@ func RunBuildTool(homeDir string, data *u.Data) {
 		programName = filepath.Base(programName)
 	}
 
-	var unikraftPath string
-	if len(*args.StringArg[unikraftArg]) == 0 {
-		path, err := setUnikraftFolder(homeDir + u.SEP)
+	var workspacePath = homeDir + u.SEP + u.WORKSPACEFOLDER
+	unikraftPath := workspacePath + u.UNIKRAFTFOLDER
+	if len(*args.StringArg[workspaceArg]) > 0 {
+		workspacePath = *args.StringArg[workspaceArg]
+	}
+
+	// Create workspace folder
+	if _, err := os.Stat(workspacePath); os.IsNotExist(err) {
+		err = setWorkspaceFolder(workspacePath)
 		if err != nil {
 			u.PrintErr(err)
 		}
-		unikraftPath = *path
 	} else {
-		unikraftPath = *args.StringArg[unikraftArg]
+		u.PrintInfo("Workspace folder already exists")
 	}
 
 	// Check if sources argument is set
@@ -145,14 +151,13 @@ func RunBuildTool(homeDir string, data *u.Data) {
 	}
 
 	// Check if the unikraft folder contains the 3 required folders
-	if _, err := ioutil.ReadDir(unikraftPath); err != nil {
+	if _, err := ioutil.ReadDir(workspacePath); err != nil {
 		u.PrintErr(err)
 	} else {
-		path, err := setUnikraftSubFolders(homeDir + u.SEP + u.UNIKRAFTFOLDER)
+		err := setUnikraftSubFolders(workspacePath)
 		if err != nil {
 			u.PrintErr(err)
 		}
-		unikraftPath = *path
 	}
 
 	// If data is not initialized, read output from dependency analysis tool
@@ -165,7 +170,7 @@ func RunBuildTool(homeDir string, data *u.Data) {
 	}
 
 	// Create unikraft application path
-	appFolderPtr, err := createUnikraftApp(programName, unikraftPath)
+	appFolderPtr, err := createUnikraftApp(programName, workspacePath)
 	if err != nil {
 		u.PrintErr(err)
 	}
@@ -207,17 +212,16 @@ func RunBuildTool(homeDir string, data *u.Data) {
 	}
 
 	// Match micro-libs
-	matchedLibs, externalLibs, err := matchLibs(unikraftPath+"unikraft"+u.SEP+
-		"lib"+u.SEP, data)
+	matchedLibs, externalLibs, err := matchLibs(unikraftPath+"lib"+u.SEP, data)
 	if err != nil {
 		u.PrintErr(err)
 	}
 
 	// Clone the external git repositories
-	cloneLibsFolders(unikraftPath, matchedLibs, externalLibs)
+	cloneLibsFolders(workspacePath, matchedLibs, externalLibs)
 
 	// Match internal dependencies between micro-libs
-	if err := searchInternalDependencies(unikraftPath, &matchedLibs,
+	if err := searchInternalDependencies(workspacePath, &matchedLibs,
 		externalLibs); err != nil {
 		u.PrintErr(err)
 	}
@@ -227,10 +231,10 @@ func RunBuildTool(homeDir string, data *u.Data) {
 	}
 
 	// Clone the external git repositories (if changed)
-	cloneLibsFolders(unikraftPath, matchedLibs, externalLibs)
+	cloneLibsFolders(workspacePath, matchedLibs, externalLibs)
 
 	// Generate Makefiles
-	if err := generateMake(programName, appFolder, unikraftPath, *args.StringArg[makefileArg],
+	if err := generateMake(programName, appFolder, workspacePath, *args.StringArg[makefileArg],
 		matchedLibs, selectedFiles, externalLibs); err != nil {
 		u.PrintErr(err)
 	}
@@ -287,10 +291,10 @@ func searchInternalDependencies(unikraftPath string, matchedLibs *[]string,
 	return nil
 }
 
-func generateMake(programName, appFolder, unikraftPath, makefile string,
+func generateMake(programName, appFolder, workspacePath, makefile string,
 	matchedLibs, sourceFiles []string, externalLibs map[string]string) error {
 	// Generate Makefile
-	if err := generateMakefile(appFolder+"Makefile", unikraftPath,
+	if err := generateMakefile(appFolder+"Makefile", workspacePath,
 		appFolder, matchedLibs, externalLibs); err != nil {
 		return err
 	}
@@ -332,8 +336,7 @@ func deleteBuildFolder(appFolder string) {
 func initConfig(appFolder string, matchedLibs []string) {
 
 	// Run make allNoConfig to generate a .config file
-	if strOut, strErr, err := u.ExecuteWaitCommand(appFolder, "make",
-		"allnoconfig"); err != nil {
+	if strOut, strErr, err := u.ExecuteWaitCommand(appFolder, "make", "allnoconfig"); err != nil {
 		u.PrintErr(err)
 	} else if len(*strErr) > 0 {
 		u.PrintErr("error during generating .config: " + *strErr)
@@ -406,6 +409,6 @@ func runMake(programName, appFolder string) {
 	if state == compilerError {
 		u.PrintErr("Fix compilation errors")
 	} else if state == success {
-		u.PrintOk("Unikernel created in Folder: 'build/'")
+		u.PrintOk("Unikernel created in Folder: " + appFolder)
 	}
 }

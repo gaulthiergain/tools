@@ -119,9 +119,13 @@ func gatherDependencies(programName string, data *u.StaticData, v bool) error {
 	if len(output) > 0 {
 		// Parse package name
 		packageName := parsePackagesName(output)
-
 		if len(packageName) > 0 {
-			return executeDependAptCache(packageName, data, v)
+			if err := executeDependAptCache(packageName, data, v); err != nil {
+				u.PrintWarning(err)
+			}
+			if _, ok := data.Dependencies[packageName]; !ok {
+				data.Dependencies[packageName] = []string{""}
+			}
 		}
 	} else {
 		// Enter manually the name of the package
@@ -177,8 +181,10 @@ func executeDependAptCache(programName string, data *u.StaticData,
 		data.Dependencies = make(map[string][]string)
 		dependenciesMap := make(map[string][]string)
 		printDep := make(map[string][]string)
+
 		_ = parseDependencies(output, data.Dependencies, dependenciesMap,
-			printDep, fullDeps, 0)
+			printDep, fullDeps, 5)
+
 	}
 
 	fmt.Println("----------------------------------------------")

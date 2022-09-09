@@ -29,51 +29,44 @@ func createIncludeFolder(appFolder string) (*string, error) {
 	return &includeFolder, nil
 }
 
-// ----------------------------Set UNIKRAFT Folders-----------------------------
-func setUnikraftFolder(homeDir string) (*string, error) {
+// ----------------------------Set Workspace Folders-----------------------------
+func setWorkspaceFolder(workspacePath string) error {
 
-	unikraftFolder := homeDir + u.UNIKRAFTFOLDER
-
-	created, err := u.CreateFolder(unikraftFolder)
+	_, err := u.CreateFolder(workspacePath)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	if created {
-		setUnikraftSubFolders(unikraftFolder)
-	} else {
-		u.PrintInfo("Unikraft folder already exists")
-		return &unikraftFolder, nil
-	}
-
-	return &unikraftFolder, nil
+	return nil
 }
 
-func setUnikraftSubFolders(unikraftFolder string) (*string, error) {
+func setUnikraftSubFolders(workspaceFolder string) error {
 
-	u.PrintInfo("Create Unikraft folder with apps and libs subfolders")
+	unikraftFolder := workspaceFolder + u.UNIKRAFTFOLDER
+	u.PrintInfo("Managing Unikraft main folder with apps and libs subfolders")
 
 	// Create 'apps' and 'libs' subfolders
-	if _, err := u.CreateFolder(unikraftFolder + u.APPSFOLDER); err != nil {
-		return nil, err
+	if _, err := u.CreateFolder(workspaceFolder + u.APPSFOLDER); err != nil {
+		return err
 	}
 
-	if _, err := u.CreateFolder(unikraftFolder + u.LIBSFOLDER); err != nil {
-		return nil, err
+	if _, err := u.CreateFolder(workspaceFolder + u.LIBSFOLDER); err != nil {
+		return err
 	}
 
-	// Download git repo of unikraft
-	if _, _, err := u.GitCloneRepository("git://xenbits.xen.org/unikraft/unikraft.git",
-		unikraftFolder, true); err != nil {
-		return nil, err
+	if _, err := os.Stat(unikraftFolder); os.IsNotExist(err) {
+		url := "https://github.com/unikraft/unikraft.git"
+		// Download git repo of unikraft
+		if _, _, err := u.GitCloneRepository(url, workspaceFolder, true); err != nil {
+			return err
+		}
 	}
-
 	// Use staging branch
-	if _, _, err := u.GitBranchStaging(unikraftFolder+"unikraft", true); err != nil {
-		return nil, err
+	if _, _, err := u.GitBranchStaging(unikraftFolder, false); err != nil {
+		return err
 	}
 
-	return &unikraftFolder, nil
+	return nil
 }
 
 // ---------------------------Check UNIKRAFT Folder-----------------------------
@@ -100,13 +93,13 @@ func containsUnikraftFolders(files []os.FileInfo) bool {
 
 // ---------------------------UNIKRAFT APP FOLDER-------------------------------
 
-func createUnikraftApp(programName, unikraftPath string) (*string, error) {
+func createUnikraftApp(programName, workspacePath string) (*string, error) {
 
 	var appFolder string
-	if unikraftPath[len(unikraftPath)-1] != os.PathSeparator {
-		appFolder = unikraftPath + u.SEP + u.APPSFOLDER + programName + u.SEP
+	if workspacePath[len(workspacePath)-1] != os.PathSeparator {
+		appFolder = workspacePath + u.SEP + u.APPSFOLDER + programName + u.SEP
 	} else {
-		appFolder = unikraftPath + u.APPSFOLDER + programName + u.SEP
+		appFolder = workspacePath + u.APPSFOLDER + programName + u.SEP
 	}
 
 	created, err := u.CreateFolder(appFolder)

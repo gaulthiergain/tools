@@ -13,10 +13,11 @@ import (
 )
 
 const (
-	programArg  = "program"
-	unikraftArg = "unikraft"
-	sourcesArg  = "sources"
-	makefileArg = "makefile"
+	programArg   = "program"
+	workspaceArg = "workspace"
+	sourcesArg   = "sources"
+	objsArg      = "objects"
+	makefileArg  = "makefile"
 )
 
 // ParseArguments parses arguments of the application.
@@ -27,10 +28,13 @@ func parseLocalArguments(p *argparse.Parser, args *u.Arguments) error {
 	args.InitArgParse(p, args, u.STRING, "p", programArg,
 		&argparse.Options{Required: true, Help: "Program name"})
 
-	args.InitArgParse(p, args, u.STRING, "u", unikraftArg,
-		&argparse.Options{Required: false, Help: "Unikraft Path"})
+	args.InitArgParse(p, args, u.STRING, "u", workspaceArg,
+		&argparse.Options{Required: false, Help: "Workspace Path"})
 	args.InitArgParse(p, args, u.STRING, "s", sourcesArg,
 		&argparse.Options{Required: true, Help: "App Sources " +
+			"Folder"})
+	args.InitArgParse(p, args, u.BOOL, "o", objsArg,
+		&argparse.Options{Required: false, Default: false, Help: "Add objects from external build system " +
 			"Folder"})
 	args.InitArgParse(p, args, u.STRING, "m", makefileArg,
 		&argparse.Options{Required: false, Help: "Add additional properties " +

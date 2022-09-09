@@ -22,12 +22,14 @@ const (
 
 // Exported constants to determine which tool is used.
 const (
-	CRAWLER = "crawler"
-	DEP     = "dep"
-	BUILD   = "build"
-	VERIF   = "verif"
-	PERF    = "perf"
-	BINARY  = "binary"
+	CRAWLER   = "crawler"
+	DEP       = "dep"
+	BUILD     = "build"
+	VERIF     = "verif"
+	PERF      = "perf"
+	BINARY    = "binary"
+	ALIGNER   = "aligner"
+	EXTRACTER = "extracter"
 )
 
 const (
@@ -45,14 +47,13 @@ type Arguments struct {
 // arguments.
 //
 // It returns a parser as well as an error if any, otherwise it returns nil.
-func (args *Arguments) InitArguments() (*argparse.Parser, error) {
+func (args *Arguments) InitArguments(name, description string) (*argparse.Parser, error) {
 
 	args.IntArg = make(map[string]*int)
 	args.BoolArg = make(map[string]*bool)
 	args.StringArg = make(map[string]*string)
 
-	p := argparse.NewParser("UNICORE toolchain",
-		"The UNICORE toolchain allows to build unikernels")
+	p := argparse.NewParser(name, description)
 
 	return p, nil
 }
@@ -88,16 +89,22 @@ func (*Arguments) ParseMainArguments(p *argparse.Parser, args *Arguments) error 
 			Help: "Execute the binary analyser tool"})
 	args.InitArgParse(p, args, BOOL, "", DEP,
 		&argparse.Options{Required: false, Default: false,
-			Help: "Execute only the dependency analysis tool"})
+			Help: "Execute only the dependency analyser tool"})
 	args.InitArgParse(p, args, BOOL, "", BUILD,
 		&argparse.Options{Required: false, Default: false,
-			Help: "Execute only the automatic build tool"})
+			Help: "Execute only the semi-automatic build tool"})
 	args.InitArgParse(p, args, BOOL, "", VERIF,
 		&argparse.Options{Required: false, Default: false,
-			Help: "Execute only the verification tool"})
+			Help: "Execute only the output verification tool"})
 	args.InitArgParse(p, args, BOOL, "", PERF,
 		&argparse.Options{Required: false, Default: false,
 			Help: "Execute only the performance tool"})
+	args.InitArgParse(p, args, BOOL, "", ALIGNER,
+		&argparse.Options{Required: false, Default: false,
+			Help: "Execute only the aligner tool"})
+	args.InitArgParse(p, args, BOOL, "", EXTRACTER,
+		&argparse.Options{Required: false, Default: false,
+			Help: "Execute only the symbols extracter tool"})
 
 	// Parse only the two first arguments <program name, [tools]>
 	if len(os.Args) > 2 {

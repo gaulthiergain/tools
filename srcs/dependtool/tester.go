@@ -11,7 +11,6 @@ import (
 	"fmt"
 	"math/rand"
 	"net"
-	"os"
 	"os/exec"
 	"strconv"
 	"strings"
@@ -74,7 +73,7 @@ func checkTypeTest(testStruct *Testing) int {
 // value. In addition an extra margin value is added (3sec).
 //
 // It returns a duration either in milliseconds or in seconds.
-func setDurationTimeOut(t *Testing, dArgs DynamicArgs) time.Duration {
+func setDurationTimeOut(t *Testing, waitTime int) time.Duration {
 
 	if checkTypeTest(t) != externalTesting {
 		// Compute the number of commands + execution time (+ 3 seconds safe margin)
@@ -82,7 +81,7 @@ func setDurationTimeOut(t *Testing, dArgs DynamicArgs) time.Duration {
 		return time.Duration(totalMs) * time.Millisecond
 	}
 
-	return time.Duration(dArgs.waitTime+startupSec) * time.Second
+	return time.Duration(waitTime+startupSec) * time.Second
 }
 
 // runCommandTester run commands and captures stdout and stderr of a the
@@ -93,8 +92,8 @@ func setDurationTimeOut(t *Testing, dArgs DynamicArgs) time.Duration {
 func runCommandTester(programPath, programName, command, option string,
 	testStruct *Testing, dArgs DynamicArgs, data *u.DynamicData) (string, string) {
 
-	timeOut := setDurationTimeOut(testStruct, dArgs)
-	u.PrintInfo("Duration of " + programName + " : " + timeOut.String())
+	timeOut := setDurationTimeOut(testStruct, dArgs.waitTime)
+	u.PrintInfo("Max testing duration of " + programName + " : " + timeOut.String())
 	ctx, cancel := context.WithTimeout(context.Background(), timeOut)
 	defer cancel()
 
@@ -107,9 +106,10 @@ func runCommandTester(programPath, programName, command, option string,
 	cmd.Stderr = bufErr // Add io.MultiWriter(os.Stderr) to record on stderr
 
 	if checkTypeTest(testStruct) == stdinTest {
-		cmd.Stdin = os.Stdin
-		for _, cmd := range testStruct.ListCommands {
-			bufIn.Write([]byte(cmd))
+		cmd.Stdin = bufIn
+		for _, cmds := range testStruct.ListCommands {
+			time.Sleep(100 * time.Millisecond)
+			bufIn.Write([]byte(cmds + "\n"))
 		}
 	}
 
@@ -122,6 +122,62 @@ func runCommandTester(programPath, programName, command, option string,
 	go func() {
 		if checkTypeTest(testStruct) != stdinTest {
 			Tester(programName, cmd, data, testStruct, dArgs)
+
+			// Kill the program after the tester has finished the job
+			if err := u.PKill(programName, syscall.SIGINT); err != nil {
+				u.PrintErr(err)
+			}
+		}
+	}()
+
+	// Ignore the error because the program is killed (waitTime)
+	_ = cmd.Wait()
+
+	if ctx.Err() == context.DeadlineExceeded {
+		u.PrintInfo("Time out during executing: " + cmd.String())
+		return bufOut.String(), bufErr.String()
+	}
+
+	return bufOut.String(), bufErr.String()
+}
+
+func RunVerifCommandTester(programPath, programName, option string, testStruct *Testing) (string, string) {
+
+	timeOut := setDurationTimeOut(testStruct, 1)
+	u.PrintInfo("Max testing duration of " + programName + " : " + timeOut.String())
+	ctx, cancel := context.WithTimeout(context.Background(), timeOut)
+	defer cancel()
+
+	args := strings.Fields(option)
+	cmd := exec.CommandContext(ctx, programPath, args...)
+	cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
+
+	bufOut, bufErr, bufIn := &bytes.Buffer{}, &bytes.Buffer{}, &bytes.Buffer{}
+	cmd.Stdout = bufOut // Add io.MultiWriter(os.Stdout) to record on stdout
+	cmd.Stderr = bufErr // Add io.MultiWriter(os.Stderr) to record on stderr
+
+	if checkTypeTest(testStruct) == stdinTest {
+		cmd.Stdin = bufIn
+		bufIn.Write([]byte(" \n"))
+		for _, cmds := range testStruct.ListCommands {
+			if strings.Contains(programName, "qemu-system-x86_64") {
+				time.Sleep(1000 * time.Millisecond)
+			} else {
+				time.Sleep(100 * time.Millisecond)
+			}
+			bufIn.Write([]byte(cmds + "\n"))
+		}
+	}
+
+	// Run the process
+	if err := cmd.Start(); err != nil {
+		u.PrintErr(err)
+	}
+
+	// Run a go routine to handle the tests
+	go func() {
+		if checkTypeTest(testStruct) != stdinTest {
+			VerifTester(testStruct)
 
 			// Kill the program after the tester has finished the job
 			if err := u.PKill(programName, syscall.SIGINT); err != nil {
@@ -179,6 +235,24 @@ func Tester(programName string, cmd *exec.Cmd, data *u.DynamicData,
 	if err := gatherDynamicSharedLibs(programName, cmd.Process.Pid, data,
 		dArgs.fullDeps); err != nil {
 		u.PrintWarning(err)
+	}
+}
+
+func VerifTester(testStruct *Testing) {
+	// Wait until the program has started
+	time.Sleep(time.Second * startupSec)
+	u.PrintInfo("Run internal tests from test file")
+
+	// Launch execution tests
+	if checkTypeTest(testStruct) == execTest {
+		launchTestsExternal(testStruct)
+	} else if checkTypeTest(testStruct) == telnetTest {
+		if len(testStruct.AddressTelnet) == 0 || testStruct.PortTelnet == 0 {
+			u.PrintWarning("Cannot find Address and port for telnet " +
+				"within json file. Skip tests")
+		} else {
+			launchTelnetTest(testStruct)
+		}
 	}
 }
 

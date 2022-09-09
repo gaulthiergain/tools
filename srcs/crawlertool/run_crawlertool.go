@@ -10,7 +10,6 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"time"
 	u "tools/srcs/common"
 )
 
@@ -23,7 +22,8 @@ func RunCrawler() {
 
 	// Init and parse local arguments
 	args := new(u.Arguments)
-	p, err := args.InitArguments()
+	p, err := args.InitArguments("--crawler",
+		"The Crawler tool allows to analyse (internal) dependencies between micro-libs")
 	if err != nil {
 		u.PrintErr(err)
 	}
@@ -35,6 +35,7 @@ func RunCrawler() {
 	fullSelect := *args.BoolArg[fullLibsArg]
 
 	var path string
+	var outputFilename = "output_"
 	if len(*args.StringArg[repoArg]) > 0 {
 		// Only one folder
 		path = *args.StringArg[repoArg]
@@ -42,6 +43,12 @@ func RunCrawler() {
 		if err := searchConfigUK(path, fullSelect, mapConfig, mapLabel); err != nil {
 			u.PrintErr()
 		}
+
+		repoName := *args.StringArg[repoArg]
+		if filepath.IsAbs(*args.StringArg[repoArg]) {
+			repoName = filepath.Base(*args.StringArg[repoArg])
+		}
+		outputFilename += repoName
 
 	} else if len(*args.StringArg[libsArg]) > 0 {
 
@@ -59,6 +66,12 @@ func RunCrawler() {
 				u.PrintErr(err)
 			}
 		}
+
+		fileLibsName := *args.StringArg[libsArg]
+		if filepath.IsAbs(*args.StringArg[libsArg]) {
+			fileLibsName = filepath.Base(*args.StringArg[libsArg])
+		}
+		outputFilename += strings.Replace(fileLibsName, ".txt", "", -1)
 	} else {
 		u.PrintErr("You must specify either -r (--repository) or -l (libs)")
 	}
@@ -69,8 +82,7 @@ func RunCrawler() {
 		outFolder += string(os.PathSeparator)
 	}
 
-	outputPath := outFolder +
-		"output_" + time.Now().Format("20060102150405")
+	outputPath := outFolder + outputFilename
 
 	// Create the dependencies graph
 	u.GenerateGraph("Unikraft Crawler", outputPath, mapConfig,

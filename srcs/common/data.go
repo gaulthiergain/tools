@@ -14,10 +14,10 @@ type Data struct {
 
 // Exported struct that represents data for static dependency analysis.
 type StaticData struct {
-	Dependencies map[string][]string `json:"dependencies"`
 	SharedLibs   map[string][]string `json:"shared_libs"`
 	SystemCalls  map[string]int      `json:"system_calls"`
 	Symbols      map[string]string   `json:"symbols"`
+	Dependencies map[string][]string `json:"dependencies"`
 }
 
 // Exported struct that represents data for dynamic dependency analysis.

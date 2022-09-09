@@ -6,12 +6,7 @@
 
 package common
 
-import (
-	"regexp"
-	"strings"
-)
-
-const branch = "staging"
+const branch = "RELEASE-0.7.0"
 
 // GitCloneRepository clones a git repository at the the given url.
 //
@@ -32,12 +27,12 @@ func GitBranchStaging(dir string, v bool) (*string, *string, error) {
 		return strOut, strErr, err
 	}
 
-	if strings.Contains(*strOut, branch) || strings.Contains(*strErr, branch) {
-		PrintInfo("Checkout to " + branch)
-		return ExecuteRunCmd("git", dir, v, "checkout", branch)
-	}
+	//todo review
+	//if strings.Contains(*strOut, branch) || strings.Contains(*strErr, branch) {
+	return ExecuteRunCmd("git", dir, v, "checkout", branch)
+	//}
 
-	return strOut, strErr, err
+	//return strOut, strErr, err
 }
 
 // GitPull pulls the current git repository.
@@ -46,22 +41,4 @@ func GitBranchStaging(dir string, v bool) (*string, *string, error) {
 // and an error if any, otherwise it returns nil.
 func GitPull(dir string, v bool) (*string, *string, error) {
 	return ExecuteRunCmd("git", dir, v, "pull")
-}
-
-// GitFindExternalLibs finds all the external libraries of Unikraft which are
-// hosted on Xenbits.
-//
-// It returns a map of all the external libs of Unikraft.
-func GitFindExternalLibs(output string) map[string]string {
-	var re = regexp.MustCompile(
-		`(?m)<a class="list"\s+href="(.*);a=summary">.*</a>`)
-
-	matches := re.FindAllStringSubmatch(output, -1)
-	externalLibs := make(map[string]string, len(matches))
-	for _, match := range matches {
-		git := strings.Split(match[1], "/")
-		lib := strings.Split(git[len(git)-1], ".git")
-		externalLibs[lib[0]] = git[len(git)-1]
-	}
-	return externalLibs
 }

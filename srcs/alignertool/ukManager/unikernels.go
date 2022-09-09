@@ -8,6 +8,7 @@ package ukManager
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -19,10 +20,11 @@ import (
 )
 
 const (
-	makefile = "Makefile"
-	config   = "config"
-	ldExt    = ".ld.o"
-	dbgExt   = ".dbg"
+	makefile  = "Makefile"
+	config    = "config"
+	ldExt     = ".ld.o"
+	objectExt = ".o"
+	dbgExt    = ".dbg"
 )
 
 type Unikernels struct {
@@ -30,19 +32,8 @@ type Unikernels struct {
 }
 
 type Unikernel struct {
-	BuildPath          string `json:"buildPath"`
-	Kernel             string `json:"kernel"`
-	SectionSplit       string `json:"splitSection"`
-	DisplayMapping     bool   `json:"displayMapping"`
-	DisplayStatSize    bool   `json:"displayStatSize"`
-	ComputeLibsMapping bool   `json:"computeLibsMapping"`
-
-	IgnoredPlats       []string `json:"ignoredPlats"`
-	DisplayElfFile     []string `json:"displayElfFile"`
-	DisplaySectionInfo []string `json:"displaySectionInfo"`
-
-	FindSectionByAddress []string `json:"findSectionByAddress"`
-	CompareGroup         int      `json:"compareGroup"`
+	BuildPath string `json:"buildPath"`
+	Kernel    string `json:"kernel"`
 
 	// Used to generate new link.lds file
 	ComputeTextAddr string   `json:"computeTextAddr"`
@@ -117,16 +108,15 @@ func (uk *Unikernel) GetFiles() error {
 			continue
 		}
 
-		if strings.Contains(f.Name(), ldExt) &&
-			!stringInSlice(f.Name(), uk.IgnoredPlats) {
+		if filepath.Ext(f.Name()) == objectExt && !strings.Contains(f.Name(), ldExt) {
+
 			objFile, err := parseFile(uk.BuildPath, f.Name())
 			if err != nil {
 				return err
 			}
 
 			uk.ListObjs = append(uk.ListObjs, objFile)
-		} else if filepath.Ext(strings.TrimSpace(f.Name())) == dbgExt &&
-			!stringInSlice(f.Name(), uk.IgnoredPlats) && !foundExec {
+		} else if filepath.Ext(strings.TrimSpace(f.Name())) == dbgExt && !foundExec {
 
 			execName := f.Name()
 			if len(uk.Kernel) > 0 {
@@ -142,53 +132,15 @@ func (uk *Unikernel) GetFiles() error {
 
 	if len(uk.Kernel) > 0 {
 		u.PrintInfo("Use specified ELF file: " + uk.ElfFile.Name + "(" + uk.BuildPath + ")")
-	} else {
-		u.PrintInfo("Use ELF file found in build folder: " + uk.ElfFile.Name)
+	} else if uk.ElfFile != nil {
+		u.PrintInfo("Use ELF file found in " + uk.BuildPath)
 	}
+
+	if uk.ElfFile == nil {
+		return errors.New("impossible to find executable in the given folder: " + uk.BuildPath)
+	}
+
 	return nil
-}
-
-func (uk *Unikernel) displayAllElfInfo() {
-	uk.ElfFile.Header.DisplayHeader()
-	uk.ElfFile.SectionsTable.DisplaySections()
-	uk.ElfFile.DisplayRelocationTables()
-	uk.ElfFile.DisplaySymbolsTables()
-	uk.ElfFile.DynamicTable.DisplayDynamicEntries()
-	uk.ElfFile.SegmentsTable.DisplayProgramHeader()
-	uk.ElfFile.SegmentsTable.DisplaySegmentSectionMapping()
-	uk.ElfFile.DisplayNotes()
-	uk.ElfFile.DisplayFunctionsTables(false)
-}
-
-func (uk *Unikernel) DisplayElfInfo() {
-
-	if len(uk.DisplayElfFile) == 1 && uk.DisplayElfFile[0] == "all" {
-		uk.displayAllElfInfo()
-	} else {
-		for _, d := range uk.DisplayElfFile {
-			if d == "header" {
-				uk.ElfFile.Header.DisplayHeader()
-			} else if d == "sections" {
-				uk.ElfFile.SectionsTable.DisplaySections()
-			} else if d == "relocations" {
-				uk.ElfFile.DisplayRelocationTables()
-			} else if d == "symbols" {
-				uk.ElfFile.DisplaySymbolsTables()
-			} else if d == "dynamics" {
-				uk.ElfFile.DynamicTable.DisplayDynamicEntries()
-			} else if d == "segments" {
-				uk.ElfFile.SegmentsTable.DisplayProgramHeader()
-			} else if d == "mapping" {
-				uk.ElfFile.SegmentsTable.DisplaySegmentSectionMapping()
-			} else if d == "notes" {
-				uk.ElfFile.DisplayNotes()
-			} else if d == "functions" {
-				uk.ElfFile.DisplayFunctionsTables(false)
-			} else {
-				u.PrintWarning("No display configuration found for argument: " + d)
-			}
-		}
-	}
 }
 
 func (uk *Unikernel) InitAlignment() {
@@ -225,8 +177,11 @@ func (uk *Unikernel) writeTextAlignment(startValue uint64) {
 	uk.strBuilder = strings.Builder{}
 	uk.strBuilder.WriteString("SECTIONS\n{\n")
 	uk.strBuilder.WriteString(fmt.Sprintf(" . = 0x%x;\n", startValue))
+
+	startValueInit := startValue
 	for _, lib := range uk.alignedLibs.AllCommonMicroLibs {
-		uk.strBuilder.WriteString(fmt.Sprintf(" .text.%s : {\n\t %s(.text);\n }\n", strings.Replace(lib.name, ldExt, "", -1), lib.name))
+		uk.strBuilder.WriteString(fmt.Sprintf(" .text.%s 0x%x: {\n\t %s(.text);\n }\n", strings.Replace(lib.name, ldExt, "", -1), startValueInit, lib.name))
+		startValueInit += lib.size
 	}
 
 	for _, lib := range uk.alignedLibs.OnlyFewMicroLibs {
