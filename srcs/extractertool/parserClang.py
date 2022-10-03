@@ -5,7 +5,7 @@
 # pip3 install clang
 #
 # cd /usr/lib/x86_64-linux-gnu/
-# sudo ln -s libclang-X.Y.so.1 libclang.so (X.Y the version number)
+# sudo ln -s libclang-X.Y.so.1 libclang-14.so (X.Y the version number)
 #
 # (*) Run:
 #
