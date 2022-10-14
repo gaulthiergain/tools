@@ -109,7 +109,10 @@ func createUnikraftApp(programName, workspacePath string) (*string, error) {
 
 	if !created {
 		u.PrintWarning(appFolder + " already exists.")
-		handleCreationApp(&appFolder)
+		appFolder = handleCreationApp(appFolder)
+		if _, err := u.CreateFolder(appFolder); err != nil {
+			return nil, err
+		}
 	}
 
 	return &appFolder, nil
@@ -117,7 +120,7 @@ func createUnikraftApp(programName, workspacePath string) (*string, error) {
 
 // -----------------------------Create App folder-------------------------------
 
-func handleCreationApp(appFolder *string) {
+func handleCreationApp(appFolder string) string {
 	fmt.Println("Make your choice:\n1: Copy and overwrite files\n2: " +
 		"Enter manually the name of the folder\n3: exit program")
 	var input int
@@ -128,13 +131,13 @@ func handleCreationApp(appFolder *string) {
 		} else {
 			switch input {
 			case 1:
-				return
+				return appFolder
 			case 2:
 				fmt.Print("Enter text: ")
 				reader := bufio.NewReader(os.Stdin)
 				text, _ := reader.ReadString('\n')
-				appFolder = &text
-				return
+				appFolder = strings.Split(text, "\n")[0] + u.SEP
+				return appFolder
 			case 3:
 				os.Exit(1)
 			default:
@@ -142,6 +145,8 @@ func handleCreationApp(appFolder *string) {
 			}
 		}
 	}
+
+	return appFolder
 }
 
 // -------------------------MOVE FILES TO APP FOLDER----------------------------
