@@ -7,13 +7,15 @@
 package buildtool
 
 import (
-	"github.com/AlecAivazis/survey/v2"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"regexp"
 	"strings"
 	u "tools/srcs/common"
+
+	"github.com/AlecAivazis/survey/v2"
 )
 
 // STATES
@@ -51,7 +53,8 @@ func generateConfigUk(filename, programName string, matchedLibs []string) error 
 // execution of the 'make' command.
 //
 // It returns an integer that defines the result of 'make':
-// 	<SUCCESS, LINKING_ERROR, COMPILER_ERROR>
+//
+//	<SUCCESS, LINKING_ERROR, COMPILER_ERROR>
 func checkMakeOutput(appFolder string, stderr *string) int {
 
 	if stderr == nil {
@@ -107,7 +110,6 @@ func parseMakeOutput(output string) string {
 
 // RunBuildTool runs the automatic build tool to build a unikernel of a
 // given application.
-//
 func RunBuildTool(homeDir string, data *u.Data) {
 
 	// Init and parse local arguments
@@ -216,7 +218,8 @@ func RunBuildTool(homeDir string, data *u.Data) {
 	if err != nil {
 		u.PrintErr(err)
 	}
-
+	fmt.Println("\nPREFINAL\n")
+	fmt.Println(matchedLibs)
 	// Clone the external git repositories
 	cloneLibsFolders(workspacePath, matchedLibs, externalLibs)
 
@@ -229,7 +232,8 @@ func RunBuildTool(homeDir string, data *u.Data) {
 	for _, lib := range matchedLibs {
 		u.PrintOk("Match lib: " + lib)
 	}
-
+	fmt.Println("\nFINAL\n")
+	fmt.Println(matchedLibs)
 	// Clone the external git repositories (if changed)
 	cloneLibsFolders(workspacePath, matchedLibs, externalLibs)
 
@@ -274,11 +278,6 @@ func searchInternalDependencies(unikraftPath string, matchedLibs *[]string,
 					config = strings.TrimPrefix(config, "LIB")
 				}
 
-				// Replace underscore by dash
-				if strings.Contains(config, "_") {
-					config = strings.ReplaceAll(config, "_", "-")
-				}
-
 				// Check if matchedLibs already contains the lib
 				config = strings.ToLower(config)
 				if !u.Contains(*matchedLibs, config) {
@@ -290,6 +289,57 @@ func searchInternalDependencies(unikraftPath string, matchedLibs *[]string,
 
 	return nil
 }
+
+/* // This version considers also internal lib dependencies
+func searchInternalDependencies(unikraftPath string, matchedLibs *[]string,
+	externalLibs map[string]string) error {
+
+	for _, lib := range *matchedLibs {
+		if strings.Contains(lib, "_") {
+			lib = strings.ReplaceAll(lib, "_", "-")
+		}
+
+		// Get and read Config.UK from lib
+		var configUk string
+
+		if _, ok := externalLibs[lib]; ok {
+			configUk = unikraftPath + u.LIBSFOLDER + lib + u.SEP + "Config.uk"
+		} else {
+			configUk = unikraftPath + u.UNIKRAFTFOLDER + "lib" + u.SEP + lib + u.SEP + "Config.uk"
+		}
+
+		lines, err := u.ReadLinesFile(configUk)
+		if err != nil {
+			return err
+		}
+
+		// Process Config.UK file
+		mapConfig := make(map[string][]string)
+		u.ProcessConfigUK(lines, true, mapConfig, nil)
+
+		for config := range mapConfig {
+
+			// Remove LIB prefix
+			if strings.Contains(config, "LIB") {
+				config = strings.TrimPrefix(config, "LIB")
+			}
+
+			// Replace underscore by dash
+			//if strings.Contains(config, "_") {
+			//	config = strings.ReplaceAll(config, "_", "-")
+			//}
+
+			// Check if matchedLibs already contains the lib
+			config = strings.ToLower(config)
+			if !u.Contains(*matchedLibs, config) {
+				*matchedLibs = append(*matchedLibs, config)
+			}
+		}
+	}
+
+	return nil
+}
+*/
 
 func generateMake(programName, appFolder, workspacePath, makefile string,
 	matchedLibs, sourceFiles []string, externalLibs map[string]string) error {
