@@ -196,7 +196,7 @@ func executeDependAptCache(programName string, data *u.StaticData,
 
 // findSourcesFiles puts together all C/C++ source files found in a given application folder.
 //
-// It returns a slice containing the found source file names and an error if any. Otherwise, it
+// It returns a slice containing the found source file names and an error if any, otherwise it
 // returns nil.
 func findSourcesFiles(workspace string) ([]string, error) {
 
