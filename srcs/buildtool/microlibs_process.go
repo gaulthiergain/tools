@@ -203,10 +203,7 @@ func matchLibs(unikraftLibs string, data *u.Data) ([]string, map[string]string, 
 	}
 
 	dataMap := putJsonSymbolsTogether(data)
-	//matchedLibs = append(matchedLibs, POSIXPROCESS)
-	//matchedLibs = append(matchedLibs, POSIXUSER)
-	//matchedLibs = append(matchedLibs, POSIXSYSINFO)
-	//matchedLibs = append(matchedLibs, POSIXLIBDL)
+
 	// Perform the symbol matching
 	matchedLibs = matchSymbols(matchedLibs, dataMap, mapSymbols)
 
