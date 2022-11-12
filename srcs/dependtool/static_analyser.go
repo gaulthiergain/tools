@@ -275,7 +275,13 @@ func extractPrototype(sourcesFiltered []string, data *u.Data) error {
 func gatherSourceFileSymbols(data *u.Data, programPath string) error {
 
 	tmp := strings.Split(programPath, "/")
-	folderPath := strings.Join(tmp[:len(tmp)-1], "/")
+	i := 2
+	for ; i < len(tmp); i++ {
+		if tmp[len(tmp)-i] == "apps" {
+			break
+		}
+	}
+	folderPath := strings.Join(tmp[:len(tmp)-i+2], "/")
 
 	files, err := findSourcesFiles(folderPath)
 	if err != nil {
