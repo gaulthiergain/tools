@@ -253,51 +253,25 @@ func RunBuildTool(homeDir string, data *u.Data) {
 	runMake(programName, appFolder)
 }
 
-func searchInternalDependencies(unikraftPath string, matchedLibs *[]string,
-	externalLibs map[string]string) error {
-
-	for _, lib := range *matchedLibs {
-		// Consider only external libs
-		if _, ok := externalLibs[lib]; ok {
-
-			// Get and read Config.UK from external lib
-			configUk := unikraftPath + u.LIBSFOLDER + lib + u.SEP + "Config.uk"
-			lines, err := u.ReadLinesFile(configUk)
-			if err != nil {
-				return err
-			}
-
-			// Process Config.UK file
-			mapConfig := make(map[string][]string)
-			u.ProcessConfigUK(lines, false, mapConfig, nil)
-
-			for config := range mapConfig {
-
-				// Remove LIB prefix
-				if strings.Contains(config, "LIB") {
-					config = strings.TrimPrefix(config, "LIB")
-				}
-
-				// Check if matchedLibs already contains the lib
-				config = strings.ToLower(config)
-				if !u.Contains(*matchedLibs, config) {
-					*matchedLibs = append(*matchedLibs, config)
-				}
-			}
-		}
+// retFolderCompat modifies its string argument in order to replace its underscore by a dash when
+// necessary for the searchInternalDependencies function to find the corresponding folder in the
+// 'unikraft' folder.
+//
+// It returns its string argument whose underscore has been replaced by a dash if necessary,
+// otherwise it returns its argument unchanged.
+func retFolderForCompat(lib string) string {
+	if strings.Contains(lib, "posix_") {
+		folder := strings.ReplaceAll(lib, "posix_", "posix-")
+		return folder
 	}
 
-	return nil
+	return lib
 }
 
-/* // This version considers also internal lib dependencies
 func searchInternalDependencies(unikraftPath string, matchedLibs *[]string,
 	externalLibs map[string]string) error {
 
 	for _, lib := range *matchedLibs {
-		if strings.Contains(lib, "_") {
-			lib = strings.ReplaceAll(lib, "_", "-")
-		}
 
 		// Get and read Config.UK from lib
 		var configUk string
@@ -305,7 +279,8 @@ func searchInternalDependencies(unikraftPath string, matchedLibs *[]string,
 		if _, ok := externalLibs[lib]; ok {
 			configUk = unikraftPath + u.LIBSFOLDER + lib + u.SEP + "Config.uk"
 		} else {
-			configUk = unikraftPath + u.UNIKRAFTFOLDER + "lib" + u.SEP + lib + u.SEP + "Config.uk"
+			configUk = unikraftPath + u.UNIKRAFTFOLDER + "lib" + u.SEP + retFolderForCompat(lib) +
+				u.SEP + "Config.uk"
 		}
 
 		lines, err := u.ReadLinesFile(configUk)
@@ -324,11 +299,6 @@ func searchInternalDependencies(unikraftPath string, matchedLibs *[]string,
 				config = strings.TrimPrefix(config, "LIB")
 			}
 
-			// Replace underscore by dash
-			//if strings.Contains(config, "_") {
-			//	config = strings.ReplaceAll(config, "_", "-")
-			//}
-
 			// Check if matchedLibs already contains the lib
 			config = strings.ToLower(config)
 			if !u.Contains(*matchedLibs, config) {
@@ -339,7 +309,6 @@ func searchInternalDependencies(unikraftPath string, matchedLibs *[]string,
 
 	return nil
 }
-*/
 
 func generateMake(programName, appFolder, workspacePath, makefile string,
 	matchedLibs, sourceFiles []string, externalLibs map[string]string) error {
