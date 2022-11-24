@@ -64,7 +64,8 @@ def check_type_file(filepath, includePaths):
         cOptions = cOptions + ' ' + includePaths
     if silent_flag is False:
         print("Gathering symbols of " + filepath)
-    if filepath.endswith(".cpp") or filepath.endswith(".hpp"):
+    if filepath.endswith(".cpp") or filepath.endswith(".hpp") or filepath.endswith(".cc") or \
+        filepath.endswith(".hcc"):
         parse_file(filepath, cplusplusOptions)
     elif filepath.endswith(".c") or filepath.endswith(".h"):
         parse_file(filepath, cOptions)

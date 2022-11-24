@@ -103,7 +103,7 @@ func detectURL(mapVariables map[string]*Variables) *string {
 	return nil
 }
 
-//TODO REPLACE
+// TODO REPLACE
 func CreateFolder(path string) (bool, error) {
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		if err = os.Mkdir(path, 0755); err != nil {
@@ -157,7 +157,7 @@ func findSourcesFiles(workspace string) ([]string, error) {
 	return filenames, nil
 }
 
-//TODO REPLACE
+// TODO REPLACE
 // ExecuteCommand a single command without displaying the output.
 //
 // It returns a string which represents stdout and an error if any, otherwise
@@ -261,7 +261,14 @@ func RunExtracterTool(homeDir string) {
 		return
 	}
 
-	fileExtension := filepath.Ext(*url)
+	var fileExtension string
+	urlSplit := strings.Split(*url, "/")
+	if urlSplit[len(urlSplit)-1] == "download" {
+		fileExtension = filepath.Ext(urlSplit[len(urlSplit)-2])
+	} else {
+		fileExtension = filepath.Ext(*url)
+	}
+
 	folderName := lib + "_sources_folder"
 	created, err := CreateFolder(folderName)
 	if err != nil {
@@ -269,7 +276,15 @@ func RunExtracterTool(homeDir string) {
 	}
 
 	var files []string
-	archiveName := lib + "_sources" + fileExtension
+	var archiveName string
+
+	if fileExtension == ".gz" {
+		archiveName = lib + "_sources.tar" + fileExtension
+
+	} else {
+		archiveName = lib + "_sources" + fileExtension
+	}
+
 	if created {
 		u.PrintInfo(*url + " is found. Download the lib sources...")
 		err := DownloadFile(archiveName, *url)
@@ -327,7 +342,6 @@ func RunExtracterTool(homeDir string) {
 	}
 
 	u.PrintOk(strconv.Itoa(len(mapSymbols)) + " symbols from " + lib + " have been extracted.")
-
 	filename := filepath.Join(os.Getenv("GOPATH"), "src", "tools", "libs", "external", lib)
 	if err := u.RecordDataJson(filename, mf); err != nil {
 		u.PrintErr(err)
