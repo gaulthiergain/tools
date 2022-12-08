@@ -159,6 +159,19 @@ func putJsonSymbolsTogether(data *u.Data) map[string]string {
 	return dataMap
 }
 
+// retNameCompat modifies its string argument in order to replace its underscore by a dash when
+// necessary.
+//
+// It returns its string argument whose underscore has been replaced by a dash if necessary,
+// otherwise it returns its argument unchanged.
+func retNameForCompat(value string) string {
+	if strings.Contains(value, "posix-") {
+		return strings.ReplaceAll(value, "posix-", "posix_")
+	}
+
+	return value
+}
+
 // matchSymbols performs the matching between Unikraft's micro-libs and
 // libraries used by a given application based on the list of symbols that both
 // contain.
@@ -169,8 +182,8 @@ func matchSymbols(matchedLibs []string, data map[string]string,
 	for key := range data {
 		if values, ok := microLibs[key]; ok {
 			for _, value := range values {
-				if !u.Contains(matchedLibs, value) {
-					matchedLibs = append(matchedLibs, value)
+				if !u.Contains(matchedLibs, retNameForCompat(value)) {
+					matchedLibs = append(matchedLibs, retNameForCompat(value))
 				}
 			}
 		}

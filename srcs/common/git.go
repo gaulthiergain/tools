@@ -6,7 +6,7 @@
 
 package common
 
-const branch = "RELEASE-0.7.0"
+const branch = "RELEASE-0.10.0"
 
 // GitCloneRepository clones a git repository at the the given url.
 //

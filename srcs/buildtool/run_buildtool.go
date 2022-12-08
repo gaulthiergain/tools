@@ -261,8 +261,7 @@ func RunBuildTool(homeDir string, data *u.Data) {
 // otherwise it returns its argument unchanged.
 func retFolderForCompat(lib string) string {
 	if strings.Contains(lib, "posix_") {
-		folder := strings.ReplaceAll(lib, "posix_", "posix-")
-		return folder
+		return strings.ReplaceAll(lib, "posix_", "posix-")
 	}
 
 	return lib
