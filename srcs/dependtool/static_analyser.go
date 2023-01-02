@@ -209,7 +209,8 @@ func findSourcesFiles(workspace string) ([]string, error) {
 			}
 
 			ext := filepath.Ext(info.Name())
-			if ext == ".c" || ext == ".cpp" {
+			if ext == ".c" || ext == ".cpp" || ext == ".cc" || ext == ".h" || ext == ".hpp" ||
+				ext == ".hcc" {
 				filenames = append(filenames, path)
 			}
 			return nil
