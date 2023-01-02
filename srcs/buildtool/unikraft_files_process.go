@@ -195,7 +195,7 @@ func processSourceFiles(sourcesPath, appFolder, includeFolder string,
 				if err = u.CopyFileContents(path, appFolder+info.Name()); err != nil {
 					return err
 				}
-			} else if extension == ".h" {
+			} else if extension == ".h" || extension == ".hpp" || extension == ".hcc" {
 				// Add source files to includesFiles list
 				includesFiles = append(includesFiles, info.Name())
 

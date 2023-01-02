@@ -123,6 +123,8 @@ func RunBuildTool(homeDir string, data *u.Data) {
 		u.PrintErr(err)
 	}
 
+	fmt.Println(args)
+	fmt.Println(*args.StringListArg[configArg])
 	// Get program Name
 	programName := *args.StringArg[programArg]
 
@@ -213,11 +215,33 @@ func RunBuildTool(homeDir string, data *u.Data) {
 		panic(err)
 	}
 
+	// Move config files to Unikraft folder
+	configArg := *args.StringListArg[configArg]
+	for _, configFilePath := range configArg {
+		pathSplit := strings.Split(configFilePath, "/")
+		file := pathSplit[len(pathSplit)-1]
+		fileSplit := strings.Split(file, ".")
+		ext := fileSplit[len(fileSplit)-1]
+
+		if ext == "h" || ext == "hpp" || ext == "hcc" {
+			if err = u.CopyFileContents(configFilePath, *includeFolder+file); err != nil {
+				u.PrintErr(err)
+			}
+		} else if ext == "c" || ext == "cpp" || ext == "cc" {
+			if err = u.CopyFileContents(configFilePath, appFolder+file); err != nil {
+				u.PrintErr(err)
+			}
+		} else {
+			u.PrintWarning("Unsupported extension for file: " + file)
+		}
+	}
+
 	// Match micro-libs
 	matchedLibs, externalLibs, err := matchLibs(unikraftPath+"lib"+u.SEP, data)
 	if err != nil {
 		u.PrintErr(err)
 	}
+
 	fmt.Println("\nPREFINAL\n")
 	fmt.Println(matchedLibs)
 	// Clone the external git repositories
@@ -232,6 +256,7 @@ func RunBuildTool(homeDir string, data *u.Data) {
 	for _, lib := range matchedLibs {
 		u.PrintOk("Match lib: " + lib)
 	}
+
 	fmt.Println("\nFINAL\n")
 	fmt.Println(matchedLibs)
 	// Clone the external git repositories (if changed)
