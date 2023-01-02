@@ -4,10 +4,11 @@ import (
 	"debug/elf"
 	"errors"
 	"fmt"
-	"github.com/fatih/color"
 	"runtime"
 	"strings"
 	u "tools/srcs/common"
+
+	"github.com/fatih/color"
 )
 
 // RunAnalyserTool allows to run the dependency analyser tool.
@@ -222,7 +223,7 @@ func saveGraph(programName, outFolder string, data *u.Data) {
 			programName+"_dependencies", data.StaticData.Dependencies, nil)
 	}
 
-	if len(data.StaticData.SharedLibs) > 0 {
+	if len(data.DynamicData.SharedLibs) > 0 {
 		u.GenerateGraph(programName, outFolder+"dynamic"+u.SEP+
 			programName+"_shared_libs", data.DynamicData.SharedLibs, nil)
 	}
