@@ -194,6 +194,25 @@ func executeDependAptCache(programName string, data *u.StaticData,
 	return nil
 }
 
+// getProgramFolder gets the folder path in which the given program is located, according to the
+// Unikraft standard (e.g., /home/.../apps/programFolder/.../program).
+//
+// It returns the folder containing the program files according to the standard described above.
+func getProgramFolder(programPath string) string {
+
+	tmp := strings.Split(programPath, "/")
+	i := 2
+
+	for ; i < len(tmp); i++ {
+		if tmp[len(tmp)-i] == "apps" {
+			break
+		}
+	}
+
+	folderPath := strings.Join(tmp[:len(tmp)-i+2], "/")
+	return folderPath
+}
+
 // findSourcesFiles puts together all C/C++ source files found in a given application folder.
 //
 // It returns a slice containing the found source file names and an error if any, otherwise it
@@ -228,10 +247,7 @@ func findSourcesFiles(workspace string) ([]string, error) {
 // it returns nil.
 func ExecuteCommand(command string, arguments []string) (string, error) {
 	out, err := exec.Command(command, arguments...).CombinedOutput()
-	if err != nil {
-		return "", err
-	}
-	return string(out), nil
+	return string(out), err
 }
 
 // addSourceFileSymbols adds all the symbols present in 'output' to the static data field in
@@ -275,21 +291,12 @@ func extractPrototype(sourcesFiltered []string, data *u.Data) error {
 // It returns an error if any, otherwise it returns nil.
 func gatherSourceFileSymbols(data *u.Data, programPath string) error {
 
-	tmp := strings.Split(programPath, "/")
-	i := 2
-	for ; i < len(tmp); i++ {
-		if tmp[len(tmp)-i] == "apps" {
-			break
-		}
-	}
-	folderPath := strings.Join(tmp[:len(tmp)-i+2], "/")
-
-	files, err := findSourcesFiles(folderPath)
+	sourceFiles, err := findSourcesFiles(getProgramFolder(programPath))
 	if err != nil {
 		u.PrintErr(err)
 	}
 
-	if err := extractPrototype(files, data); err != nil {
+	if err := extractPrototype(sourceFiles, data); err != nil {
 		u.PrintErr(err)
 	}
 	return nil

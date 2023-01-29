@@ -7,7 +7,6 @@
 package buildtool
 
 import (
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -106,6 +105,32 @@ func parseMakeOutput(output string) string {
 	return sb.String()
 }
 
+// addConfigFiles adds user-provided configuration files to the app unikernel folder.
+func addConfigFiles(configFiles []string, selectedFiles *[]string, includeFolder,
+	appFolder string) {
+
+	for _, configFilePath := range configFiles {
+		configFile := filepath.Base(configFilePath)
+		fileExt := filepath.Ext(configFile)
+
+		// Copy config file
+		if fileExt == ".h" || fileExt == ".hpp" || fileExt == ".hcc" {
+			if err := u.CopyFileContents(configFilePath, includeFolder+configFile); err != nil {
+				u.PrintErr(err)
+			}
+		} else if fileExt == ".c" || fileExt == ".cpp" || fileExt == ".cc" {
+			if err := u.CopyFileContents(configFilePath, appFolder+configFile); err != nil {
+				u.PrintErr(err)
+			}
+
+			// Add Makefile.uk entry
+			*selectedFiles = append(*selectedFiles, configFile)
+		} else {
+			u.PrintWarning("Unsupported extension for file: " + configFile)
+		}
+	}
+}
+
 // -------------------------------------Run-------------------------------------
 
 // RunBuildTool runs the automatic build tool to build a unikernel of a
@@ -123,8 +148,6 @@ func RunBuildTool(homeDir string, data *u.Data) {
 		u.PrintErr(err)
 	}
 
-	fmt.Println(args)
-	fmt.Println(*args.StringListArg[configArg])
 	// Get program Name
 	programName := *args.StringArg[programArg]
 
@@ -216,25 +239,7 @@ func RunBuildTool(homeDir string, data *u.Data) {
 	}
 
 	// Move config files to Unikraft folder
-	configArg := *args.StringListArg[configArg]
-	for _, configFilePath := range configArg {
-		pathSplit := strings.Split(configFilePath, "/")
-		file := pathSplit[len(pathSplit)-1]
-		fileSplit := strings.Split(file, ".")
-		ext := fileSplit[len(fileSplit)-1]
-
-		if ext == "h" || ext == "hpp" || ext == "hcc" {
-			if err = u.CopyFileContents(configFilePath, *includeFolder+file); err != nil {
-				u.PrintErr(err)
-			}
-		} else if ext == "c" || ext == "cpp" || ext == "cc" {
-			if err = u.CopyFileContents(configFilePath, appFolder+file); err != nil {
-				u.PrintErr(err)
-			}
-		} else {
-			u.PrintWarning("Unsupported extension for file: " + file)
-		}
-	}
+	addConfigFiles(*args.StringListArg[configArg], &selectedFiles, *includeFolder, appFolder)
 
 	// Match micro-libs
 	matchedLibs, externalLibs, err := matchLibs(unikraftPath+"lib"+u.SEP, data)
@@ -242,8 +247,6 @@ func RunBuildTool(homeDir string, data *u.Data) {
 		u.PrintErr(err)
 	}
 
-	fmt.Println("\nPREFINAL\n")
-	fmt.Println(matchedLibs)
 	// Clone the external git repositories
 	cloneLibsFolders(workspacePath, matchedLibs, externalLibs)
 
@@ -257,8 +260,6 @@ func RunBuildTool(homeDir string, data *u.Data) {
 		u.PrintOk("Match lib: " + lib)
 	}
 
-	fmt.Println("\nFINAL\n")
-	fmt.Println(matchedLibs)
 	// Clone the external git repositories (if changed)
 	cloneLibsFolders(workspacePath, matchedLibs, externalLibs)
 

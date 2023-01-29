@@ -7,9 +7,10 @@
 package dependtool
 
 import (
-	"github.com/akamensky/argparse"
 	"os"
 	u "tools/srcs/common"
+
+	"github.com/akamensky/argparse"
 )
 
 const (
@@ -22,6 +23,7 @@ const (
 	fullDepsArg        = "fullDeps"
 	fullStaticAnalysis = "fullStaticAnalysis"
 	typeAnalysis       = "typeAnalysis"
+	interdependArg     = "interdepend"
 )
 
 // parseLocalArguments parses arguments of the application.
@@ -53,6 +55,9 @@ func parseLocalArguments(p *argparse.Parser, args *u.Arguments) error {
 	args.InitArgParse(p, args, u.INT, "", typeAnalysis,
 		&argparse.Options{Required: false, Default: 0,
 			Help: "Kind of analysis (0: both; 1: static; 2: dynamic)"})
+	args.InitArgParse(p, args, u.BOOL, "i", interdependArg,
+		&argparse.Options{Required: false, Default: false,
+			Help: "Create the source files interdependence graph"})
 
 	return u.ParserWrapper(p, os.Args)
 }
