@@ -133,8 +133,8 @@ func fetchSymbolsExternalLibs(folder string,
 	return externalLibs, nil
 }
 
-// putJsonSymbolsTogether puts the json file symbols and system calls resulting from the static and
-// dynamic analyses together into a map structure.
+// putJsonSymbolsTogether puts the json file symbols and system calls resulting from the static,
+// dynamic and source files analyses together into a map structure.
 //
 // It returns the map containing all the symbols and system calls.
 func putJsonSymbolsTogether(data *u.Data) map[string]string {
@@ -153,6 +153,14 @@ func putJsonSymbolsTogether(data *u.Data) map[string]string {
 	}
 
 	for k := range data.DynamicData.SystemCalls {
+		dataMap[k] = ""
+	}
+
+	for k, v := range data.SourcesData.Symbols {
+		dataMap[k] = v
+	}
+
+	for k := range data.SourcesData.SystemCalls {
 		dataMap[k] = ""
 	}
 
@@ -219,6 +227,7 @@ func matchLibs(unikraftLibs string, data *u.Data) ([]string, map[string]string, 
 
 	// Perform the symbol matching
 	matchedLibs = matchSymbols(matchedLibs, dataMap, mapSymbols)
+	//matchedLibs = append(matchedLibs, LWIP)
 
 	return matchedLibs, externalLibs, nil
 }

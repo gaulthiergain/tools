@@ -4,118 +4,12 @@ import (
 	"debug/elf"
 	"errors"
 	"fmt"
-	"os"
-	"path/filepath"
 	"runtime"
 	"strings"
 	u "tools/srcs/common"
 
 	"github.com/fatih/color"
 )
-
-// sourceFileIncludesAnalysis collects all the include directives from a C/C++ source file.
-//
-// It returns a slice containing the found header names.
-func sourceFileIncludesAnalysis(sourceFile string) []string {
-
-	var fileIncludes []string
-
-	fileLines, err := u.ReadLinesFile(sourceFile)
-	if err != nil {
-		u.PrintErr(err)
-	}
-
-	for _, line := range fileLines {
-		if strings.Contains(line, "#include") {
-			line = strings.ReplaceAll(line, " ", "")
-			line := strings.Split(line, "#include")[1]
-			if strings.HasPrefix(line, "\"") {
-				fileIncludes = append(fileIncludes, line[1:strings.Index(line[1:], "\"")+1])
-			} else if strings.HasPrefix(line, "<") {
-				fileIncludes = append(fileIncludes, line[1:strings.Index(line[1:], ">")+1])
-			}
-		}
-	}
-
-	return fileIncludes
-}
-
-// gccSourceFileIncludesAnalysis collects all the include directives from a C/C++ source file using
-// the gcc preprocessor.
-//
-// It returns a slice containing the found header names.
-func gccSourceFileIncludesAnalysis(sourceFile, tmpFolder string) []string {
-
-	var fileIncludes []string
-
-	outputStr, _ := ExecuteCommand("gcc", []string{"-E", sourceFile, "-I", tmpFolder})
-	outputSlice := strings.Split(outputStr, "\n")
-
-	for _, line := range outputSlice {
-
-		// Only interested in headers not coming from the standard library
-		if strings.Contains(line, "\""+tmpFolder) {
-			line = strings.Split(line, "\""+tmpFolder)[1]
-			includeDirective := line[0:strings.Index(line[0:], "\"")]
-			if !u.Contains(fileIncludes, includeDirective) {
-				fileIncludes = append(fileIncludes, includeDirective)
-			}
-		}
-	}
-
-	return fileIncludes
-}
-
-// runInterdependAnalyser collects all the included headers names (i.e., dependencies) from each
-// C/C++ source file of a program and builds an interdependence graph (dot file) between all these
-// source files.
-func runInterdependAnalyser(programPath, programName, outFolder string) {
-
-	// Find all program source files
-	sourceFiles, err := findSourcesFiles(getProgramFolder(programPath))
-	if err != nil {
-		u.PrintErr(err)
-	}
-
-	// Create a temporary folder and copy all source files into it for use with the gcc
-	// preprocessor
-	tmpFolder := "tmp/"
-	_, err = u.CreateFolder(tmpFolder)
-	if err != nil {
-		u.PrintErr(err)
-	}
-	var tmpFiles []string
-	for _, sourceFilePath := range sourceFiles {
-		if err := u.CopyFileContents(sourceFilePath,
-			tmpFolder+filepath.Base(sourceFilePath)); err != nil {
-			u.PrintErr(err)
-		}
-		tmpFiles = append(tmpFiles, tmpFolder+filepath.Base(sourceFilePath))
-	}
-
-	// Analyse source files include directives and collect header names. Source files are first
-	// analysed "by hand" to get all their include directives and then by gcc to make sure to avoid
-	// directives that are commented or subjected to a macro.
-	interdependMap := make(map[string][]string)
-	for _, tmpFile := range tmpFiles {
-		interdependMap[filepath.Base(tmpFile)] = make([]string, 0)
-		analysis := sourceFileIncludesAnalysis(tmpFile)
-		gccAnalysis := gccSourceFileIncludesAnalysis(tmpFile, tmpFolder)
-		for _, includeDirective := range gccAnalysis {
-			if u.Contains(analysis, includeDirective) {
-				interdependMap[filepath.Base(tmpFile)] =
-					append(interdependMap[filepath.Base(tmpFile)], includeDirective)
-			}
-		}
-	}
-
-	// Create dot file
-	u.GenerateGraph(programName, outFolder+programName, interdependMap, nil)
-
-	// Remove tmp folder
-	u.PrintInfo("Remove folder " + tmpFolder)
-	_ = os.RemoveAll(tmpFolder)
-}
 
 // RunAnalyserTool allows to run the dependency analyser tool.
 func RunAnalyserTool(homeDir string, data *u.Data) {
@@ -136,10 +30,11 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 		u.PrintErr(err)
 	}
 
-	// Get the kind of analysis (0: both; 1: static; 2: dynamic)
+	// Get the kind of analysis (0: all; 1: static; 2: dynamic; 3: interdependence; 4: sources; 5:
+	// stripped-down app and json for buildtool)
 	typeAnalysis := *args.IntArg[typeAnalysis]
-	if typeAnalysis < 0 || typeAnalysis > 2 {
-		u.PrintErr(errors.New("analysis argument must be between [0,2]"))
+	if typeAnalysis < 0 || typeAnalysis > 5 {
+		u.PrintErr(errors.New("analysis argument must be between [0,5]"))
 	}
 
 	// Get program path
@@ -175,7 +70,8 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 	// Run static analyser
 	if typeAnalysis == 0 || typeAnalysis == 1 {
 		u.PrintHeader1("(1.1) RUN STATIC ANALYSIS")
-		runStaticAnalyser(elfFile, isDynamic, isLinux, args, programName, programPath, outFolder, data)
+		runStaticAnalyser(elfFile, isDynamic, isLinux, args, programName, programPath, outFolder,
+			data)
 	}
 
 	// Run dynamic analyser
@@ -189,6 +85,24 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 		}
 	}
 
+	// Run interdependence analyser
+	if typeAnalysis == 0 || typeAnalysis == 3 {
+		u.PrintHeader1("(1.3) RUN INTERDEPENDENCE ANALYSIS")
+		_ = runInterdependAnalyser(programPath, programName, outFolder)
+	}
+
+	// Run sources analyser
+	if typeAnalysis == 0 || typeAnalysis == 4 {
+		u.PrintHeader1("(1.4) RUN SOURCES ANALYSIS")
+		runSourcesAnalyser(getProgramFolder(programPath), data)
+	}
+
+	// Prepare stripped-down app for buildtool
+	if typeAnalysis == 5 {
+		u.PrintHeader1("(1.5) PREPARE STRIPPED-DOWN APP AND JSON FOR BUILDTOOL")
+		runSourcesAnalyser(runInterdependAnalyser(programPath, programName, outFolder), data)
+	}
+
 	// Save Data to JSON
 	if err = u.RecordDataJson(outFolder+programName, data); err != nil {
 		u.PrintErr(err)
@@ -200,11 +114,6 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 	// Save graph if full dependencies option is set
 	if *args.BoolArg[fullDepsArg] {
 		saveGraph(programName, outFolder, data)
-	}
-
-	// Create source files interdependence graph if interdependence option is set
-	if *args.BoolArg[interdependArg] {
-		runInterdependAnalyser(programPath, programName, outFolder)
 	}
 }
 
@@ -321,6 +230,12 @@ func runDynamicAnalyser(args *u.Arguments, programName, programPath,
 	}
 }
 
+// runDynamicAnalyser runs the sources analyser.
+func runSourcesAnalyser(programPath string, data *u.Data) {
+
+	sourcesAnalyser(data, programPath)
+}
+
 // saveGraph saves dependency graphs of a given app into the output folder.
 func saveGraph(programName, outFolder string, data *u.Data) {
 
@@ -338,6 +253,12 @@ func saveGraph(programName, outFolder string, data *u.Data) {
 		u.GenerateGraph(programName, outFolder+"dynamic"+u.SEP+
 			programName+"_shared_libs", data.DynamicData.SharedLibs, nil)
 	}
+}
+
+// runInterdependAnalyser runs the interdependence analyser.
+func runInterdependAnalyser(programPath, programName, outFolder string) string {
+
+	return interdependAnalyser(programPath, programName, outFolder)
 }
 
 /*
@@ -364,6 +285,7 @@ for i := 0; i < len(sliceFile); i++ {
 }
 }
 
+
 // Remove dependencies whose files are not in program directory (e.g., stdio, stdlib, ...)
 	for internalFile, dependencies := range interdependMap {
 		var internalDep []string
@@ -375,6 +297,7 @@ for i := 0; i < len(sliceFile); i++ {
 		}
 		interdependMap[internalFile] = internalDep
 	}
+
 
 // Detect and print removable program source files (i.e., files that no other file depends
 		// on)
@@ -399,4 +322,27 @@ for i := 0; i < len(sliceFile); i++ {
 		}
 		fmt.Println("Removable program source files of ", programName, ":")
 		fmt.Println(removableFiles)
+
+
+func isADependency(internalFile string, interdependMap* map[string][]string) bool {
+	for _, dependencies := range *interdependMap {
+		for _, dependency := range dependencies {
+			if internalFile == dependency {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+
+mymap := make(map[string][]string)
+	mymap["file_win32"] = make([]string, 0)
+	mymap["file_1"] = []string{"file_win32"}
+	mymap["file_2"] = []string{"file_1"}
+	mymap["file_3"] = make([]string, 0)
+	mymap["file_4"] = []string{"file_3"}
+	mymap["file_openssl"] = []string{"file_3"}
+	mymap["file_5"] = []string{"file_openssl"}
+	mymap["file_6"] = []string{"file_5"}
 */
