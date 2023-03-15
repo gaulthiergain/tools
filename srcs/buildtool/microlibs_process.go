@@ -227,7 +227,6 @@ func matchLibs(unikraftLibs string, data *u.Data) ([]string, map[string]string, 
 
 	// Perform the symbol matching
 	matchedLibs = matchSymbols(matchedLibs, dataMap, mapSymbols)
-	//matchedLibs = append(matchedLibs, LWIP)
 
 	return matchedLibs, externalLibs, nil
 }
