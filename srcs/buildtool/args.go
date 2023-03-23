@@ -14,13 +14,12 @@ import (
 )
 
 const (
-	programArg     = "program"
-	workspaceArg   = "workspace"
-	sourcesArg     = "sources"
-	objsArg        = "objects"
-	makefileArg    = "makefile"
-	configArg      = "config"
-	interdependArg = "interdepend"
+	programArg   = "program"
+	workspaceArg = "workspace"
+	sourcesArg   = "sources"
+	objsArg      = "objects"
+	makefileArg  = "makefile"
+	configArg    = "config"
 )
 
 // ParseArguments parses arguments of the application.
@@ -44,10 +43,6 @@ func parseLocalArguments(p *argparse.Parser, args *u.Arguments) error {
 			"for Makefile"})
 	args.InitArgParse(p, args, u.STRINGLIST, "c", configArg,
 		&argparse.Options{Required: false, Help: "Add configuration files"})
-	args.InitArgParse(p, args, u.BOOL, "i", interdependArg,
-		&argparse.Options{Required: false, Default: false,
-			Help: "Use the source files filtered by the deptool interdependence graph to build " +
-				"the app"})
 
 	return u.ParserWrapper(p, os.Args)
 }

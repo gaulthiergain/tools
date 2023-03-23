@@ -2,7 +2,6 @@ package dependtool
 
 import (
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 	u "tools/srcs/common"
@@ -37,16 +36,6 @@ func findSourcesFiles(workspace string) ([]string, error) {
 	return filenames, nil
 }
 
-// TODO REPLACE
-// ExecuteCommand a single command without displaying the output.
-//
-// It returns a string which represents stdout and an error if any, otherwise
-// it returns nil.
-func ExecuteCommand(command string, arguments []string) (string, error) {
-	out, err := exec.Command(command, arguments...).CombinedOutput()
-	return string(out), err
-}
-
 // addSourceFileSymbols adds all the symbols present in 'output' to the static data field in
 // 'data'.
 func addSourceFileSymbols(output string, data *u.SourcesData) {
@@ -73,7 +62,7 @@ func extractPrototype(sourcesFiltered []string, data *u.SourcesData) error {
 	for _, f := range sourcesFiltered {
 		script := filepath.Join(os.Getenv("GOPATH"), "src", "tools", "srcs", "dependtool",
 			"parserClang.py")
-		output, err := ExecuteCommand("python3", []string{script, "-q", "-t", f})
+		output, err := u.ExecuteCommand("python3", []string{script, "-q", "-t", f})
 		if err != nil {
 			u.PrintWarning("Incomplete analysis with file " + f)
 			continue

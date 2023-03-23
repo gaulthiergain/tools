@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -56,6 +57,16 @@ func sourceFileIncludesAnalysis(sourceFile string) []string {
 	}
 
 	return fileIncludes
+}
+
+// TODO REPLACE
+// ExecuteCommand a single command without displaying the output.
+//
+// It returns a string which represents stdout and an error if any, otherwise
+// it returns nil.
+func ExecuteCommand(command string, arguments []string) (string, error) {
+	out, err := exec.Command(command, arguments...).CombinedOutput()
+	return string(out), err
 }
 
 // gccSourceFileIncludesAnalysis collects all the include directives from a C/C++ source file using

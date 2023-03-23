@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"regexp"
 	"strconv"
@@ -159,19 +158,6 @@ func findSourcesFiles(workspace string) ([]string, error) {
 	return filenames, nil
 }
 
-// TODO REPLACE
-// ExecuteCommand a single command without displaying the output.
-//
-// It returns a string which represents stdout and an error if any, otherwise
-// it returns nil.
-func ExecuteCommand(command string, arguments []string) (string, error) {
-	out, err := exec.Command(command, arguments...).CombinedOutput()
-	if err != nil {
-		return "", err
-	}
-	return string(out), nil
-}
-
 func saveSymbols(output string, mapSymbols map[string]string, libName string) {
 	if strings.Contains(output, "\n") {
 		output = strings.TrimSuffix(output, "\n")
@@ -191,11 +177,13 @@ func saveSymbols(output string, mapSymbols map[string]string, libName string) {
 	}
 }
 
-func extractPrototype(sourcesFiltered []string, mapSymbols map[string]string, libName string) error {
+func extractPrototype(sourcesFiltered []string, mapSymbols map[string]string,
+	libName string) error {
 
 	for _, f := range sourcesFiltered {
-		script := filepath.Join(os.Getenv("GOPATH"), "src", "tools", "srcs", "extractertool", "parserClang.py")
-		output, err := ExecuteCommand("python3", []string{script, "-q", "-t", f})
+		script := filepath.Join(os.Getenv("GOPATH"), "src", "tools", "srcs", "extractertool",
+			"parserClang.py")
+		output, err := u.ExecuteCommand("python3", []string{script, "-q", "-t", f})
 		if err != nil {
 			u.PrintWarning("Incomplete analysis with file " + f)
 			continue
@@ -224,7 +212,8 @@ func RunExtracterTool(homeDir string) {
 	// Init and parse local arguments
 	args := new(u.Arguments)
 	p, err := args.InitArguments("--extracter",
-		"The extracter tool allows to extract all the symbols (functions) of an external/internal library")
+		"The extracter tool allows to extract all the symbols (functions) of an "+
+			"external/internal library")
 	if err != nil {
 		u.PrintErr(err)
 	}
@@ -277,7 +266,7 @@ func RunExtracterTool(homeDir string) {
 
 		var files []string
 
-		if fileExtension == ".gz" {
+		if fileExtension == ".gz" || fileExtension == ".xz" {
 			archiveName = lib + "_sources.tar" + fileExtension
 
 		} else {
@@ -288,6 +277,7 @@ func RunExtracterTool(homeDir string) {
 			u.PrintInfo(*url + " is found. Download the lib sources...")
 			err := DownloadFile(archiveName, *url)
 			if err != nil {
+				_ = os.RemoveAll(folderName)
 				u.PrintErr(err)
 			}
 			u.PrintOk(*url + " successfully downloaded.")
@@ -301,7 +291,8 @@ func RunExtracterTool(homeDir string) {
 					u.PrintErr(err.Error() + ". Corrupted archive. Please try again.")
 				}
 
-			} else if fileExtension == ".tar" || fileExtension == ".gz" || fileExtension == ".tgz" {
+			} else if fileExtension == ".tar" || fileExtension == ".gz" || fileExtension ==
+				".tgz" {
 				files, err = unTarGz(archiveName, folderName)
 				if err != nil {
 					_ = os.Remove(archiveName)
@@ -309,7 +300,18 @@ func RunExtracterTool(homeDir string) {
 					u.PrintErr(err.Error() + ". Corrupted archive. Please try again.")
 				}
 
+			} else if fileExtension == ".tar" || fileExtension == ".xz" || fileExtension ==
+				".txz" {
+				_, err := u.ExecuteCommand("tar", []string{"-xf", archiveName, "-C", folderName})
+				if err != nil {
+					_ = os.Remove(archiveName)
+					_ = os.RemoveAll(folderName)
+					u.PrintErr(err.Error() + ". Corrupted archive. Please try again.")
+				}
+
 			} else {
+				_ = os.Remove(archiveName)
+				_ = os.RemoveAll(folderName)
 				u.PrintErr(errors.New("unknown extension for archive"))
 			}
 		}
@@ -317,6 +319,8 @@ func RunExtracterTool(homeDir string) {
 		u.PrintInfo("Inspecting folder " + folderName + " for sources...")
 		folderFiles, err := findSourcesFiles(folderName)
 		if err != nil {
+			_ = os.Remove(archiveName)
+			_ = os.RemoveAll(folderName)
 			u.PrintErr(err)
 		}
 
@@ -326,6 +330,10 @@ func RunExtracterTool(homeDir string) {
 
 	libpathFiles, err := findSourcesFiles(libpath)
 	if err != nil {
+		if url != nil {
+			_ = os.Remove(archiveName)
+			_ = os.RemoveAll(folderName)
+		}
 		u.PrintErr(err)
 	}
 	sourcesFiltered = append(sourcesFiltered, libpathFiles...)
@@ -335,6 +343,10 @@ func RunExtracterTool(homeDir string) {
 	mapSymbols := make(map[string]string)
 	u.PrintInfo("Extracting symbols from all sources of " + lib + ". This may take some times...")
 	if err := extractPrototype(sourcesFiltered, mapSymbols, lib); err != nil {
+		if url != nil {
+			_ = os.Remove(archiveName)
+			_ = os.RemoveAll(folderName)
+		}
 		u.PrintErr(err)
 	}
 
@@ -350,6 +362,9 @@ func RunExtracterTool(homeDir string) {
 
 	var filename string
 	if url != nil {
+		u.PrintInfo("Remove folders " + archiveName + " and " + folderName)
+		_ = os.Remove(archiveName)
+		_ = os.RemoveAll(folderName)
 		filename = filepath.Join(os.Getenv("GOPATH"), "src", "tools", "libs", "external", lib)
 
 	} else {
@@ -360,11 +375,5 @@ func RunExtracterTool(homeDir string) {
 		u.PrintErr(err)
 	} else {
 		u.PrintOk("Symbols file have been written to " + filename + ".json")
-	}
-
-	if url != nil {
-		u.PrintInfo("Remove folders " + archiveName + " and " + folderName)
-		_ = os.Remove(archiveName)
-		_ = os.RemoveAll(folderName)
 	}
 }
