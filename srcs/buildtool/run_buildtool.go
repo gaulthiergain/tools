@@ -14,7 +14,7 @@ import (
 	"strings"
 	u "tools/srcs/common"
 
-	"github.com/AlecAivazis/survey/v2"
+	"gopkg.in/AlecAivazis/survey.v1"
 )
 
 // STATES
@@ -234,7 +234,7 @@ func RunBuildTool(homeDir string, data *u.Data) {
 	}
 
 	var selectedFiles []string
-	if err := survey.AskOne(prompt, &selectedFiles); err != nil {
+	if err := survey.AskOne(prompt, &selectedFiles, nil); err != nil {
 		panic(err)
 	}
 
@@ -277,6 +277,7 @@ func RunBuildTool(homeDir string, data *u.Data) {
 
 	// Run make
 	runMake(programName, appFolder)
+
 }
 
 // retFolderCompat modifies its string argument in order to replace its underscore by a dash when

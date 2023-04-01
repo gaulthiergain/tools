@@ -12,6 +12,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	u "tools/srcs/common"
@@ -175,6 +176,49 @@ func filterSourcesFiles(sourceFiles []string) []string {
 	return filterSrcFiles
 }
 
+// conformIncDirAndCopyFile conforms all the include directives from a C/C++ source file so that no
+// directive contains a path to a header file but the header file name only (i.e., the last element
+// of the path). It also copies the content of the source file in the same way as CopyFileContents.
+//
+// It returns an error if any, otherwise it returns nil.
+func conformIncDirAndCopyFile(sourcePath, destPath string) (err error) {
+
+	fileLines, err := u.ReadLinesFile(sourcePath)
+	if err != nil {
+		return err
+	}
+
+	// Find include directives using regexp
+	var re = regexp.MustCompile(`(.*)(#include)(.*)(<|")(.*)(>|")(.*)`)
+
+	for index := range fileLines {
+		for _, match := range re.FindAllStringSubmatch(fileLines[index], -1) {
+
+			// Only interested in include directives containing a path to a header file
+			if !strings.Contains(match[0], "/") {
+				continue
+			}
+
+			// Replace the path by its last element
+			for i := 1; i < len(match); i++ {
+				if match[i] == "<" || match[i] == "\"" {
+					match[i+1] = filepath.Base(match[i+1])
+					fileLines[index] = strings.Join(match[1:], "") + "\n"
+					break
+				}
+			}
+		}
+	}
+
+	// Write the modified content to a file in the unikernel folder
+	err = u.WriteToFile(destPath, []byte(strings.Join(fileLines, "")))
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func processSourceFiles(sourcesPath, appFolder, includeFolder string,
 	sourceFiles, includesFiles []string) ([]string, error) {
 
@@ -182,7 +226,6 @@ func processSourceFiles(sourcesPath, appFolder, includeFolder string,
 		err error) error {
 
 		if !info.IsDir() {
-
 			extension := filepath.Ext(info.Name())
 			if _, ok := srcLanguages[extension]; ok {
 				// Add source files to sourceFiles list
@@ -192,7 +235,7 @@ func processSourceFiles(sourcesPath, appFolder, includeFolder string,
 				srcLanguages[extension] += 1
 
 				// Copy source files to the appFolder
-				if err = u.CopyFileContents(path, appFolder+info.Name()); err != nil {
+				if err = conformIncDirAndCopyFile(path, appFolder+info.Name()); err != nil {
 					return err
 				}
 			} else if extension == ".h" || extension == ".hpp" || extension == ".hcc" {
@@ -200,7 +243,7 @@ func processSourceFiles(sourcesPath, appFolder, includeFolder string,
 				includesFiles = append(includesFiles, info.Name())
 
 				// Copy header files to the INCLUDEFOLDER
-				if err = u.CopyFileContents(path, includeFolder+info.Name()); err != nil {
+				if err = conformIncDirAndCopyFile(path, includeFolder+info.Name()); err != nil {
 					return err
 				}
 			} else {
