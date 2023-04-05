@@ -156,11 +156,11 @@ var srcLanguages = map[string]int{
 	".c":   0,
 	".cpp": 0,
 	".cc":  0,
-	".S":   0,
-	".s":   0,
-	".asm": 0,
-	".py":  0,
-	".go":  0,
+	//".S":   0,
+	//".s":   0,
+	//".asm": 0,
+	//".py":  0,
+	//".go":  0,
 }
 
 func filterSourcesFiles(sourceFiles []string) []string {
@@ -176,9 +176,10 @@ func filterSourcesFiles(sourceFiles []string) []string {
 	return filterSrcFiles
 }
 
-// conformIncDirAndCopyFile conforms all the include directives from a C/C++ source file so that no
-// directive contains a path to a header file but the header file name only (i.e., the last element
-// of the path). It also copies the content of the source file in the same way as CopyFileContents.
+// conformIncDirAndCopyFile conforms all the user-defined include directives from a C/C++ source
+// file so that none of these directives contains a path to a header file but the header file name
+// only (i.e., the last element of the path). It also copies the content of the source file in the
+// same way as CopyFileContents.
 //
 // It returns an error if any, otherwise it returns nil.
 func conformIncDirAndCopyFile(sourcePath, destPath string) (err error) {
@@ -188,20 +189,20 @@ func conformIncDirAndCopyFile(sourcePath, destPath string) (err error) {
 		return err
 	}
 
-	// Find include directives using regexp
-	var re = regexp.MustCompile(`(.*)(#include)(.*)(<|")(.*)(>|")(.*)`)
+	// Find user-defined include directives using regexp
+	var re = regexp.MustCompile(`(.*)(#include)(.*)(")(.*)(")(.*)`)
 
 	for index := range fileLines {
 		for _, match := range re.FindAllStringSubmatch(fileLines[index], -1) {
 
-			// Only interested in include directives containing a path to a header file
+			// Only interested in user-defined directives containing a path to a header file
 			if !strings.Contains(match[0], "/") {
 				continue
 			}
 
 			// Replace the path by its last element
 			for i := 1; i < len(match); i++ {
-				if match[i] == "<" || match[i] == "\"" {
+				if match[i] == "\"" {
 					match[i+1] = filepath.Base(match[i+1])
 					fileLines[index] = strings.Join(match[1:], "") + "\n"
 					break
