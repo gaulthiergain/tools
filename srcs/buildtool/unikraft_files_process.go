@@ -195,15 +195,10 @@ func conformIncDirAndCopyFile(sourcePath, destPath string) (err error) {
 	for index := range fileLines {
 		for _, match := range re.FindAllStringSubmatch(fileLines[index], -1) {
 
-			// Only interested in user-defined directives containing a path to a header file
-			if !strings.Contains(match[0], "/") {
-				continue
-			}
-
 			// Replace the path by its last element
 			for i := 1; i < len(match); i++ {
 				if match[i] == "\"" {
-					match[i+1] = filepath.Base(match[i+1])
+					match[i+1] = "include/" + filepath.Base(match[i+1])
 					fileLines[index] = strings.Join(match[1:], "") + "\n"
 					break
 				}
@@ -244,7 +239,7 @@ func processSourceFiles(sourcesPath, appFolder, includeFolder string,
 				includesFiles = append(includesFiles, info.Name())
 
 				// Copy header files to the INCLUDEFOLDER
-				if err = conformIncDirAndCopyFile(path, includeFolder+info.Name()); err != nil {
+				if err = u.CopyFileContents(path, includeFolder+info.Name()); err != nil {
 					return err
 				}
 			} else {
