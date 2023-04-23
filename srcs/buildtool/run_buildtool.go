@@ -238,11 +238,12 @@ func RunBuildTool(homeDir string, data *u.Data) {
 		panic(err)
 	}
 
+	// Conform file include directives to the new unikernel folder organisation
 	if err := conformIncludeDirectives(appFolder); err != nil {
 		u.PrintErr(err)
 	}
 
-	// Move config files to Unikraft folder
+	// Move config files to the unikernel folder
 	addConfigFiles(*args.StringListArg[configArg], &selectedFiles, *includeFolder, appFolder)
 
 	// Match micro-libs

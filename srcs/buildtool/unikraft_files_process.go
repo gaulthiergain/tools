@@ -125,7 +125,7 @@ func handleCreationApp(appFolder string) string {
 	fmt.Println("Make your choice:\n1: Copy and overwrite files\n2: " +
 		"Enter manually the name of the folder\n3: exit program")
 	var input int
-	for true {
+	for {
 		fmt.Print("Please enter your choice (0 to exit): ")
 		if _, err := fmt.Scanf("%d", &input); err != nil {
 			u.PrintWarning("Choice must be numeric! Try again")
@@ -146,8 +146,6 @@ func handleCreationApp(appFolder string) string {
 			}
 		}
 	}
-
-	return appFolder
 }
 
 // -------------------------MOVE FILES TO APP FOLDER----------------------------
@@ -176,9 +174,16 @@ func filterSourcesFiles(sourceFiles []string) []string {
 	return filterSrcFiles
 }
 
+// conformIncludeDirectives conforms all the user-defined include directives of all C/C++ source
+// files to the unikernel directory format so that all these directives are paths to header files
+// located in the include folder of the unikernel directory.
+//
+// It returns an error if any, otherwise it returns nil.
 func conformIncludeDirectives(sourcesPath string) error {
+
 	err := filepath.Walk(sourcesPath, func(path string, info os.FileInfo,
 		err error) error {
+
 		if !info.IsDir() {
 			extension := filepath.Ext(info.Name())
 			if extension == ".h" || extension == ".hpp" || extension == ".hcc" {
@@ -202,10 +207,9 @@ func conformIncludeDirectives(sourcesPath string) error {
 	return nil
 }
 
-// conformFile conforms all the user-defined include directives from a C/C++ source file so that
-// none of these directives contains a path to a header file but the header file name only (i.e.,
-// the last element of the path). It also copies the content of the source file in the same way as
-// CopyFileContents.
+// conformFile conforms all the user-defined include directives of a C/C++ source file to the
+// unikernel directory format so that all these directives are paths to header files located in the
+// include folder.
 //
 // It returns an error if any, otherwise it returns nil.
 func conformFile(path string, isHeader bool) (err error) {
@@ -261,9 +265,6 @@ func processSourceFiles(sourcesPath, appFolder, includeFolder string,
 				srcLanguages[extension] += 1
 
 				// Copy source files to the appFolder
-				//if err = conformIncDirAndCopyFile(path, appFolder+info.Name()); err != nil {
-				//	return err
-				//}
 				if err = u.CopyFileContents(path, appFolder+info.Name()); err != nil {
 					return err
 				}
