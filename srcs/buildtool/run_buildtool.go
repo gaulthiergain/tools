@@ -222,7 +222,7 @@ func RunBuildTool(homeDir string, data *u.Data) {
 	}
 
 	// Filter source files to limit build errors (e.g., remove test files,
-	//multiple main file, ...)
+	// multiple main file, ...)
 	filterSourceFiles := filterSourcesFiles(sourceFiles)
 
 	// Prompt file selection
@@ -236,6 +236,10 @@ func RunBuildTool(homeDir string, data *u.Data) {
 	var selectedFiles []string
 	if err := survey.AskOne(prompt, &selectedFiles, nil); err != nil {
 		panic(err)
+	}
+
+	if err := conformIncludeDirectives(appFolder); err != nil {
+		u.PrintErr(err)
 	}
 
 	// Move config files to Unikraft folder

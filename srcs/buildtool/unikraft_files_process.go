@@ -176,15 +176,41 @@ func filterSourcesFiles(sourceFiles []string) []string {
 	return filterSrcFiles
 }
 
-// conformIncDirAndCopyFile conforms all the user-defined include directives from a C/C++ source
-// file so that none of these directives contains a path to a header file but the header file name
-// only (i.e., the last element of the path). It also copies the content of the source file in the
-// same way as CopyFileContents.
+func conformIncludeDirectives(sourcesPath string) error {
+	err := filepath.Walk(sourcesPath, func(path string, info os.FileInfo,
+		err error) error {
+		if !info.IsDir() {
+			extension := filepath.Ext(info.Name())
+			if extension == ".h" || extension == ".hpp" || extension == ".hcc" {
+				if err = conformFile(path, true); err != nil {
+					return err
+				}
+			} else if extension == ".c" || extension == ".cpp" || extension == ".cc" {
+				if err = conformFile(path, false); err != nil {
+					return err
+				}
+			} else {
+				u.PrintWarning("Unsupported extension for file: " + info.Name())
+			}
+		}
+		return nil
+	})
+
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+// conformFile conforms all the user-defined include directives from a C/C++ source file so that
+// none of these directives contains a path to a header file but the header file name only (i.e.,
+// the last element of the path). It also copies the content of the source file in the same way as
+// CopyFileContents.
 //
 // It returns an error if any, otherwise it returns nil.
-func conformIncDirAndCopyFile(sourcePath, destPath string) (err error) {
+func conformFile(path string, isHeader bool) (err error) {
 
-	fileLines, err := u.ReadLinesFile(sourcePath)
+	fileLines, err := u.ReadLinesFile(path)
 	if err != nil {
 		return err
 	}
@@ -198,7 +224,11 @@ func conformIncDirAndCopyFile(sourcePath, destPath string) (err error) {
 			// Replace the path by its last element
 			for i := 1; i < len(match); i++ {
 				if match[i] == "\"" {
-					match[i+1] = "include/" + filepath.Base(match[i+1])
+					if isHeader {
+						match[i+1] = filepath.Base(match[i+1])
+					} else {
+						match[i+1] = "include" + u.SEP + filepath.Base(match[i+1])
+					}
 					fileLines[index] = strings.Join(match[1:], "") + "\n"
 					break
 				}
@@ -207,7 +237,7 @@ func conformIncDirAndCopyFile(sourcePath, destPath string) (err error) {
 	}
 
 	// Write the modified content to a file in the unikernel folder
-	err = u.WriteToFile(destPath, []byte(strings.Join(fileLines, "")))
+	err = u.WriteToFile(path, []byte(strings.Join(fileLines, "")))
 	if err != nil {
 		return err
 	}
@@ -231,7 +261,10 @@ func processSourceFiles(sourcesPath, appFolder, includeFolder string,
 				srcLanguages[extension] += 1
 
 				// Copy source files to the appFolder
-				if err = conformIncDirAndCopyFile(path, appFolder+info.Name()); err != nil {
+				//if err = conformIncDirAndCopyFile(path, appFolder+info.Name()); err != nil {
+				//	return err
+				//}
+				if err = u.CopyFileContents(path, appFolder+info.Name()); err != nil {
 					return err
 				}
 			} else if extension == ".h" || extension == ".hpp" || extension == ".hcc" {
