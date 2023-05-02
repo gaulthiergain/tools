@@ -238,6 +238,19 @@ func RunBuildTool(homeDir string, data *u.Data) {
 		panic(err)
 	}
 
+	// Copy, conform and apply user-provided patches to the new unikernel folder
+	if len(*args.StringArg[patchArg]) > 0 {
+		// Create patch folder
+		patchFolder, err := createPatchFolder(appFolder)
+		if err != nil {
+			u.PrintErr(err)
+		}
+		if err := addAndApplyPatchFiles(*args.StringArg[patchArg], *patchFolder, appFolder); err !=
+			nil {
+			u.PrintErr(err)
+		}
+	}
+
 	// Conform file include directives to the new unikernel folder organisation
 	if err := conformIncludeDirectives(appFolder); err != nil {
 		u.PrintErr(err)
@@ -248,6 +261,7 @@ func RunBuildTool(homeDir string, data *u.Data) {
 
 	// Match micro-libs
 	matchedLibs, externalLibs, err := matchLibs(unikraftPath+"lib"+u.SEP, data)
+
 	if err != nil {
 		u.PrintErr(err)
 	}
@@ -257,6 +271,7 @@ func RunBuildTool(homeDir string, data *u.Data) {
 
 	// Match internal dependencies between micro-libs
 	if err := searchInternalDependencies(workspacePath, &matchedLibs,
+
 		externalLibs); err != nil {
 		u.PrintErr(err)
 	}
@@ -270,6 +285,7 @@ func RunBuildTool(homeDir string, data *u.Data) {
 
 	// Generate Makefiles
 	if err := generateMake(programName, appFolder, workspacePath, *args.StringArg[makefileArg],
+
 		matchedLibs, selectedFiles, externalLibs); err != nil {
 		u.PrintErr(err)
 	}
@@ -282,7 +298,6 @@ func RunBuildTool(homeDir string, data *u.Data) {
 
 	// Run make
 	runMake(programName, appFolder)
-
 }
 
 // retFolderCompat modifies its string argument in order to replace its underscore by a dash when

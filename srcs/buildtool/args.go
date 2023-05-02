@@ -20,6 +20,7 @@ const (
 	objsArg      = "objects"
 	makefileArg  = "makefile"
 	configArg    = "config"
+	patchArg     = "patch"
 )
 
 // ParseArguments parses arguments of the application.
@@ -43,6 +44,8 @@ func parseLocalArguments(p *argparse.Parser, args *u.Arguments) error {
 			"for Makefile"})
 	args.InitArgParse(p, args, u.STRINGLIST, "c", configArg,
 		&argparse.Options{Required: false, Help: "Add configuration files"})
+	args.InitArgParse(p, args, u.STRING, "", patchArg,
+		&argparse.Options{Required: false, Help: "Add patch files"})
 
 	return u.ParserWrapper(p, os.Args)
 }

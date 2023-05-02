@@ -18,6 +18,18 @@ import (
 	u "tools/srcs/common"
 )
 
+// ---------------------------Create Patches Folder-----------------------------
+
+func createPatchFolder(appFolder string) (*string, error) {
+
+	patchesFolder := appFolder + "patches" + u.SEP
+	if _, err := u.CreateFolder(patchesFolder); err != nil {
+		return nil, err
+	}
+
+	return &patchesFolder, nil
+}
+
 // ---------------------------Create Include Folder-----------------------------
 
 func createIncludeFolder(appFolder string) (*string, error) {
@@ -154,11 +166,11 @@ var srcLanguages = map[string]int{
 	".c":   0,
 	".cpp": 0,
 	".cc":  0,
-	//".S":   0,
-	//".s":   0,
-	//".asm": 0,
-	//".py":  0,
-	//".go":  0,
+	".S":   0,
+	".s":   0,
+	".asm": 0,
+	".py":  0,
+	".go":  0,
 }
 
 func filterSourcesFiles(sourceFiles []string) []string {
@@ -174,14 +186,134 @@ func filterSourcesFiles(sourceFiles []string) []string {
 	return filterSrcFiles
 }
 
+// addAndApplyPatchFiles copies all the user-provided patch files to the unikernel directory,
+// conforms them to the unikernel directory format so that all paths in the patch files are paths
+// to source files located in the unikernel folder and applies the patches.
+//
+// It returns an error if any, otherwise it returns nil.
+func addAndApplyPatchFiles(patchPath string, patchFolder, appFolder string) error {
+
+	// Copy and conform patch files
+	err := filepath.Walk(patchPath, func(filePath string, info os.FileInfo,
+		err error) error {
+
+		if !info.IsDir() {
+			extension := filepath.Ext(info.Name())
+			if extension == ".patch" {
+				if err = conformPatchFile(filePath, patchFolder+info.Name()); err != nil {
+					return err
+				}
+			}
+		}
+		return nil
+	})
+	if err != nil {
+		return err
+	}
+
+	// Initialise git repo to be able to apply patches
+	_, _, _ = u.ExecuteRunCmd("git", appFolder, true, "init")
+	_, _, _ = u.ExecuteRunCmd("git", appFolder, true, "add", ".")
+	_, _, _ = u.ExecuteRunCmd("git", appFolder, true, "commit", "-m", "first commit")
+
+	// Apply patches
+	err = filepath.Walk(patchPath, func(filePath string, info os.FileInfo,
+		err error) error {
+
+		if !info.IsDir() {
+			_, _, _ = u.ExecuteRunCmd("git", appFolder, true, "am", patchFolder+info.Name())
+		}
+		return nil
+	})
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// conformPatchPath conforms a path in a user-provided patch file to the unikernel directory format
+// so that this path describes a source file located in the unikernel folder.
+func conformPatchPath(match *[]string, index int) {
+	extension := filepath.Ext((*match)[index])
+	if extension == ".h" || extension == ".hpp" || extension == ".hcc" {
+		(*match)[index] = "include" + u.SEP + filepath.Base((*match)[index])
+	} else if extension == ".c" || extension == ".cpp" || extension == ".cc" {
+		(*match)[index] = filepath.Base((*match)[index])
+	} else {
+		u.PrintWarning("Unsupported extension for file: " +
+			filepath.Base((*match)[index]))
+	}
+}
+
+// conformPatchFile copies all the user-provided patch files to the unikernel directory and
+// conforms them to the unikernel directory format so that all paths in the patch files are paths
+// to source files located in the unikernel folder.
+//
+// It returns an error if any, otherwise it returns nil.
+func conformPatchFile(patchPath, newPatchPath string) error {
+
+	patchLines, err := u.ReadLinesFile(patchPath)
+	if err != nil {
+		return err
+	}
+
+	// Find paths in patch file using regexp
+	var re1 = regexp.MustCompile(`( )(.*)( \| )(.*)`)
+	var re2 = regexp.MustCompile(`(diff --git )(a/)?(.*)( )(b/)?(.*)`)
+	var re3 = regexp.MustCompile(`(--- )(a/)?(.*)`)
+	var re4 = regexp.MustCompile(`(\+\+\+ )(b/)?(.*)`)
+
+	for lineIndex := range patchLines {
+
+		// All paths to files to be modified by the patch are listed under "---"
+		if patchLines[lineIndex] == "---\n" {
+			lineIndex++
+			for ; !strings.Contains(patchLines[lineIndex], "changed"); lineIndex++ {
+				for _, match := range re1.FindAllStringSubmatch(patchLines[lineIndex], -1) {
+					conformPatchPath(&match, 2)
+					patchLines[lineIndex] = strings.Join(match[1:], "") + "\n"
+				}
+			}
+		}
+
+		// All diff lines contain paths to files to be modified by the patch
+		if len(patchLines[lineIndex]) > 10 && patchLines[lineIndex][:10] == "diff --git" {
+			for _, match := range re2.FindAllStringSubmatch(patchLines[lineIndex], -1) {
+				conformPatchPath(&match, 3)
+				conformPatchPath(&match, 6)
+				patchLines[lineIndex] = strings.Join(match[1:], "") + "\n"
+			}
+
+			// Same observation for the two lines following the index line
+			for _, match := range re3.FindAllStringSubmatch(patchLines[lineIndex+2], -1) {
+				conformPatchPath(&match, 3)
+				patchLines[lineIndex+2] = strings.Join(match[1:], "") + "\n"
+			}
+			for _, match := range re4.FindAllStringSubmatch(patchLines[lineIndex+3], -1) {
+				conformPatchPath(&match, 3)
+				patchLines[lineIndex+3] = strings.Join(match[1:], "") + "\n"
+			}
+		}
+	}
+
+	// Write the modified content to a file in the unikernel folder
+	err = u.WriteToFile(newPatchPath, []byte(strings.Join(patchLines, "")))
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // conformIncludeDirectives conforms all the user-defined include directives of all C/C++ source
 // files to the unikernel directory format so that all these directives are paths to header files
 // located in the include folder of the unikernel directory.
 //
 // It returns an error if any, otherwise it returns nil.
-func conformIncludeDirectives(sourcesPath string) error {
+func conformIncludeDirectives(sourcePath string) error {
 
-	err := filepath.Walk(sourcesPath, func(path string, info os.FileInfo,
+	err := filepath.Walk(sourcePath, func(path string, info os.FileInfo,
 		err error) error {
 
 		if !info.IsDir() {
@@ -204,6 +336,7 @@ func conformIncludeDirectives(sourcesPath string) error {
 	if err != nil {
 		return err
 	}
+
 	return nil
 }
 
@@ -212,9 +345,9 @@ func conformIncludeDirectives(sourcesPath string) error {
 // include folder.
 //
 // It returns an error if any, otherwise it returns nil.
-func conformFile(path string, isHeader bool) (err error) {
+func conformFile(filePath string, isHeader bool) (err error) {
 
-	fileLines, err := u.ReadLinesFile(path)
+	fileLines, err := u.ReadLinesFile(filePath)
 	if err != nil {
 		return err
 	}
@@ -222,10 +355,10 @@ func conformFile(path string, isHeader bool) (err error) {
 	// Find user-defined include directives using regexp
 	var re = regexp.MustCompile(`(.*)(#include)(.*)(")(.*)(")(.*)`)
 
-	for index := range fileLines {
-		for _, match := range re.FindAllStringSubmatch(fileLines[index], -1) {
+	for lineIndex := range fileLines {
+		for _, match := range re.FindAllStringSubmatch(fileLines[lineIndex], -1) {
 
-			// Replace the path by its last element
+			// Replace the path by (include/ +) its last element
 			for i := 1; i < len(match); i++ {
 				if match[i] == "\"" {
 					if isHeader {
@@ -233,7 +366,7 @@ func conformFile(path string, isHeader bool) (err error) {
 					} else {
 						match[i+1] = "include" + u.SEP + filepath.Base(match[i+1])
 					}
-					fileLines[index] = strings.Join(match[1:], "") + "\n"
+					fileLines[lineIndex] = strings.Join(match[1:], "") + "\n"
 					break
 				}
 			}
@@ -241,7 +374,7 @@ func conformFile(path string, isHeader bool) (err error) {
 	}
 
 	// Write the modified content to a file in the unikernel folder
-	err = u.WriteToFile(path, []byte(strings.Join(fileLines, "")))
+	err = u.WriteToFile(filePath, []byte(strings.Join(fileLines, "")))
 	if err != nil {
 		return err
 	}
