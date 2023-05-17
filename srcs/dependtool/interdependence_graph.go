@@ -6,31 +6,13 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"regexp"
 	"strconv"
 	"strings"
 	u "tools/srcs/common"
 )
 
 // ---------------------------------Gather Data---------------------------------
-
-// getProgramFolder gets the folder path in which the given program is located, according to the
-// Unikraft standard (e.g., /home/.../apps/programFolder/.../program).
-//
-// It returns the folder containing the program files according to the standard described above.
-func getProgramFolder(programPath string) string {
-
-	tmp := strings.Split(programPath, u.SEP)
-	i := 2
-
-	for ; i < len(tmp); i++ {
-		if tmp[len(tmp)-i] == "apps" {
-			break
-		}
-	}
-
-	folderPath := strings.Join(tmp[:len(tmp)-i+2], u.SEP)
-	return folderPath
-}
 
 // sourceFileIncludesAnalysis collects all the include directives from a C/C++ source file.
 //
@@ -44,14 +26,18 @@ func sourceFileIncludesAnalysis(sourceFile string) []string {
 		u.PrintErr(err)
 	}
 
-	for _, line := range fileLines {
-		if strings.Contains(line, "#include") {
-			line = strings.ReplaceAll(line, " ", "")
-			line = strings.Split(line, "#include")[1]
-			if strings.HasPrefix(line, "\"") {
-				fileIncludes = append(fileIncludes, line[1:strings.Index(line[1:], "\"")+1])
-			} else if strings.HasPrefix(line, "<") {
-				fileIncludes = append(fileIncludes, line[1:strings.Index(line[1:], ">")+1])
+	// Find user-defined include directives using regexp
+	var re = regexp.MustCompile(`(.*)(#include)(.*)("|<)(.*)("|>)(.*)`)
+
+	for lineIndex := range fileLines {
+		for _, match := range re.FindAllStringSubmatch(fileLines[lineIndex], -1) {
+
+			// Find the last element of the path and append it to the list of found header names
+			for i := 1; i < len(match); i++ {
+				if match[i] == "\"" || match[i] == "<" {
+					fileIncludes = append(fileIncludes, filepath.Base(match[i+1]))
+					break
+				}
 			}
 		}
 	}
@@ -91,7 +77,7 @@ func gccSourceFileIncludesAnalysis(sourceFile, outAppFolder string) ([]string, e
 		// Only interested in headers not coming from the standard library
 		if strings.Contains(line, "\""+outAppFolder) {
 			line = strings.Split(line, "\""+outAppFolder)[1]
-			includeDirective := line[0:strings.Index(line[0:], "\"")]
+			includeDirective := filepath.Base(line[0:strings.Index(line[0:], "\"")])
 			if !u.Contains(fileIncludes, includeDirective) {
 				fileIncludes = append(fileIncludes, includeDirective)
 			}
@@ -208,15 +194,12 @@ func requestUnikraftExtLibs() []string {
 func interdependAnalyser(programPath, programName, outFolder string) string {
 
 	// Find all program source files
-	sourceFiles, err := findSourcesFiles(getProgramFolder(programPath))
+	sourceFiles, err := findSourcesFiles(programPath)
 	if err != nil {
 		u.PrintErr(err)
 	}
 
 	// Create a folder and copy all source files into it for use with the gcc preprocessor
-	//tmp := strings.Split(getProgramFolder(programPath), u.SEP)
-	//outAppFolder := strings.Join(tmp[:len(tmp)-1], u.SEP) + u.SEP + programName +
-	//"_deptool_output" + u.SEP
 	outAppFolder := outFolder + programName + u.SEP
 	_, err = u.CreateFolder(outAppFolder)
 	if err != nil {

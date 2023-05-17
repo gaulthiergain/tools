@@ -126,7 +126,9 @@ func addConfigFiles(configFiles []string, selectedFiles *[]string, includeFolder
 			// Add Makefile.uk entry
 			*selectedFiles = append(*selectedFiles, configFile)
 		} else {
-			u.PrintWarning("Unsupported extension for file: " + configFile)
+			if err := u.CopyFileContents(configFilePath, appFolder+configFile); err != nil {
+				u.PrintErr(err)
+			}
 		}
 	}
 }
@@ -261,7 +263,6 @@ func RunBuildTool(homeDir string, data *u.Data) {
 
 	// Match micro-libs
 	matchedLibs, externalLibs, err := matchLibs(unikraftPath+"lib"+u.SEP, data)
-
 	if err != nil {
 		u.PrintErr(err)
 	}
@@ -271,7 +272,6 @@ func RunBuildTool(homeDir string, data *u.Data) {
 
 	// Match internal dependencies between micro-libs
 	if err := searchInternalDependencies(workspacePath, &matchedLibs,
-
 		externalLibs); err != nil {
 		u.PrintErr(err)
 	}
@@ -285,7 +285,6 @@ func RunBuildTool(homeDir string, data *u.Data) {
 
 	// Generate Makefiles
 	if err := generateMake(programName, appFolder, workspacePath, *args.StringArg[makefileArg],
-
 		matchedLibs, selectedFiles, externalLibs); err != nil {
 		u.PrintErr(err)
 	}
@@ -337,7 +336,6 @@ func searchInternalDependencies(unikraftPath string, matchedLibs *[]string,
 		// Process Config.UK file
 		mapConfig := make(map[string][]string)
 		u.ProcessConfigUK(lines, true, mapConfig, nil)
-
 		for config := range mapConfig {
 
 			// Remove LIB prefix

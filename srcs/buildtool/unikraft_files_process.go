@@ -196,7 +196,6 @@ func addAndApplyPatchFiles(patchPath string, patchFolder, appFolder string) erro
 	// Copy and conform patch files
 	err := filepath.Walk(patchPath, func(filePath string, info os.FileInfo,
 		err error) error {
-
 		if !info.IsDir() {
 			extension := filepath.Ext(info.Name())
 			if extension == ".patch" {
@@ -219,7 +218,6 @@ func addAndApplyPatchFiles(patchPath string, patchFolder, appFolder string) erro
 	// Apply patches
 	err = filepath.Walk(patchPath, func(filePath string, info os.FileInfo,
 		err error) error {
-
 		if !info.IsDir() {
 			_, _, _ = u.ExecuteRunCmd("git", appFolder, true, "am", patchFolder+info.Name())
 		}
@@ -315,7 +313,6 @@ func conformIncludeDirectives(sourcePath string) error {
 
 	err := filepath.Walk(sourcePath, func(path string, info os.FileInfo,
 		err error) error {
-
 		if !info.IsDir() {
 			extension := filepath.Ext(info.Name())
 			if extension == ".h" || extension == ".hpp" || extension == ".hcc" {
@@ -332,7 +329,6 @@ func conformIncludeDirectives(sourcePath string) error {
 		}
 		return nil
 	})
-
 	if err != nil {
 		return err
 	}
@@ -387,7 +383,6 @@ func processSourceFiles(sourcesPath, appFolder, includeFolder string,
 
 	err := filepath.Walk(sourcesPath, func(path string, info os.FileInfo,
 		err error) error {
-
 		if !info.IsDir() {
 			extension := filepath.Ext(info.Name())
 			if _, ok := srcLanguages[extension]; ok {
@@ -413,10 +408,8 @@ func processSourceFiles(sourcesPath, appFolder, includeFolder string,
 				u.PrintWarning("Unsupported extension for file: " + info.Name())
 			}
 		}
-
 		return nil
 	})
-
 	if err != nil {
 		return nil, err
 	}

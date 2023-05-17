@@ -11,6 +11,25 @@ import (
 	"github.com/fatih/color"
 )
 
+// getProgramFolder gets the folder path in which the given program is located, according to the
+// Unikraft standard (e.g., /home/.../apps/programFolder/.../program).
+//
+// It returns the folder containing the program files according to the standard described above.
+func getProgramFolder(programPath string) string {
+
+	tmp := strings.Split(programPath, u.SEP)
+	i := 2
+
+	for ; i < len(tmp); i++ {
+		if tmp[len(tmp)-i] == "apps" {
+			break
+		}
+	}
+
+	folderPath := strings.Join(tmp[:len(tmp)-i+2], u.SEP)
+	return folderPath
+}
+
 // RunAnalyserTool allows to run the dependency analyser tool.
 func RunAnalyserTool(homeDir string, data *u.Data) {
 
@@ -88,7 +107,7 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 	// Run interdependence analyser
 	if typeAnalysis == 0 || typeAnalysis == 3 {
 		u.PrintHeader1("(1.3) RUN INTERDEPENDENCE ANALYSIS")
-		_ = runInterdependAnalyser(programPath, programName, outFolder)
+		_ = runInterdependAnalyser(getProgramFolder(programPath), programName, outFolder)
 	}
 
 	// Run sources analyser
@@ -260,89 +279,3 @@ func runInterdependAnalyser(programPath, programName, outFolder string) string {
 
 	return interdependAnalyser(programPath, programName, outFolder)
 }
-
-/*
-// /!\ MISSING "/" !!!
-stringFile := "#include<stdlib.h>\n/* #include ta mère *\nint main() {\n\t// Salut bitch !\n\treturn 0;\n}"
-
-for {
-	comStartIndex := strings.Index(stringFile, "/*")
-	if comStartIndex != -1 {
-		comEndIndex := strings.Index(stringFile, "*")
-		stringFile = strings.Join([]string{stringFile[:comStartIndex],
-			stringFile[comEndIndex+2:]}, "")
-	} else {
-		break
-	}
-}
-//what to do with "\t" in lines ?
-var finalFile []string
-sliceFile := strings.Split(stringFile, "\n")
-for i := 0; i < len(sliceFile); i++ {
-	if !strings.HasPrefix(sliceFile[i], "//") {
-		finalFile = append(finalFile, sliceFile[i])
-	}
-}
-}
-
-
-// Remove dependencies whose files are not in program directory (e.g., stdio, stdlib, ...)
-	for internalFile, dependencies := range interdependMap {
-		var internalDep []string
-		for _, dependency := range dependencies {
-			if _, ok := interdependMap[dependency]; ok {
-				a++
-				internalDep = append(internalDep, dependency)
-			}
-		}
-		interdependMap[internalFile] = internalDep
-	}
-
-
-// Detect and print removable program source files (i.e., files that no other file depends
-		// on)
-		var removableFiles []string
-		for internalFile := range interdependMap {
-			depends := false
-			for _, dependencies := range interdependMap {
-				for _, dependency := range dependencies {
-					if internalFile == dependency {
-						depends = true
-						break
-					}
-				}
-				if depends {
-					break
-				}
-			}
-
-			if !depends {
-				removableFiles = append(removableFiles, internalFile)
-			}
-		}
-		fmt.Println("Removable program source files of ", programName, ":")
-		fmt.Println(removableFiles)
-
-
-func isADependency(internalFile string, interdependMap* map[string][]string) bool {
-	for _, dependencies := range *interdependMap {
-		for _, dependency := range dependencies {
-			if internalFile == dependency {
-				return true
-			}
-		}
-	}
-	return false
-}
-
-
-mymap := make(map[string][]string)
-	mymap["file_win32"] = make([]string, 0)
-	mymap["file_1"] = []string{"file_win32"}
-	mymap["file_2"] = []string{"file_1"}
-	mymap["file_3"] = make([]string, 0)
-	mymap["file_4"] = []string{"file_3"}
-	mymap["file_openssl"] = []string{"file_3"}
-	mymap["file_5"] = []string{"file_openssl"}
-	mymap["file_6"] = []string{"file_5"}
-*/
