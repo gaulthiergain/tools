@@ -236,11 +236,8 @@ func conformPatchPath(match *[]string, index int) {
 	extension := filepath.Ext((*match)[index])
 	if extension == ".h" || extension == ".hpp" || extension == ".hcc" {
 		(*match)[index] = "include" + u.SEP + filepath.Base((*match)[index])
-	} else if extension == ".c" || extension == ".cpp" || extension == ".cc" {
-		(*match)[index] = filepath.Base((*match)[index])
 	} else {
-		u.PrintWarning("Unsupported extension for file: " +
-			filepath.Base((*match)[index]))
+		(*match)[index] = filepath.Base((*match)[index])
 	}
 }
 
