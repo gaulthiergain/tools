@@ -105,7 +105,8 @@ func parseMakeOutput(output string) string {
 	return sb.String()
 }
 
-// addConfigFiles adds user-provided configuration files to the app unikernel folder.
+// addConfigFiles adds user-provided configuration files in the order in which they come to the
+// unikernel folder.
 func addConfigFiles(configFiles []string, selectedFiles *[]string, includeFolder,
 	appFolder string) {
 
@@ -113,7 +114,6 @@ func addConfigFiles(configFiles []string, selectedFiles *[]string, includeFolder
 		configFile := filepath.Base(configFilePath)
 		fileExt := filepath.Ext(configFile)
 
-		// Copy config file
 		if fileExt == ".h" || fileExt == ".hpp" || fileExt == ".hcc" {
 			if err := u.CopyFileContents(configFilePath, includeFolder+configFile); err != nil {
 				u.PrintErr(err)
@@ -258,7 +258,7 @@ func RunBuildTool(homeDir string, data *u.Data) {
 		u.PrintErr(err)
 	}
 
-	// Move config files to the unikernel folder
+	// Add config files to the unikernel folder
 	addConfigFiles(*args.StringListArg[configArg], &selectedFiles, *includeFolder, appFolder)
 
 	// Match micro-libs

@@ -166,11 +166,11 @@ var srcLanguages = map[string]int{
 	".c":   0,
 	".cpp": 0,
 	".cc":  0,
-	".S":   0,
+	/*".S":   0,
 	".s":   0,
 	".asm": 0,
 	".py":  0,
-	".go":  0,
+	".go":  0,*/
 }
 
 func filterSourcesFiles(sourceFiles []string) []string {
@@ -320,8 +320,6 @@ func conformIncludeDirectives(sourcePath string) error {
 				if err = conformFile(path, false); err != nil {
 					return err
 				}
-			} else {
-				u.PrintWarning("Unsupported extension for file: " + info.Name())
 			}
 		}
 		return nil
