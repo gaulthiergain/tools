@@ -230,17 +230,6 @@ func addAndApplyPatchFiles(patchPath string, patchFolder, appFolder string) erro
 	return nil
 }
 
-// conformPatchPath conforms a path in a user-provided patch file to the unikernel directory format
-// so that this path describes a source file located in the unikernel folder.
-func conformPatchPath(match *[]string, index int) {
-	extension := filepath.Ext((*match)[index])
-	if extension == ".h" || extension == ".hpp" || extension == ".hcc" {
-		(*match)[index] = "include" + u.SEP + filepath.Base((*match)[index])
-	} else {
-		(*match)[index] = filepath.Base((*match)[index])
-	}
-}
-
 // conformPatchFile copies all the user-provided patch files to the unikernel directory and
 // conforms them to the unikernel directory format so that all paths in the patch files are paths
 // to source files located in the unikernel folder.
@@ -254,10 +243,10 @@ func conformPatchFile(patchPath, newPatchPath string) error {
 	}
 
 	// Find paths in patch file using regexp
-	var re1 = regexp.MustCompile(`( )(.*)( \| )(.*)`)
-	var re2 = regexp.MustCompile(`(diff --git )(a/)?(.*)( )(b/)?(.*)`)
-	var re3 = regexp.MustCompile(`(--- )(a/)?(.*)`)
-	var re4 = regexp.MustCompile(`(\+\+\+ )(b/)?(.*)`)
+	re1 := regexp.MustCompile(`( )(.*)( \| )(.*)`)
+	re2 := regexp.MustCompile(`(diff --git )(a/)?(.*)( )(b/)?(.*)`)
+	re3 := regexp.MustCompile(`(--- )(a/)?(.*)`)
+	re4 := regexp.MustCompile(`(\+\+\+ )(b/)?(.*)`)
 
 	for lineIndex := range patchLines {
 
@@ -301,8 +290,19 @@ func conformPatchFile(patchPath, newPatchPath string) error {
 	return nil
 }
 
+// conformPatchPath conforms a path in a user-provided patch file to the unikernel directory format
+// so that this path describes a source file located in the unikernel folder.
+func conformPatchPath(match *[]string, index int) {
+	extension := filepath.Ext((*match)[index])
+	if extension == ".h" || extension == ".hpp" || extension == ".hcc" {
+		(*match)[index] = "include" + u.SEP + filepath.Base((*match)[index])
+	} else {
+		(*match)[index] = filepath.Base((*match)[index])
+	}
+}
+
 // conformIncludeDirectives conforms all the user-defined include directives of all C/C++ source
-// files to the unikernel directory format so that all these directives are paths to header files
+// files to the unikernel directory format so that all these directives are paths to source files
 // located in the include folder of the unikernel directory.
 //
 // It returns an error if any, otherwise it returns nil.
@@ -332,7 +332,7 @@ func conformIncludeDirectives(sourcePath string) error {
 }
 
 // conformFile conforms all the user-defined include directives of a C/C++ source file to the
-// unikernel directory format so that all these directives are paths to header files located in the
+// unikernel directory format so that all these directives are paths to source files located in the
 // include folder.
 //
 // It returns an error if any, otherwise it returns nil.
@@ -343,24 +343,50 @@ func conformFile(filePath string, isHeader bool) (err error) {
 		return err
 	}
 
-	// Find user-defined include directives using regexp
-	var re = regexp.MustCompile(`(.*)(#include)(.*)(")(.*)(")(.*)`)
+	// Find include directives using regexp
+	re := regexp.MustCompile(`(.*)(#include)(.*)("|<)(.*)("|>)(.*)`)
 
 	for lineIndex := range fileLines {
 		for _, match := range re.FindAllStringSubmatch(fileLines[lineIndex], -1) {
 
-			// Replace the path by (include/ +) its last element
+			// Only interested in included files not coming from the standard library
+			if incDirContainsStdFold(fileLines[lineIndex]) {
+				break
+			}
+
 			for i := 1; i < len(match); i++ {
-				if match[i] == "\"" {
-					if isHeader {
-						match[i+1] = filepath.Base(match[i+1])
+				if match[i] == "\"" || match[i] == "<" {
+
+					// Determine the included source file extension to know what the path to it
+					// must be in the current file
+					var extIsHeader bool
+					extension := filepath.Ext(match[i+1])
+					if extension == ".h" || extension == ".hpp" || extension == ".hcc" {
+						extIsHeader = true
+					} else if extension == ".c" || extension == ".cpp" || extension == ".cc" {
+						extIsHeader = false
 					} else {
-						match[i+1] = "include" + u.SEP + filepath.Base(match[i+1])
+
+						// C++ header
+						break
 					}
+
+					// Modify the include path
+					match[i] = "\""
+					if isHeader && !extIsHeader {
+						match[i+1] = "../" + filepath.Base(match[i+1])
+					} else if !isHeader && extIsHeader {
+						match[i+1] = "include" + u.SEP + filepath.Base(match[i+1])
+					} else {
+						match[i+1] = filepath.Base(match[i+1])
+					}
+					match[i+2] = "\""
 					fileLines[lineIndex] = strings.Join(match[1:], "") + "\n"
 					break
 				}
 			}
+
+			break
 		}
 	}
 
@@ -371,6 +397,45 @@ func conformFile(filePath string, isHeader bool) (err error) {
 	}
 
 	return nil
+}
+
+// incDirContainsStdFold determines if an include directive is a path to a standard header.
+//
+// It returns true if it is the case, false otherwise.
+func incDirContainsStdFold(fileLine string) bool {
+
+	// Standard header list
+	stdHeaders := []string{
+		"<aio.h>", "<libgen.h>", "<spawn.h>", "<sys/time.h>",
+		"<arpa/inet.h>", "<limits.h>", "<stdarg.h>", "<sys/times.h>",
+		"<assert.h>", "<locale.h>", "<stdbool.h>", "<sys/types.h>",
+		"<complex.h>", "<math.h>", "<stddef.h>", "<sys/uio.h>",
+		"<cpio.h>", "<monetary.h>", "<stdint.h>", "<sys/un.h>",
+		"<ctype.h>", "<mqueue.h>", "<stdio.h>", "<sys/utsname.h>",
+		"<dirent.h>", "<ndbm.h>", "<stdlib.h>", "<sys/wait.h>",
+		"<dlfcn.h>", "<net/if.h>", "<string.h>", "<syslog.h>",
+		"<errno.h>", "<netdb.h>", "<strings.h>", "<tar.h>",
+		"<fcntl.h>", "<netinet/in.h>", "<stropts.h>", "<termios.h>",
+		"<fenv.h>", "<netinet/tcp.h>", "<sys/ipc.h>", "<tgmath.h>",
+		"<float.h>", "<nl_types.h>", "<sys/mman.h>", "<time.h>",
+		"<fmtmsg.h>", "<poll.h>", "<sys/msg.h>", "<trace.h>",
+		"<fnmatch.h>", "<pthread.h>", "<sys/resource.h>", "<ulimit.h>",
+		"<ftw.h>", "<pwd.h>", "<sys/select.h>", "<unistd.h>",
+		"<glob.h>", "<regex.h>", "<sys/sem.h>", "<utime.h>",
+		"<grp.h>", "<sched.h>", "<sys/shm.h>", "<utmpx.h>",
+		"<iconv.h>", "<search.h>", "<sys/socket.h>", "<wchar.h>",
+		"<inttypes.h>", "<semaphore.h>", "<sys/stat.h>", "<wctype.h>",
+		"<iso646.h>", "<setjmp.h>", "<sys/statvfs.h>", "<wordexp.h>",
+		"<langinfo.h>", "<signal.h>", "<curses.h>", "<term.h>",
+		"<uncntrl.h>", "<linux/"}
+
+	for _, header := range stdHeaders {
+		if strings.Contains(fileLine, header) {
+			return true
+		}
+	}
+
+	return false
 }
 
 func processSourceFiles(sourcesPath, appFolder, includeFolder string,

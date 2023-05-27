@@ -199,7 +199,7 @@ func interdependAnalyser(programPath, programName, outFolder string) string {
 		u.PrintErr(err)
 	}
 
-	// Create a folder and copy all source files into it for use with the gcc preprocessor
+	// Create a folder and copy all source files into it for later use with build tool
 	outAppFolder := outFolder + programName + u.SEP
 	_, err = u.CreateFolder(outAppFolder)
 	if err != nil {
