@@ -1,6 +1,7 @@
 package dependtool
 
 import (
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -14,35 +15,109 @@ import (
 
 // ---------------------------------Gather Data---------------------------------
 
-// sourceFileIncludesAnalysis collects all the include directives from a C/C++ source file.
+// findSourceFilesAndFolders puts together all the application C/C++ source files found on one hand
+// and all the application (sub-)folder paths on the other hand.
 //
-// It returns a slice containing the found header names.
+// It returns two slices: one containing the found source file paths and one containing the found
+// (sub-)folder paths, and an error if any, otherwise it returns nil.
+func findSourceFilesAndFolders(workspace string) ([]string, []string, error) {
+
+	var filenames []string
+	var foldernames []string
+
+	err := filepath.Walk(workspace,
+		func(path string, info os.FileInfo, err error) error {
+			if err != nil {
+				return err
+			}
+
+			// Ignore hidden elements
+			if string(info.Name()[0]) == "." {
+				return nil
+			}
+
+			// Found (sub-)folder
+			if info.IsDir() {
+				foldernames = append(foldernames, "-I")
+				foldernames = append(foldernames, path)
+				return nil
+			}
+
+			// Found source file
+			ext := filepath.Ext(info.Name())
+			if ext == ".c" || ext == ".cpp" || ext == ".cc" || ext == ".h" || ext == ".hpp" ||
+				ext == ".hcc" {
+				filenames = append(filenames, path)
+			}
+			return nil
+		})
+	if err != nil {
+		return nil, nil, err
+	}
+	return filenames, foldernames, nil
+}
+
+// checkIncDir checks that an inclusion directive path does not contain the two dots ".." which
+// refer to the parent directory and that can cause trouble when pruning the map and generating the
+// graph. If the path does contain these dots, it is simplified.
+//
+// It returns the simplified directive path or the path itself if it contains no dots.
+func checkIncDir(directive string) string {
+
+	// No problem
+	if !strings.Contains(directive, "../") {
+		return directive
+	}
+
+	// Must be simplified
+	splitDir := strings.Split(directive, u.SEP)
+	var i int
+	for i = 0; i < len(splitDir); i++ {
+		if splitDir[i] == ".." {
+
+			// Dots at the beginning of the path
+			if i == 0 {
+				splitDir = splitDir[1:]
+				i--
+
+				// Dots somewhere else in the path
+			} else {
+				splitDir = append(splitDir[:i-1], splitDir[i+1:]...)
+				i -= 2
+			}
+		}
+	}
+	return strings.Join(splitDir, u.SEP)
+}
+
+// sourceFileIncludesAnalysis collects all the inclusion directives from a C/C++ source file.
+//
+// It returns a slice containing all the relative paths contained in the inclusion directives.
 func sourceFileIncludesAnalysis(sourceFile string) []string {
 
-	var fileIncludes []string
+	var fileIncDir []string
 
 	fileLines, err := u.ReadLinesFile(sourceFile)
 	if err != nil {
 		u.PrintErr(err)
 	}
 
-	// Find user-defined include directives using regexp
+	// Find inclusion directives using regexp
 	var re = regexp.MustCompile(`(.*)(#include)(.*)("|<)(.*)("|>)(.*)`)
 
 	for lineIndex := range fileLines {
 		for _, match := range re.FindAllStringSubmatch(fileLines[lineIndex], -1) {
 
-			// Find the last element of the path and append it to the list of found header names
+			// Append the relative path to the list of relative paths
 			for i := 1; i < len(match); i++ {
 				if match[i] == "\"" || match[i] == "<" {
-					fileIncludes = append(fileIncludes, filepath.Base(match[i+1]))
+					fileIncDir = append(fileIncDir, checkIncDir(match[i+1]))
 					break
 				}
 			}
 		}
 	}
-
-	return fileIncludes
+	return fileIncDir
 }
 
 // TODO REPLACE
@@ -50,57 +125,64 @@ func sourceFileIncludesAnalysis(sourceFile string) []string {
 //
 // It returns a string which represents stdout and an error if any, otherwise
 // it returns nil.
-func ExecuteCommand(command string, arguments []string) (string, error) {
+func executeCommand(command string, arguments []string) (string, error) {
+
 	out, err := exec.Command(command, arguments...).CombinedOutput()
 	return string(out), err
 }
 
-// gccSourceFileIncludesAnalysis collects all the include directives from a C/C++ source file using
-// the gcc preprocessor.
+// gppSourceFileIncludesAnalysis collects all the inclusion directives from a C/C++ source file
+// using the gpp preprocessor.
 //
-// It returns a slice containing the found header names.
-func gccSourceFileIncludesAnalysis(sourceFile, outAppFolder string) ([]string, error) {
+// It returns a slice containing all the absolute paths contained in the inclusion directives.
+func gppSourceFileIncludesAnalysis(sourceFile, programPath string,
+	sourceFolders []string) ([]string, error) {
 
-	var fileIncludes []string
+	var fileIncDir []string
 
-	// gcc command
-	outputStr, err := ExecuteCommand("gcc", []string{"-E", sourceFile, "-I", outAppFolder})
+	// g++ command
+	outputStr, err := executeCommand("g++", append([]string{"-E", sourceFile}, sourceFolders...))
 
-	// if gcc command returns an error, prune file: it contains non-standard libs
+	// If command g++ returns an error, prune file: it contains non-standard libraries
 	if err != nil {
-		return make([]string, 0), err
+		return nil, err
 	}
-	outputSlice := strings.Split(outputStr, "\n")
 
+	// Find inclusion directive paths
+	outputSlice := strings.Split(outputStr, "\n")
 	for _, line := range outputSlice {
 
-		// Only interested in headers not coming from the standard library
-		if strings.Contains(line, "\""+outAppFolder) {
-			line = strings.Split(line, "\""+outAppFolder)[1]
-			includeDirective := filepath.Base(line[0:strings.Index(line[0:], "\"")])
-			if !u.Contains(fileIncludes, includeDirective) {
-				fileIncludes = append(fileIncludes, includeDirective)
+		// If warnings or errors are present, ignore their paths
+		if strings.Contains(line, ":") {
+			continue
+		}
+
+		// Only interested in file paths not coming from the standard library
+		if strings.Contains(line, programPath) {
+			includeDirective :=
+				checkIncDir(line[strings.Index(line, "\"")+1 : strings.LastIndex(line, "\"")])
+			if !u.Contains(fileIncDir, includeDirective) {
+				fileIncDir = append(fileIncDir, includeDirective)
 			}
 		}
 	}
-
-	return fileIncludes, nil
+	return fileIncDir, nil
 }
 
 // pruneRemovableFiles prunes interdependence graph elements if the latter are unused header files.
 func pruneRemovableFiles(interdependMap *map[string][]string) {
 
-	for internalFile := range *interdependMap {
+	for file := range *interdependMap {
 
 		// No removal of C/C++ source files
-		if filepath.Ext(internalFile) != ".c" && filepath.Ext(internalFile) != ".cpp" &&
-			filepath.Ext(internalFile) != ".cc" {
+		if filepath.Ext(file) != ".c" && filepath.Ext(file) != ".cpp" &&
+			filepath.Ext(file) != ".cc" {
 
 			// Lookup for files depending on the current header file
 			depends := false
 			for _, dependencies := range *interdependMap {
 				for _, dependency := range dependencies {
-					if internalFile == dependency {
+					if file == dependency {
 						depends = true
 						break
 					}
@@ -112,7 +194,7 @@ func pruneRemovableFiles(interdependMap *map[string][]string) {
 
 			// Prune header file if unused
 			if !depends {
-				delete(*interdependMap, internalFile)
+				delete(*interdependMap, file)
 			}
 		}
 	}
@@ -123,14 +205,14 @@ func pruneRemovableFiles(interdependMap *map[string][]string) {
 func pruneElemFiles(interdependMap *map[string][]string, pruneElem string) {
 
 	// Lookup for key elements containing the substring and prune them
-	for internalFile := range *interdependMap {
-		if strings.Contains(internalFile, pruneElem) {
-			delete(*interdependMap, internalFile)
+	for key := range *interdependMap {
+		if strings.Contains(key, pruneElem) {
+			delete(*interdependMap, key)
 
 			// Lookup for key elements that depend on the key found above and prune them
 			for file, dependencies := range *interdependMap {
 				for _, dependency := range dependencies {
-					if dependency == internalFile {
+					if dependency == key {
 						pruneElemFiles(interdependMap, file)
 					}
 				}
@@ -141,11 +223,13 @@ func pruneElemFiles(interdependMap *map[string][]string, pruneElem string) {
 
 // requestUnikraftExtLibs collects all the GitHub repositories of Unikraft through the GitHub API
 // and returns the whole list of Unikraft external libraries.
+//
+// It returns a slice containing all the libraries names.
 func requestUnikraftExtLibs() []string {
 
 	var extLibsList, appsList []string
 
-	// Only 2 Web pages of repos as for february 2023 (125 repos - 100 repos per page)
+	// Only 2 Web pages of repositories as for february 2023 (125 repos - 100 repos per page)
 	nbPages := 2
 
 	for i := 1; i <= nbPages; i++ {
@@ -162,14 +246,14 @@ func requestUnikraftExtLibs() []string {
 			u.PrintErr(err)
 		}
 
-		// Collect libs
+		// Collect libraries
 		fileLines := strings.Split(string(body), "\"name\":\"lib-")
 		for i := 1; i < len(fileLines); i++ {
 			extLibsList = append(extLibsList, fileLines[i][0:strings.Index(fileLines[i][0:],
 				"\"")])
 		}
 
-		// Collect apps
+		// Collect applications
 		fileLines = strings.Split(string(body), "\"name\":\"app-")
 		for i := 1; i < len(fileLines); i++ {
 			appsList = append(appsList, fileLines[i][0:strings.Index(fileLines[i][0:],
@@ -188,54 +272,46 @@ func requestUnikraftExtLibs() []string {
 
 // -------------------------------------Run-------------------------------------
 
-// runInterdependAnalyser collects all the included headers names (i.e., dependencies) from each
-// C/C++ source file of a program and builds an interdependence graph (dot file) between all these
-// source files.
+// runInterdependAnalyser collects all the inclusion directives (i.e., dependencies) from each
+// C/C++ application source file and builds an interdependence graph (dot file and png image)
+// between the source files that it deemed compilable with Unikraft.
+//
+// It returns the path to the folder containing the source files that have been kept for generating
+// the graph.
 func interdependAnalyser(programPath, programName, outFolder string) string {
 
-	// Find all program source files
-	sourceFiles, err := findSourcesFiles(programPath)
+	// Find all application source files and (sub-)folders
+	sourceFiles, sourceFolders, err := findSourceFilesAndFolders(programPath)
 	if err != nil {
 		u.PrintErr(err)
 	}
+	u.PrintOk(fmt.Sprint(len(sourceFiles)) + " source files found")
+	u.PrintOk(fmt.Sprint(len(sourceFolders)) + " source subfolders found")
 
-	// Create a folder and copy all source files into it for later use with build tool
-	outAppFolder := outFolder + programName + u.SEP
-	_, err = u.CreateFolder(outAppFolder)
-	if err != nil {
-		u.PrintErr(err)
-	}
-	var outAppFiles []string
-	for _, sourceFilePath := range sourceFiles {
-		if err := u.CopyFileContents(sourceFilePath,
-			outAppFolder+filepath.Base(sourceFilePath)); err != nil {
-			u.PrintErr(err)
-		}
-		outAppFiles = append(outAppFiles, outAppFolder+filepath.Base(sourceFilePath))
-	}
-
-	// Analyse source files include directives and collect header names. Source files are first
-	// analysed by gcc to make sure to avoid directives that are commented or subjected to a macro
-	// and then "by hand" to sort the include directives of the gcc analysis (i.e., to avoid
-	// include directives that are not present in the source file currently analysed).
+	// Collect source file inclusion directives. Source files are first analysed by g++ to make
+	// sure to avoid directives that are commented or subjected to a macro and then "by hand" to
+	// sort the include directives of the g++ analysis (i.e. to avoid inclusion directives that are
+	// not present in the source file currently analysed).
 	interdependMap := make(map[string][]string)
-	for _, outAppFile := range outAppFiles {
-		analysis := sourceFileIncludesAnalysis(outAppFile)
-		gccAnalysis, err := gccSourceFileIncludesAnalysis(outAppFile, outAppFolder)
+	for _, sourceFile := range sourceFiles {
+		analysis := sourceFileIncludesAnalysis(sourceFile)
+		gppAnalysis, err := gppSourceFileIncludesAnalysis(sourceFile, programPath, sourceFolders)
 		if err != nil {
 			continue
 		}
 
-		interdependMap[filepath.Base(outAppFile)] = make([]string, 0)
-		for _, includeDirective := range gccAnalysis {
-			if u.Contains(analysis, includeDirective) {
-				interdependMap[filepath.Base(outAppFile)] =
-					append(interdependMap[filepath.Base(outAppFile)], includeDirective)
+		// Build the interdependence map with the paths contained in the inclusion directives
+		interdependMap[sourceFile] = make([]string, 0)
+		for _, directive := range analysis {
+			for _, gppDirective := range gppAnalysis {
+				if strings.Contains(gppDirective, directive) {
+					interdependMap[sourceFile] = append(interdependMap[sourceFile], gppDirective)
+				}
 			}
 		}
 	}
 
-	// Prune interdependence graph
+	// Prune the interdependence graph
 	extLibsList := requestUnikraftExtLibs()
 	extLibsList = append(extLibsList, "win32", "test", "TEST")
 	for _, extLib := range extLibsList {
@@ -243,15 +319,36 @@ func interdependAnalyser(programPath, programName, outFolder string) string {
 	}
 	pruneRemovableFiles(&interdependMap)
 
-	// Remove pruned files from the out app folder
-	for _, outAppFile := range outAppFiles {
-		if _, ok := interdependMap[filepath.Base(outAppFile)]; !ok {
-			os.Remove(outAppFile)
+	// Create a folder and copy all the kept source files into it for later use with build tool
+	outAppFolder := outFolder + programName + u.SEP
+	_, err = u.CreateFolder(outAppFolder)
+	if err != nil {
+		u.PrintErr(err)
+	}
+	for _, sourceFile := range sourceFiles {
+		if _, ok := interdependMap[sourceFile]; ok {
+			if err := u.CopyFileContents(sourceFile,
+				outAppFolder+filepath.Base(sourceFile)); err != nil {
+				u.PrintErr(err)
+			}
+		}
+	}
+	u.PrintOk(fmt.Sprint(len(interdependMap)) + " source files kept and copied to " + outAppFolder)
+
+	// Change the absolute paths in the interdependence map into relative paths for more
+	// readability in the png image
+	graphMap := make(map[string][]string)
+	for appFilePath := range interdependMap {
+		appFile := strings.Split(appFilePath, programPath)[1][1:]
+		graphMap[appFile] = make([]string, 0)
+		for _, fileDepPath := range interdependMap[appFilePath] {
+			graphMap[appFile] = append(graphMap[appFile], strings.Split(fileDepPath,
+				programPath)[1][1:])
 		}
 	}
 
-	// Create dot file
-	u.GenerateGraph(programName, outFolder+programName, interdependMap, nil)
+	// Create dot and png files
+	u.GenerateGraph(programName, outFolder+programName, graphMap, nil)
 
 	return outAppFolder
 }

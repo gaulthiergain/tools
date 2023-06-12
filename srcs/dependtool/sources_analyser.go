@@ -1,6 +1,7 @@
 package dependtool
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -13,7 +14,7 @@ import (
 //
 // It returns a slice containing the found source file names and an error if any, otherwise it
 // returns nil.
-func findSourcesFiles(workspace string) ([]string, error) {
+func findSourceFiles(workspace string) ([]string, error) {
 
 	var filenames []string
 
@@ -39,6 +40,7 @@ func findSourcesFiles(workspace string) ([]string, error) {
 // addSourceFileSymbols adds all the symbols present in 'output' to the static data field in
 // 'data'.
 func addSourceFileSymbols(output string, data *u.SourcesData) {
+
 	outputTab := strings.Split(output, ",")
 
 	// Get the list of system calls
@@ -69,6 +71,7 @@ func extractPrototype(sourcesFiltered []string, data *u.SourcesData) error {
 		}
 		addSourceFileSymbols(output, data)
 	}
+
 	return nil
 }
 
@@ -77,14 +80,16 @@ func extractPrototype(sourcesFiltered []string, data *u.SourcesData) error {
 // It returns an error if any, otherwise it returns nil.
 func gatherSourceFileSymbols(data *u.SourcesData, programPath string) error {
 
-	sourceFiles, err := findSourcesFiles(programPath)
+	sourceFiles, err := findSourceFiles(programPath)
 	if err != nil {
 		u.PrintErr(err)
 	}
+	u.PrintOk(fmt.Sprint(len(sourceFiles)) + " source files found")
 
 	if err := extractPrototype(sourceFiles, data); err != nil {
 		u.PrintErr(err)
 	}
+
 	return nil
 }
 
