@@ -23,9 +23,7 @@
     "redis-cli --scan | head -10",
     "redis-cli --scan --pattern '*-11*'",
     "redis-cli --scan --pattern 'user:*' | wc -l",
-    "redis-cli --intrinsic-latency 5",
     "redis-cli --rdb /tmp/dump.rdb",
-    "redis-cli --slave",
     "redis-cli --latency"
   ]
 }

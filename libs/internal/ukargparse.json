@@ -1,0 +1,30 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "argb",
+                "maxlen",
+                "argv",
+                "maxcount"
+            ],
+            "args_type": [
+                "char *",
+                "size_t",
+                "char **",
+                "int"
+            ],
+            "fully_qualified": "uk_argnparse(char *, size_t, char **, int)",
+            "headers": [
+                "<uk/argparse.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukargparse/argparse.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukargparse/include/uk/argparse.h"
+            ],
+            "name": "uk_argnparse",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        }
+    ]
+}

@@ -23,6 +23,7 @@ type ELF64File struct {
 	FunctionsTables  []FunctionTables
 	Raw              []byte
 	IndexSections    map[string]int
+	MapFctAddrName   map[uint64]string
 	Name             string
 	Endianness       binary.ByteOrder
 	TextSectionIndex []int // slice since we can have several

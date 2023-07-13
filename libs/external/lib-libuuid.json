@@ -1,0 +1,295 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "uu1",
+                "uu2"
+            ],
+            "args_type": [
+                "const uuid_t",
+                "const uuid_t"
+            ],
+            "fully_qualified": "uuid_compare(const uuid_t, const uuid_t)",
+            "headers": [
+                "<uuid.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libuuid/origin/libuuid-1.0.3//compare.c"
+            ],
+            "name": "uuid_compare",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "uu"
+            ],
+            "args_type": [
+                "uuid_t"
+            ],
+            "fully_qualified": "uuid_clear(uuid_t)",
+            "headers": [
+                "<uuid.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libuuid/origin/libuuid-1.0.3//clear.c"
+            ],
+            "name": "uuid_clear",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "out"
+            ],
+            "args_type": [
+                "uuid_t"
+            ],
+            "fully_qualified": "uuid_generate_time(uuid_t)",
+            "headers": [
+                "<uuid.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libuuid/origin/libuuid-1.0.3//gen_uuid.c"
+            ],
+            "name": "uuid_generate_time",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "out"
+            ],
+            "args_type": [
+                "uuid_t"
+            ],
+            "fully_qualified": "uuid_generate_time_safe(uuid_t)",
+            "headers": [
+                "<uuid.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libuuid/origin/libuuid-1.0.3//gen_uuid.c"
+            ],
+            "name": "uuid_generate_time_safe",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "out"
+            ],
+            "args_type": [
+                "uuid_t"
+            ],
+            "fully_qualified": "uuid_generate_random(uuid_t)",
+            "headers": [
+                "<uuid.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libuuid/origin/libuuid-1.0.3//gen_uuid.c"
+            ],
+            "name": "uuid_generate_random",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "out"
+            ],
+            "args_type": [
+                "uuid_t"
+            ],
+            "fully_qualified": "uuid_generate(uuid_t)",
+            "headers": [
+                "<uuid.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libuuid/origin/libuuid-1.0.3//gen_uuid.c"
+            ],
+            "name": "uuid_generate",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "in",
+                "uu"
+            ],
+            "args_type": [
+                "const char *",
+                "uuid_t"
+            ],
+            "fully_qualified": "uuid_parse(const char *, uuid_t)",
+            "headers": [
+                "<uuid.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libuuid/origin/libuuid-1.0.3//parse.c"
+            ],
+            "name": "uuid_parse",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "uu",
+                "ret_tv"
+            ],
+            "args_type": [
+                "const uuid_t",
+                "struct timeval *"
+            ],
+            "fully_qualified": "uuid_time(const uuid_t, struct timeval *)",
+            "headers": [
+                "<uuid.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libuuid/origin/libuuid-1.0.3//uuid_time.c"
+            ],
+            "name": "uuid_time",
+            "nb_args": 2,
+            "return_value": "time_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "uu"
+            ],
+            "args_type": [
+                "const uuid_t"
+            ],
+            "fully_qualified": "uuid_type(const uuid_t)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libuuid/origin/libuuid-1.0.3//uuid_time.c"
+            ],
+            "name": "uuid_type",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "uu"
+            ],
+            "args_type": [
+                "const uuid_t"
+            ],
+            "fully_qualified": "uuid_variant(const uuid_t)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libuuid/origin/libuuid-1.0.3//uuid_time.c"
+            ],
+            "name": "uuid_variant",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "uu"
+            ],
+            "args_type": [
+                "const uuid_t"
+            ],
+            "fully_qualified": "uuid_is_null(const uuid_t)",
+            "headers": [
+                "<uuid.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libuuid/origin/libuuid-1.0.3//isnull.c"
+            ],
+            "name": "uuid_is_null",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "uu",
+                "out"
+            ],
+            "args_type": [
+                "const uuid_t",
+                "char *"
+            ],
+            "fully_qualified": "uuid_unparse_lower(const uuid_t, char *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libuuid/origin/libuuid-1.0.3//unparse.c"
+            ],
+            "name": "uuid_unparse_lower",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "uu",
+                "out"
+            ],
+            "args_type": [
+                "const uuid_t",
+                "char *"
+            ],
+            "fully_qualified": "uuid_unparse_upper(const uuid_t, char *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libuuid/origin/libuuid-1.0.3//unparse.c"
+            ],
+            "name": "uuid_unparse_upper",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "uu",
+                "out"
+            ],
+            "args_type": [
+                "const uuid_t",
+                "char *"
+            ],
+            "fully_qualified": "uuid_unparse(const uuid_t, char *)",
+            "headers": [
+                "<uuid.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libuuid/origin/libuuid-1.0.3//unparse.c"
+            ],
+            "name": "uuid_unparse",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dst",
+                "src"
+            ],
+            "args_type": [
+                "uuid_t",
+                "const uuid_t"
+            ],
+            "fully_qualified": "uuid_copy(uuid_t, const uuid_t)",
+            "headers": [
+                "<uuid.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libuuid/origin/libuuid-1.0.3//copy.c"
+            ],
+            "name": "uuid_copy",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        }
+    ]
+}

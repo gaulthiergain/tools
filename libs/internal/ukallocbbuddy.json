@@ -1,0 +1,26 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "base",
+                "len"
+            ],
+            "args_type": [
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "uk_allocbbuddy_init(void *, int)",
+            "headers": [
+                "<uk/allocbbuddy.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocbbuddy/bbuddy.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocbbuddy/include/uk/allocbbuddy.h"
+            ],
+            "name": "uk_allocbbuddy_init",
+            "nb_args": 2,
+            "return_value": "struct uk_alloc *",
+            "usage": 2
+        }
+    ]
+}

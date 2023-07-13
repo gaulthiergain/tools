@@ -17,7 +17,7 @@ const (
 	testFileArg   = "testFile"
 	configFileArg = "configFile"
 	optionsArg    = "options"
-	unikraftArg   = "unikraft"
+	workspaceArg  = "workspace"
 )
 
 // ParseArguments parses arguments of the application.
@@ -35,8 +35,8 @@ func parseLocalArguments(p *argparse.Parser, args *u.Arguments) error {
 		&argparse.Options{Required: false, Default: "", Help: "Extra options for " +
 			"launching program"})
 
-	args.InitArgParse(p, args, u.STRING, "u", unikraftArg,
-		&argparse.Options{Required: false, Help: "Unikraft Path"})
+	args.InitArgParse(p, args, u.STRING, "u", workspaceArg,
+		&argparse.Options{Required: false, Help: "Workspace Path"})
 
 	return u.ParserWrapper(p, os.Args)
 }

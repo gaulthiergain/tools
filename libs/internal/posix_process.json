@@ -1,0 +1,671 @@
+{
+    "functions": [
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "fork()",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/prctl.h>",
+                "<sys/resource.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "fork",
+            "nb_args": 0,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "vfork()",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "vfork",
+            "nb_args": 0,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "path",
+                "arg"
+            ],
+            "args_type": [
+                "const char *",
+                "const char *"
+            ],
+            "fully_qualified": "execl(const char *, const char *, ...)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "execl",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "file",
+                "arg"
+            ],
+            "args_type": [
+                "const char *",
+                "const char *"
+            ],
+            "fully_qualified": "execlp(const char *, const char *, ...)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "execlp",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "path",
+                "arg"
+            ],
+            "args_type": [
+                "const char *",
+                "const char *"
+            ],
+            "fully_qualified": "execle(const char *, const char *, ...)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "execle",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "path",
+                "argv",
+                "envp"
+            ],
+            "args_type": [
+                "const char *",
+                "char *const []",
+                "char *const []"
+            ],
+            "fully_qualified": "execve(const char *, char *const *, char *const *)",
+            "headers": [
+                "<unistd.h>",
+                "<stdio.h>",
+                "<stdlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "execve",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "path",
+                "argv"
+            ],
+            "args_type": [
+                "const char *",
+                "char *const []"
+            ],
+            "fully_qualified": "execv(const char *, char *const *)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "execv",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "file",
+                "argv"
+            ],
+            "args_type": [
+                "const char *",
+                "char *const []"
+            ],
+            "fully_qualified": "execvp(const char *, char *const *)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "execvp",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "file",
+                "argv",
+                "envp"
+            ],
+            "args_type": [
+                "const char *",
+                "char *const []",
+                "char *const []"
+            ],
+            "fully_qualified": "execvpe(const char *, char *const *, char *const *)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "execvpe",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "command"
+            ],
+            "args_type": [
+                "const char *"
+            ],
+            "fully_qualified": "system(const char *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "system",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "command",
+                "type"
+            ],
+            "args_type": [
+                "const char *",
+                "const char *"
+            ],
+            "fully_qualified": "popen(const char *, const char *)",
+            "headers": [
+                "<stdio.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "popen",
+            "nb_args": 2,
+            "return_value": "FILE *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "stream"
+            ],
+            "args_type": [
+                "FILE *"
+            ],
+            "fully_qualified": "pclose(FILE *)",
+            "headers": [
+                "<stdio.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "pclose",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "status"
+            ],
+            "args_type": [
+                "int *"
+            ],
+            "fully_qualified": "wait(int *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "wait",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pid",
+                "wstatus",
+                "options"
+            ],
+            "args_type": [
+                "pid_t",
+                "int *",
+                "int"
+            ],
+            "fully_qualified": "waitpid(pid_t)",
+            "headers": [
+                "<sys/types.h>",
+                "<stdlib.h>",
+                "<unistd.h>",
+                "<stdio.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "waitpid",
+            "nb_args": 1,
+            "return_value": "pid_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "wstatus",
+                "options",
+                "rusage"
+            ],
+            "args_type": [
+                "int *",
+                "int",
+                "struct rusage *"
+            ],
+            "fully_qualified": "wait3(int *)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/time.h>",
+                "<sys/resource.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "wait3",
+            "nb_args": 1,
+            "return_value": "pid_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pid",
+                "wstatus",
+                "options",
+                "rusage"
+            ],
+            "args_type": [
+                "pid_t",
+                "int *",
+                "int",
+                "struct rusage *"
+            ],
+            "fully_qualified": "wait4(pid_t)",
+            "headers": [
+                "<sys/types.h>",
+                "<sys/time.h>",
+                "<sys/resource.h>",
+                "<time.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "wait4",
+            "nb_args": 1,
+            "return_value": "pid_t",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "setpgrp()",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "setpgrp",
+            "nb_args": 0,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd",
+                "pgrp"
+            ],
+            "args_type": [
+                "int",
+                "pid_t"
+            ],
+            "fully_qualified": "tcsetpgrp(int)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "tcsetpgrp",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "fd"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "tcgetpgrp(int)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "tcgetpgrp",
+            "nb_args": 1,
+            "return_value": "pid_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "inc"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "nice(int)",
+            "headers": [
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c"
+            ],
+            "name": "nice",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "option"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "prctl(int)",
+            "headers": [
+                "<sys/prctl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/process.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/include/sys/prctl.h"
+            ],
+            "name": "prctl",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "getpid()",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "getpid",
+            "nb_args": 0,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "getppid()",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "getppid",
+            "nb_args": 0,
+            "return_value": "pid_t",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "setsid()",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "setsid",
+            "nb_args": 0,
+            "return_value": "pid_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pid"
+            ],
+            "args_type": [
+                "pid_t"
+            ],
+            "fully_qualified": "getsid(pid_t)",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "getsid",
+            "nb_args": 1,
+            "return_value": "pid_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pid",
+                "pgid"
+            ],
+            "args_type": [
+                "pid_t",
+                "pid_t"
+            ],
+            "fully_qualified": "setpgid(pid_t,pid_t)",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "setpgid",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pid"
+            ],
+            "args_type": [
+                "pid_t"
+            ],
+            "fully_qualified": "getpgid(pid_t)",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "getpgid",
+            "nb_args": 1,
+            "return_value": "pid_t",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "getpgrp()",
+            "headers": [
+                "<sys/types.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [],
+            "name": "getpgrp",
+            "nb_args": 0,
+            "return_value": "pid_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "which",
+                "who"
+            ],
+            "args_type": [
+                "int",
+                "id_t"
+            ],
+            "fully_qualified": "getpriority(int,id_t)",
+            "headers": [
+                "<sys/time.h>",
+                "<sys/resource.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/musl-imported/include/sys/resource.h"
+            ],
+            "name": "getpriority",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "which",
+                "who",
+                "prio"
+            ],
+            "args_type": [
+                "int",
+                "id_t",
+                "int"
+            ],
+            "fully_qualified": "setpriority(int,id_t,int)",
+            "headers": [
+                "<sys/time.h>",
+                "<sys/resource.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/musl-imported/include/sys/resource.h"
+            ],
+            "name": "setpriority",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "arg_int",
+                "arg_structrlimit"
+            ],
+            "args_type": [
+                "int",
+                "struct rlimit *"
+            ],
+            "fully_qualified": "getrlimit(int, struct rlimit *)",
+            "headers": [
+                "<sys/time.h>",
+                "<sys/resource.h>",
+                "<stdio.h>",
+                "<time.h>",
+                "<stdlib.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/musl-imported/include/sys/resource.h"
+            ],
+            "name": "getrlimit",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "arg_int",
+                "arg_conststructrlimit"
+            ],
+            "args_type": [
+                "int",
+                "const struct rlimit *"
+            ],
+            "fully_qualified": "setrlimit(int, const struct rlimit *)",
+            "headers": [
+                "<sys/time.h>",
+                "<sys/resource.h>",
+                "<stdio.h>",
+                "<time.h>",
+                "<stdlib.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/musl-imported/include/sys/resource.h"
+            ],
+            "name": "setrlimit",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "arg_int",
+                "arg_structrusage"
+            ],
+            "args_type": [
+                "int",
+                "struct rusage *"
+            ],
+            "fully_qualified": "getrusage(int, struct rusage *)",
+            "headers": [
+                "<sys/time.h>",
+                "<sys/resource.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/posix-process/musl-imported/include/sys/resource.h"
+            ],
+            "name": "getrusage",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        }
+    ]
+}

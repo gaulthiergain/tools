@@ -1,0 +1,1782 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "path",
+                "mode"
+            ],
+            "args_type": [
+                "const char *",
+                "const char *"
+            ],
+            "fully_qualified": "gzopen(const char *, const char *)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzlib.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gzopen",
+            "nb_args": 2,
+            "return_value": "gzFile",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fd",
+                "mode"
+            ],
+            "args_type": [
+                "int",
+                "const char *"
+            ],
+            "fully_qualified": "gzdopen(int, const char *)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzlib.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gzdopen",
+            "nb_args": 2,
+            "return_value": "gzFile",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file",
+                "size"
+            ],
+            "args_type": [
+                "gzFile",
+                "unsigned int"
+            ],
+            "fully_qualified": "gzbuffer(gzFile, unsigned int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzlib.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gzbuffer",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file"
+            ],
+            "args_type": [
+                "gzFile"
+            ],
+            "fully_qualified": "gzrewind(gzFile)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzlib.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gzrewind",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file",
+                "offset",
+                "whence"
+            ],
+            "args_type": [
+                "gzFile",
+                "off_t",
+                "int"
+            ],
+            "fully_qualified": "gzseek(gzFile, off_t, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzlib.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gzseek",
+            "nb_args": 3,
+            "return_value": "off_t",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file"
+            ],
+            "args_type": [
+                "gzFile"
+            ],
+            "fully_qualified": "gztell(gzFile)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzlib.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gztell",
+            "nb_args": 1,
+            "return_value": "off_t",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file"
+            ],
+            "args_type": [
+                "gzFile"
+            ],
+            "fully_qualified": "gzoffset(gzFile)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzlib.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gzoffset",
+            "nb_args": 1,
+            "return_value": "off_t",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file"
+            ],
+            "args_type": [
+                "gzFile"
+            ],
+            "fully_qualified": "gzeof(gzFile)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzlib.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gzeof",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file",
+                "errnum"
+            ],
+            "args_type": [
+                "gzFile",
+                "int *"
+            ],
+            "fully_qualified": "gzerror(gzFile, int *)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzlib.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gzerror",
+            "nb_args": 2,
+            "return_value": "const char *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file"
+            ],
+            "args_type": [
+                "gzFile"
+            ],
+            "fully_qualified": "gzclearerr(gzFile)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzlib.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gzclearerr",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file",
+                "buf",
+                "len"
+            ],
+            "args_type": [
+                "gzFile",
+                "voidp",
+                "unsigned int"
+            ],
+            "fully_qualified": "gzread(gzFile, voidp, unsigned int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzread.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gzread",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "buf",
+                "size",
+                "nitems",
+                "file"
+            ],
+            "args_type": [
+                "voidp",
+                "z_size_t",
+                "z_size_t",
+                "gzFile"
+            ],
+            "fully_qualified": "gzfread(voidp, z_size_t, z_size_t, gzFile)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzread.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gzfread",
+            "nb_args": 4,
+            "return_value": "z_size_t",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file"
+            ],
+            "args_type": [
+                "gzFile"
+            ],
+            "fully_qualified": "gzgetc(gzFile)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzread.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gzgetc",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file"
+            ],
+            "args_type": [
+                "gzFile"
+            ],
+            "fully_qualified": "gzgetc_(gzFile)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzread.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gzgetc_",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "c",
+                "file"
+            ],
+            "args_type": [
+                "int",
+                "gzFile"
+            ],
+            "fully_qualified": "gzungetc(int, gzFile)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzread.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gzungetc",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file",
+                "buf",
+                "len"
+            ],
+            "args_type": [
+                "gzFile",
+                "char *",
+                "int"
+            ],
+            "fully_qualified": "gzgets(gzFile, char *, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzread.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gzgets",
+            "nb_args": 3,
+            "return_value": "char *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file"
+            ],
+            "args_type": [
+                "gzFile"
+            ],
+            "fully_qualified": "gzdirect(gzFile)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzread.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gzdirect",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file"
+            ],
+            "args_type": [
+                "gzFile"
+            ],
+            "fully_qualified": "gzclose_r(gzFile)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzread.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "gzclose_r",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm"
+            ],
+            "args_type": [
+                "z_streamp"
+            ],
+            "fully_qualified": "inflateResetKeep(z_streamp)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateResetKeep",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm"
+            ],
+            "args_type": [
+                "z_streamp"
+            ],
+            "fully_qualified": "inflateReset(z_streamp)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateReset",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "windowBits"
+            ],
+            "args_type": [
+                "z_streamp",
+                "int"
+            ],
+            "fully_qualified": "inflateReset2(z_streamp, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateReset2",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "windowBits",
+                "version",
+                "stream_size"
+            ],
+            "args_type": [
+                "z_streamp",
+                "int",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "inflateInit2_(z_streamp, int, const char *, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateInit2_",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "version",
+                "stream_size"
+            ],
+            "args_type": [
+                "z_streamp",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "inflateInit_(z_streamp, const char *, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateInit_",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "bits",
+                "value"
+            ],
+            "args_type": [
+                "z_streamp",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "inflatePrime(z_streamp, int, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflatePrime",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "flush"
+            ],
+            "args_type": [
+                "z_streamp",
+                "int"
+            ],
+            "fully_qualified": "inflate(z_streamp, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflate",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm"
+            ],
+            "args_type": [
+                "z_streamp"
+            ],
+            "fully_qualified": "inflateEnd(z_streamp)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateEnd",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "dictionary",
+                "dictLength"
+            ],
+            "args_type": [
+                "z_streamp",
+                "Bytef *",
+                "uInt *"
+            ],
+            "fully_qualified": "inflateGetDictionary(z_streamp, Bytef *, uInt *)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateGetDictionary",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "dictionary",
+                "dictLength"
+            ],
+            "args_type": [
+                "z_streamp",
+                "const Bytef *",
+                "uInt"
+            ],
+            "fully_qualified": "inflateSetDictionary(z_streamp, const Bytef *, uInt)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateSetDictionary",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "head"
+            ],
+            "args_type": [
+                "z_streamp",
+                "gz_headerp"
+            ],
+            "fully_qualified": "inflateGetHeader(z_streamp, gz_headerp)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateGetHeader",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm"
+            ],
+            "args_type": [
+                "z_streamp"
+            ],
+            "fully_qualified": "inflateSync(z_streamp)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateSync",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm"
+            ],
+            "args_type": [
+                "z_streamp"
+            ],
+            "fully_qualified": "inflateSyncPoint(z_streamp)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateSyncPoint",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dest",
+                "source"
+            ],
+            "args_type": [
+                "z_streamp",
+                "z_streamp"
+            ],
+            "fully_qualified": "inflateCopy(z_streamp, z_streamp)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateCopy",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "subvert"
+            ],
+            "args_type": [
+                "z_streamp",
+                "int"
+            ],
+            "fully_qualified": "inflateUndermine(z_streamp, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateUndermine",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "check"
+            ],
+            "args_type": [
+                "z_streamp",
+                "int"
+            ],
+            "fully_qualified": "inflateValidate(z_streamp, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateValidate",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm"
+            ],
+            "args_type": [
+                "z_streamp"
+            ],
+            "fully_qualified": "inflateMark(z_streamp)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateMark",
+            "nb_args": 1,
+            "return_value": "long",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm"
+            ],
+            "args_type": [
+                "z_streamp"
+            ],
+            "fully_qualified": "inflateCodesUsed(z_streamp)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//inflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateCodesUsed",
+            "nb_args": 1,
+            "return_value": "unsigned long",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "adler",
+                "buf",
+                "len"
+            ],
+            "args_type": [
+                "uLong",
+                "const Bytef *",
+                "z_size_t"
+            ],
+            "fully_qualified": "adler32_z(uLong, const Bytef *, z_size_t)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//adler32.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "adler32_z",
+            "nb_args": 3,
+            "return_value": "uLong",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "adler",
+                "buf",
+                "len"
+            ],
+            "args_type": [
+                "uLong",
+                "const Bytef *",
+                "uInt"
+            ],
+            "fully_qualified": "adler32(uLong, const Bytef *, uInt)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//adler32.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "adler32",
+            "nb_args": 3,
+            "return_value": "uLong",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "adler1",
+                "adler2",
+                "len2"
+            ],
+            "args_type": [
+                "uLong",
+                "uLong",
+                "off_t"
+            ],
+            "fully_qualified": "adler32_combine(uLong, uLong, off_t)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//adler32.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "adler32_combine",
+            "nb_args": 3,
+            "return_value": "uLong",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "level",
+                "version",
+                "stream_size"
+            ],
+            "args_type": [
+                "z_streamp",
+                "int",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "deflateInit_(z_streamp, int, const char *, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//deflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "deflateInit_",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "level",
+                "method",
+                "windowBits",
+                "memLevel",
+                "strategy",
+                "version",
+                "stream_size"
+            ],
+            "args_type": [
+                "z_streamp",
+                "int",
+                "int",
+                "int",
+                "int",
+                "int",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "deflateInit2_(z_streamp, int, int, int, int, int, const char *, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//deflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "deflateInit2_",
+            "nb_args": 8,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "dictionary",
+                "dictLength"
+            ],
+            "args_type": [
+                "z_streamp",
+                "const Bytef *",
+                "uInt"
+            ],
+            "fully_qualified": "deflateSetDictionary(z_streamp, const Bytef *, uInt)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//deflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "deflateSetDictionary",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "dictionary",
+                "dictLength"
+            ],
+            "args_type": [
+                "z_streamp",
+                "Bytef *",
+                "uInt *"
+            ],
+            "fully_qualified": "deflateGetDictionary(z_streamp, Bytef *, uInt *)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//deflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "deflateGetDictionary",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm"
+            ],
+            "args_type": [
+                "z_streamp"
+            ],
+            "fully_qualified": "deflateResetKeep(z_streamp)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//deflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "deflateResetKeep",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm"
+            ],
+            "args_type": [
+                "z_streamp"
+            ],
+            "fully_qualified": "deflateReset(z_streamp)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//deflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "deflateReset",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "head"
+            ],
+            "args_type": [
+                "z_streamp",
+                "gz_headerp"
+            ],
+            "fully_qualified": "deflateSetHeader(z_streamp, gz_headerp)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//deflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "deflateSetHeader",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "pending",
+                "bits"
+            ],
+            "args_type": [
+                "z_streamp",
+                "unsigned int *",
+                "int *"
+            ],
+            "fully_qualified": "deflatePending(z_streamp, unsigned int *, int *)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//deflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "deflatePending",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "bits",
+                "value"
+            ],
+            "args_type": [
+                "z_streamp",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "deflatePrime(z_streamp, int, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//deflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "deflatePrime",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "level",
+                "strategy"
+            ],
+            "args_type": [
+                "z_streamp",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "deflateParams(z_streamp, int, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//deflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "deflateParams",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "good_length",
+                "max_lazy",
+                "nice_length",
+                "max_chain"
+            ],
+            "args_type": [
+                "z_streamp",
+                "int",
+                "int",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "deflateTune(z_streamp, int, int, int, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//deflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "deflateTune",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "sourceLen"
+            ],
+            "args_type": [
+                "z_streamp",
+                "uLong"
+            ],
+            "fully_qualified": "deflateBound(z_streamp, uLong)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//deflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "deflateBound",
+            "nb_args": 2,
+            "return_value": "uLong",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "flush"
+            ],
+            "args_type": [
+                "z_streamp",
+                "int"
+            ],
+            "fully_qualified": "deflate(z_streamp, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//deflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "deflate",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm"
+            ],
+            "args_type": [
+                "z_streamp"
+            ],
+            "fully_qualified": "deflateEnd(z_streamp)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//deflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "deflateEnd",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dest",
+                "source"
+            ],
+            "args_type": [
+                "z_streamp",
+                "z_streamp"
+            ],
+            "fully_qualified": "deflateCopy(z_streamp, z_streamp)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//deflate.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "deflateCopy",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "get_crc_table()",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//crc32.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "get_crc_table",
+            "nb_args": 0,
+            "return_value": "const z_crc_t *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "crc",
+                "buf",
+                "len"
+            ],
+            "args_type": [
+                "unsigned long",
+                "const unsigned char *",
+                "z_size_t"
+            ],
+            "fully_qualified": "crc32_z(unsigned long, const unsigned char *, z_size_t)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//crc32.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "crc32_z",
+            "nb_args": 3,
+            "return_value": "uLong",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "crc",
+                "buf",
+                "len"
+            ],
+            "args_type": [
+                "unsigned long",
+                "const unsigned char *",
+                "uInt"
+            ],
+            "fully_qualified": "crc32(unsigned long, const unsigned char *, uInt)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//crc32.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "crc32",
+            "nb_args": 3,
+            "return_value": "uLong",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "crc1",
+                "crc2",
+                "len2"
+            ],
+            "args_type": [
+                "uLong",
+                "uLong",
+                "off_t"
+            ],
+            "fully_qualified": "crc32_combine(uLong, uLong, off_t)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//crc32.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "crc32_combine",
+            "nb_args": 3,
+            "return_value": "uLong",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dest",
+                "destLen",
+                "source",
+                "sourceLen"
+            ],
+            "args_type": [
+                "Bytef *",
+                "uLongf *",
+                "const Bytef *",
+                "uLong *"
+            ],
+            "fully_qualified": "uncompress2(Bytef *, uLongf *, const Bytef *, uLong *)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//uncompr.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "uncompress2",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dest",
+                "destLen",
+                "source",
+                "sourceLen"
+            ],
+            "args_type": [
+                "Bytef *",
+                "uLongf *",
+                "const Bytef *",
+                "uLong"
+            ],
+            "fully_qualified": "uncompress(Bytef *, uLongf *, const Bytef *, uLong)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//uncompr.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "uncompress",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "windowBits",
+                "window",
+                "version",
+                "stream_size"
+            ],
+            "args_type": [
+                "z_streamp",
+                "int",
+                "unsigned char *",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "inflateBackInit_(z_streamp, int, unsigned char *, const char *, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//infback.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateBackInit_",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm",
+                "in",
+                "in_desc",
+                "out",
+                "out_desc"
+            ],
+            "args_type": [
+                "z_streamp",
+                "in_func",
+                "void *",
+                "out_func",
+                "void *"
+            ],
+            "fully_qualified": "inflateBack(z_streamp, in_func, void *, out_func, void *)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//infback.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateBack",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strm"
+            ],
+            "args_type": [
+                "z_streamp"
+            ],
+            "fully_qualified": "inflateBackEnd(z_streamp)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//infback.c",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h"
+            ],
+            "name": "inflateBackEnd",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "zlibVersion()",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zutil.c"
+            ],
+            "name": "zlibVersion",
+            "nb_args": 0,
+            "return_value": "const char *",
+            "usage": 2
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "zlibCompileFlags()",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zutil.c"
+            ],
+            "name": "zlibCompileFlags",
+            "nb_args": 0,
+            "return_value": "uLong",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dest",
+                "destLen",
+                "source",
+                "sourceLen"
+            ],
+            "args_type": [
+                "Bytef *",
+                "uLongf *",
+                "const Bytef *",
+                "uLong"
+            ],
+            "fully_qualified": "compress(Bytef *, uLongf *, const Bytef *, uLong)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//compress.c"
+            ],
+            "name": "compress",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dest",
+                "destLen",
+                "source",
+                "sourceLen",
+                "level"
+            ],
+            "args_type": [
+                "Bytef *",
+                "uLongf *",
+                "const Bytef *",
+                "uLong",
+                "int"
+            ],
+            "fully_qualified": "compress2(Bytef *, uLongf *, const Bytef *, uLong, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//compress.c"
+            ],
+            "name": "compress2",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "sourceLen"
+            ],
+            "args_type": [
+                "uLong"
+            ],
+            "fully_qualified": "compressBound(uLong)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//compress.c"
+            ],
+            "name": "compressBound",
+            "nb_args": 1,
+            "return_value": "uLong",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file",
+                "level",
+                "strategy"
+            ],
+            "args_type": [
+                "gzFile",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "gzsetparams(gzFile, int, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzwrite.c"
+            ],
+            "name": "gzsetparams",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file",
+                "buf",
+                "len"
+            ],
+            "args_type": [
+                "gzFile",
+                "voidpc",
+                "unsigned int"
+            ],
+            "fully_qualified": "gzwrite(gzFile, voidpc, unsigned int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzwrite.c"
+            ],
+            "name": "gzwrite",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "buf",
+                "size",
+                "nitems",
+                "file"
+            ],
+            "args_type": [
+                "voidpc",
+                "z_size_t",
+                "z_size_t",
+                "gzFile"
+            ],
+            "fully_qualified": "gzfwrite(voidpc, z_size_t, z_size_t, gzFile)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzwrite.c"
+            ],
+            "name": "gzfwrite",
+            "nb_args": 4,
+            "return_value": "z_size_t",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file",
+                "format"
+            ],
+            "args_type": [
+                "gzFile",
+                "const char *"
+            ],
+            "fully_qualified": "gzprintf(gzFile, const char *, ...)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzwrite.c"
+            ],
+            "name": "gzprintf",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file",
+                "s"
+            ],
+            "args_type": [
+                "gzFile",
+                "const char *"
+            ],
+            "fully_qualified": "gzputs(gzFile, const char *)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzwrite.c"
+            ],
+            "name": "gzputs",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file",
+                "c"
+            ],
+            "args_type": [
+                "gzFile",
+                "int"
+            ],
+            "fully_qualified": "gzputc(gzFile, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzwrite.c"
+            ],
+            "name": "gzputc",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file",
+                "flush"
+            ],
+            "args_type": [
+                "gzFile",
+                "int"
+            ],
+            "fully_qualified": "gzflush(gzFile, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzwrite.c"
+            ],
+            "name": "gzflush",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file"
+            ],
+            "args_type": [
+                "gzFile"
+            ],
+            "fully_qualified": "gzclose(gzFile)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzclose.c"
+            ],
+            "name": "gzclose",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file"
+            ],
+            "args_type": [
+                "gzFile"
+            ],
+            "fully_qualified": "gzclose_w(gzFile)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzwrite.c"
+            ],
+            "name": "gzclose_w",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "arg_int"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "zError(int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zutil.c"
+            ],
+            "name": "zError",
+            "nb_args": 1,
+            "return_value": "const char *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "file",
+                "format",
+                "va"
+            ],
+            "args_type": [
+                "gzFile",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "gzvprintf(gzFile, const char *, int)",
+            "headers": [
+                "<zlib.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//zlib.h",
+                "/home/gain/dev/workdir_unikraft/apps/lib-remove/build/libzlib/origin/zlib-1.2.11//gzwrite.c"
+            ],
+            "name": "gzvprintf",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        }
+    ]
+}

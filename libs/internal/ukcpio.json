@@ -1,0 +1,28 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "dest",
+                "buf",
+                "buflen"
+            ],
+            "args_type": [
+                "const char *",
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "ukcpio_extract(const char *, void *, int)",
+            "headers": [
+                "<uk/cpio.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukcpio/cpio.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukcpio/include/uk/cpio.h"
+            ],
+            "name": "ukcpio_extract",
+            "nb_args": 3,
+            "return_value": "enum ukcpio_error",
+            "usage": 2
+        }
+    ]
+}

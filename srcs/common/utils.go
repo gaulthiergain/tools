@@ -17,6 +17,15 @@ import (
 	"strings"
 )
 
+func StringInSlice(name string, plats []string) bool {
+	for _, plat := range plats {
+		if strings.Contains(name, plat) {
+			return true
+		}
+	}
+	return false
+}
+
 // Contains checks if a given slice contains a particular string.
 //
 // It returns true if the given contains the searched string.
@@ -161,7 +170,7 @@ func WriteMapToFile(file *os.File, headerName string, in interface{}) error {
 // RecordDataJson saves json into a json file named by filename.
 //
 // It returns an error if any, otherwise it returns nil.
-func RecordDataJson(filename string, data *Data) error {
+func RecordDataJson(filename string, data interface{}) error {
 
 	b, err := json.Marshal(data)
 	if err != nil {

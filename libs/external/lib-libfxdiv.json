@@ -1,0 +1,175 @@
+{
+  "functions": [
+    {
+      "args_name": [
+        "n",
+        "divisor"
+      ],
+      "args_type": [
+        "uint32_t",
+        "const struct fxdiv_divisor_uint32_t"
+      ],
+      "fully_qualified": "fxdiv_quotient_uint32_t(uint32_t, const struct fxdiv_divisor_uint32_t)",
+      "headers": [
+        "<fxdiv.h>"
+      ],
+      "location_file": [],
+      "name": "fxdiv_quotient_uint32_t",
+      "nb_args": 2,
+      "return_value": "uint32_t",
+      "usage": 0
+    },
+    {
+      "args_name": [
+        "n",
+        "divisor"
+      ],
+      "args_type": [
+        "uint64_t",
+        "const struct fxdiv_divisor_uint64_t"
+      ],
+      "fully_qualified": "fxdiv_quotient_uint64_t(uint64_t, const struct fxdiv_divisor_uint64_t)",
+      "headers": [
+        "<fxdiv.h>"
+      ],
+      "location_file": [],
+      "name": "fxdiv_quotient_uint64_t",
+      "nb_args": 2,
+      "return_value": "uint64_t",
+      "usage": 0
+    },
+    {
+      "args_name": [
+        "n",
+        "divisor"
+      ],
+      "args_type": [
+        "size_t",
+        "const struct fxdiv_divisor_size_t"
+      ],
+      "fully_qualified": "fxdiv_quotient_size_t(size_t, const struct fxdiv_divisor_size_t)",
+      "headers": [
+        "<fxdiv.h>"
+      ],
+      "location_file": [],
+      "name": "fxdiv_quotient_size_t",
+      "nb_args": 2,
+      "return_value": "size_t",
+      "usage": 0
+    },
+    {
+      "args_name": [
+        "n",
+        "granularity"
+      ],
+      "args_type": [
+        "uint32_t",
+        "const struct fxdiv_divisor_uint32_t"
+      ],
+      "fully_qualified": "fxdiv_round_down_uint32_t(uint32_t, const struct fxdiv_divisor_uint32_t)",
+      "headers": [
+        "<fxdiv.h>"
+      ],
+      "location_file": [],
+      "name": "fxdiv_round_down_uint32_t",
+      "nb_args": 2,
+      "return_value": "uint32_t",
+      "usage": 0
+    },
+    {
+      "args_name": [
+        "n",
+        "granularity"
+      ],
+      "args_type": [
+        "uint64_t",
+        "const struct fxdiv_divisor_uint64_t"
+      ],
+      "fully_qualified": "fxdiv_round_down_uint64_t(uint64_t, const struct fxdiv_divisor_uint64_t)",
+      "headers": [
+        "<fxdiv.h>"
+      ],
+      "location_file": [],
+      "name": "fxdiv_round_down_uint64_t",
+      "nb_args": 2,
+      "return_value": "fxdiv_result_uint64_t",
+      "usage": 0
+    },
+    {
+      "args_name": [
+        "n",
+        "divisor"
+      ],
+      "args_type": [
+        "size_t",
+        "const struct fxdiv_divisor_size_t"
+      ],
+      "fully_qualified": "fxdiv_round_down_size_t(size_t, const struct fxdiv_divisor_size_t)",
+      "headers": [
+        "<fxdiv.h>"
+      ],
+      "location_file": [],
+      "name": "fxdiv_round_down_size_t",
+      "nb_args": 2,
+      "return_value": "fxdiv_result_size_t",
+      "usage": 0
+    },
+    {
+      "args_name": [
+        "n",
+        "divisor"
+      ],
+      "args_type": [
+        "uint32_t",
+        "const struct fxdiv_divisor_uint32_t"
+      ],
+      "fully_qualified": "fxdiv_divide_uint32_t(uint32_t, const struct fxdiv_divisor_uint32_t)",
+      "headers": [
+        "<fxdiv.h>"
+      ],
+      "location_file": [],
+      "name": "fxdiv_divide_uint32_t",
+      "nb_args": 2,
+      "return_value": "fxdiv_result_uint32_t",
+      "usage": 0
+    },
+    {
+      "args_name": [
+        "n",
+        "divisor"
+      ],
+      "args_type": [
+        "uint64_t",
+        "const struct fxdiv_divisor_uint64_t"
+      ],
+      "fully_qualified": "fxdiv_divide_uint64_t(uint64_t, const struct fxdiv_divisor_uint64_t)",
+      "headers": [
+        "<fxdiv.h>"
+      ],
+      "location_file": [],
+      "name": "fxdiv_divide_uint64_t",
+      "nb_args": 2,
+      "return_value": "fxdiv_result_uint64_t",
+      "usage": 0
+    },
+    {
+      "args_name": [
+        "n",
+        "divisor"
+      ],
+      "args_type": [
+        "size_t",
+        "const struct fxdiv_divisor_size_t"
+      ],
+      "fully_qualified": "fxdiv_divide_size_t(size_t, const struct fxdiv_divisor_size_t)",
+      "headers": [
+        "<fxdiv.h>"
+      ],
+      "location_file": [],
+      "name": "fxdiv_divide_size_t",
+      "nb_args": 2,
+      "return_value": "fxdiv_result_size_t",
+      "usage": 0
+    }
+  ]
+}

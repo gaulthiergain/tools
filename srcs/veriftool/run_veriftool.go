@@ -7,29 +7,36 @@
 package veriftool
 
 import (
+	"bufio"
 	"errors"
 	"fmt"
 	"github.com/sergi/go-diff/diffmatchpatch"
 	"io/ioutil"
+	"log"
 	"os"
 	"path/filepath"
 	"strings"
 	u "tools/srcs/common"
+	"tools/srcs/dependtool"
 )
 
-const stdinCmd = "[STDIN]"
-const testCmd = "[TEST]"
-
-func RunVerificationTool() {
+func RunVerificationTool(homeDir string) {
 
 	// Init and parse local arguments
 	args := new(u.Arguments)
-	p, err := args.InitArguments()
+	p, err := args.InitArguments("--verif",
+		"The Output verifier tool allows to compare the output of a program ported as unikernel")
 	if err != nil {
 		u.PrintErr(err)
 	}
 	if err := parseLocalArguments(p, args); err != nil {
 		u.PrintErr(err)
+	}
+
+	// Get program path
+	programPath, err := u.GetProgramPath(&*args.StringArg[programArg])
+	if err != nil {
+		u.PrintErr("Could not determine program path", err)
 	}
 
 	// Get program Name
@@ -40,25 +47,24 @@ func RunVerificationTool() {
 		programName = filepath.Base(programName)
 	}
 
-	unikraftPath := *args.StringArg[unikraftArg]
-	if len(unikraftPath) == 0 {
-		u.PrintErr("Unikraft folder must exist! Run the build tool before " +
-			"using the verification tool")
+	var workspacePath = homeDir + u.SEP + u.WORKSPACEFOLDER
+	if len(*args.StringArg[workspaceArg]) > 0 {
+		workspacePath = *args.StringArg[workspaceArg]
 	}
 
 	// Get the app folder
 	var appFolder string
-	if unikraftPath[len(unikraftPath)-1] != os.PathSeparator {
-		appFolder = unikraftPath + u.SEP + u.APPSFOLDER + programName + u.SEP
+	if workspacePath[len(workspacePath)-1] != os.PathSeparator {
+		appFolder = workspacePath + u.SEP + u.APPSFOLDER + programName + u.SEP
 	} else {
-		appFolder = unikraftPath + u.APPSFOLDER + programName + u.SEP
+		appFolder = workspacePath + u.APPSFOLDER + programName + u.SEP
 	}
 
 	// Get the build folder
 	buildAppFolder := appFolder + u.BUILDFOLDER
 
 	// Get KVM image
-	var kvmUnikernel string
+	var kvmUnikernelPath, kvmUnikernel string
 	if file, err := u.OSReadDir(buildAppFolder); err != nil {
 		u.PrintWarning(err)
 	} else {
@@ -66,6 +72,7 @@ func RunVerificationTool() {
 			if !f.IsDir() && strings.Contains(f.Name(), u.KVM_IMAGE) &&
 				len(filepath.Ext(f.Name())) == 0 {
 				kvmUnikernel = f.Name()
+				kvmUnikernelPath = filepath.Join(buildAppFolder, f.Name())
 			}
 		}
 	}
@@ -75,44 +82,73 @@ func RunVerificationTool() {
 		u.PrintWarning(errors.New("no KVM image found"))
 	}
 
+	// Filepath of output
+	unikernelFilename := appFolder + "output_" + kvmUnikernel + ".txt"
+	appFilename := appFolder + "output_" + programName + ".txt"
+
 	// Read test
 	argStdin := ""
 	if len(*args.StringArg[testFileArg]) > 0 {
-
-		var err error
-		var cmdTests []string
-		cmdTests, err = u.ReadLinesFile(*args.StringArg[testFileArg])
-		if err != nil {
-			u.PrintWarning("Cannot find test files" + err.Error())
+		testingStruct := &dependtool.Testing{}
+		if len(*args.StringArg[testFileArg]) > 0 {
+			var err error
+			testingStruct, err = dependtool.ReadTestFileJson(*args.StringArg[testFileArg])
+			if err != nil {
+				u.PrintWarning("Cannot find test file: " + err.Error())
+			}
 		}
-		if strings.Contains(cmdTests[0], stdinCmd) {
-			argStdin = strings.Join(cmdTests[1:], "")
-			argStdin += "\n"
-		} else if strings.Contains(cmdTests[0], testCmd) {
-			//todo add for other tests
+		option := ""
+		if len(*args.StringArg[optionsArg]) > 0 {
+			option = *args.StringArg[optionsArg]
+		}
+
+		str_b := ""
+		for i := 0; i < 45; i++ {
+			str_b += "\n"
+		}
+
+		outStr, _ := dependtool.RunVerifCommandTester(programPath, programName, option, testingStruct)
+		if err := u.WriteToFile(appFilename, []byte(str_b+outStr)); err != nil {
+			u.PrintWarning("Impossible to write the output of verification to " +
+				appFilename)
+		} else {
+			u.PrintInfo("Output of general application written to " + appFilename)
+		}
+
+		option = "-nographic -vga none -device isa-debug-exit -kernel " + kvmUnikernelPath
+
+		outStr, _ = dependtool.RunVerifCommandTester("qemu-system-x86_64", "qemu-system-x86_64", option, testingStruct)
+		if err := u.WriteToFile(unikernelFilename, []byte(str_b+outStr)); err != nil {
+			u.PrintWarning("Impossible to write the output of verification to " +
+				kvmUnikernel)
+		} else {
+			u.PrintInfo("Output of unikernel written to " + unikernelFilename)
+		}
+
+	} else {
+		// No test file
+		if err := testUnikernel(buildAppFolder+kvmUnikernel, unikernelFilename,
+			[]byte(argStdin)); err != nil {
+			u.PrintWarning("Impossible to write the output of verification to " +
+				unikernelFilename)
+		}
+
+		// Test general app
+		if err := testApp(programName, appFilename, []byte(argStdin)); err != nil {
+			u.PrintWarning("Impossible to write the output of verification to " +
+				appFilename)
+		} else {
+			u.PrintInfo("Output of general application writtent to " + appFilename)
 		}
 	}
 
-	// Test KVM app unikernel
-	unikernelFilename := appFolder + "output_" + kvmUnikernel + ".txt"
-	if err := testUnikernel(buildAppFolder+kvmUnikernel, unikernelFilename,
-		[]byte(argStdin)); err != nil {
-		u.PrintWarning("Impossible to write the output of verification to " +
-			unikernelFilename)
+	c := askForConfirmation("Do you want to see a diff between the two output")
+	if c {
+		u.PrintInfo("Comparison output:")
+
+		// Compare both output
+		fmt.Println(compareOutput(unikernelFilename, appFilename))
 	}
-
-	// Test general app
-	appFilename := appFolder + "output_" + programName + ".txt"
-	if err := testApp(programName, appFilename, []byte(argStdin)); err != nil {
-		u.PrintWarning("Impossible to write the output of verification to " +
-			unikernelFilename)
-	}
-
-	u.PrintInfo("Comparison output:")
-
-	// Compare both output
-	fmt.Println(compareOutput(unikernelFilename, appFilename))
-
 }
 
 func compareOutput(unikernelFilename, appFilename string) string {
@@ -146,4 +182,29 @@ func testUnikernel(kvmUnikernel, outputFile string, argsStdin []byte) error {
 	bOut, _ := u.ExecuteRunCmdStdin("qemu-system-x86_64", argsStdin, argsQemu...)
 
 	return u.WriteToFile(outputFile, bOut)
+}
+
+// askForConfirmation asks the user for confirmation. A user must type in "yes" or "no" and
+// then press enter. It has fuzzy matching, so "y", "Y", "yes", "YES", and "Yes" all count as
+// confirmations. If the input is not recognized, it will ask again. The function does not return
+// until it gets a valid response from the user.
+func askForConfirmation(s string) bool {
+	reader := bufio.NewReader(os.Stdin)
+
+	for {
+		fmt.Printf("%s [y/n]: ", s)
+
+		response, err := reader.ReadString('\n')
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		response = strings.ToLower(strings.TrimSpace(response))
+
+		if response == "y" || response == "yes" {
+			return true
+		} else if response == "n" || response == "no" {
+			return false
+		}
+	}
 }

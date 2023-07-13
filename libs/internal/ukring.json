@@ -1,0 +1,48 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "count",
+                "a"
+            ],
+            "args_type": [
+                "int",
+                "struct uk_alloc *"
+            ],
+            "fully_qualified": "uk_ring_alloc(int, struct uk_alloc *)",
+            "headers": [
+                "<uk/ring.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukring/ring.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukring/include/uk/ring.h"
+            ],
+            "name": "uk_ring_alloc",
+            "nb_args": 2,
+            "return_value": "struct uk_ring *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "br",
+                "a"
+            ],
+            "args_type": [
+                "struct uk_ring *",
+                "struct uk_alloc *"
+            ],
+            "fully_qualified": "uk_ring_free(struct uk_ring *, struct uk_alloc *)",
+            "headers": [
+                "<uk/ring.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukring/ring.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukring/include/uk/ring.h"
+            ],
+            "name": "uk_ring_free",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 2
+        }
+    ]
+}

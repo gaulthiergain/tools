@@ -7,22 +7,40 @@
 package buildtool
 
 import (
+	"encoding/json"
 	"io/ioutil"
+	"os"
+	"path"
+	"path/filepath"
 	"strings"
-	"sync"
 	u "tools/srcs/common"
 )
 
 const (
-	exportFile = "exportsyms.uk"
-	prefixUrl  = "http://xenbits.xen.org/gitweb/?p=unikraft/libs/"
-	suffixUrl  = ";a=blob_plain;f=exportsyms.uk;hb=refs/heads/staging"
+	JSON      = ".json"
+	prefixUrl = "https://github.com/unikraft/"
 )
+
+type MicroLibFile struct {
+	Filename   string
+	IsInternal bool
+	Functions  []MicroLibsFunction `json:"functions"`
+}
+
+type MicroLibsFunction struct {
+	Name           string   `json:"name"`
+	ReturnValue    string   `json:"return_value"`
+	FullyQualified string   `json:"fully_qualified"`
+	ArgsName       []string `json:"args_name"`
+	ArgsType       []string `json:"args_type"`
+	Headers        []string `json:"headers"`
+	NbArgs         int      `json:"nb_args"`
+	Usage          int      `json:"usage"`
+}
 
 // -----------------------------Match micro-libs--------------------------------
 
 // processSymbols adds symbols within the 'exportsyms.uk' file into a map.
-//
 func processSymbols(microLib, output string, mapSymbols map[string][]string) {
 
 	lines := strings.Split(output, "\n")
@@ -38,60 +56,128 @@ func processSymbols(microLib, output string, mapSymbols map[string][]string) {
 // from Unikraft's internal libs and add them into a map.
 //
 // It returns an error if any, otherwise it returns nil.
-func fetchSymbolsInternalLibs(unikraftLibs string,
+func fetchSymbolsInternalLibs(folder string,
 	microLibs map[string][]string) error {
 
-	// Read files within the Unikraft directory
-	files, err := ioutil.ReadDir(unikraftLibs)
+	files, err := ioutil.ReadDir(folder)
 	if err != nil {
 		return err
 	}
 
-	// Read Unikraft internal libs symbols (exportsyms.uk)
-	for _, f := range files {
-		if f.IsDir() {
-			export := unikraftLibs + f.Name() + u.SEP + exportFile
-			if exists, _ := u.Exists(export); exists {
-				u.PrintInfo("Retrieving symbols of internal lib: " + f.Name())
-				b, _ := u.OpenTextFile(export)
-				processSymbols(f.Name(), string(b), microLibs)
+	for _, file := range files {
+		if filepath.Ext(file.Name()) == JSON {
+			microLibFile, err := readMicroLibJson(path.Join(folder, file.Name()))
+			microLibFile.IsInternal = true
+			if err != nil {
+				return err
+			}
+			libName := strings.Replace(file.Name(), JSON, "", -1)
+			u.PrintInfo("Retrieving symbols of internal lib: " + libName)
+			for _, functions := range microLibFile.Functions {
+				microLibs[functions.Name] = append(microLibs[functions.Name], libName)
 			}
 		}
 	}
 	return nil
 }
 
-// fetchSymbolsExternalLibs fetches all symbols within 'exportsyms.uk' files
-// from Unikraft's external libs and add them into a map.
+// readMicroLibJson reads symbols from external microlibs stored in json files.
+//
+// It returns a list of MicroLibFile and an error if any, otherwise it returns nil.
+func readMicroLibJson(filename string) (*MicroLibFile, error) {
+
+	jsonFile, err := os.Open(filename)
+	if err != nil {
+		return nil, err
+	}
+	defer jsonFile.Close()
+
+	byteValue, _ := ioutil.ReadAll(jsonFile)
+
+	var functions = &MicroLibFile{Filename: filepath.Base(strings.Replace(filename, JSON, "", -1))}
+	if err := json.Unmarshal(byteValue, &functions); err != nil {
+		return nil, err
+	}
+
+	return functions, nil
+}
+
+// fetchSymbolsExternalLibs fetches all symbols files from Unikraft's external libs
+// and add them into a map.
 //
 // It returns a list of symbols and an error if any, otherwise it returns nil.
-func fetchSymbolsExternalLibs(url string,
+func fetchSymbolsExternalLibs(folder string,
 	microLibs map[string][]string) (map[string]string, error) {
 
-	var externalLibs map[string]string
-	if body, err := u.DownloadFile(url); err != nil {
+	files, err := ioutil.ReadDir(folder)
+	if err != nil {
 		return nil, err
-	} else {
-		externalLibs = u.GitFindExternalLibs(*body)
+	}
 
-		var wg sync.WaitGroup
-		wg.Add(len(externalLibs))
-		// Iterate through all external libs to parse 'exportsyms.uk' file
-		for lib, git := range externalLibs {
-			// Use go routine to get better efficiency
-			go func(lib, git string, microLibs map[string][]string) {
-				defer wg.Done()
-				u.PrintInfo("Retrieving symbols of external lib: " + lib)
-				if symbols, err := u.DownloadFile(prefixUrl + git + suffixUrl); err != nil {
-					u.PrintWarning(err)
-				} else {
-					processSymbols(lib, *symbols, microLibs)
-				}
-			}(lib, git, microLibs)
+	externalLibs := make(map[string]string, len(files))
+	for _, file := range files {
+		if filepath.Ext(file.Name()) == JSON {
+			microLibFile, err := readMicroLibJson(path.Join(folder, file.Name()))
+			microLibFile.IsInternal = false
+			if err != nil {
+				return nil, err
+			}
+			libName := strings.Replace(file.Name(), JSON, "", -1)
+			u.PrintInfo("Retrieving symbols of external lib: " + libName)
+			for _, functions := range microLibFile.Functions {
+				microLibs[functions.Name] = append(microLibs[functions.Name], libName)
+			}
+			externalLibs[libName] = prefixUrl + libName + ".git"
 		}
-		wg.Wait()
 	}
 	return externalLibs, nil
+}
+
+// putJsonSymbolsTogether puts the json file symbols and system calls resulting from the static,
+// dynamic and source files analyses together into a map structure.
+//
+// It returns the map containing all the symbols and system calls.
+func putJsonSymbolsTogether(data *u.Data) map[string]string {
+	dataMap := make(map[string]string)
+
+	for k, v := range data.StaticData.Symbols {
+		dataMap[k] = v
+	}
+
+	for k := range data.StaticData.SystemCalls {
+		dataMap[k] = ""
+	}
+
+	for k, v := range data.DynamicData.Symbols {
+		dataMap[k] = v
+	}
+
+	for k := range data.DynamicData.SystemCalls {
+		dataMap[k] = ""
+	}
+
+	for k, v := range data.SourcesData.Symbols {
+		dataMap[k] = v
+	}
+
+	for k := range data.SourcesData.SystemCalls {
+		dataMap[k] = ""
+	}
+
+	return dataMap
+}
+
+// retNameCompat modifies its string argument in order to replace its underscore by a dash when
+// necessary.
+//
+// It returns its string argument whose underscore has been replaced by a dash if necessary,
+// otherwise it returns its argument unchanged.
+func retNameForCompat(value string) string {
+	if strings.Contains(value, "posix-") {
+		return strings.ReplaceAll(value, "posix-", "posix_")
+	}
+
+	return value
 }
 
 // matchSymbols performs the matching between Unikraft's micro-libs and
@@ -104,15 +190,8 @@ func matchSymbols(matchedLibs []string, data map[string]string,
 	for key := range data {
 		if values, ok := microLibs[key]; ok {
 			for _, value := range values {
-
-				// todo remove
-				if strings.Compare(NOLIBC, value) == 0 {
-					value = NEWLIB
-				}
-				// remove above
-
-				if !u.Contains(matchedLibs, value) {
-					matchedLibs = append(matchedLibs, value)
+				if !u.Contains(matchedLibs, retNameForCompat(value)) {
+					matchedLibs = append(matchedLibs, retNameForCompat(value))
 				}
 			}
 		}
@@ -131,22 +210,23 @@ func matchLibs(unikraftLibs string, data *u.Data) ([]string, map[string]string, 
 	mapSymbols := make(map[string][]string)
 
 	matchedLibs := make([]string, 0)
-	if err := fetchSymbolsInternalLibs(unikraftLibs, mapSymbols); err != nil {
+
+	folder := filepath.Join(os.Getenv("GOPATH"), "src", "tools", "libs", "internal")
+	if err := fetchSymbolsInternalLibs(folder, mapSymbols); err != nil {
 		return nil, nil, err
 	}
 
-	// Get list of libs from xenbits
-	url := "http://xenbits.xen.org/gitweb/?pf=unikraft/libs"
-	externalLibs, err := fetchSymbolsExternalLibs(url, mapSymbols)
+	// Get list of libs from libs/external
+	folder = filepath.Join(os.Getenv("GOPATH"), "src", "tools", "libs", "external")
+	externalLibs, err := fetchSymbolsExternalLibs(folder, mapSymbols)
 	if err != nil {
 		return nil, nil, err
 	}
 
-	// Perform the matching symbols on static data
-	matchedLibs = matchSymbols(matchedLibs, data.StaticData.Symbols, mapSymbols)
+	dataMap := putJsonSymbolsTogether(data)
 
-	// Perform the matching symbols on dynamic data
-	matchedLibs = matchSymbols(matchedLibs, data.DynamicData.Symbols, mapSymbols)
+	// Perform the symbol matching
+	matchedLibs = matchSymbols(matchedLibs, dataMap, mapSymbols)
 
 	return matchedLibs, externalLibs, nil
 }
@@ -154,10 +234,10 @@ func matchLibs(unikraftLibs string, data *u.Data) ([]string, map[string]string, 
 // -----------------------------Clone micro-libs--------------------------------
 
 // cloneGitRepo clones a specific git repository that hosts an external
-// micro-libs on http://xenbits.xen.org/
+// micro-libs on http://github.com/
 //
 // It returns an error if any, otherwise it returns nil.
-func cloneGitRepo(url, unikraftPathLibs string) error {
+func cloneGitRepo(url, unikraftPathLibs, lib string) error {
 
 	u.PrintInfo("Clone git repository " + url)
 	if _, _, err := u.GitCloneRepository(url, unikraftPathLibs, true); err != nil {
@@ -167,7 +247,7 @@ func cloneGitRepo(url, unikraftPathLibs string) error {
 		unikraftPathLibs)
 
 	u.PrintInfo("Git branch " + url)
-	if _, _, err := u.GitBranchStaging(unikraftPathLibs, true); err != nil {
+	if _, _, err := u.GitBranchStaging(unikraftPathLibs+lib, false); err != nil {
 		return err
 	}
 
@@ -176,22 +256,20 @@ func cloneGitRepo(url, unikraftPathLibs string) error {
 
 // cloneLibsFolders clones all the needed micro-libs that are needed by a
 // given application
-//
-func cloneLibsFolders(unikraftPath string, matchedLibs []string,
+func cloneLibsFolders(workspacePath string, matchedLibs []string,
 	externalLibs map[string]string) {
 
 	for _, lib := range matchedLibs {
-		if _, ok := externalLibs[lib]; ok {
-			exists, _ := u.Exists(unikraftPath + u.LIBSFOLDER + lib)
+		if value, ok := externalLibs[lib]; ok {
+			exists, _ := u.Exists(workspacePath + u.LIBSFOLDER + lib)
 			if !exists {
 				// If the micro-libs is not in the local host, clone it
-				if err := cloneGitRepo("git://xenbits.xen.org/unikraft/"+
-					"libs/"+lib+".git", unikraftPath+ u.LIBSFOLDER); err != nil {
+				if err := cloneGitRepo(value, workspacePath+u.LIBSFOLDER, lib); err != nil {
 					u.PrintWarning(err)
 				}
 			} else {
 				u.PrintInfo("Library " + lib + " already exists in folder" +
-					unikraftPath + u.LIBSFOLDER)
+					workspacePath + u.LIBSFOLDER)
 			}
 		}
 	}

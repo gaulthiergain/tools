@@ -1,0 +1,118 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "buf",
+                "len"
+            ],
+            "args_type": [
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "uk_sglist_count(void *, int)",
+            "headers": [
+                "<uk/sglist.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksglist/sglist.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksglist/include/uk/sglist.h"
+            ],
+            "name": "uk_sglist_count",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "sg",
+                "buf",
+                "len"
+            ],
+            "args_type": [
+                "struct uk_sglist *",
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "uk_sglist_append(struct uk_sglist *, void *, int)",
+            "headers": [
+                "<uk/sglist.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksglist/sglist.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksglist/include/uk/sglist.h"
+            ],
+            "name": "uk_sglist_append",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "sg",
+                "source",
+                "offset",
+                "length"
+            ],
+            "args_type": [
+                "struct uk_sglist *",
+                "const struct uk_sglist *",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "uk_sglist_append_sglist(struct uk_sglist *, const struct uk_sglist *, int, int)",
+            "headers": [
+                "<uk/sglist.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksglist/sglist.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksglist/include/uk/sglist.h"
+            ],
+            "name": "uk_sglist_append_sglist",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "sg"
+            ],
+            "args_type": [
+                "struct uk_sglist *"
+            ],
+            "fully_qualified": "uk_sglist_length(struct uk_sglist *)",
+            "headers": [
+                "<uk/sglist.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksglist/sglist.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksglist/include/uk/sglist.h"
+            ],
+            "name": "uk_sglist_length",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "first",
+                "second"
+            ],
+            "args_type": [
+                "struct uk_sglist *",
+                "struct uk_sglist *"
+            ],
+            "fully_qualified": "uk_sglist_join(struct uk_sglist *, struct uk_sglist *)",
+            "headers": [
+                "<uk/sglist.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksglist/sglist.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uksglist/include/uk/sglist.h"
+            ],
+            "name": "uk_sglist_join",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        }
+    ]
+}

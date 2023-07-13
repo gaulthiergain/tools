@@ -92,6 +92,11 @@ func parseDependencies(output string, data, dependenciesMap,
 			data[line] = nil
 		}
 	}
+
+	if len(listDep) == 0 {
+		listDep = append(listDep, output)
+	}
+
 	return listDep
 }
 

@@ -32,11 +32,11 @@ const (
 
 // ---------------------------------Read Json-----------------------------------
 
-// readTestFileJson load Testing json from a json file named by filename.
+// ReadTestFileJson load Testing json from a json file named by filename.
 //
 // It returns a Testing structure initialized and an error if any, otherwise it
 // returns nil.
-func readTestFileJson(filename string) (*Testing, error) {
+func ReadTestFileJson(filename string) (*Testing, error) {
 
 	testingStruct := &Testing{}
 	jsonFile, err := os.Open(filename)
@@ -73,7 +73,7 @@ func gatherDataAux(command, programPath, programName, option string,
 	testingStruct := &Testing{}
 	if len(dArgs.testFile) > 0 {
 		var err error
-		testingStruct, err = readTestFileJson(dArgs.testFile)
+		testingStruct, err = ReadTestFileJson(dArgs.testFile)
 		if err != nil {
 			u.PrintWarning("Cannot find test file: " + err.Error())
 		}

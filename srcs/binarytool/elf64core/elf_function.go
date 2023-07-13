@@ -24,9 +24,9 @@ type FunctionTables struct {
 }
 
 type ELF64Function struct {
-	Name         string
-	Addr         uint64
-	Size         uint64
+	Name string
+	Addr uint64
+	Size uint64
 }
 
 func (elfFile *ELF64File) getIndexFctTable(ndx uint16) int {
@@ -58,7 +58,15 @@ func (elfFile *ELF64File) detectSizeSymbol(symbolsTable []ELF64Function, index i
 
 func (elfFile *ELF64File) inspectFunctions() error {
 
+	nbEntries := 0
 	for _, table := range elfFile.SymbolsTables {
+		nbEntries += table.nbEntries
+	}
+
+	elfFile.MapFctAddrName = make(map[uint64]string, nbEntries)
+
+	for _, table := range elfFile.SymbolsTables {
+
 		for _, s := range table.dataSymbols {
 			k := elfFile.getIndexFctTable(s.elf64sym.Shndx)
 			if k != -1 && s.elf64sym.Value > 0 {
@@ -75,6 +83,7 @@ func (elfFile *ELF64File) inspectFunctions() error {
 				elfFile.FunctionsTables[k].Functions =
 					append(elfFile.FunctionsTables[k].Functions, function)
 			}
+			elfFile.MapFctAddrName[s.elf64sym.Value] = s.name
 		}
 	}
 

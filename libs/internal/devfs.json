@@ -1,0 +1,188 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "dev",
+                "name",
+                "flags"
+            ],
+            "args_type": [
+                "struct device *",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "device_register(struct device *, const char *, int)",
+            "headers": [
+                "<devfs/device.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/devfs/device.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/devfs/include/devfs/device.h"
+            ],
+            "name": "device_register",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "drv",
+                "name",
+                "flags"
+            ],
+            "args_type": [
+                "struct driver *",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "device_create(struct driver *, const char *, int)",
+            "headers": [
+                "<devfs/device.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/devfs/device.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/devfs/include/devfs/device.h"
+            ],
+            "name": "device_create",
+            "nb_args": 3,
+            "return_value": "struct device *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "name",
+                "mode",
+                "devp"
+            ],
+            "args_type": [
+                "const char *",
+                "int",
+                "struct device **"
+            ],
+            "fully_qualified": "device_open(const char *, int, struct device **)",
+            "headers": [
+                "<devfs/device.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/devfs/device.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/devfs/include/devfs/device.h"
+            ],
+            "name": "device_open",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev"
+            ],
+            "args_type": [
+                "struct device *"
+            ],
+            "fully_qualified": "device_close(struct device *)",
+            "headers": [
+                "<devfs/device.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/devfs/device.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/devfs/include/devfs/device.h"
+            ],
+            "name": "device_close",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "uio",
+                "ioflags"
+            ],
+            "args_type": [
+                "struct device *",
+                "struct uio *",
+                "int"
+            ],
+            "fully_qualified": "device_read(struct device *, struct uio *, int)",
+            "headers": [
+                "<devfs/device.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/devfs/device.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/devfs/include/devfs/device.h"
+            ],
+            "name": "device_read",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "uio",
+                "ioflags"
+            ],
+            "args_type": [
+                "struct device *",
+                "struct uio *",
+                "int"
+            ],
+            "fully_qualified": "device_write(struct device *, struct uio *, int)",
+            "headers": [
+                "<devfs/device.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/devfs/device.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/devfs/include/devfs/device.h"
+            ],
+            "name": "device_write",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "cmd",
+                "arg"
+            ],
+            "args_type": [
+                "struct device *",
+                "unsigned long",
+                "void *"
+            ],
+            "fully_qualified": "device_ioctl(struct device *, unsigned long, void *)",
+            "headers": [
+                "<devfs/device.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/devfs/device.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/devfs/include/devfs/device.h"
+            ],
+            "name": "device_ioctl",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "info"
+            ],
+            "args_type": [
+                "struct devinfo *"
+            ],
+            "fully_qualified": "device_info(struct devinfo *)",
+            "headers": [
+                "<devfs/device.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/devfs/device.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/devfs/include/devfs/device.h"
+            ],
+            "name": "device_info",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        }
+    ]
+}

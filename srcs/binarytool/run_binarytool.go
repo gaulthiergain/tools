@@ -10,7 +10,8 @@ import (
 	"errors"
 	"fmt"
 	"os"
-	"strings"
+	"path/filepath"
+	"strconv"
 	"tools/srcs/binarytool/elf64analyser"
 	u "tools/srcs/common"
 )
@@ -18,13 +19,18 @@ import (
 const diffPath = "diff" + u.SEP
 const pagesPath = "pages" + u.SEP
 
+type BinaryManager struct {
+	Unikernels []*Unikernel
+}
+
 // RunBinaryAnalyser allows to run the binary analyser tool (which is out of the
 // UNICORE toolchain).
 func RunBinaryAnalyser(homeDir string) {
 
 	// Init and parse local arguments
 	args := new(u.Arguments)
-	p, err := args.InitArguments()
+	p, err := args.InitArguments("--binary",
+		"The Binary tool allows to help developers to gather stats on unikernels binaries")
 	if err != nil {
 		u.PrintErr(err)
 	}
@@ -33,27 +39,40 @@ func RunBinaryAnalyser(homeDir string) {
 	}
 
 	// Check if a json file is used or if it is via command line
-	var unikernels *Unikernels
-	if len(*args.StringArg[listArg]) > 0 {
-		unikernels = new(Unikernels)
-		unikernels.Unikernel = make([]Unikernel, len(*args.StringArg[listArg]))
+	manager := new(BinaryManager)
+
+	if len(*args.StringArg[rootArg]) > 0 {
+		manager.Unikernels = make([]*Unikernel, 0)
 		mapping := false
 		if *args.BoolArg[mappingArg] {
 			mapping = true
 		}
-		list := strings.Split(*args.StringArg[listArg], ",")
-		for i, arg := range list {
-			unikernels.Unikernel[i] = Unikernel{
-				BuildPath:      arg,
-				DisplayMapping: mapping,
+		files, err := os.ReadDir(*args.StringArg[rootArg])
+		if err != nil {
+			u.PrintErr(err)
+		}
+		for _, file := range files {
+			if file.IsDir() {
+
+				basename := filepath.Join(*args.StringArg[rootArg], file.Name())
+				if _, err := os.Stat(filepath.Join(basename, "build")); !os.IsNotExist(err) {
+					// A build folder exist
+					basename = filepath.Join(basename, "build")
+				}
+
+				manager.Unikernels = append(manager.Unikernels, &Unikernel{
+					BuildPath:      basename,
+					DisplayMapping: mapping,
+				})
 			}
 		}
 	} else if len(*args.StringArg[filesArg]) > 0 {
 		var err error
-		unikernels, err = ReadJsonFile(*args.StringArg[filesArg])
+		manager.Unikernels, err = ReadJsonFile(*args.StringArg[filesArg])
 		if err != nil {
 			u.PrintErr(err)
 		}
+
 	} else {
 		u.PrintErr(errors.New("argument(s) must be provided"))
 	}
@@ -61,13 +80,28 @@ func RunBinaryAnalyser(homeDir string) {
 	var comparison elf64analyser.ComparisonElf
 	comparison.GroupFileSegment = make([]*elf64analyser.ElfFileSegment, 0)
 
-	for i, uk := range unikernels.Unikernel {
+	var UnikernelsPath []string
+	UnikernelsPath = append(UnikernelsPath, "-u")
+	var SplitSects []string
+	SplitSects = append(SplitSects, "-l")
+
+	for i, uk := range manager.Unikernels {
 
 		uk.Analyser = new(elf64analyser.ElfAnalyser)
+
 		if len(uk.BuildPath) > 0 {
+
+			if _, err := os.Stat(filepath.Join(uk.BuildPath, "build")); !os.IsNotExist(err) {
+				// A build folder exist
+				uk.BuildPath = filepath.Join(uk.BuildPath, "build")
+			} else {
+				u.PrintWarning("Cannot find 'build/' folder, skip this configuration...")
+			}
+
 			if uk.BuildPath[len(uk.BuildPath)-1] != os.PathSeparator {
 				uk.BuildPath += u.SEP
 			}
+
 			if err := uk.GetFiles(); err != nil {
 				u.PrintErr(err)
 			}
@@ -103,68 +137,29 @@ func RunBinaryAnalyser(homeDir string) {
 		}
 
 		if uk.CompareGroup > 0 {
-
-			foundSection := false
-			section := uk.SectionSplit
-			for _, s := range uk.ElfFile.SectionsTable.DataSect {
-				if s.Name == section {
-					foundSection = true
-					break
-				}
+			UnikernelsPath = append(UnikernelsPath, uk.BuildPath+uk.Kernel)
+			for _, sp := range uk.SplitSections {
+				SplitSects = append(SplitSects, sp)
 			}
-
-			if foundSection {
-
-				path := homeDir + u.SEP + pagesPath
-				if _, err := os.Stat(path); os.IsNotExist(err) {
-					err := os.Mkdir(path, os.ModePerm)
-					if err != nil {
-						u.PrintErr(err)
-					}
-				}
-
-				u.PrintInfo(fmt.Sprintf("Splitting %s section of %s into pages...", section, uk.ElfFile.Name))
-				uk.Analyser.SplitIntoPagesBySection(uk.ElfFile, section)
-
-				out := path + section[1:] + u.SEP
-
-				if _, err := os.Stat(out); os.IsNotExist(err) {
-					err := os.Mkdir(out, os.ModePerm)
-					if err != nil {
-						u.PrintErr(err)
-					}
-				}
-
-				if err := elf64analyser.SavePagesToFile(uk.Analyser.ElfPage, out+uk.ElfFile.Name+".txt", false); err != nil {
-					u.PrintErr(err)
-				}
-				u.PrintOk(fmt.Sprintf("Pages of section %s (%s) are saved into %s", section, uk.ElfFile.Name, out))
-
-				comparison.GroupFileSegment = append(comparison.GroupFileSegment,
-					&elf64analyser.ElfFileSegment{Filename: uk.ElfFile.Name,
-						NbPages: len(uk.Analyser.ElfPage), Pages: uk.Analyser.ElfPage})
-			} else {
-				u.PrintWarning("Section '" + section + "' is not found in the ELF file")
-			}
-
 		}
 	}
 
-	if len(comparison.GroupFileSegment) > 1 {
-
-		// Perform the comparison
-		path := homeDir + u.SEP + diffPath
-		if _, err := os.Stat(path); os.IsNotExist(err) {
-			err := os.Mkdir(path, os.ModePerm)
-			if err != nil {
-				u.PrintErr(err)
-			}
+	u.PrintInfo("Analysing the following sections of " + strconv.Itoa(len(UnikernelsPath)-1) + " unikernels. This may take some time...")
+	for i, sect := range SplitSects {
+		if i > 0 {
+			println("- " + sect)
 		}
-
-		comparison.ComparePageTables()
-		if err := comparison.DiffComparison(path); err != nil {
-			u.PrintWarning(err)
-		}
-		comparison.DisplayComparison()
 	}
+	script := filepath.Join(os.Getenv("GOPATH"), "src", "tools", "srcs", "binarytool", "scripts", "uk_elf_sharing.py")
+	out, err := u.ExecuteCommand(script, append(UnikernelsPath, SplitSects...))
+	if err != nil {
+		u.PrintErr(err)
+	}
+	u.PrintOk("Finish to analyse " + strconv.Itoa(len(UnikernelsPath)-1) + " unikernels")
+	u.PrintInfo("Displaying stats")
+
+	println(out)
+
+	u.PrintOk("Diff files have been saved to ./diff/")
+	u.PrintOk("Pages files have been saved to ./pages/")
 }

@@ -1,0 +1,380 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "a"
+            ],
+            "args_type": [
+                "struct uk_alloc *"
+            ],
+            "fully_qualified": "uk_alloc_register(struct uk_alloc *)",
+            "headers": [
+                "<uk/alloc.h>",
+                "<uk/alloc_impl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/alloc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/include/uk/alloc_impl.h"
+            ],
+            "name": "uk_alloc_register",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "a",
+                "size"
+            ],
+            "args_type": [
+                "struct uk_alloc *",
+                "int"
+            ],
+            "fully_qualified": "uk_malloc_ifpages(struct uk_alloc *, int)",
+            "headers": [
+                "<uk/alloc.h>",
+                "<uk/alloc_impl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/alloc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/include/uk/alloc_impl.h"
+            ],
+            "name": "uk_malloc_ifpages",
+            "nb_args": 2,
+            "return_value": "void *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "a",
+                "ptr"
+            ],
+            "args_type": [
+                "struct uk_alloc *",
+                "void *"
+            ],
+            "fully_qualified": "uk_free_ifpages(struct uk_alloc *, void *)",
+            "headers": [
+                "<uk/alloc.h>",
+                "<uk/alloc_impl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/alloc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/include/uk/alloc_impl.h"
+            ],
+            "name": "uk_free_ifpages",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "a",
+                "ptr",
+                "size"
+            ],
+            "args_type": [
+                "struct uk_alloc *",
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "uk_realloc_ifpages(struct uk_alloc *, void *, int)",
+            "headers": [
+                "<uk/alloc.h>",
+                "<uk/alloc_impl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/alloc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/include/uk/alloc_impl.h"
+            ],
+            "name": "uk_realloc_ifpages",
+            "nb_args": 3,
+            "return_value": "void *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "a",
+                "memptr",
+                "align",
+                "size"
+            ],
+            "args_type": [
+                "struct uk_alloc *",
+                "void **",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "uk_posix_memalign_ifpages(struct uk_alloc *, void **, int, int)",
+            "headers": [
+                "<uk/alloc.h>",
+                "<uk/alloc_impl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/alloc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/include/uk/alloc_impl.h"
+            ],
+            "name": "uk_posix_memalign_ifpages",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "a"
+            ],
+            "args_type": [
+                "struct uk_alloc *"
+            ],
+            "fully_qualified": "uk_alloc_maxalloc_ifpages(struct uk_alloc *)",
+            "headers": [
+                "<uk/alloc.h>",
+                "<uk/alloc_impl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/alloc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/include/uk/alloc_impl.h"
+            ],
+            "name": "uk_alloc_maxalloc_ifpages",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "a"
+            ],
+            "args_type": [
+                "struct uk_alloc *"
+            ],
+            "fully_qualified": "uk_alloc_availmem_ifpages(struct uk_alloc *)",
+            "headers": [
+                "<uk/alloc.h>",
+                "<uk/alloc_impl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/alloc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/include/uk/alloc_impl.h"
+            ],
+            "name": "uk_alloc_availmem_ifpages",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "a",
+                "ptr",
+                "num_pages"
+            ],
+            "args_type": [
+                "struct uk_alloc *",
+                "void *",
+                "unsigned long"
+            ],
+            "fully_qualified": "uk_pfree_compat(struct uk_alloc *, void *, unsigned long)",
+            "headers": [
+                "<uk/alloc.h>",
+                "<uk/alloc_impl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/alloc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/include/uk/alloc_impl.h"
+            ],
+            "name": "uk_pfree_compat",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "a",
+                "num_pages"
+            ],
+            "args_type": [
+                "struct uk_alloc *",
+                "unsigned long"
+            ],
+            "fully_qualified": "uk_palloc_compat(struct uk_alloc *, unsigned long)",
+            "headers": [
+                "<uk/alloc.h>",
+                "<uk/alloc_impl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/alloc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/include/uk/alloc_impl.h"
+            ],
+            "name": "uk_palloc_compat",
+            "nb_args": 2,
+            "return_value": "void *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "a",
+                "ptr",
+                "size"
+            ],
+            "args_type": [
+                "struct uk_alloc *",
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "uk_realloc_compat(struct uk_alloc *, void *, int)",
+            "headers": [
+                "<uk/alloc.h>",
+                "<uk/alloc_impl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/alloc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/include/uk/alloc_impl.h"
+            ],
+            "name": "uk_realloc_compat",
+            "nb_args": 3,
+            "return_value": "void *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "a",
+                "nmemb",
+                "size"
+            ],
+            "args_type": [
+                "struct uk_alloc *",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "uk_calloc_compat(struct uk_alloc *, int, int)",
+            "headers": [
+                "<uk/alloc.h>",
+                "<uk/alloc_impl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/alloc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/include/uk/alloc_impl.h"
+            ],
+            "name": "uk_calloc_compat",
+            "nb_args": 3,
+            "return_value": "void *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "a",
+                "align",
+                "size"
+            ],
+            "args_type": [
+                "struct uk_alloc *",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "uk_memalign_compat(struct uk_alloc *, int, int)",
+            "headers": [
+                "<uk/alloc.h>",
+                "<uk/alloc_impl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/alloc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/include/uk/alloc_impl.h"
+            ],
+            "name": "uk_memalign_compat",
+            "nb_args": 3,
+            "return_value": "void *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "a"
+            ],
+            "args_type": [
+                "struct uk_alloc *"
+            ],
+            "fully_qualified": "uk_alloc_pmaxalloc_compat(struct uk_alloc *)",
+            "headers": [
+                "<uk/alloc.h>",
+                "<uk/alloc_impl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/alloc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/include/uk/alloc_impl.h"
+            ],
+            "name": "uk_alloc_pmaxalloc_compat",
+            "nb_args": 1,
+            "return_value": "long",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "a"
+            ],
+            "args_type": [
+                "struct uk_alloc *"
+            ],
+            "fully_qualified": "uk_alloc_pavailmem_compat(struct uk_alloc *)",
+            "headers": [
+                "<uk/alloc.h>",
+                "<uk/alloc_impl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/alloc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/include/uk/alloc_impl.h"
+            ],
+            "name": "uk_alloc_pavailmem_compat",
+            "nb_args": 1,
+            "return_value": "long",
+            "usage": 2
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "uk_alloc_availmem_total()",
+            "headers": [
+                "<uk/alloc.h>",
+                "<uk/alloc_impl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/alloc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/include/uk/alloc.h"
+            ],
+            "name": "uk_alloc_availmem_total",
+            "nb_args": 0,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "uk_alloc_pavailmem_total()",
+            "headers": [
+                "<uk/alloc.h>",
+                "<uk/alloc_impl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/alloc.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/include/uk/alloc.h"
+            ],
+            "name": "uk_alloc_pavailmem_total",
+            "nb_args": 0,
+            "return_value": "unsigned long",
+            "usage": 2
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "uk_alloc_get_default()",
+            "headers": [
+                "<uk/alloc.h>",
+                "<uk/alloc_impl.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukalloc/libstats.c"
+            ],
+            "name": "uk_alloc_get_default",
+            "nb_args": 0,
+            "return_value": "struct uk_alloc *",
+            "usage": 1
+        }
+    ]
+}

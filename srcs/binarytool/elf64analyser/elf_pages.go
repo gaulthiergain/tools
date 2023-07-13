@@ -13,7 +13,7 @@ import (
 	"strings"
 )
 
-const pageSize = 0x1000
+const PageSize = 0x1000
 
 type ElfFileSegment struct {
 	Filename string
@@ -53,13 +53,7 @@ func (p *ElfPage) pageContentToString() string {
 }
 
 func (p *ElfPage) displayPageContent(mw io.Writer) {
-
-	/*
-		hexStartAddr, err := strconv.ParseInt(p.startAddress, 16, 64);
-		if err != nil {
-			panic(err)
-		}
-	*/
+	
 	for i, entry := range p.contentByteArray {
 
 		if i > 0 && i%4 == 0 {

@@ -1,0 +1,26 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "base",
+                "len"
+            ],
+            "args_type": [
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "uk_allocregion_init(void *, int)",
+            "headers": [
+                "<uk/allocregion.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocregion/region.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukallocregion/include/uk/allocregion.h"
+            ],
+            "name": "uk_allocregion_init",
+            "nb_args": 2,
+            "return_value": "struct uk_alloc *",
+            "usage": 2
+        }
+    ]
+}

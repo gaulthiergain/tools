@@ -1,0 +1,1555 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "fdt",
+                "address",
+                "size"
+            ],
+            "args_type": [
+                "void *",
+                "uint64_t",
+                "uint64_t"
+            ],
+            "fully_qualified": "fdt_add_mem_rsv(void *, uint64_t, uint64_t)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_rw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_add_mem_rsv",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "n"
+            ],
+            "args_type": [
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_del_mem_rsv(void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_rw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_del_mem_rsv",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset",
+                "name"
+            ],
+            "args_type": [
+                "void *",
+                "int",
+                "const char *"
+            ],
+            "fully_qualified": "fdt_set_name(void *, int, const char *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_rw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_set_name",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset",
+                "name",
+                "val",
+                "len"
+            ],
+            "args_type": [
+                "void *",
+                "int",
+                "const char *",
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_setprop(void *, int, const char *, const void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_rw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_setprop",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset",
+                "name",
+                "val",
+                "len"
+            ],
+            "args_type": [
+                "void *",
+                "int",
+                "const char *",
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_appendprop(void *, int, const char *, const void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_rw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_appendprop",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset",
+                "name"
+            ],
+            "args_type": [
+                "void *",
+                "int",
+                "const char *"
+            ],
+            "fully_qualified": "fdt_delprop(void *, int, const char *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_rw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_delprop",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "parentoffset",
+                "name",
+                "namelen"
+            ],
+            "args_type": [
+                "void *",
+                "int",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "fdt_add_subnode_namelen(void *, int, const char *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_rw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_add_subnode_namelen",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "parentoffset",
+                "name"
+            ],
+            "args_type": [
+                "void *",
+                "int",
+                "const char *"
+            ],
+            "fully_qualified": "fdt_add_subnode(void *, int, const char *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_rw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_add_subnode",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset"
+            ],
+            "args_type": [
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_del_node(void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_rw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_del_node",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "buf",
+                "bufsize"
+            ],
+            "args_type": [
+                "const void *",
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_open_into(const void *, void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_rw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_open_into",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt"
+            ],
+            "args_type": [
+                "void *"
+            ],
+            "fully_qualified": "fdt_pack(void *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_rw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_pack",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "buf",
+                "bufsize"
+            ],
+            "args_type": [
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_create_empty_tree(void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_empty_tree.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_create_empty_tree",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "stroffset"
+            ],
+            "args_type": [
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_string(const void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_string",
+            "nb_args": 2,
+            "return_value": "const char *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "n",
+                "address",
+                "size"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "uint64_t *",
+                "uint64_t *"
+            ],
+            "fully_qualified": "fdt_get_mem_rsv(const void *, int, uint64_t *, uint64_t *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_get_mem_rsv",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt"
+            ],
+            "args_type": [
+                "const void *"
+            ],
+            "fully_qualified": "fdt_num_mem_rsv(const void *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_num_mem_rsv",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "offset",
+                "name",
+                "namelen"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "fdt_subnode_offset_namelen(const void *, int, const char *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_subnode_offset_namelen",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "parentoffset",
+                "name"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "const char *"
+            ],
+            "fully_qualified": "fdt_subnode_offset(const void *, int, const char *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_subnode_offset",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "path",
+                "namelen"
+            ],
+            "args_type": [
+                "const void *",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "fdt_path_offset_namelen(const void *, const char *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_path_offset_namelen",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "path"
+            ],
+            "args_type": [
+                "const void *",
+                "const char *"
+            ],
+            "fully_qualified": "fdt_path_offset(const void *, const char *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_path_offset",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset",
+                "len"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "int *"
+            ],
+            "fully_qualified": "fdt_get_name(const void *, int, int *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_get_name",
+            "nb_args": 3,
+            "return_value": "const char *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset"
+            ],
+            "args_type": [
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_first_property_offset(const void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_first_property_offset",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "offset"
+            ],
+            "args_type": [
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_next_property_offset(const void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_next_property_offset",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "offset",
+                "lenp"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "int *"
+            ],
+            "fully_qualified": "fdt_get_property_by_offset(const void *, int, int *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_get_property_by_offset",
+            "nb_args": 3,
+            "return_value": "const struct fdt_property *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "offset",
+                "name",
+                "namelen",
+                "lenp"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "const char *",
+                "int",
+                "int *"
+            ],
+            "fully_qualified": "fdt_get_property_namelen(const void *, int, const char *, int, int *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_get_property_namelen",
+            "nb_args": 5,
+            "return_value": "const struct fdt_property *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset",
+                "name",
+                "lenp"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "const char *",
+                "int *"
+            ],
+            "fully_qualified": "fdt_get_property(const void *, int, const char *, int *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_get_property",
+            "nb_args": 4,
+            "return_value": "const struct fdt_property *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset",
+                "name",
+                "namelen",
+                "lenp"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "const char *",
+                "int",
+                "int *"
+            ],
+            "fully_qualified": "fdt_getprop_namelen(const void *, int, const char *, int, int *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_getprop_namelen",
+            "nb_args": 5,
+            "return_value": "const void *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "offset",
+                "namep",
+                "lenp"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "const char **",
+                "int *"
+            ],
+            "fully_qualified": "fdt_getprop_by_offset(const void *, int, const char **, int *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_getprop_by_offset",
+            "nb_args": 4,
+            "return_value": "const void *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset",
+                "name",
+                "lenp"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "const char *",
+                "int *"
+            ],
+            "fully_qualified": "fdt_getprop(const void *, int, const char *, int *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_getprop",
+            "nb_args": 4,
+            "return_value": "const void *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset"
+            ],
+            "args_type": [
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_get_phandle(const void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_get_phandle",
+            "nb_args": 2,
+            "return_value": "uint32_t",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "name",
+                "namelen"
+            ],
+            "args_type": [
+                "const void *",
+                "const char *",
+                "int"
+            ],
+            "fully_qualified": "fdt_get_alias_namelen(const void *, const char *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_get_alias_namelen",
+            "nb_args": 3,
+            "return_value": "const char *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "name"
+            ],
+            "args_type": [
+                "const void *",
+                "const char *"
+            ],
+            "fully_qualified": "fdt_get_alias(const void *, const char *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_get_alias",
+            "nb_args": 2,
+            "return_value": "const char *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset",
+                "buf",
+                "buflen"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "char *",
+                "int"
+            ],
+            "fully_qualified": "fdt_get_path(const void *, int, char *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_get_path",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset",
+                "supernodedepth",
+                "nodedepth"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "int",
+                "int *"
+            ],
+            "fully_qualified": "fdt_supernode_atdepth_offset(const void *, int, int, int *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_supernode_atdepth_offset",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset"
+            ],
+            "args_type": [
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_node_depth(const void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_node_depth",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset"
+            ],
+            "args_type": [
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_parent_offset(const void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_parent_offset",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "startoffset",
+                "propname",
+                "propval",
+                "proplen"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "const char *",
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_node_offset_by_prop_value(const void *, int, const char *, const void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_node_offset_by_prop_value",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "phandle"
+            ],
+            "args_type": [
+                "const void *",
+                "uint32_t"
+            ],
+            "fully_qualified": "fdt_node_offset_by_phandle(const void *, uint32_t)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_node_offset_by_phandle",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "strlist",
+                "listlen",
+                "str"
+            ],
+            "args_type": [
+                "const char *",
+                "int",
+                "const char *"
+            ],
+            "fully_qualified": "fdt_stringlist_contains(const char *, int, const char *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_stringlist_contains",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset",
+                "compatible"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "const char *"
+            ],
+            "fully_qualified": "fdt_node_check_compatible(const void *, int, const char *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_node_check_compatible",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "startoffset",
+                "compatible"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "const char *"
+            ],
+            "fully_qualified": "fdt_node_offset_by_compatible(const void *, int, const char *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_ro.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_node_offset_by_compatible",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset",
+                "name",
+                "val",
+                "len"
+            ],
+            "args_type": [
+                "void *",
+                "int",
+                "const char *",
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_setprop_inplace(void *, int, const char *, const void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_wip.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_setprop_inplace",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset",
+                "name"
+            ],
+            "args_type": [
+                "void *",
+                "int",
+                "const char *"
+            ],
+            "fully_qualified": "fdt_nop_property(void *, int, const char *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_wip.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_nop_property",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset"
+            ],
+            "args_type": [
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_nop_node(void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_wip.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_nop_node",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset"
+            ],
+            "args_type": [
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_address_cells(const void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_addresses.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_address_cells",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "nodeoffset"
+            ],
+            "args_type": [
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_size_cells(const void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_addresses.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_size_cells",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "buf",
+                "bufsize"
+            ],
+            "args_type": [
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_create(void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_sw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_create",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "buf",
+                "bufsize"
+            ],
+            "args_type": [
+                "void *",
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_resize(void *, void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_sw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_resize",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "addr",
+                "size"
+            ],
+            "args_type": [
+                "void *",
+                "uint64_t",
+                "uint64_t"
+            ],
+            "fully_qualified": "fdt_add_reservemap_entry(void *, uint64_t, uint64_t)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_sw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_add_reservemap_entry",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt"
+            ],
+            "args_type": [
+                "void *"
+            ],
+            "fully_qualified": "fdt_finish_reservemap(void *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_sw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_finish_reservemap",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "name"
+            ],
+            "args_type": [
+                "void *",
+                "const char *"
+            ],
+            "fully_qualified": "fdt_begin_node(void *, const char *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_sw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_begin_node",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt"
+            ],
+            "args_type": [
+                "void *"
+            ],
+            "fully_qualified": "fdt_end_node(void *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_sw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_end_node",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "name",
+                "val",
+                "len"
+            ],
+            "args_type": [
+                "void *",
+                "const char *",
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_property(void *, const char *, const void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_sw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_property",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt"
+            ],
+            "args_type": [
+                "void *"
+            ],
+            "fully_qualified": "fdt_finish(void *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_sw.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_finish",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "offset",
+                "name",
+                "out"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "const char *",
+                "uint32_t *"
+            ],
+            "fully_qualified": "fdt_getprop_u32_by_offset(const void *, int, const char *, uint32_t *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/uk_fdt.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_getprop_u32_by_offset",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "fdto"
+            ],
+            "args_type": [
+                "void *",
+                "void *"
+            ],
+            "fully_qualified": "fdt_overlay_apply(void *, void *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_overlay.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_overlay_apply",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "errval"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "fdt_strerror(int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt_strerror.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_strerror",
+            "nb_args": 1,
+            "return_value": "const char *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt"
+            ],
+            "args_type": [
+                "const void *"
+            ],
+            "fully_qualified": "fdt_check_header(const void *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_check_header",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "offset",
+                "len"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "unsigned int"
+            ],
+            "fully_qualified": "fdt_offset_ptr(const void *, int, unsigned int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_offset_ptr",
+            "nb_args": 3,
+            "return_value": "const void *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "startoffset",
+                "nextoffset"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "int *"
+            ],
+            "fully_qualified": "fdt_next_tag(const void *, int, int *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_next_tag",
+            "nb_args": 3,
+            "return_value": "uint32_t",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "offset",
+                "depth"
+            ],
+            "args_type": [
+                "const void *",
+                "int",
+                "int *"
+            ],
+            "fully_qualified": "fdt_next_node(const void *, int, int *)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_next_node",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "offset"
+            ],
+            "args_type": [
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_first_subnode(const void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_first_subnode",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "offset"
+            ],
+            "args_type": [
+                "const void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_next_subnode(const void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_next_subnode",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "fdt",
+                "buf",
+                "bufsize"
+            ],
+            "args_type": [
+                "const void *",
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "fdt_move(const void *, void *, int)",
+            "headers": [
+                "<libfdt_env.h>",
+                "<libfdt.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/fdt.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/fdt/include/libfdt.h"
+            ],
+            "name": "fdt_move",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        }
+    ]
+}

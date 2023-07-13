@@ -7,7 +7,10 @@
 package binarytool
 
 import (
+	"encoding/json"
+	"errors"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"strings"
 	"tools/srcs/binarytool/elf64analyser"
@@ -16,11 +19,11 @@ import (
 )
 
 const (
-	makefile = "Makefile"
-	config   = "config"
-	objExt   = ".o"
-	ldExt    = ".ld.o"
-	dbgExt   = ".dbg"
+	makefile  = "Makefile"
+	config    = "config"
+	ldExt     = ".ld.o"
+	objectExt = ".o"
+	dbgExt    = ".dbg"
 )
 
 type Unikernels struct {
@@ -28,20 +31,47 @@ type Unikernels struct {
 }
 
 type Unikernel struct {
-	BuildPath            string   `json:"buildPath"`
-	Kernel               string   `json:"kernel"`
-	SectionSplit         string   `json:"splitSection"`
-	DisplayMapping       bool     `json:"displayMapping"`
-	DisplayStatSize      bool     `json:"displayStatSize"`
-	IgnoredPlats         []string `json:"ignoredPlats"`
-	DisplayElfFile       []string `json:"displayElfFile"`
-	DisplaySectionInfo   []string `json:"displaySectionInfo"`
+	BuildPath          string   `json:"buildPath"`
+	Kernel             string   `json:"kernel"`
+	SplitSections      []string `json:"splitSections"`
+	DisplayMapping     bool     `json:"displayMapping"`
+	DisplayStatSize    bool     `json:"displayStatSize"`
+	ComputeLibsMapping bool     `json:"computeLibsMapping"`
+
+	IgnoredPlats       []string `json:"ignoredPlats"`
+	DisplayElfFile     []string `json:"displayElfFile"`
+	DisplaySectionInfo []string `json:"displaySectionInfo"`
+
 	FindSectionByAddress []string `json:"findSectionByAddress"`
 	CompareGroup         int      `json:"compareGroup"`
+
+	// Used to generate new link.lds file
+	ComputeTextAddr string   `json:"computeTextAddr"`
+	LibsMapping     []string `json:"LibsMapping"`
 
 	ElfFile  *elf64core.ELF64File
 	ListObjs []*elf64core.ELF64File
 	Analyser *elf64analyser.ElfAnalyser
+}
+
+func ReadJsonFile(path string) ([]*Unikernel, error) {
+	jsonFile, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer jsonFile.Close()
+	byteValue, _ := ioutil.ReadAll(jsonFile)
+	unikernels := new(Unikernels)
+	if err := json.Unmarshal(byteValue, unikernels); err != nil {
+		return nil, err
+	}
+
+	uks := make([]*Unikernel, len(unikernels.Unikernel))
+	for i, _ := range unikernels.Unikernel {
+		uks[i] = &unikernels.Unikernel[i]
+	}
+	unikernels = nil
+	return uks, nil
 }
 
 func parseFile(path, name string) (*elf64core.ELF64File, error) {
@@ -73,12 +103,13 @@ func (uk *Unikernel) GetFiles() error {
 	for _, f := range files {
 
 		if f.IsDir() || strings.Contains(f.Name(), makefile) ||
-			strings.Contains(f.Name(), config) ||
-			strings.Contains(f.Name(), ldExt) {
+			strings.Contains(f.Name(), config) {
 			continue
 		}
-		if filepath.Ext(strings.TrimSpace(f.Name())) == objExt &&
-			!stringInSlice(f.Name(), uk.IgnoredPlats) {
+
+		if filepath.Ext(f.Name()) == objectExt && !strings.Contains(f.Name(), ldExt) &&
+			!u.StringInSlice(f.Name(), uk.IgnoredPlats) {
+
 			objFile, err := parseFile(uk.BuildPath, f.Name())
 			if err != nil {
 				return err
@@ -86,7 +117,7 @@ func (uk *Unikernel) GetFiles() error {
 
 			uk.ListObjs = append(uk.ListObjs, objFile)
 		} else if filepath.Ext(strings.TrimSpace(f.Name())) == dbgExt &&
-			!stringInSlice(f.Name(), uk.IgnoredPlats) && !foundExec {
+			!u.StringInSlice(f.Name(), uk.IgnoredPlats) && !foundExec {
 
 			execName := f.Name()
 			if len(uk.Kernel) > 0 {
@@ -101,9 +132,13 @@ func (uk *Unikernel) GetFiles() error {
 	}
 
 	if len(uk.Kernel) > 0 {
-		u.PrintInfo("Use specified ELF file: " + uk.ElfFile.Name)
-	} else {
+		u.PrintInfo("Use specified ELF file: " + uk.ElfFile.Name + "(" + uk.BuildPath + ")")
+	} else if uk.ElfFile != nil {
 		u.PrintInfo("Use ELF file found in build folder: " + uk.ElfFile.Name)
+	}
+
+	if uk.ElfFile == nil {
+		return errors.New("impossible to find executable in the given folder: " + uk.BuildPath)
 	}
 	return nil
 }

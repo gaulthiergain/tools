@@ -1,0 +1,4047 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "ll_p"
+            ],
+            "args_type": [
+                "const lv_ll_t *"
+            ],
+            "fully_qualified": "lv_ll_get_tail(const lv_ll_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_ll.c"
+            ],
+            "name": "lv_ll_get_tail",
+            "nb_args": 1,
+            "return_value": "void *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "ll_p",
+                "n_act"
+            ],
+            "args_type": [
+                "const lv_ll_t *",
+                "const void *"
+            ],
+            "fully_qualified": "lv_ll_get_next(const lv_ll_t *, const void *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_ll.c"
+            ],
+            "name": "lv_ll_get_next",
+            "nb_args": 2,
+            "return_value": "void *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "ll_p",
+                "n_act"
+            ],
+            "args_type": [
+                "const lv_ll_t *",
+                "const void *"
+            ],
+            "fully_qualified": "lv_ll_get_prev(const lv_ll_t *, const void *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_ll.c"
+            ],
+            "name": "lv_ll_get_prev",
+            "nb_args": 2,
+            "return_value": "void *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "ll_p"
+            ],
+            "args_type": [
+                "const lv_ll_t *"
+            ],
+            "fully_qualified": "lv_ll_get_len(const lv_ll_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_ll.c"
+            ],
+            "name": "lv_ll_get_len",
+            "nb_args": 1,
+            "return_value": "uint32_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "ll_p",
+                "n_act",
+                "n_after"
+            ],
+            "args_type": [
+                "lv_ll_t *",
+                "void *",
+                "void *"
+            ],
+            "fully_qualified": "lv_ll_move_before(lv_ll_t *, void *, void *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_ll.c"
+            ],
+            "name": "lv_ll_move_before",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "ll_p"
+            ],
+            "args_type": [
+                "lv_ll_t *"
+            ],
+            "fully_qualified": "lv_ll_is_empty(lv_ll_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_ll.c"
+            ],
+            "name": "lv_ll_is_empty",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "driver"
+            ],
+            "args_type": [
+                "lv_indev_drv_t *"
+            ],
+            "fully_qualified": "lv_indev_drv_init(lv_indev_drv_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_hal_indev.c"
+            ],
+            "name": "lv_indev_drv_init",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "driver"
+            ],
+            "args_type": [
+                "lv_indev_drv_t *"
+            ],
+            "fully_qualified": "lv_indev_drv_register(lv_indev_drv_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_hal_indev.c"
+            ],
+            "name": "lv_indev_drv_register",
+            "nb_args": 1,
+            "return_value": "lv_indev_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "indev",
+                "new_drv"
+            ],
+            "args_type": [
+                "lv_indev_t *",
+                "lv_indev_drv_t *"
+            ],
+            "fully_qualified": "lv_indev_drv_update(lv_indev_t *, lv_indev_drv_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_hal_indev.c"
+            ],
+            "name": "lv_indev_drv_update",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "indev"
+            ],
+            "args_type": [
+                "lv_indev_t *"
+            ],
+            "fully_qualified": "lv_indev_get_next(lv_indev_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_hal_indev.c"
+            ],
+            "name": "lv_indev_get_next",
+            "nb_args": 1,
+            "return_value": "lv_indev_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "indev",
+                "data"
+            ],
+            "args_type": [
+                "lv_indev_t *",
+                "lv_indev_data_t *"
+            ],
+            "fully_qualified": "lv_indev_read(lv_indev_t *, lv_indev_data_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_hal_indev.c"
+            ],
+            "name": "lv_indev_read",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "th"
+            ],
+            "args_type": [
+                "lv_theme_t *"
+            ],
+            "fully_qualified": "lv_theme_set_current(lv_theme_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_theme.c"
+            ],
+            "name": "lv_theme_set_current",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "lv_theme_get_current()",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_theme.c"
+            ],
+            "name": "lv_theme_get_current",
+            "nb_args": 0,
+            "return_value": "lv_theme_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "src",
+                "style"
+            ],
+            "args_type": [
+                "const void *",
+                "const lv_style_t *"
+            ],
+            "fully_qualified": "lv_img_cache_open(const void *, const lv_style_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_cache.c"
+            ],
+            "name": "lv_img_cache_open",
+            "nb_args": 2,
+            "return_value": "lv_img_cache_entry_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "new_entry_cnt"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "lv_img_cache_set_size(int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_cache.c"
+            ],
+            "name": "lv_img_cache_set_size",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "src"
+            ],
+            "args_type": [
+                "const void *"
+            ],
+            "fully_qualified": "lv_img_cache_invalidate_src(const void *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_cache.c"
+            ],
+            "name": "lv_img_cache_invalidate_src",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "num",
+                "buf"
+            ],
+            "args_type": [
+                "int",
+                "char *"
+            ],
+            "fully_qualified": "lv_utils_num_to_str(int, char *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_utils.c"
+            ],
+            "name": "lv_utils_num_to_str",
+            "nb_args": 2,
+            "return_value": "char *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "size"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "lv_draw_get_buf(int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw.c"
+            ],
+            "name": "lv_draw_get_buf",
+            "nb_args": 1,
+            "return_value": "void *",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "lv_draw_free_buf()",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw.c"
+            ],
+            "name": "lv_draw_free_buf",
+            "nb_args": 0,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "coords",
+                "mask",
+                "style",
+                "opa_scale"
+            ],
+            "args_type": [
+                "const lv_area_t *",
+                "const lv_area_t *",
+                "const lv_style_t *",
+                "lv_opa_t"
+            ],
+            "fully_qualified": "lv_draw_rect(const lv_area_t *, const lv_area_t *, const lv_style_t *, lv_opa_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_rect.c"
+            ],
+            "name": "lv_draw_rect",
+            "nb_args": 4,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "lv_mem_init()",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_mem.c"
+            ],
+            "name": "lv_mem_init",
+            "nb_args": 0,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "size"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "lv_mem_alloc(int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_mem.c"
+            ],
+            "name": "lv_mem_alloc",
+            "nb_args": 1,
+            "return_value": "void *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "data"
+            ],
+            "args_type": [
+                "const void *"
+            ],
+            "fully_qualified": "lv_mem_free(const void *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_mem.c"
+            ],
+            "name": "lv_mem_free",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "data_p",
+                "new_size"
+            ],
+            "args_type": [
+                "void *",
+                "int"
+            ],
+            "fully_qualified": "lv_mem_realloc(void *, int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_mem.c"
+            ],
+            "name": "lv_mem_realloc",
+            "nb_args": 2,
+            "return_value": "void *",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "lv_mem_defrag()",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_mem.c"
+            ],
+            "name": "lv_mem_defrag",
+            "nb_args": 0,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "mon_p"
+            ],
+            "args_type": [
+                "lv_mem_monitor_t *"
+            ],
+            "fully_qualified": "lv_mem_monitor(lv_mem_monitor_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_mem.c"
+            ],
+            "name": "lv_mem_monitor",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "data"
+            ],
+            "args_type": [
+                "const void *"
+            ],
+            "fully_qualified": "lv_mem_get_size(const void *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_mem.c"
+            ],
+            "name": "lv_mem_get_size",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "size_res",
+                "text",
+                "font",
+                "letter_space",
+                "line_space",
+                "max_width",
+                "flag"
+            ],
+            "args_type": [
+                "lv_point_t *",
+                "const char *",
+                "const lv_font_t *",
+                "lv_coord_t",
+                "int",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "lv_txt_get_size(lv_point_t *, const char *, const lv_font_t *, int, int, int, int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_txt.c"
+            ],
+            "name": "lv_txt_get_size",
+            "nb_args": 7,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "txt",
+                "font",
+                "letter_space",
+                "max_width",
+                "flag"
+            ],
+            "args_type": [
+                "const char *",
+                "const lv_font_t *",
+                "lv_coord_t",
+                "lv_coord_t",
+                "int"
+            ],
+            "fully_qualified": "lv_txt_get_next_line(const char *, const lv_font_t *, lv_coord_t, lv_coord_t, int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_txt.c"
+            ],
+            "name": "lv_txt_get_next_line",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "txt",
+                "length",
+                "font",
+                "letter_space",
+                "flag"
+            ],
+            "args_type": [
+                "const char *",
+                "uint16_t",
+                "const lv_font_t *",
+                "lv_coord_t",
+                "int"
+            ],
+            "fully_qualified": "lv_txt_get_width(const char *, int, const lv_font_t *, lv_coord_t, int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_txt.c"
+            ],
+            "name": "lv_txt_get_width",
+            "nb_args": 5,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "state",
+                "c"
+            ],
+            "args_type": [
+                "lv_txt_cmd_state_t *",
+                "int"
+            ],
+            "fully_qualified": "lv_txt_is_cmd(lv_txt_cmd_state_t *, int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_txt.c"
+            ],
+            "name": "lv_txt_is_cmd",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "txt_buf",
+                "pos",
+                "ins_txt"
+            ],
+            "args_type": [
+                "char *",
+                "int",
+                "const char *"
+            ],
+            "fully_qualified": "lv_txt_ins(char *, int, const char *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_txt.c"
+            ],
+            "name": "lv_txt_ins",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "txt",
+                "pos",
+                "len"
+            ],
+            "args_type": [
+                "char *",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "lv_txt_cut(char *, int, int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_txt.c"
+            ],
+            "name": "lv_txt_cut",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "points",
+                "mask",
+                "style",
+                "opa_scale"
+            ],
+            "args_type": [
+                "const lv_point_t *",
+                "const lv_area_t *",
+                "const lv_style_t *",
+                "lv_opa_t"
+            ],
+            "fully_qualified": "lv_draw_triangle(const lv_point_t *, const lv_area_t *, const lv_style_t *, lv_opa_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_triangle.c"
+            ],
+            "name": "lv_draw_triangle",
+            "nb_args": 4,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "points",
+                "point_cnt",
+                "mask",
+                "style",
+                "opa_scale"
+            ],
+            "args_type": [
+                "const lv_point_t *",
+                "uint32_t",
+                "const lv_area_t *",
+                "const lv_style_t *",
+                "int"
+            ],
+            "fully_qualified": "lv_draw_polygon(const lv_point_t *, uint32_t, const lv_area_t *, const lv_style_t *, int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_triangle.c"
+            ],
+            "name": "lv_draw_polygon",
+            "nb_args": 5,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "h",
+                "s",
+                "v"
+            ],
+            "args_type": [
+                "int",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "lv_color_hsv_to_rgb(int, int, int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_color.c"
+            ],
+            "name": "lv_color_hsv_to_rgb",
+            "nb_args": 3,
+            "return_value": "lv_color_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "r8",
+                "g8",
+                "b8"
+            ],
+            "args_type": [
+                "int",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "lv_color_rgb_to_hsv(int, int, int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_color.c"
+            ],
+            "name": "lv_color_rgb_to_hsv",
+            "nb_args": 3,
+            "return_value": "lv_color_hsv_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "color"
+            ],
+            "args_type": [
+                "lv_color_t"
+            ],
+            "fully_qualified": "lv_color_to_hsv(lv_color_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_color.c"
+            ],
+            "name": "lv_color_to_hsv",
+            "nb_args": 1,
+            "return_value": "lv_color_hsv_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "center_x",
+                "center_y",
+                "radius",
+                "mask",
+                "start_angle",
+                "end_angle",
+                "style",
+                "opa_scale"
+            ],
+            "args_type": [
+                "lv_coord_t",
+                "lv_coord_t",
+                "uint16_t",
+                "const lv_area_t *",
+                "uint16_t",
+                "uint16_t",
+                "const lv_style_t *",
+                "lv_opa_t"
+            ],
+            "fully_qualified": "lv_draw_arc(lv_coord_t, lv_coord_t, uint16_t, const lv_area_t *, uint16_t, uint16_t, const lv_style_t *, lv_opa_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_arc.c"
+            ],
+            "name": "lv_draw_arc",
+            "nb_args": 8,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "coords",
+                "mask",
+                "src",
+                "style",
+                "opa_scale"
+            ],
+            "args_type": [
+                "const lv_area_t *",
+                "const lv_area_t *",
+                "const void *",
+                "const lv_style_t *",
+                "lv_opa_t"
+            ],
+            "fully_qualified": "lv_draw_img(const lv_area_t *, const lv_area_t *, const void *, const lv_style_t *, lv_opa_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_img.c"
+            ],
+            "name": "lv_draw_img",
+            "nb_args": 5,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dsc",
+                "x",
+                "y",
+                "style"
+            ],
+            "args_type": [
+                "lv_img_dsc_t *",
+                "lv_coord_t",
+                "lv_coord_t",
+                "const lv_style_t *"
+            ],
+            "fully_qualified": "lv_img_buf_get_px_color(lv_img_dsc_t *, lv_coord_t, lv_coord_t, const lv_style_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_img.c"
+            ],
+            "name": "lv_img_buf_get_px_color",
+            "nb_args": 4,
+            "return_value": "lv_color_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dsc",
+                "x",
+                "y"
+            ],
+            "args_type": [
+                "lv_img_dsc_t *",
+                "lv_coord_t",
+                "lv_coord_t"
+            ],
+            "fully_qualified": "lv_img_buf_get_px_alpha(lv_img_dsc_t *, lv_coord_t, lv_coord_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_img.c"
+            ],
+            "name": "lv_img_buf_get_px_alpha",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dsc",
+                "x",
+                "y",
+                "c"
+            ],
+            "args_type": [
+                "lv_img_dsc_t *",
+                "lv_coord_t",
+                "lv_coord_t",
+                "lv_color_t"
+            ],
+            "fully_qualified": "lv_img_buf_set_px_color(lv_img_dsc_t *, lv_coord_t, lv_coord_t, lv_color_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_img.c"
+            ],
+            "name": "lv_img_buf_set_px_color",
+            "nb_args": 4,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dsc",
+                "x",
+                "y",
+                "opa"
+            ],
+            "args_type": [
+                "lv_img_dsc_t *",
+                "lv_coord_t",
+                "lv_coord_t",
+                "lv_opa_t"
+            ],
+            "fully_qualified": "lv_img_buf_set_px_alpha(lv_img_dsc_t *, lv_coord_t, lv_coord_t, int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_img.c"
+            ],
+            "name": "lv_img_buf_set_px_alpha",
+            "nb_args": 4,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dsc",
+                "id",
+                "c"
+            ],
+            "args_type": [
+                "lv_img_dsc_t *",
+                "uint8_t",
+                "lv_color_t"
+            ],
+            "fully_qualified": "lv_img_buf_set_palette(lv_img_dsc_t *, uint8_t, lv_color_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_img.c"
+            ],
+            "name": "lv_img_buf_set_palette",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "cf"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "lv_img_color_format_get_px_size(int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_img.c"
+            ],
+            "name": "lv_img_color_format_get_px_size",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "cf"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "lv_img_color_format_is_chroma_keyed(int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_img.c"
+            ],
+            "name": "lv_img_color_format_is_chroma_keyed",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "cf"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "lv_img_color_format_has_alpha(int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_img.c"
+            ],
+            "name": "lv_img_color_format_has_alpha",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "src"
+            ],
+            "args_type": [
+                "const void *"
+            ],
+            "fully_qualified": "lv_img_src_get_type(const void *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_img.c"
+            ],
+            "name": "lv_img_src_get_type",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "w",
+                "h",
+                "cf"
+            ],
+            "args_type": [
+                "lv_coord_t",
+                "lv_coord_t",
+                "lv_coord_t"
+            ],
+            "fully_qualified": "lv_img_buf_alloc(lv_coord_t, lv_coord_t, lv_coord_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_img.c"
+            ],
+            "name": "lv_img_buf_alloc",
+            "nb_args": 3,
+            "return_value": "lv_img_dsc_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dsc"
+            ],
+            "args_type": [
+                "lv_img_dsc_t *"
+            ],
+            "fully_qualified": "lv_img_buf_free(lv_img_dsc_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_img.c"
+            ],
+            "name": "lv_img_buf_free",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "w",
+                "h",
+                "cf"
+            ],
+            "args_type": [
+                "int",
+                "int",
+                "int"
+            ],
+            "fully_qualified": "lv_img_buf_get_img_size(int, int, int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_img.c"
+            ],
+            "name": "lv_img_buf_get_img_size",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "lv_img_decoder_init()",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_decoder.c"
+            ],
+            "name": "lv_img_decoder_init",
+            "nb_args": 0,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "src",
+                "header"
+            ],
+            "args_type": [
+                "const char *",
+                "lv_img_header_t *"
+            ],
+            "fully_qualified": "lv_img_decoder_get_info(const char *, lv_img_header_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_decoder.c"
+            ],
+            "name": "lv_img_decoder_get_info",
+            "nb_args": 2,
+            "return_value": "lv_res_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dsc",
+                "src",
+                "style"
+            ],
+            "args_type": [
+                "lv_img_decoder_dsc_t *",
+                "const void *",
+                "const lv_style_t *"
+            ],
+            "fully_qualified": "lv_img_decoder_open(lv_img_decoder_dsc_t *, const void *, const lv_style_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_decoder.c"
+            ],
+            "name": "lv_img_decoder_open",
+            "nb_args": 3,
+            "return_value": "lv_res_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dsc",
+                "x",
+                "y",
+                "len",
+                "buf"
+            ],
+            "args_type": [
+                "lv_img_decoder_dsc_t *",
+                "lv_coord_t",
+                "lv_coord_t",
+                "lv_coord_t",
+                "uint8_t *"
+            ],
+            "fully_qualified": "lv_img_decoder_read_line(lv_img_decoder_dsc_t *, lv_coord_t, lv_coord_t, lv_coord_t, uint8_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_decoder.c"
+            ],
+            "name": "lv_img_decoder_read_line",
+            "nb_args": 5,
+            "return_value": "lv_res_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dsc"
+            ],
+            "args_type": [
+                "lv_img_decoder_dsc_t *"
+            ],
+            "fully_qualified": "lv_img_decoder_close(lv_img_decoder_dsc_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_decoder.c"
+            ],
+            "name": "lv_img_decoder_close",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "lv_img_decoder_create()",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_decoder.c"
+            ],
+            "name": "lv_img_decoder_create",
+            "nb_args": 0,
+            "return_value": "lv_img_decoder_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "decoder"
+            ],
+            "args_type": [
+                "lv_img_decoder_t *"
+            ],
+            "fully_qualified": "lv_img_decoder_delete(lv_img_decoder_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_decoder.c"
+            ],
+            "name": "lv_img_decoder_delete",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "decoder",
+                "info_cb"
+            ],
+            "args_type": [
+                "lv_img_decoder_t *",
+                "lv_img_decoder_info_f_t"
+            ],
+            "fully_qualified": "lv_img_decoder_set_info_cb(lv_img_decoder_t *, lv_img_decoder_info_f_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_decoder.c"
+            ],
+            "name": "lv_img_decoder_set_info_cb",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "decoder",
+                "open_cb"
+            ],
+            "args_type": [
+                "lv_img_decoder_t *",
+                "lv_img_decoder_open_f_t"
+            ],
+            "fully_qualified": "lv_img_decoder_set_open_cb(lv_img_decoder_t *, lv_img_decoder_open_f_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_decoder.c"
+            ],
+            "name": "lv_img_decoder_set_open_cb",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "decoder",
+                "read_line_cb"
+            ],
+            "args_type": [
+                "lv_img_decoder_t *",
+                "lv_img_decoder_read_line_f_t"
+            ],
+            "fully_qualified": "lv_img_decoder_set_read_line_cb(lv_img_decoder_t *, lv_img_decoder_read_line_f_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_decoder.c"
+            ],
+            "name": "lv_img_decoder_set_read_line_cb",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "decoder",
+                "close_cb"
+            ],
+            "args_type": [
+                "lv_img_decoder_t *",
+                "lv_img_decoder_close_f_t"
+            ],
+            "fully_qualified": "lv_img_decoder_set_close_cb(lv_img_decoder_t *, lv_img_decoder_close_f_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_decoder.c"
+            ],
+            "name": "lv_img_decoder_set_close_cb",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "decoder",
+                "src",
+                "header"
+            ],
+            "args_type": [
+                "lv_img_decoder_t *",
+                "const void *",
+                "lv_img_header_t *"
+            ],
+            "fully_qualified": "lv_img_decoder_built_in_info(lv_img_decoder_t *, const void *, lv_img_header_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_decoder.c"
+            ],
+            "name": "lv_img_decoder_built_in_info",
+            "nb_args": 3,
+            "return_value": "lv_res_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "decoder",
+                "dsc"
+            ],
+            "args_type": [
+                "lv_img_decoder_t *",
+                "lv_img_decoder_dsc_t *"
+            ],
+            "fully_qualified": "lv_img_decoder_built_in_open(lv_img_decoder_t *, lv_img_decoder_dsc_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_decoder.c"
+            ],
+            "name": "lv_img_decoder_built_in_open",
+            "nb_args": 2,
+            "return_value": "lv_res_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "decoder",
+                "dsc",
+                "x",
+                "y",
+                "len",
+                "buf"
+            ],
+            "args_type": [
+                "lv_img_decoder_t *",
+                "lv_img_decoder_dsc_t *",
+                "lv_coord_t",
+                "lv_coord_t",
+                "lv_coord_t",
+                "uint8_t *"
+            ],
+            "fully_qualified": "lv_img_decoder_built_in_read_line(lv_img_decoder_t *, lv_img_decoder_dsc_t *, lv_coord_t, lv_coord_t, lv_coord_t, uint8_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_decoder.c"
+            ],
+            "name": "lv_img_decoder_built_in_read_line",
+            "nb_args": 6,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "decoder",
+                "dsc"
+            ],
+            "args_type": [
+                "lv_img_decoder_t *",
+                "lv_img_decoder_dsc_t *"
+            ],
+            "fully_qualified": "lv_img_decoder_built_in_close(lv_img_decoder_t *, lv_img_decoder_dsc_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_img_decoder.c"
+            ],
+            "name": "lv_img_decoder_built_in_close",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "async_xcb",
+                "user_data"
+            ],
+            "args_type": [
+                "lv_async_cb_t",
+                "void *"
+            ],
+            "fully_qualified": "lv_async_call(lv_async_cb_t, void *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_async.c"
+            ],
+            "name": "lv_async_call",
+            "nb_args": 2,
+            "return_value": "lv_res_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "coords",
+                "mask",
+                "style",
+                "opa_scale",
+                "txt",
+                "flag",
+                "offset",
+                "sel",
+                "hint",
+                "bidi_dir"
+            ],
+            "args_type": [
+                "const lv_area_t *",
+                "const lv_area_t *",
+                "const lv_style_t *",
+                "lv_opa_t",
+                "const char *",
+                "lv_txt_flag_t",
+                "lv_point_t *",
+                "lv_draw_label_txt_sel_t *",
+                "lv_draw_label_hint_t *",
+                "lv_bidi_dir_t"
+            ],
+            "fully_qualified": "lv_draw_label(const lv_area_t *, const lv_area_t *, const lv_style_t *, lv_opa_t, const char *, lv_txt_flag_t, lv_point_t *, lv_draw_label_txt_sel_t *, lv_draw_label_hint_t *, lv_bidi_dir_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_label.c"
+            ],
+            "name": "lv_draw_label",
+            "nb_args": 10,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "point1",
+                "point2",
+                "mask",
+                "style",
+                "opa_scale"
+            ],
+            "args_type": [
+                "const lv_point_t *",
+                "const lv_point_t *",
+                "const lv_area_t *",
+                "const lv_style_t *",
+                "lv_opa_t"
+            ],
+            "fully_qualified": "lv_draw_line(const lv_point_t *, const lv_point_t *, const lv_area_t *, const lv_style_t *, lv_opa_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_line.c"
+            ],
+            "name": "lv_draw_line",
+            "nb_args": 5,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "lv_style_init()",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_style.c"
+            ],
+            "name": "lv_style_init",
+            "nb_args": 0,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "dest",
+                "src"
+            ],
+            "args_type": [
+                "lv_style_t *",
+                "const lv_style_t *"
+            ],
+            "fully_qualified": "lv_style_copy(lv_style_t *, const lv_style_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_style.c"
+            ],
+            "name": "lv_style_copy",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "start",
+                "end",
+                "res",
+                "ratio"
+            ],
+            "args_type": [
+                "const lv_style_t *",
+                "const lv_style_t *",
+                "lv_style_t *",
+                "uint16_t"
+            ],
+            "fully_qualified": "lv_style_mix(const lv_style_t *, const lv_style_t *, lv_style_t *, uint16_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_style.c"
+            ],
+            "name": "lv_style_mix",
+            "nb_args": 4,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "angle"
+            ],
+            "args_type": [
+                "int16_t"
+            ],
+            "fully_qualified": "lv_trigo_sin(int16_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_math.c"
+            ],
+            "name": "lv_trigo_sin",
+            "nb_args": 1,
+            "return_value": "int16_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "t",
+                "u0",
+                "u1",
+                "u2",
+                "u3"
+            ],
+            "args_type": [
+                "int",
+                "int32_t",
+                "int32_t",
+                "int32_t",
+                "int32_t"
+            ],
+            "fully_qualified": "lv_bezier3(int, int32_t, int32_t, int32_t, int32_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_math.c"
+            ],
+            "name": "lv_bezier3",
+            "nb_args": 5,
+            "return_value": "int32_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "x",
+                "y"
+            ],
+            "args_type": [
+                "int",
+                "int"
+            ],
+            "fully_qualified": "lv_atan2(int, int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_math.c"
+            ],
+            "name": "lv_atan2",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "num"
+            ],
+            "args_type": [
+                "int"
+            ],
+            "fully_qualified": "lv_sqrt(int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_math.c"
+            ],
+            "name": "lv_sqrt",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "area_p",
+                "x1",
+                "y1",
+                "x2",
+                "y2"
+            ],
+            "args_type": [
+                "lv_area_t *",
+                "lv_coord_t",
+                "lv_coord_t",
+                "lv_coord_t",
+                "lv_coord_t"
+            ],
+            "fully_qualified": "lv_area_set(lv_area_t *, lv_coord_t, lv_coord_t, lv_coord_t, lv_coord_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_area.c"
+            ],
+            "name": "lv_area_set",
+            "nb_args": 5,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "area_p",
+                "w"
+            ],
+            "args_type": [
+                "lv_area_t *",
+                "lv_coord_t"
+            ],
+            "fully_qualified": "lv_area_set_width(lv_area_t *, lv_coord_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_area.c"
+            ],
+            "name": "lv_area_set_width",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "area_p",
+                "h"
+            ],
+            "args_type": [
+                "lv_area_t *",
+                "lv_coord_t"
+            ],
+            "fully_qualified": "lv_area_set_height(lv_area_t *, lv_coord_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_area.c"
+            ],
+            "name": "lv_area_set_height",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "area_p",
+                "x",
+                "y"
+            ],
+            "args_type": [
+                "lv_area_t *",
+                "lv_coord_t",
+                "lv_coord_t"
+            ],
+            "fully_qualified": "lv_area_set_pos(lv_area_t *, lv_coord_t, lv_coord_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_area.c"
+            ],
+            "name": "lv_area_set_pos",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "area_p"
+            ],
+            "args_type": [
+                "const lv_area_t *"
+            ],
+            "fully_qualified": "lv_area_get_size(const lv_area_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_area.c"
+            ],
+            "name": "lv_area_get_size",
+            "nb_args": 1,
+            "return_value": "uint32_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "res_p",
+                "a1_p",
+                "a2_p"
+            ],
+            "args_type": [
+                "lv_area_t *",
+                "const lv_area_t *",
+                "const lv_area_t *"
+            ],
+            "fully_qualified": "lv_area_intersect(lv_area_t *, const lv_area_t *, const lv_area_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_area.c"
+            ],
+            "name": "lv_area_intersect",
+            "nb_args": 3,
+            "return_value": "bool",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "a_res_p",
+                "a1_p",
+                "a2_p"
+            ],
+            "args_type": [
+                "lv_area_t *",
+                "const lv_area_t *",
+                "const lv_area_t *"
+            ],
+            "fully_qualified": "lv_area_join(lv_area_t *, const lv_area_t *, const lv_area_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_area.c"
+            ],
+            "name": "lv_area_join",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "a_p",
+                "p_p"
+            ],
+            "args_type": [
+                "const lv_area_t *",
+                "const lv_point_t *"
+            ],
+            "fully_qualified": "lv_area_is_point_on(const lv_area_t *, const lv_point_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_area.c"
+            ],
+            "name": "lv_area_is_point_on",
+            "nb_args": 2,
+            "return_value": "bool",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "a1_p",
+                "a2_p"
+            ],
+            "args_type": [
+                "const lv_area_t *",
+                "const lv_area_t *"
+            ],
+            "fully_qualified": "lv_area_is_on(const lv_area_t *, const lv_area_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_area.c"
+            ],
+            "name": "lv_area_is_on",
+            "nb_args": 2,
+            "return_value": "bool",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "ain_p",
+                "aholder_p"
+            ],
+            "args_type": [
+                "const lv_area_t *",
+                "const lv_area_t *"
+            ],
+            "fully_qualified": "lv_area_is_in(const lv_area_t *, const lv_area_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_area.c"
+            ],
+            "name": "lv_area_is_in",
+            "nb_args": 2,
+            "return_value": "bool",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "a_p",
+                "amount"
+            ],
+            "args_type": [
+                "lv_area_t *",
+                "const lv_coord_t"
+            ],
+            "fully_qualified": "lv_area_increment(lv_area_t *, const lv_coord_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_area.c"
+            ],
+            "name": "lv_area_increment",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "c",
+                "tmp",
+                "radius"
+            ],
+            "args_type": [
+                "lv_point_t *",
+                "lv_coord_t *",
+                "lv_coord_t"
+            ],
+            "fully_qualified": "lv_circ_init(lv_point_t *, lv_coord_t *, lv_coord_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_circ.c"
+            ],
+            "name": "lv_circ_init",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "c"
+            ],
+            "args_type": [
+                "lv_point_t *"
+            ],
+            "fully_qualified": "lv_circ_cont(lv_point_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_circ.c"
+            ],
+            "name": "lv_circ_cont",
+            "nb_args": 1,
+            "return_value": "bool",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "c",
+                "tmp"
+            ],
+            "args_type": [
+                "lv_point_t *",
+                "lv_coord_t *"
+            ],
+            "fully_qualified": "lv_circ_next(lv_point_t *, lv_coord_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_circ.c"
+            ],
+            "name": "lv_circ_next",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "disp"
+            ],
+            "args_type": [
+                "lv_disp_t *"
+            ],
+            "fully_qualified": "lv_disp_get_scr_act(lv_disp_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_disp.c"
+            ],
+            "name": "lv_disp_get_scr_act",
+            "nb_args": 1,
+            "return_value": "lv_obj_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "scr"
+            ],
+            "args_type": [
+                "lv_obj_t *"
+            ],
+            "fully_qualified": "lv_disp_load_scr(lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_disp.c"
+            ],
+            "name": "lv_disp_load_scr",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "disp"
+            ],
+            "args_type": [
+                "lv_disp_t *"
+            ],
+            "fully_qualified": "lv_disp_get_layer_top(lv_disp_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_disp.c"
+            ],
+            "name": "lv_disp_get_layer_top",
+            "nb_args": 1,
+            "return_value": "lv_obj_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "disp"
+            ],
+            "args_type": [
+                "lv_disp_t *"
+            ],
+            "fully_qualified": "lv_disp_get_layer_sys(lv_disp_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_disp.c"
+            ],
+            "name": "lv_disp_get_layer_sys",
+            "nb_args": 1,
+            "return_value": "lv_obj_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "disp",
+                "scr"
+            ],
+            "args_type": [
+                "lv_disp_t *",
+                "lv_obj_t *"
+            ],
+            "fully_qualified": "lv_disp_assign_screen(lv_disp_t *, lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_disp.c"
+            ],
+            "name": "lv_disp_assign_screen",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "disp"
+            ],
+            "args_type": [
+                "lv_disp_t *"
+            ],
+            "fully_qualified": "lv_disp_get_refr_task(lv_disp_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_disp.c"
+            ],
+            "name": "lv_disp_get_refr_task",
+            "nb_args": 1,
+            "return_value": "lv_task_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "disp"
+            ],
+            "args_type": [
+                "const lv_disp_t *"
+            ],
+            "fully_qualified": "lv_disp_get_inactive_time(const lv_disp_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_disp.c"
+            ],
+            "name": "lv_disp_get_inactive_time",
+            "nb_args": 1,
+            "return_value": "uint32_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "disp"
+            ],
+            "args_type": [
+                "lv_disp_t *"
+            ],
+            "fully_qualified": "lv_disp_trig_activity(lv_disp_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_disp.c"
+            ],
+            "name": "lv_disp_trig_activity",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "lv_refr_init()",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_refr.c"
+            ],
+            "name": "lv_refr_init",
+            "nb_args": 0,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "disp"
+            ],
+            "args_type": [
+                "lv_disp_t *"
+            ],
+            "fully_qualified": "lv_refr_now(lv_disp_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_refr.c"
+            ],
+            "name": "lv_refr_now",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "disp",
+                "area_p"
+            ],
+            "args_type": [
+                "lv_disp_t *",
+                "const lv_area_t *"
+            ],
+            "fully_qualified": "lv_inv_area(lv_disp_t *, const lv_area_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_refr.c"
+            ],
+            "name": "lv_inv_area",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "lv_refr_get_disp_refreshing()",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_refr.c"
+            ],
+            "name": "lv_refr_get_disp_refreshing",
+            "nb_args": 0,
+            "return_value": "lv_disp_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "disp"
+            ],
+            "args_type": [
+                "lv_disp_t *"
+            ],
+            "fully_qualified": "lv_refr_set_disp_refreshing(lv_disp_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_refr.c"
+            ],
+            "name": "lv_refr_set_disp_refreshing",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "task"
+            ],
+            "args_type": [
+                "lv_task_t *"
+            ],
+            "fully_qualified": "lv_disp_refr_task(lv_task_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_refr.c"
+            ],
+            "name": "lv_disp_refr_task",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "x",
+                "y",
+                "mask_p",
+                "color",
+                "opa"
+            ],
+            "args_type": [
+                "lv_coord_t",
+                "lv_coord_t",
+                "const lv_area_t *",
+                "lv_color_t",
+                "lv_opa_t"
+            ],
+            "fully_qualified": "lv_draw_px(lv_coord_t, lv_coord_t, const lv_area_t *, lv_color_t, lv_opa_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_basic.c"
+            ],
+            "name": "lv_draw_px",
+            "nb_args": 5,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "cords_p",
+                "mask_p",
+                "color",
+                "opa"
+            ],
+            "args_type": [
+                "const lv_area_t *",
+                "const lv_area_t *",
+                "lv_color_t",
+                "lv_opa_t"
+            ],
+            "fully_qualified": "lv_draw_fill(const lv_area_t *, const lv_area_t *, lv_color_t, int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_basic.c"
+            ],
+            "name": "lv_draw_fill",
+            "nb_args": 4,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "pos_p",
+                "mask_p",
+                "font_p",
+                "letter",
+                "color",
+                "opa"
+            ],
+            "args_type": [
+                "const lv_point_t *",
+                "const lv_area_t *",
+                "const lv_font_t *",
+                "uint32_t",
+                "lv_color_t",
+                "lv_opa_t"
+            ],
+            "fully_qualified": "lv_draw_letter(const lv_point_t *, const lv_area_t *, const lv_font_t *, uint32_t, lv_color_t, lv_opa_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_basic.c"
+            ],
+            "name": "lv_draw_letter",
+            "nb_args": 6,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "cords_p",
+                "mask_p",
+                "map_p",
+                "opa",
+                "chroma_key",
+                "alpha_byte",
+                "recolor",
+                "recolor_opa"
+            ],
+            "args_type": [
+                "const lv_area_t *",
+                "const lv_area_t *",
+                "const uint8_t *",
+                "lv_opa_t",
+                "bool",
+                "bool",
+                "lv_color_t",
+                "lv_opa_t"
+            ],
+            "fully_qualified": "lv_draw_map(const lv_area_t *, const lv_area_t *, const uint8_t *, lv_opa_t, bool, bool, lv_color_t, lv_opa_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_draw_basic.c"
+            ],
+            "name": "lv_draw_map",
+            "nb_args": 8,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "buffer",
+                "count",
+                "format"
+            ],
+            "args_type": [
+                "char *",
+                "int",
+                "const char *"
+            ],
+            "fully_qualified": "lv_snprintf(char *, int, const char *, ...)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_printf.c"
+            ],
+            "name": "lv_snprintf",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "buffer",
+                "count",
+                "format",
+                "va"
+            ],
+            "args_type": [
+                "char *",
+                "size_t",
+                "const char *",
+                "va_list"
+            ],
+            "fully_qualified": "lv_vsnprintf(char *, size_t, const char *, va_list)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_printf.c"
+            ],
+            "name": "lv_vsnprintf",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "font",
+                "unicode_letter"
+            ],
+            "args_type": [
+                "const lv_font_t *",
+                "uint32_t"
+            ],
+            "fully_qualified": "lv_font_get_bitmap_fmt_txt(const lv_font_t *, uint32_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_font_fmt_txt.c"
+            ],
+            "name": "lv_font_get_bitmap_fmt_txt",
+            "nb_args": 2,
+            "return_value": "const uint8_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "font",
+                "dsc_out",
+                "unicode_letter",
+                "unicode_letter_next"
+            ],
+            "args_type": [
+                "const lv_font_t *",
+                "lv_font_glyph_dsc_t *",
+                "uint32_t",
+                "uint32_t"
+            ],
+            "fully_qualified": "lv_font_get_glyph_dsc_fmt_txt(const lv_font_t *, lv_font_glyph_dsc_t *, uint32_t, uint32_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_font_fmt_txt.c"
+            ],
+            "name": "lv_font_get_glyph_dsc_fmt_txt",
+            "nb_args": 4,
+            "return_value": "bool",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "lv_indev_init()",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_indev.c"
+            ],
+            "name": "lv_indev_init",
+            "nb_args": 0,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "task"
+            ],
+            "args_type": [
+                "lv_task_t *"
+            ],
+            "fully_qualified": "lv_indev_read_task(lv_task_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_indev.c"
+            ],
+            "name": "lv_indev_read_task",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "lv_indev_get_act()",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_indev.c"
+            ],
+            "name": "lv_indev_get_act",
+            "nb_args": 0,
+            "return_value": "lv_indev_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "indev"
+            ],
+            "args_type": [
+                "const lv_indev_t *"
+            ],
+            "fully_qualified": "lv_indev_get_type(const lv_indev_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_indev.c"
+            ],
+            "name": "lv_indev_get_type",
+            "nb_args": 1,
+            "return_value": "lv_indev_type_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "indev"
+            ],
+            "args_type": [
+                "lv_indev_t *"
+            ],
+            "fully_qualified": "lv_indev_reset(lv_indev_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_indev.c"
+            ],
+            "name": "lv_indev_reset",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "indev"
+            ],
+            "args_type": [
+                "lv_indev_t *"
+            ],
+            "fully_qualified": "lv_indev_reset_long_press(lv_indev_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_indev.c"
+            ],
+            "name": "lv_indev_reset_long_press",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "indev",
+                "en"
+            ],
+            "args_type": [
+                "lv_indev_t *",
+                "int"
+            ],
+            "fully_qualified": "lv_indev_enable(lv_indev_t *, int)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_indev.c"
+            ],
+            "name": "lv_indev_enable",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "indev",
+                "cur_obj"
+            ],
+            "args_type": [
+                "lv_indev_t *",
+                "lv_obj_t *"
+            ],
+            "fully_qualified": "lv_indev_set_cursor(lv_indev_t *, lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_indev.c"
+            ],
+            "name": "lv_indev_set_cursor",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "indev",
+                "points"
+            ],
+            "args_type": [
+                "lv_indev_t *",
+                "const lv_point_t *"
+            ],
+            "fully_qualified": "lv_indev_set_button_points(lv_indev_t *, const lv_point_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_indev.c"
+            ],
+            "name": "lv_indev_set_button_points",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "indev",
+                "point"
+            ],
+            "args_type": [
+                "const lv_indev_t *",
+                "lv_point_t *"
+            ],
+            "fully_qualified": "lv_indev_get_point(const lv_indev_t *, lv_point_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_indev.c"
+            ],
+            "name": "lv_indev_get_point",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "indev"
+            ],
+            "args_type": [
+                "const lv_indev_t *"
+            ],
+            "fully_qualified": "lv_indev_get_key(const lv_indev_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_indev.c"
+            ],
+            "name": "lv_indev_get_key",
+            "nb_args": 1,
+            "return_value": "uint32_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "indev"
+            ],
+            "args_type": [
+                "const lv_indev_t *"
+            ],
+            "fully_qualified": "lv_indev_is_dragging(const lv_indev_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_indev.c"
+            ],
+            "name": "lv_indev_is_dragging",
+            "nb_args": 1,
+            "return_value": "bool",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "indev",
+                "point"
+            ],
+            "args_type": [
+                "const lv_indev_t *",
+                "lv_point_t *"
+            ],
+            "fully_qualified": "lv_indev_get_vect(const lv_indev_t *, lv_point_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_indev.c"
+            ],
+            "name": "lv_indev_get_vect",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "indev"
+            ],
+            "args_type": [
+                "lv_indev_t *"
+            ],
+            "fully_qualified": "lv_indev_wait_release(lv_indev_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_indev.c"
+            ],
+            "name": "lv_indev_wait_release",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "indev"
+            ],
+            "args_type": [
+                "lv_disp_t *"
+            ],
+            "fully_qualified": "lv_indev_get_read_task(lv_disp_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_indev.c"
+            ],
+            "name": "lv_indev_get_read_task",
+            "nb_args": 1,
+            "return_value": "lv_task_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "lv_indev_get_obj_act()",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_indev.c"
+            ],
+            "name": "lv_indev_get_obj_act",
+            "nb_args": 0,
+            "return_value": "lv_obj_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "lv_init()",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_init",
+            "nb_args": 0,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "parent",
+                "copy"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_create(lv_obj_t *, const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_create",
+            "nb_args": 2,
+            "return_value": "lv_obj_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_del(lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_del",
+            "nb_args": 1,
+            "return_value": "lv_res_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "struct _lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_del_async(struct _lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_del_async",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_clean(lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_clean",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_invalidate(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_invalidate",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "parent"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_set_parent(lv_obj_t *, lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_parent",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_move_foreground(lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_move_foreground",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_move_background(lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_move_background",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "x",
+                "y"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "lv_coord_t",
+                "lv_coord_t"
+            ],
+            "fully_qualified": "lv_obj_set_pos(lv_obj_t *, lv_coord_t, lv_coord_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_pos",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "x"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "lv_coord_t"
+            ],
+            "fully_qualified": "lv_obj_set_x(lv_obj_t *, lv_coord_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_x",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "y"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "lv_coord_t"
+            ],
+            "fully_qualified": "lv_obj_set_y(lv_obj_t *, lv_coord_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_y",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "w",
+                "h"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "lv_coord_t",
+                "lv_coord_t"
+            ],
+            "fully_qualified": "lv_obj_set_size(lv_obj_t *, lv_coord_t, lv_coord_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_size",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "w"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "lv_coord_t"
+            ],
+            "fully_qualified": "lv_obj_set_width(lv_obj_t *, lv_coord_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_width",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "h"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "lv_coord_t"
+            ],
+            "fully_qualified": "lv_obj_set_height(lv_obj_t *, lv_coord_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_height",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "base",
+                "align",
+                "x_mod",
+                "y_mod"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "const lv_obj_t *",
+                "lv_align_t",
+                "lv_coord_t",
+                "lv_coord_t"
+            ],
+            "fully_qualified": "lv_obj_align(lv_obj_t *, const lv_obj_t *, lv_align_t, lv_coord_t, lv_coord_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_align",
+            "nb_args": 5,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "base",
+                "align",
+                "x_mod",
+                "y_mod"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "const lv_obj_t *",
+                "lv_align_t",
+                "lv_coord_t",
+                "lv_coord_t"
+            ],
+            "fully_qualified": "lv_obj_align_origo(lv_obj_t *, const lv_obj_t *, lv_align_t, lv_coord_t, lv_coord_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_align_origo",
+            "nb_args": 5,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_realign(lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_realign",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "en"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "bool"
+            ],
+            "fully_qualified": "lv_obj_set_auto_realign(lv_obj_t *, bool)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_auto_realign",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "left",
+                "right",
+                "top",
+                "bottom"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "lv_coord_t",
+                "lv_coord_t",
+                "lv_coord_t",
+                "lv_coord_t"
+            ],
+            "fully_qualified": "lv_obj_set_ext_click_area(lv_obj_t *, lv_coord_t, lv_coord_t, lv_coord_t, lv_coord_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_ext_click_area",
+            "nb_args": 5,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "style"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "const lv_style_t *"
+            ],
+            "fully_qualified": "lv_obj_set_style(lv_obj_t *, const lv_style_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_style",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_refresh_style(lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_refresh_style",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "style"
+            ],
+            "args_type": [
+                "lv_style_t *"
+            ],
+            "fully_qualified": "lv_obj_report_style_mod(lv_style_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_report_style_mod",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "en"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "bool"
+            ],
+            "fully_qualified": "lv_obj_set_hidden(lv_obj_t *, bool)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_hidden",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "en"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "bool"
+            ],
+            "fully_qualified": "lv_obj_set_click(lv_obj_t *, bool)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_click",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "en"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "bool"
+            ],
+            "fully_qualified": "lv_obj_set_top(lv_obj_t *, bool)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_top",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "en"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "bool"
+            ],
+            "fully_qualified": "lv_obj_set_drag(lv_obj_t *, bool)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_drag",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "drag_dir"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "lv_drag_dir_t"
+            ],
+            "fully_qualified": "lv_obj_set_drag_dir(lv_obj_t *, lv_drag_dir_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_drag_dir",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "en"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "bool"
+            ],
+            "fully_qualified": "lv_obj_set_drag_throw(lv_obj_t *, bool)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_drag_throw",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "en"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "bool"
+            ],
+            "fully_qualified": "lv_obj_set_drag_parent(lv_obj_t *, bool)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_drag_parent",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "en"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "bool"
+            ],
+            "fully_qualified": "lv_obj_set_parent_event(lv_obj_t *, bool)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_parent_event",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "dir"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "lv_bidi_dir_t"
+            ],
+            "fully_qualified": "lv_obj_set_base_dir(lv_obj_t *, lv_bidi_dir_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_base_dir",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "en"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "bool"
+            ],
+            "fully_qualified": "lv_obj_set_opa_scale_enable(lv_obj_t *, bool)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_opa_scale_enable",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "opa_scale"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "lv_opa_t"
+            ],
+            "fully_qualified": "lv_obj_set_opa_scale(lv_obj_t *, lv_opa_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_opa_scale",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "prot"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "uint8_t"
+            ],
+            "fully_qualified": "lv_obj_set_protect(lv_obj_t *, uint8_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_protect",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "prot"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "uint8_t"
+            ],
+            "fully_qualified": "lv_obj_clear_protect(lv_obj_t *, uint8_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_clear_protect",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "event_cb"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "lv_event_cb_t"
+            ],
+            "fully_qualified": "lv_obj_set_event_cb(lv_obj_t *, lv_event_cb_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_event_cb",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "event",
+                "data"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "lv_event_t",
+                "const void *"
+            ],
+            "fully_qualified": "lv_event_send(lv_obj_t *, lv_event_t, const void *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_event_send",
+            "nb_args": 3,
+            "return_value": "lv_res_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "event_xcb",
+                "obj",
+                "event",
+                "data"
+            ],
+            "args_type": [
+                "lv_event_cb_t",
+                "lv_obj_t *",
+                "lv_event_t",
+                "const void *"
+            ],
+            "fully_qualified": "lv_event_send_func(lv_event_cb_t, lv_obj_t *, lv_event_t, const void *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_event_send_func",
+            "nb_args": 4,
+            "return_value": "lv_res_t",
+            "usage": 1
+        },
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "lv_event_get_data()",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_event_get_data",
+            "nb_args": 0,
+            "return_value": "const void *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "signal_cb"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "lv_signal_cb_t"
+            ],
+            "fully_qualified": "lv_obj_set_signal_cb(lv_obj_t *, lv_signal_cb_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_signal_cb",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "signal",
+                "param"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "lv_signal_t",
+                "void *"
+            ],
+            "fully_qualified": "lv_signal_send(lv_obj_t *, lv_signal_t, void *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_signal_send",
+            "nb_args": 3,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "design_cb"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "lv_design_cb_t"
+            ],
+            "fully_qualified": "lv_obj_set_design_cb(lv_obj_t *, lv_design_cb_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_set_design_cb",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "ext_size"
+            ],
+            "args_type": [
+                "lv_obj_t *",
+                "uint16_t"
+            ],
+            "fully_qualified": "lv_obj_allocate_ext_attr(lv_obj_t *, uint16_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_allocate_ext_attr",
+            "nb_args": 2,
+            "return_value": "void *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_refresh_ext_draw_pad(lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_refresh_ext_draw_pad",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_screen(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_screen",
+            "nb_args": 1,
+            "return_value": "lv_obj_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_disp(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_disp",
+            "nb_args": 1,
+            "return_value": "lv_disp_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_parent(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_parent",
+            "nb_args": 1,
+            "return_value": "lv_obj_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "child"
+            ],
+            "args_type": [
+                "const lv_obj_t *",
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_child(const lv_obj_t *, const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_child",
+            "nb_args": 2,
+            "return_value": "lv_obj_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "child"
+            ],
+            "args_type": [
+                "const lv_obj_t *",
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_child_back(const lv_obj_t *, const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_child_back",
+            "nb_args": 2,
+            "return_value": "lv_obj_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_count_children(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_count_children",
+            "nb_args": 1,
+            "return_value": "uint16_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_count_children_recursive(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_count_children_recursive",
+            "nb_args": 1,
+            "return_value": "uint16_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "cords_p"
+            ],
+            "args_type": [
+                "const lv_obj_t *",
+                "lv_area_t *"
+            ],
+            "fully_qualified": "lv_obj_get_coords(const lv_obj_t *, lv_area_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_coords",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "coords_p"
+            ],
+            "args_type": [
+                "const lv_obj_t *",
+                "lv_area_t *"
+            ],
+            "fully_qualified": "lv_obj_get_inner_coords(const lv_obj_t *, lv_area_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_inner_coords",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_x(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_x",
+            "nb_args": 1,
+            "return_value": "lv_coord_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_y(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_y",
+            "nb_args": 1,
+            "return_value": "lv_coord_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_width(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_width",
+            "nb_args": 1,
+            "return_value": "lv_coord_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_height(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_height",
+            "nb_args": 1,
+            "return_value": "lv_coord_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_width_fit(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_width_fit",
+            "nb_args": 1,
+            "return_value": "lv_coord_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_height_fit(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_height_fit",
+            "nb_args": 1,
+            "return_value": "lv_coord_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_auto_realign(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_auto_realign",
+            "nb_args": 1,
+            "return_value": "bool",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_ext_click_pad_left(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_ext_click_pad_left",
+            "nb_args": 1,
+            "return_value": "lv_coord_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_ext_click_pad_right(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_ext_click_pad_right",
+            "nb_args": 1,
+            "return_value": "lv_coord_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_ext_click_pad_top(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_ext_click_pad_top",
+            "nb_args": 1,
+            "return_value": "lv_coord_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_ext_click_pad_bottom(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_ext_click_pad_bottom",
+            "nb_args": 1,
+            "return_value": "lv_coord_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_ext_draw_pad(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_ext_draw_pad",
+            "nb_args": 1,
+            "return_value": "lv_coord_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_style(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_style",
+            "nb_args": 1,
+            "return_value": "const lv_style_t *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_hidden(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_hidden",
+            "nb_args": 1,
+            "return_value": "bool",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_click(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_click",
+            "nb_args": 1,
+            "return_value": "bool",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_top(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_top",
+            "nb_args": 1,
+            "return_value": "bool",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_drag(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_drag",
+            "nb_args": 1,
+            "return_value": "bool",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_drag_dir(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_drag_dir",
+            "nb_args": 1,
+            "return_value": "lv_drag_dir_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_drag_throw(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_drag_throw",
+            "nb_args": 1,
+            "return_value": "bool",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_drag_parent(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_drag_parent",
+            "nb_args": 1,
+            "return_value": "bool",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_parent_event(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_parent_event",
+            "nb_args": 1,
+            "return_value": "lv_obj_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_base_dir(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_base_dir",
+            "nb_args": 1,
+            "return_value": "lv_bidi_dir_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_opa_scale_enable(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_opa_scale_enable",
+            "nb_args": 1,
+            "return_value": "lv_opa_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_opa_scale(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_opa_scale",
+            "nb_args": 1,
+            "return_value": "lv_opa_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_protect(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_protect",
+            "nb_args": 1,
+            "return_value": "uint8_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "prot"
+            ],
+            "args_type": [
+                "const lv_obj_t *",
+                "uint8_t"
+            ],
+            "fully_qualified": "lv_obj_is_protected(const lv_obj_t *, uint8_t)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_is_protected",
+            "nb_args": 2,
+            "return_value": "bool",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_signal_cb(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_signal_cb",
+            "nb_args": 1,
+            "return_value": "lv_signal_cb_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_design_cb(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_design_cb",
+            "nb_args": 1,
+            "return_value": "lv_design_cb_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_event_cb(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_event_cb",
+            "nb_args": 1,
+            "return_value": "lv_event_cb_t",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj"
+            ],
+            "args_type": [
+                "const lv_obj_t *"
+            ],
+            "fully_qualified": "lv_obj_get_ext_attr(const lv_obj_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_ext_attr",
+            "nb_args": 1,
+            "return_value": "void *",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "obj",
+                "buf"
+            ],
+            "args_type": [
+                "const lv_obj_t *",
+                "lv_obj_type_t *"
+            ],
+            "fully_qualified": "lv_obj_get_type(const lv_obj_t *, lv_obj_type_t *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_get_type",
+            "nb_args": 2,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "buf",
+                "name"
+            ],
+            "args_type": [
+                "lv_obj_type_t *",
+                "const char *"
+            ],
+            "fully_qualified": "lv_obj_handle_get_type_signal(lv_obj_type_t *, const char *)",
+            "headers": ["<lv_config.h>"],
+            "location_file": [
+                "liblvgl/lv_obj.c"
+            ],
+            "name": "lv_obj_handle_get_type_signal",
+            "nb_args": 2,
+            "return_value": "lv_res_t",
+            "usage": 1
+        }
+    ]
+}

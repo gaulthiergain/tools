@@ -1,0 +1,46 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "lib_sec"
+            ],
+            "args_type": [
+                "struct uk_lib_section *"
+            ],
+            "fully_qualified": "_uk_libparam_lib_add(struct uk_lib_section *)",
+            "headers": [
+                "<uk/libparam.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uklibparam/param.c"
+            ],
+            "name": "_uk_libparam_lib_add",
+            "nb_args": 1,
+            "return_value": "void",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "progname",
+                "argc",
+                "argv"
+            ],
+            "args_type": [
+                "const char *",
+                "int",
+                "char **"
+            ],
+            "fully_qualified": "uk_libparam_parse(const char *, int, char **)",
+            "headers": [
+                "<uk/libparam.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uklibparam/param.c"
+            ],
+            "name": "uk_libparam_parse",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 1
+        }
+    ]
+}

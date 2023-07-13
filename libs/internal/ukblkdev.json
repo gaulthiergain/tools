@@ -1,0 +1,337 @@
+{
+    "functions": [
+        {
+            "args_name": [],
+            "args_type": [],
+            "fully_qualified": "uk_blkdev_count()",
+            "headers": [
+                "<uk/blkdev.h>",
+                "<uk/blkreq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/blkdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/include/uk/blkdev.h"
+            ],
+            "name": "uk_blkdev_count",
+            "nb_args": 0,
+            "return_value": "unsigned int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "id"
+            ],
+            "args_type": [
+                "unsigned int"
+            ],
+            "fully_qualified": "uk_blkdev_get(unsigned int)",
+            "headers": [
+                "<uk/blkdev.h>",
+                "<uk/blkreq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/blkdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/include/uk/blkdev.h"
+            ],
+            "name": "uk_blkdev_get",
+            "nb_args": 1,
+            "return_value": "struct uk_blkdev *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev"
+            ],
+            "args_type": [
+                "struct uk_blkdev *"
+            ],
+            "fully_qualified": "uk_blkdev_id_get(struct uk_blkdev *)",
+            "headers": [
+                "<uk/blkdev.h>",
+                "<uk/blkreq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/blkdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/include/uk/blkdev.h"
+            ],
+            "name": "uk_blkdev_id_get",
+            "nb_args": 1,
+            "return_value": "uint16_t",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev"
+            ],
+            "args_type": [
+                "struct uk_blkdev *"
+            ],
+            "fully_qualified": "uk_blkdev_drv_name_get(struct uk_blkdev *)",
+            "headers": [
+                "<uk/blkdev.h>",
+                "<uk/blkreq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/blkdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/include/uk/blkdev.h"
+            ],
+            "name": "uk_blkdev_drv_name_get",
+            "nb_args": 1,
+            "return_value": "const char *",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev"
+            ],
+            "args_type": [
+                "struct uk_blkdev *"
+            ],
+            "fully_qualified": "uk_blkdev_state_get(struct uk_blkdev *)",
+            "headers": [
+                "<uk/blkdev.h>",
+                "<uk/blkreq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/blkdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/include/uk/blkdev.h"
+            ],
+            "name": "uk_blkdev_state_get",
+            "nb_args": 1,
+            "return_value": "enum uk_blkdev_state",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "dev_info"
+            ],
+            "args_type": [
+                "struct uk_blkdev *",
+                "struct uk_blkdev_info *"
+            ],
+            "fully_qualified": "uk_blkdev_get_info(struct uk_blkdev *, struct uk_blkdev_info *)",
+            "headers": [
+                "<uk/blkdev.h>",
+                "<uk/blkreq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/blkdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/include/uk/blkdev.h"
+            ],
+            "name": "uk_blkdev_get_info",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "conf"
+            ],
+            "args_type": [
+                "struct uk_blkdev *",
+                "const struct uk_blkdev_conf *"
+            ],
+            "fully_qualified": "uk_blkdev_configure(struct uk_blkdev *, const struct uk_blkdev_conf *)",
+            "headers": [
+                "<uk/blkdev.h>",
+                "<uk/blkreq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/blkdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/include/uk/blkdev.h"
+            ],
+            "name": "uk_blkdev_configure",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "queue_id",
+                "q_info"
+            ],
+            "args_type": [
+                "struct uk_blkdev *",
+                "uint16_t",
+                "struct uk_blkdev_queue_info *"
+            ],
+            "fully_qualified": "uk_blkdev_queue_get_info(struct uk_blkdev *, uint16_t, struct uk_blkdev_queue_info *)",
+            "headers": [
+                "<uk/blkdev.h>",
+                "<uk/blkreq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/blkdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/include/uk/blkdev.h"
+            ],
+            "name": "uk_blkdev_queue_get_info",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "queue_id",
+                "nb_desc",
+                "queue_conf"
+            ],
+            "args_type": [
+                "struct uk_blkdev *",
+                "uint16_t",
+                "uint16_t",
+                "const struct uk_blkdev_queue_conf *"
+            ],
+            "fully_qualified": "uk_blkdev_queue_configure(struct uk_blkdev *, uint16_t, uint16_t, const struct uk_blkdev_queue_conf *)",
+            "headers": [
+                "<uk/blkdev.h>",
+                "<uk/blkreq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/blkdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/include/uk/blkdev.h"
+            ],
+            "name": "uk_blkdev_queue_configure",
+            "nb_args": 4,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev"
+            ],
+            "args_type": [
+                "struct uk_blkdev *"
+            ],
+            "fully_qualified": "uk_blkdev_start(struct uk_blkdev *)",
+            "headers": [
+                "<uk/blkdev.h>",
+                "<uk/blkreq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/blkdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/include/uk/blkdev.h"
+            ],
+            "name": "uk_blkdev_start",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "queue_id",
+                "req"
+            ],
+            "args_type": [
+                "struct uk_blkdev *",
+                "uint16_t",
+                "struct uk_blkreq *"
+            ],
+            "fully_qualified": "uk_blkdev_queue_submit_one(struct uk_blkdev *, uint16_t, struct uk_blkreq *)",
+            "headers": [
+                "<uk/blkdev.h>",
+                "<uk/blkreq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/blkdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/include/uk/blkdev.h"
+            ],
+            "name": "uk_blkdev_queue_submit_one",
+            "nb_args": 3,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "queue_id"
+            ],
+            "args_type": [
+                "struct uk_blkdev *",
+                "uint16_t"
+            ],
+            "fully_qualified": "uk_blkdev_queue_finish_reqs(struct uk_blkdev *, uint16_t)",
+            "headers": [
+                "<uk/blkdev.h>",
+                "<uk/blkreq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/blkdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/include/uk/blkdev.h"
+            ],
+            "name": "uk_blkdev_queue_finish_reqs",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev"
+            ],
+            "args_type": [
+                "struct uk_blkdev *"
+            ],
+            "fully_qualified": "uk_blkdev_stop(struct uk_blkdev *)",
+            "headers": [
+                "<uk/blkdev.h>",
+                "<uk/blkreq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/blkdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/include/uk/blkdev.h"
+            ],
+            "name": "uk_blkdev_stop",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev",
+                "queue_id"
+            ],
+            "args_type": [
+                "struct uk_blkdev *",
+                "uint16_t"
+            ],
+            "fully_qualified": "uk_blkdev_queue_unconfigure(struct uk_blkdev *, uint16_t)",
+            "headers": [
+                "<uk/blkdev.h>",
+                "<uk/blkreq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/blkdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/include/uk/blkdev.h"
+            ],
+            "name": "uk_blkdev_queue_unconfigure",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "dev"
+            ],
+            "args_type": [
+                "struct uk_blkdev *"
+            ],
+            "fully_qualified": "uk_blkdev_unconfigure(struct uk_blkdev *)",
+            "headers": [
+                "<uk/blkdev.h>",
+                "<uk/blkreq.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/blkdev.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/ukblkdev/include/uk/blkdev.h"
+            ],
+            "name": "uk_blkdev_unconfigure",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        }
+    ]
+}

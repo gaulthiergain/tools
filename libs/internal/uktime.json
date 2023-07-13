@@ -1,0 +1,373 @@
+{
+    "functions": [
+        {
+            "args_name": [
+                "clockid",
+                "sevp",
+                "timerid"
+            ],
+            "args_type": [
+                "clockid_t",
+                "struct sigevent *__restrict",
+                "timer_t *__restrict"
+            ],
+            "fully_qualified": "timer_create(clockid_t,struct sigevent *__restrict,timer_t *__restrict)",
+            "headers": [
+                "<signal.h>",
+                "<time.h>",
+                "<stdlib.h>",
+                "<unistd.h>",
+                "<stdio.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/timer.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/musl-imported/include/time.h"
+            ],
+            "name": "timer_create",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "timerid"
+            ],
+            "args_type": [
+                "timer_t"
+            ],
+            "fully_qualified": "timer_delete(timer_t)",
+            "headers": [
+                "<time.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/timer.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/musl-imported/include/time.h"
+            ],
+            "name": "timer_delete",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "timerid",
+                "flags",
+                "old_value",
+                "new_value"
+            ],
+            "args_type": [
+                "timer_t",
+                "int",
+                "const struct itimerspec *__restrict",
+                "struct itimerspec *__restrict"
+            ],
+            "fully_qualified": "timer_settime(timer_t, int, const struct itimerspec *__restrict ,struct itimerspec *__restrict)",
+            "headers": [
+                "<time.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/timer.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/musl-imported/include/time.h"
+            ],
+            "name": "timer_settime",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "timerid",
+                "curr_value"
+            ],
+            "args_type": [
+                "timer_t",
+                "struct itimerspec *"
+            ],
+            "fully_qualified": "timer_gettime(timer_t, struct itimerspec *)",
+            "headers": [
+                "<time.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/timer.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/musl-imported/include/time.h"
+            ],
+            "name": "timer_gettime",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "timerid"
+            ],
+            "args_type": [
+                "timer_t"
+            ],
+            "fully_qualified": "timer_getoverrun(timer_t)",
+            "headers": [
+                "<time.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/timer.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/musl-imported/include/time.h"
+            ],
+            "name": "timer_getoverrun",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "filename",
+                "times"
+            ],
+            "args_type": [
+                "const char *",
+                "const struct utimbuf *"
+            ],
+            "fully_qualified": "utime(const char *, const struct utimbuf *)",
+            "headers": [
+                "<sys/types.h>",
+                "<utime.h>",
+                "<sys/time.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/time.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/musl-imported/include/utime.h"
+            ],
+            "name": "utime",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "seconds"
+            ],
+            "args_type": [
+                "unsigned int"
+            ],
+            "fully_qualified": "sleep(unsigned int)",
+            "headers": [
+                "<time.h>",
+                "<unistd.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/time.c"
+            ],
+            "name": "sleep",
+            "nb_args": 1,
+            "return_value": "unsigned int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "clk_id",
+                "res"
+            ],
+            "args_type": [
+                "clockid_t",
+                "struct timespec *"
+            ],
+            "fully_qualified": "clock_getres(clockid_t,struct timespec *)",
+            "headers": [
+                "<time.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/time.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/musl-imported/include/time.h"
+            ],
+            "name": "clock_getres",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "clk_id",
+                "tp"
+            ],
+            "args_type": [
+                "clockid_t",
+                "const struct timespec *"
+            ],
+            "fully_qualified": "clock_settime(clockid_t, const struct timespec *)",
+            "headers": [
+                "<time.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/time.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/musl-imported/include/time.h"
+            ],
+            "name": "clock_settime",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "which",
+                "new_value",
+                "old_value"
+            ],
+            "args_type": [
+                "int",
+                "const struct itimerval *",
+                "struct itimerval *"
+            ],
+            "fully_qualified": "setitimer(int, const struct itimerval *, struct itimerval *)",
+            "headers": [
+                "<sys/time.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/time.c",
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/musl-imported/include/sys/time.h"
+            ],
+            "name": "setitimer",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "req",
+                "rem"
+            ],
+            "args_type": [
+                "const struct timespec*",
+                "struct timespec*"
+            ],
+            "fully_qualified": "nanosleep(const struct timespec*,struct timespec*)",
+            "headers": [
+                "<time.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/musl-imported/include/time.h"
+            ],
+            "name": "nanosleep",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "tloc"
+            ],
+            "args_type": [
+                "time_t *"
+            ],
+            "fully_qualified": "time(time_t *)",
+            "headers": [],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/musl-imported/include/time.h"
+            ],
+            "name": "time",
+            "nb_args": 1,
+            "return_value": "time_t",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "tv",
+                "tz"
+            ],
+            "args_type": [
+                "struct timeval *",
+                "void *"
+            ],
+            "fully_qualified": "gettimeofday(struct timeval *,void *)",
+            "headers": [
+                "<sys/time.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/musl-imported/include/sys/time.h"
+            ],
+            "name": "gettimeofday",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "clk_id",
+                "tp"
+            ],
+            "args_type": [
+                "clockid_t",
+                "struct timespec*"
+            ],
+            "fully_qualified": "clock_gettime(clockid_t,struct timespec*)",
+            "headers": [
+                "<time.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/musl-imported/include/time.h"
+            ],
+            "name": "clock_gettime",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 2
+        },
+        {
+            "args_name": [
+                "buf"
+            ],
+            "args_type": [
+                "struct tm *"
+            ],
+            "fully_qualified": "times(struct tm *)",
+            "headers": [
+                "<sys/types.h>",
+                "<utime.h>",
+                "<sys/time.h>"
+            ],
+            "location_file": [],
+            "name": "times",
+            "nb_args": 1,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "arg_constchar",
+                "arg_int"
+            ],
+            "args_type": [
+                "const char *",
+                "const struct timeval*"
+            ],
+            "fully_qualified": "utimes(const char *, const struct timeval*)",
+            "headers": [
+                "<sys/types.h>",
+                "<utime.h>",
+                "<sys/time.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/musl-imported/include/sys/time.h"
+            ],
+            "name": "utimes",
+            "nb_args": 2,
+            "return_value": "int",
+            "usage": 1
+        },
+        {
+            "args_name": [
+                "tm"
+            ],
+            "args_type": [
+                "struct tm *"
+            ],
+            "fully_qualified": "timegm(struct tm *)",
+            "headers": [
+                "<time.h>"
+            ],
+            "location_file": [
+                "/home/gain/dev/workdir_unikraft/unikraft/lib/uktime/musl-imported/src/timegm.c"
+            ],
+            "name": "timegm",
+            "nb_args": 1,
+            "return_value": "time_t",
+            "usage": 1
+        }
+    ]
+}
