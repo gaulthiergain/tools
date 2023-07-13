@@ -195,8 +195,8 @@ func executeDependAptCache(programName string, data *u.StaticData,
 
 // staticAnalyser runs the static analysis to get shared libraries,
 // system calls and library calls of a given application.
-//
-func staticAnalyser(elfFile *elf.File, isDynamic, isLinux bool, args u.Arguments, data *u.Data, programPath string) {
+func staticAnalyser(elfFile *elf.File, isDynamic, isLinux bool, args u.Arguments, data *u.Data,
+	programPath string) {
 
 	programName := *args.StringArg[programArg]
 	fullDeps := *args.BoolArg[fullDepsArg]
@@ -242,7 +242,8 @@ func staticAnalyser(elfFile *elf.File, isDynamic, isLinux bool, args u.Arguments
 
 	// Detect symbols from shared libraries
 	if fullStaticAnalysis && isLinux {
-		u.PrintHeader2("(*) Gathering symbols and system calls of shared libraries from binary file")
+		u.PrintHeader2("(*) Gathering symbols and system calls of shared libraries from binary" +
+			"file")
 		for key, path := range staticData.SharedLibs {
 			if len(path) > 0 {
 				fmt.Printf("\t-> Analysing %s - %s\n", key, path[0])

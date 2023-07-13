@@ -6,10 +6,11 @@
 
 package common
 
-// Exported struct that represents static and dynamic data.
+// Exported struct that represents static, dynamic and sources data.
 type Data struct {
 	StaticData  StaticData  `json:"static_data"`
 	DynamicData DynamicData `json:"dynamic_data"`
+	SourcesData SourcesData `json:"sources_data"`
 }
 
 // Exported struct that represents data for static dependency analysis.
@@ -25,4 +26,10 @@ type DynamicData struct {
 	SharedLibs  map[string][]string `json:"shared_libs"`
 	SystemCalls map[string]int      `json:"system_calls"`
 	Symbols     map[string]string   `json:"symbols"`
+}
+
+// Exported struct that represents data for sources dependency analysis.
+type SourcesData struct {
+	SystemCalls map[string]int    `json:"system_calls"`
+	Symbols     map[string]string `json:"symbols"`
 }

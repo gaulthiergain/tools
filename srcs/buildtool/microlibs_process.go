@@ -41,7 +41,6 @@ type MicroLibsFunction struct {
 // -----------------------------Match micro-libs--------------------------------
 
 // processSymbols adds symbols within the 'exportsyms.uk' file into a map.
-//
 func processSymbols(microLib, output string, mapSymbols map[string][]string) {
 
 	lines := strings.Split(output, "\n")
@@ -134,6 +133,53 @@ func fetchSymbolsExternalLibs(folder string,
 	return externalLibs, nil
 }
 
+// putJsonSymbolsTogether puts the json file symbols and system calls resulting from the static,
+// dynamic and source files analyses together into a map structure.
+//
+// It returns the map containing all the symbols and system calls.
+func putJsonSymbolsTogether(data *u.Data) map[string]string {
+	dataMap := make(map[string]string)
+
+	for k, v := range data.StaticData.Symbols {
+		dataMap[k] = v
+	}
+
+	for k := range data.StaticData.SystemCalls {
+		dataMap[k] = ""
+	}
+
+	for k, v := range data.DynamicData.Symbols {
+		dataMap[k] = v
+	}
+
+	for k := range data.DynamicData.SystemCalls {
+		dataMap[k] = ""
+	}
+
+	for k, v := range data.SourcesData.Symbols {
+		dataMap[k] = v
+	}
+
+	for k := range data.SourcesData.SystemCalls {
+		dataMap[k] = ""
+	}
+
+	return dataMap
+}
+
+// retNameCompat modifies its string argument in order to replace its underscore by a dash when
+// necessary.
+//
+// It returns its string argument whose underscore has been replaced by a dash if necessary,
+// otherwise it returns its argument unchanged.
+func retNameForCompat(value string) string {
+	if strings.Contains(value, "posix-") {
+		return strings.ReplaceAll(value, "posix-", "posix_")
+	}
+
+	return value
+}
+
 // matchSymbols performs the matching between Unikraft's micro-libs and
 // libraries used by a given application based on the list of symbols that both
 // contain.
@@ -144,15 +190,8 @@ func matchSymbols(matchedLibs []string, data map[string]string,
 	for key := range data {
 		if values, ok := microLibs[key]; ok {
 			for _, value := range values {
-
-				// todo remove
-				if strings.Compare(NOLIBC, value) == 0 {
-					value = NEWLIB
-				}
-				// remove above
-
-				if !u.Contains(matchedLibs, value) {
-					matchedLibs = append(matchedLibs, value)
+				if !u.Contains(matchedLibs, retNameForCompat(value)) {
+					matchedLibs = append(matchedLibs, retNameForCompat(value))
 				}
 			}
 		}
@@ -172,11 +211,6 @@ func matchLibs(unikraftLibs string, data *u.Data) ([]string, map[string]string, 
 
 	matchedLibs := make([]string, 0)
 
-	//todo remove
-	matchedLibs = append(matchedLibs, POSIXLIBDL)
-	matchedLibs = append(matchedLibs, POSIXSYSINFO)
-	matchedLibs = append(matchedLibs, UKMMAP)
-
 	folder := filepath.Join(os.Getenv("GOPATH"), "src", "tools", "libs", "internal")
 	if err := fetchSymbolsInternalLibs(folder, mapSymbols); err != nil {
 		return nil, nil, err
@@ -189,11 +223,10 @@ func matchLibs(unikraftLibs string, data *u.Data) ([]string, map[string]string, 
 		return nil, nil, err
 	}
 
-	// Perform the matching symbols on static data
-	matchedLibs = matchSymbols(matchedLibs, data.StaticData.Symbols, mapSymbols)
+	dataMap := putJsonSymbolsTogether(data)
 
-	// Perform the matching symbols on dynamic data
-	matchedLibs = matchSymbols(matchedLibs, data.DynamicData.Symbols, mapSymbols)
+	// Perform the symbol matching
+	matchedLibs = matchSymbols(matchedLibs, dataMap, mapSymbols)
 
 	return matchedLibs, externalLibs, nil
 }
@@ -223,7 +256,6 @@ func cloneGitRepo(url, unikraftPathLibs, lib string) error {
 
 // cloneLibsFolders clones all the needed micro-libs that are needed by a
 // given application
-//
 func cloneLibsFolders(workspacePath string, matchedLibs []string,
 	externalLibs map[string]string) {
 

@@ -8,9 +8,10 @@ package common
 
 import (
 	"errors"
-	"github.com/akamensky/argparse"
 	"os"
 	"strings"
+
+	"github.com/akamensky/argparse"
 )
 
 // Exported constants to determine arguments type.
@@ -18,6 +19,7 @@ const (
 	INT = iota
 	BOOL
 	STRING
+	STRINGLIST
 )
 
 // Exported constants to determine which tool is used.
@@ -38,9 +40,10 @@ const (
 
 // Exported constants to represent different types of arguments.
 type Arguments struct {
-	IntArg    map[string]*int
-	BoolArg   map[string]*bool
-	StringArg map[string]*string
+	IntArg        map[string]*int
+	BoolArg       map[string]*bool
+	StringArg     map[string]*string
+	StringListArg map[string]*[]string
 }
 
 // InitArguments allows to initialize the parser in order to parse given
@@ -52,6 +55,7 @@ func (args *Arguments) InitArguments(name, description string) (*argparse.Parser
 	args.IntArg = make(map[string]*int)
 	args.BoolArg = make(map[string]*bool)
 	args.StringArg = make(map[string]*string)
+	args.StringListArg = make(map[string]*[]string)
 
 	p := argparse.NewParser(name, description)
 
@@ -130,5 +134,8 @@ func (*Arguments) InitArgParse(p *argparse.Parser, args *Arguments, typeVar int,
 	case STRING:
 		args.StringArg[long] = new(string)
 		args.StringArg[long] = p.String(short, long, options)
+	case STRINGLIST:
+		args.StringListArg[long] = new([]string)
+		args.StringListArg[long] = p.StringList(short, long, options)
 	}
 }

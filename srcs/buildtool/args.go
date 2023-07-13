@@ -7,9 +7,10 @@
 package buildtool
 
 import (
-	"github.com/akamensky/argparse"
 	"os"
 	u "tools/srcs/common"
+
+	"github.com/akamensky/argparse"
 )
 
 const (
@@ -18,6 +19,8 @@ const (
 	sourcesArg   = "sources"
 	objsArg      = "objects"
 	makefileArg  = "makefile"
+	configArg    = "config"
+	patchArg     = "patch"
 )
 
 // ParseArguments parses arguments of the application.
@@ -34,11 +37,15 @@ func parseLocalArguments(p *argparse.Parser, args *u.Arguments) error {
 		&argparse.Options{Required: true, Help: "App Sources " +
 			"Folder"})
 	args.InitArgParse(p, args, u.BOOL, "o", objsArg,
-		&argparse.Options{Required: false, Default: false, Help: "Add objects from external build system " +
-			"Folder"})
+		&argparse.Options{Required: false, Default: false, Help: "Add objects from external" +
+			"build system Folder"})
 	args.InitArgParse(p, args, u.STRING, "m", makefileArg,
 		&argparse.Options{Required: false, Help: "Add additional properties " +
 			"for Makefile"})
+	args.InitArgParse(p, args, u.STRINGLIST, "c", configArg,
+		&argparse.Options{Required: false, Help: "Add configuration files"})
+	args.InitArgParse(p, args, u.STRING, "", patchArg,
+		&argparse.Options{Required: false, Help: "Add patch files"})
 
 	return u.ParserWrapper(p, os.Args)
 }

@@ -131,11 +131,7 @@ def find_funcs_and_calls(tu):
     calls = []
     funcs = []
     for c in tu.cursor.walk_preorder():
-        if c.location.file is None:
-            pass
-        elif c.location.file.name != filename:
-            pass
-        elif c.kind == CursorKind.CALL_EXPR:
+        if c.kind == CursorKind.CALL_EXPR:
             calls.append(c)
             # filter name to take only the name if necessary
             funcName = filter_func_name(c.displayname)
@@ -228,7 +224,8 @@ def main():
             'functions':'',
             'calls':''
         }
-        output_dikt['functions'] = [{'name':key, 'value':value} for key,value in global_funcs.items()]
+        output_dikt['functions'] = [{'name':key, 'value':value} for key,value in
+        global_funcs.items()]
         output_dikt['calls'] = [{'name':key, 'value':value} for key,value in global_calls.items()]
         if includepathsFile is not None:
             # Read syscalls from txt file
@@ -242,5 +239,6 @@ def main():
 
 if __name__== "__main__":
     if platform.system() == "Darwin":
-        clang.cindex.Config.set_library_file("/Applications/Xcode.app/Contents/Frameworks/libclang.dylib")
+        clang.cindex.Config.set_library_file
+        ("/Applications/Xcode.app/Contents/Frameworks/libclang.dylib")
     main()

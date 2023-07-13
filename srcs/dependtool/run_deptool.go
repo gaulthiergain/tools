@@ -4,11 +4,31 @@ import (
 	"debug/elf"
 	"errors"
 	"fmt"
-	"github.com/fatih/color"
 	"runtime"
 	"strings"
 	u "tools/srcs/common"
+
+	"github.com/fatih/color"
 )
+
+// getProgramFolder gets the folder path in which the given program is located, according to the
+// Unikraft standard (e.g., /home/.../apps/programFolder/.../program).
+//
+// It returns the folder containing the program files according to the standard described above.
+func getProgramFolder(programPath string) string {
+
+	tmp := strings.Split(programPath, u.SEP)
+	i := 2
+
+	for ; i < len(tmp); i++ {
+		if tmp[len(tmp)-i] == "apps" {
+			break
+		}
+	}
+
+	folderPath := strings.Join(tmp[:len(tmp)-i+2], u.SEP)
+	return folderPath
+}
 
 // RunAnalyserTool allows to run the dependency analyser tool.
 func RunAnalyserTool(homeDir string, data *u.Data) {
@@ -29,10 +49,11 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 		u.PrintErr(err)
 	}
 
-	// Get the kind of analysis (0: both; 1: static; 2: dynamic)
+	// Get the kind of analysis (0: all; 1: static; 2: dynamic; 3: interdependence; 4: sources; 5:
+	// stripped-down app and json for buildtool)
 	typeAnalysis := *args.IntArg[typeAnalysis]
-	if typeAnalysis < 0 || typeAnalysis > 2 {
-		u.PrintErr(errors.New("analysis argument must be between [0,2]"))
+	if typeAnalysis < 0 || typeAnalysis > 5 {
+		u.PrintErr(errors.New("analysis argument must be between [0,5]"))
 	}
 
 	// Get program path
@@ -68,7 +89,8 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 	// Run static analyser
 	if typeAnalysis == 0 || typeAnalysis == 1 {
 		u.PrintHeader1("(1.1) RUN STATIC ANALYSIS")
-		runStaticAnalyser(elfFile, isDynamic, isLinux, args, programName, programPath, outFolder, data)
+		runStaticAnalyser(elfFile, isDynamic, isLinux, args, programName, programPath, outFolder,
+			data)
 	}
 
 	// Run dynamic analyser
@@ -80,6 +102,24 @@ func RunAnalyserTool(homeDir string, data *u.Data) {
 			// dtruss/dtrace on mac needs to disable system integrity protection
 			u.PrintWarning("Dynamic analysis is not currently supported on macOS")
 		}
+	}
+
+	// Run interdependence analyser
+	if typeAnalysis == 0 || typeAnalysis == 3 {
+		u.PrintHeader1("(1.3) RUN INTERDEPENDENCE ANALYSIS")
+		_ = runInterdependAnalyser(getProgramFolder(programPath), programName, outFolder)
+	}
+
+	// Run sources analyser
+	if typeAnalysis == 0 || typeAnalysis == 4 {
+		u.PrintHeader1("(1.4) RUN SOURCES ANALYSIS")
+		runSourcesAnalyser(getProgramFolder(programPath), data)
+	}
+
+	// Prepare stripped-down app for buildtool
+	if typeAnalysis == 5 {
+		u.PrintHeader1("(1.5) PREPARE STRIPPED-DOWN APP AND JSON FOR BUILDTOOL")
+		runSourcesAnalyser(runInterdependAnalyser(programPath, programName, outFolder), data)
 	}
 
 	// Save Data to JSON
@@ -156,8 +196,8 @@ func checkElf(programPath *string) (*elf.File, bool) {
 }
 
 // runStaticAnalyser runs the static analyser
-func runStaticAnalyser(elfFile *elf.File, isDynamic, isLinux bool, args *u.Arguments, programName, programPath,
-	outFolder string, data *u.Data) {
+func runStaticAnalyser(elfFile *elf.File, isDynamic, isLinux bool, args *u.Arguments, programName,
+	programPath, outFolder string, data *u.Data) {
 
 	staticAnalyser(elfFile, isDynamic, isLinux, *args, data, programPath)
 
@@ -209,6 +249,12 @@ func runDynamicAnalyser(args *u.Arguments, programName, programPath,
 	}
 }
 
+// runDynamicAnalyser runs the sources analyser.
+func runSourcesAnalyser(programPath string, data *u.Data) {
+
+	sourcesAnalyser(data, programPath)
+}
+
 // saveGraph saves dependency graphs of a given app into the output folder.
 func saveGraph(programName, outFolder string, data *u.Data) {
 
@@ -222,8 +268,14 @@ func saveGraph(programName, outFolder string, data *u.Data) {
 			programName+"_dependencies", data.StaticData.Dependencies, nil)
 	}
 
-	if len(data.StaticData.SharedLibs) > 0 {
+	if len(data.DynamicData.SharedLibs) > 0 {
 		u.GenerateGraph(programName, outFolder+"dynamic"+u.SEP+
 			programName+"_shared_libs", data.DynamicData.SharedLibs, nil)
 	}
+}
+
+// runInterdependAnalyser runs the interdependence analyser.
+func runInterdependAnalyser(programPath, programName, outFolder string) string {
+
+	return interdependAnalyser(programPath, programName, outFolder)
 }

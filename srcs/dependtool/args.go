@@ -7,9 +7,10 @@
 package dependtool
 
 import (
-	"github.com/akamensky/argparse"
 	"os"
 	u "tools/srcs/common"
+
+	"github.com/akamensky/argparse"
 )
 
 const (
@@ -52,7 +53,8 @@ func parseLocalArguments(p *argparse.Parser, args *u.Arguments) error {
 			Help: "Full static analysis (analyse shared libraries too)"})
 	args.InitArgParse(p, args, u.INT, "", typeAnalysis,
 		&argparse.Options{Required: false, Default: 0,
-			Help: "Kind of analysis (0: both; 1: static; 2: dynamic)"})
+			Help: "Kind of analysis (0: all; 1: static; 2: dynamic; 3: interdependence; 4: " +
+				"sources; 5: stripped-down app and json for buildtool)"})
 
 	return u.ParserWrapper(p, os.Args)
 }
